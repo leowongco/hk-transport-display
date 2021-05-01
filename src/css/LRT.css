@@ -1,0 +1,13 @@
+.lrt{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.lrt__topBar{
+    padding-top: 10px;
+    justify-content: center;
+}
+
+.stationSelect {
+    width: 200px;
+}

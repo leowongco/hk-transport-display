@@ -1,0 +1,45 @@
+.display__container {
+  height: 800px;
+  height: 450px;
+  padding-bottom: 50px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.display__header {
+  background-color: blue;
+  color: white;
+  height: 90px;
+  font-size: 70px;
+  display: flex;
+  flex: 1;
+}
+
+.display__row {
+  display: flex;
+  padding-bottom: 10px;
+  justify-items: center;
+  height: 90px;
+  font-size: 70px;
+}
+
+.train__dest {
+  flex: 6;
+  place-items: center;
+}
+
+.train__plat {
+  text-align: center;
+  place-items: center;
+  background-color: #fe7f1d;
+  color: white;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}
+
+.train__ttnt {
+  place-items: center;
+  width: 250px;
+  text-align: right;
+}
