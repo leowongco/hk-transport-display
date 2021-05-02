@@ -1,13 +1,52 @@
-.lrt{
-    padding-left: 20px;
-    padding-right: 20px;
+@import url(//fonts.googleapis.com/css2?family=Noto+Sans+HK&family=Ubuntu);
+
+.lrt {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  font-family: "Noto SansHK", "Ubuntu", serif;
 }
 
-.lrt__topBar{
-    padding-top: 10px;
-    justify-content: center;
+.lrt__header {
+  margin-top: 20px;
+  height: 80px;
+  width: 350px;
+  padding-right: 20px;
+  padding-left: 20px;
+  display: flex;
+  place-items: center;
+  flex: 1;
+  background-color: #dcb900;
+}
+
+.lrt__logo {
+  padding-right: 20px;
+}
+
+.lrt__logo > img {
+  height: 70px;
+}
+
+.lrt__title {
+  font-size: x-large;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+.lrt__topBar {
+  padding-top: 20px;
+  display: flex;
+  flex: 1;
+  width: 350px;
 }
 
 .stationSelect {
-    width: 200px;
+  width: 200px;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  max-width: 500px;
 }

@@ -1,11 +1,22 @@
 const lrtCommon = {
   en: {
-    stn: " Station",
+    stn: "Light Rail Station",
     plat: "Platform",
+    select: "Please Select",
+    etaAlert:
+      "ETA information will be refresh every 10 seconds, reference data only.",
+    autoBtnOn: "Swap Language: On",
+    autoBtnOff: "Swap Language: Off",
+    title: "Light Rail (LRT) ETA",
   },
   tc: {
-    stn: "站",
+    stn: "輕鐵站",
     plat: "月台",
+    select: "請選擇",
+    etaAlert: "到站時間資訊每10秒自動更新，資料只供參考。",
+    autoBtnOn: "自動轉語言：開",
+    autoBtnOff: "自動轉語言：關",
+    title: "輕鐵 (LRT) 到站時間",
   },
 };
 

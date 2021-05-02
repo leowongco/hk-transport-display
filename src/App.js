@@ -2,6 +2,7 @@ import "./css/App.css";
 import LRT from "./LRT.js";
 import Header from "./Header.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from "react";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           </Route>
           <Route path="/">
             <Header />
+            <LRT />
           </Route>
         </Switch>
       </div>
