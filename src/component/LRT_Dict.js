@@ -8,6 +8,9 @@ const lrtCommon = {
     autoBtnOn: "Swap Language: On",
     autoBtnOff: "Swap Language: Off",
     title: "Light Rail (LRT) ETA",
+    lastUpdate: "Last Update",
+    stopped: "Not In Service",
+    end_service: "End of today's service",
   },
   tc: {
     stn: "輕鐵站",
@@ -17,6 +20,9 @@ const lrtCommon = {
     autoBtnOn: "自動轉語言：開",
     autoBtnOff: "自動轉語言：關",
     title: "輕鐵 (LRT) 到站時間",
+    lastUpdate: "最後更新",
+    stopped: "不載客",
+    end_service: "本日服務完結",
   },
 };
 

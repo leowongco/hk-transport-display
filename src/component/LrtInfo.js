@@ -6,6 +6,7 @@ import "../css/LRTInfo.css";
 
 function LrtInfo({ sid, lang }) {
   const [lrtETA, setLRTEta] = useState();
+  const [lrtRoute, setLrtRoute] = useState("");
   var { fLang } = "";
 
   if (lang === "tc") {
@@ -13,6 +14,18 @@ function LrtInfo({ sid, lang }) {
   } else {
     fLang = lang;
   }
+
+  /*
+  function routeColour(lrtRoute) {
+    console.log(lrtRoute);
+    switch (lrtRoute) {
+      case 615:
+        return (document.getElementsByClassName(
+          "lrtChip"
+        ).style.backgroundColor = "green");
+    }
+  }
+  */
 
   useEffect(() => {
     if (sid > 0) {
@@ -37,7 +50,27 @@ function LrtInfo({ sid, lang }) {
       .catch((error) => console.log(error));
   }, [sid]);
 
-  if (lrtETA?.status != 0) {
+  if (lrtETA?.status == 0) {
+    return (
+      <div className="lrtinfo">
+        <Card className="infobox">
+          <CardContent>
+            <p>未能讀取到站時間，請稍後再嘗試。</p>
+            <p>Cannnot Retrieve ETA information, Please try again later.</p>
+          </CardContent>
+          <CardContent>
+            {lrtETA?.system_time ? (
+              <div className="etaBox__footer">
+                {Dict.lrtCommon[lang].lastUpdate + ": " + lrtETA?.system_time}
+              </div>
+            ) : (
+              ""
+            )}
+          </CardContent>
+        </Card>
+      </div>
+    );
+  } else {
     return (
       <div className="lrtinfo">
         <Card className="infobox">
@@ -50,13 +83,29 @@ function LrtInfo({ sid, lang }) {
                   <small>{Dict.lrtStation.en[sid]}</small>
                 </div>
               </div>
+              {plat.end_service_status == 1
+                ? Dict.lrtCommon[lang].end_service
+                : ""}
               {plat.route_list?.map((train) => (
                 <div className="etaBox">
                   <div className="lrt__route">
-                    <Chip size="small" label={train.route_no} />
+                    <Chip
+                      size="small"
+                      className="lrtChip"
+                      style={{
+                        backgroundColor: "#CD9700",
+                        color: "white",
+                        width: "50px",
+                      }}
+                      label={train.route_no}
+                    />
                   </div>
                   <div className="etaBox__row">
-                    <small>{train["dest_" + fLang]}</small>
+                    <small>
+                      {train.stop == 1
+                        ? Dict.lrtCommon[lang].stopped
+                        : train["dest_" + fLang]}
+                    </small>
                   </div>
                   <div style={{ flex: "1 0 0" }} />
                   <div className="etaBox__row">
@@ -71,6 +120,13 @@ function LrtInfo({ sid, lang }) {
               ))}
             </CardContent>
           ))}
+          {lrtETA?.system_time ? (
+            <div className="etaBox__footer">
+              {Dict.lrtCommon[lang].lastUpdate + ": " + lrtETA?.system_time}
+            </div>
+          ) : (
+            ""
+          )}
         </Card>
       </div>
     );

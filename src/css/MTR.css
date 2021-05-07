@@ -1,0 +1,35 @@
+@import url(//fonts.googleapis.com/css2?family=Noto+Sans+HK&family=Ubuntu);
+
+.mtr {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  max-width: 100%;
+  font-family: "Noto SansHK", "Ubuntu", serif;
+}
+
+.mtr__functionBar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  width: 350px;
+  max-width: 100%;
+}
+.container {
+  display: grid;
+  place-items: center;
+  max-width: 500px;
+  max-width: 100%;
+}
+
+.lineSelect {
+  width: 50%;
+}
+
+.stationSelect {
+  width: 50%;
+}
+
+.mtr__info{
+    padding-top: 10px;
+}

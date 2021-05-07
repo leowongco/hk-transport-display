@@ -1,3 +1,9 @@
+a {
+  color: black;
+  text-decoration: none;
+  align-items: center;
+}
+
 .header__appBar {
     background-color: #A5EBEC;
   justify-content: center;

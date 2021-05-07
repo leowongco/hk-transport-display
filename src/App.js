@@ -1,5 +1,6 @@
 import "./css/App.css";
 import LRT from "./LRT.js";
+import MTR from "./MTR.js";
 import Header from "./Header.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from "react";
@@ -16,6 +17,10 @@ function App() {
           <Route path="/lrt">
             <Header />
             <LRT />
+          </Route>
+          <Route path="/mtr">
+            <Header />
+            <MTR />
           </Route>
           <Route path="/">
             <Header />
