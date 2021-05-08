@@ -19,6 +19,7 @@
   height: 30px;
   display: flex;
   place-items: center;
+  background-color: #005da0;
 }
 
 .mtrstation__headerTCL {
@@ -77,6 +78,46 @@
 
 .mtr__plat {
   margin-right: 20px;
+}
+
+.mtr__platAEL {
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: #1c7670;
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.mtr__platTCL {
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: #fe7f1d;
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.mtr__platWRL {
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: #a40084;
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.mtr__platTKL {
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: #6b208b;
+  color: white;
+  text-align: center;
+  border-radius: 50%;
 }
 
 .mtr__time {

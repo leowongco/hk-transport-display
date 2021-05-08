@@ -29,10 +29,14 @@
 }
 
 .lrtTrain__length {
-  width: 40px;
+  width: 36px;
   padding-left: 4px;
-  margin-bottom: 5px;
   display: flex;
+}
+
+.lrtTrain__length > img {
+  width: 18px;
+  height: 12px;
 }
 
 .lrt__route {
@@ -169,8 +173,4 @@
   border: #fd722d solid 2mm;
   display: flex;
   justify-content: center;
-}
-
-.lrvTrain {
-  width: 20px;
 }

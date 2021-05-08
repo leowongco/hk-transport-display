@@ -3,6 +3,7 @@ import axios from "axios";
 import { Card, CardContent, Chip } from "@material-ui/core";
 import Dict from "./LRT_Dict.js";
 import "../css/LRTInfo.css";
+import LRTTrain from "../img/lrt_train.png"
 
 function LrtInfo({ sid, lang }) {
   const [lrtETA, setLRTEta] = useState();
@@ -39,7 +40,7 @@ function LrtInfo({ sid, lang }) {
 
   const handleLocalStorage = () => {
     var storage = window.localStorage;
-    
+
   };
 
   if (lrtETA?.status == 0) {
@@ -113,7 +114,7 @@ function LrtInfo({ sid, lang }) {
                   <div className="lrtTrain__length">
                     {Array(train.train_length)
                       .fill()
-                      .map((_, i) => "🚋")}
+                      .map((_, i) => (<img src={LRTTrain} />))}
                   </div>
                 </div>
               ))}

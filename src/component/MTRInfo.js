@@ -45,7 +45,7 @@ function MTRInfo({ line, station, lang }) {
       <Card className="infobox">
         {mtrEta.UP != null ? (
           <CardContent>
-            <div className={"mtrstation__header" + line}>
+            <div className={"mtrstation__header"}>
               <div className="station__name">
                 {Dict.Station[lang][station]}{" "}
               </div>
@@ -65,7 +65,7 @@ function MTRInfo({ line, station, lang }) {
                   {Dict.Station[lang][train.dest]}
                 </div>
                 <div style={{ flex: "1 0 0" }} />
-                <div className="mtr__plat">{train.plat}</div>
+                <div className={"mtr__plat" + line}>{train.plat}</div>
                 <div className="mtr__time">
                   {train.ttnt < 1
                     ? Dict.Common[lang].dep
@@ -80,7 +80,7 @@ function MTRInfo({ line, station, lang }) {
 
         {mtrEta.DOWN != null ? (
           <CardContent>
-            <div className={"mtrstation__header" + line}>
+            <div className={"mtrstation__header"}>
               <div className="station__name">{Dict.Station[lang][station]}</div>
               <div className="header__line">
                 {" "}
@@ -98,7 +98,7 @@ function MTRInfo({ line, station, lang }) {
                   {Dict.Station[lang][train.dest]}
                 </div>
                 <div style={{ flex: "1 0 0" }} />
-                <div className="mtr__plat">{train.plat}</div>
+                <div className={"mtr__plat" + line}>{train.plat}</div>
                 <div className="mtr__time">
                   {train.ttnt < 1
                     ? Dict.Common[lang].dep
