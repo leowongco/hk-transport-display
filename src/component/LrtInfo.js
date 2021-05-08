@@ -82,10 +82,15 @@ function LrtInfo({ sid, lang }) {
               )}
               {plat.route_list?.map((train) => (
                 <div className="etaBox">
-                  <div className="lrt__route">
+                  <div className={"lrt__route_" + train.route_no}>
                     <Chip
                       size="small"
-                      className={"lrtChip_" + train.route_no}
+                      className="lrtChip"
+                      style={{
+                        backgroundColor: "white",
+                        color: "black",
+                        width: "50px",
+                      }}
                       label={train.route_no}
                     />
                   </div>

@@ -8,7 +8,7 @@
 }
 
 .lrt__container {
-  padding-top: 5px;
+  padding-top: 4px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -23,33 +23,127 @@
 }
 
 .etaBox__row {
-  padding-right: 5px;
+  padding-right: 4px;
 }
 
 .lrtTrain__length {
   width: 40px;
-  padding-left: 5px;
+  padding-left: 4px;
   display: flex;
 }
 
 .lrt__route {
-  padding-right: 10px;
+  margin-right: 10px;
+  width: 50px;
+  border: #00a650 solid 4px;
+  border-radius: 50px;
+}
+
+.lrt__route_505 {
+  margin-right: 10px;
+  width: 50px;
+  border: #db1f26 solid 4px;
+  border-radius: 50px;
+}
+
+.lrt__route_507 {
+  margin-right: 10px;
+  width: 50px;
+  border: #00a650 solid 4px;
+  border-radius: 50px;
+}
+
+.lrt__route_610 {
+  margin-right: 10px;
+  width: 50px;
+  border: #431115 solid 4px;
+  border-radius: 50px;
+}
+
+.lrt__route_610P,
+.lrt__route_614 {
+  margin-right: 10px;
+  width: 50px;
+  border: #4dc6f4 solid 4px;
+  border-radius: 50px;
+}
+
+.lrt__route_614P {
+  margin-right: 10px;
+  width: 50px;
+  border: #f46989 solid 4px;
+  border-radius: 50px;
+}
+
+.lrt__route_615 {
+  margin-right: 10px;
+  width: 50px;
+  border: #fddd04 solid 4px;
+  border-radius: 50px;
+}
+
+.lrt__route_615P {
+  margin-right: 10px;
+  width: 50px;
+  border: #215483 solid 4px;
+  border-radius: 50px;
+}
+
+.lrt__route_705 {
+  margin-right: 10px;
+  width: 50px;
+  border: #64c542 solid 4px;
+  border-radius: 50px;
+}
+
+.lrt__route_706 {
+  margin-right: 10px;
+  width: 50px;
+  border: #b365b9 solid 4px;
+  border-radius: 50px;
+}
+
+.lrt__route_751 {
+  margin-right: 10px;
+  width: 50px;
+  border: #f47216 solid 4px;
+  border-radius: 50px;
+}
+
+.lrt__route_751P {
+  margin-right: 10px;
+  width: 50px;
+  border: #000000 solid 4px;
+  border-radius: 50px;
+}
+
+.lrtChip_751P {
+  background: white;
+  border: #000000 solid 1.5mm;
+  color: black;
   width: 60px;
+}
+
+.lrt__route_761,
+.lrt__route_761P {
+  margin-right: 10px;
+  width: 50px;
+  border: #672290 solid 4px;
+  border-radius: 50px;
 }
 
 .station__platform {
   margin-left: 20px;
-  margin-right: 20px;
+  margin-right: 5px;
   background-color: orange;
   color: white;
-  width: 22px;
+  width: 20px;
   text-align: center;
-  font-weight: bold;
+  font-weight: 550;
   font-size: larger;
 }
 
 .station__name {
-  padding-right: 10px;
   color: white;
 }
 
@@ -76,90 +170,4 @@
 
 .lrvTrain {
   width: 20px;
-}
-
-.lrtChip_505 {
-  background: white;
-  border: #db1f26 solid 1.5mm;
-  color: black;
-  width: 60px;
-}
-
-.lrtChip_507 {
-  background: white;
-  border: #00a650 solid 1.5mm;
-  color: black;
-  width: 60px;
-}
-
-.lrtChip_610 {
-  background: white;
-  border: #431115 solid 1.5mm;
-  color: black;
-  width: 60px;
-}
-
-.lrtChip_610P,
-.lrtChip_614 {
-  background: white;
-  border: #4dc6f4 solid 1.5mm;
-  color: black;
-  width: 60px;
-}
-
-.lrtChip_614P {
-  background: white;
-  border: #f46989 solid 1.5mm;
-  color: black;
-  width: 60px;
-}
-
-.lrtChip_615 {
-  background: white;
-  border: #fddd04 solid 1.5mm;
-  color: black;
-  width: 60px;
-}
-
-.lrtChip_615P {
-  background: white;
-  border: #215483 solid 1.5mm;
-  color: black;
-  width: 60px;
-}
-
-.lrtChip_705 {
-  background: white;
-  border: #64c542 solid 1.5mm;
-  color: black;
-  width: 60px;
-}
-
-.lrtChip_706 {
-  background: white;
-  border: #b365b9 solid 1.5mm;
-  color: black;
-  width: 60px;
-}
-
-.lrtChip_751 {
-  background: white;
-  border: #f47216 solid 1.5mm;
-  color: black;
-  width: 60px;
-}
-
-.lrtChip_751P {
-  background: white;
-  border: #000000 solid 1.5mm;
-  color: black;
-  width: 60px;
-}
-
-.lrtChip_761,
-.lrtChip_761P {
-  background: white;
-  border: #672290 solid 1.5mm;
-  color: black;
-  width: 60px;
 }
