@@ -24,11 +24,14 @@
 
 .etaBox__row {
   padding-right: 4px;
+  justify-content: center;
+  place-items: center;
 }
 
 .lrtTrain__length {
   width: 40px;
   padding-left: 4px;
+  margin-bottom: 5px;
   display: flex;
 }
 

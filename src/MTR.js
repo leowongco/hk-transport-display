@@ -10,16 +10,15 @@ import {
   Select,
 } from "@material-ui/core";
 import "./css/MTR.css";
-import AELLogo from "./img/AEL_Logo.png";
+import AEL_Logo from "./img/AEL_Logo.png";
 import URL_Logo from "./img/URL_Logo.png";
 import WRL_Logo from "./img/WRL_Logo.png";
 
 function MTR() {
   const [station, setStation] = useState([]);
-  const [line, setLine] = useState([]);
+  const [line, setLine] = useState("");
   const [swapLang, setSwapLang] = useState(false);
   const [lang, setLang] = useState("tc");
-  const [logo, setLogo] = useState("");
 
   if (swapLang == true) {
     setTimeout(() => {
@@ -31,15 +30,15 @@ function MTR() {
     }, 8000);
   }
 
-  useEffect(() => {
-    if (line == "AEL") {
-      setLogo("AEL_Logo");
-    } else if (line == "WRL") {
-      setLogo("WRL_Logo");
+  function setLogo(mtrLine) {
+    if (mtrLine == "AEL") {
+      return <img src={AEL_Logo} />;
+    } else if (mtrLine == "WRL") {
+      return <img src={WRL_Logo} />;
     } else {
-      setLogo("URL_Logo");
+      return <img src={URL_Logo} />;
     }
-  }, [line]);
+  }
 
   const handleLine = (e) => {
     setStation([]);
@@ -51,11 +50,12 @@ function MTR() {
   return (
     <div className="mtr">
       <div className="container">
-        <div className="mtr__header">
-          <div className="mtr__Logo">
-            {/* Logo */}
+        <div className={"mtr__header" + line}>
+          <div className="mtr__Logo">{setLogo(line)}</div>
+          <div className="mtr__title">
+            {Dict.Line[lang][line]}
+            {" " + Dict.Common[lang].eta}
           </div>
-          <div className="mtr__title">{/* Title */}</div>
         </div>
         <div className="mtr__functionBar">
           <Button

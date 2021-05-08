@@ -37,6 +37,11 @@ function LrtInfo({ sid, lang }) {
       .catch((error) => console.log(error));
   }, [sid]);
 
+  const handleLocalStorage = () => {
+    var storage = window.localStorage;
+    
+  };
+
   if (lrtETA?.status == 0) {
     return (
       <div className="lrtinfo">

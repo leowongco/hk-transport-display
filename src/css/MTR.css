@@ -8,6 +8,91 @@
   font-family: "Noto SansHK", "Ubuntu", serif;
 }
 
+.mtr__header {
+  margin-top: 20px;
+  height: 80px;
+  width: 350px;
+  max-width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  flex: 1;
+  background-color: #000000;
+}
+
+.mtr__headerAEL {
+  margin-top: 20px;
+  height: 80px;
+  width: 350px;
+  max-width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  flex: 1;
+  background-color: #1c7670;
+}
+
+.mtr__headerTCL {
+  margin-top: 20px;
+  height: 80px;
+  width: 350px;
+  max-width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  flex: 1;
+  background-color: #fe7f1d;
+}
+
+.mtr__headerWRL {
+  margin-top: 20px;
+  height: 80px;
+  width: 350px;
+  max-width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  flex: 1;
+  background-color: #a40084;
+}
+
+.mtr__headerTKL {
+  margin-top: 20px;
+  height: 80px;
+  width: 350px;
+  max-width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  flex: 1;
+  background-color: #6b208b;
+}
+
+.mtr__title {
+  font-weight: 900;
+  font-size: large;
+  text-align: center;
+  color: white;
+}
+
+.mtr__Logo {
+  margin-right: 20px;
+}
+
+.mtr__Logo > img {
+  height: 70px;
+}
+
 .mtr__functionBar {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -30,6 +115,6 @@
   width: 50%;
 }
 
-.mtr__info{
-    padding-top: 10px;
+.mtr__info {
+  padding-top: 10px;
 }

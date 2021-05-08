@@ -32,6 +32,7 @@ const Common = {
     line: "Line",
     stn: "Station",
     lastUpdate: "Last Update",
+    eta: "ETA",
   },
   tc: {
     UP: "上行",
@@ -45,6 +46,7 @@ const Common = {
     line: "路線",
     stn: "站",
     lastUpdate: "最後更新",
+    eta: "到站時間",
   },
 };
 

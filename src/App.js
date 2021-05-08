@@ -4,8 +4,10 @@ import MTR from "./MTR.js";
 import Header from "./Header.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from "react";
+import { firebaseApp } from "./component/firebase.js";
 
 function App() {
+  firebaseApp.analytics();
   return (
     <Router>
       <div className="App">
