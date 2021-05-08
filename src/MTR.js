@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MTRETA from "./component/MTRInfo.js";
 import Alert from "@material-ui/lab/Alert";
 import Dict from "./component/MTR_Dict.js";
@@ -10,12 +10,16 @@ import {
   Select,
 } from "@material-ui/core";
 import "./css/MTR.css";
+import AELLogo from "./img/AEL_Logo.png";
+import URL_Logo from "./img/URL_Logo.png";
+import WRL_Logo from "./img/WRL_Logo.png";
 
 function MTR() {
   const [station, setStation] = useState([]);
   const [line, setLine] = useState([]);
   const [swapLang, setSwapLang] = useState(false);
   const [lang, setLang] = useState("tc");
+  const [logo, setLogo] = useState("");
 
   if (swapLang == true) {
     setTimeout(() => {
@@ -26,6 +30,16 @@ function MTR() {
       }
     }, 8000);
   }
+
+  useEffect(() => {
+    if (line == "AEL") {
+      setLogo("AEL_Logo");
+    } else if (line == "WRL") {
+      setLogo("WRL_Logo");
+    } else {
+      setLogo("URL_Logo");
+    }
+  }, [line]);
 
   const handleLine = (e) => {
     setStation([]);
@@ -38,7 +52,9 @@ function MTR() {
     <div className="mtr">
       <div className="container">
         <div className="mtr__header">
-          <div className="mtr__Logo">{/* Logo */}</div>
+          <div className="mtr__Logo">
+            {/* Logo */}
+          </div>
           <div className="mtr__title">{/* Title */}</div>
         </div>
         <div className="mtr__functionBar">

@@ -6,8 +6,6 @@ import "../css/MTRInfo.css";
 
 function MTRInfo({ line, station, lang }) {
   const [mtrEta, setMtrEta] = useState([]);
-  const [mtrUpEta, setMtrUpEta] = useState([]);
-  const [mtrDownEta, setMtrDownEta] = useState([]);
 
   function routeColour(line) {
     switch (line) {
@@ -19,16 +17,12 @@ function MTRInfo({ line, station, lang }) {
   }
 
   useEffect(() => {
-    setMtrUpEta([]);
-    setMtrDownEta([]);
     const inteval = setInterval(() => {
       let mtrAPI = `https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=${line}&sta=${station}`;
       axios
         .get(mtrAPI)
         .then((res) => {
           setMtrEta(res.data.data[line + "-" + station]);
-          setMtrUpEta(res.data.data[line + "-" + station].UP);
-          setMtrDownEta(res.data.data[line + "-" + station].DOWN);
         })
         .catch((error) => console.log(error));
     }, 10000);
@@ -36,15 +30,12 @@ function MTRInfo({ line, station, lang }) {
   }, [line, station]);
 
   useEffect(() => {
-    setMtrUpEta([]);
-    setMtrDownEta([]);
+    setMtrEta([]);
     let mtrAPI = `https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=${line}&sta=${station}`;
     axios
       .get(mtrAPI)
       .then((res) => {
         setMtrEta(res.data.data[line + "-" + station]);
-        setMtrUpEta(res.data.data[line + "-" + station].UP);
-        setMtrDownEta(res.data.data[line + "-" + station].DOWN);
       })
       .catch((error) => console.log(error));
   }, [line, station]);
@@ -52,9 +43,9 @@ function MTRInfo({ line, station, lang }) {
   return (
     <div className="mtrInfo">
       <Card className="infobox">
-        {mtrUpEta != null ? (
+        {mtrEta.UP != null ? (
           <CardContent>
-            <div className="station__header">
+            <div className={"mtrstation__header" + line}>
               <div className="station__name">
                 {Dict.Station[lang][station]}{" "}
               </div>
@@ -68,7 +59,7 @@ function MTRInfo({ line, station, lang }) {
               </div>
             </div>
 
-            {mtrUpEta?.map((train) => (
+            {mtrEta.UP?.map((train) => (
               <div className="etaBox">
                 <div className="mtr__dest">
                   {Dict.Station[lang][train.dest]}
@@ -87,9 +78,9 @@ function MTRInfo({ line, station, lang }) {
           ""
         )}
 
-        {mtrDownEta != null ? (
+        {mtrEta.DOWN != null ? (
           <CardContent>
-            <div className="station__header">
+            <div className={"mtrstation__header" + line}>
               <div className="station__name">{Dict.Station[lang][station]}</div>
               <div className="header__line">
                 {" "}
@@ -101,7 +92,7 @@ function MTRInfo({ line, station, lang }) {
               </div>
             </div>
 
-            {mtrDownEta?.map((train) => (
+            {mtrEta.DOWN?.map((train) => (
               <div className="etaBox">
                 <div className="mtr__dest">
                   {Dict.Station[lang][train.dest]}
@@ -121,7 +112,7 @@ function MTRInfo({ line, station, lang }) {
         )}
 
         {mtrEta?.sys_time ? (
-          <div className="etaBox__footer">
+          <div className="etaBox__mtrfooter">
             {Dict.Common[lang].lastUpdate + ": " + mtrEta?.sys_time}
           </div>
         ) : (

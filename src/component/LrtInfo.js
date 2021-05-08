@@ -6,7 +6,6 @@ import "../css/LRTInfo.css";
 
 function LrtInfo({ sid, lang }) {
   const [lrtETA, setLRTEta] = useState();
-  const [lrtRoute, setLrtRoute] = useState("");
   var { fLang } = "";
 
   if (lang === "tc") {
@@ -14,18 +13,6 @@ function LrtInfo({ sid, lang }) {
   } else {
     fLang = lang;
   }
-
-  /*
-  function routeColour(lrtRoute) {
-    console.log(lrtRoute);
-    switch (lrtRoute) {
-      case 615:
-        return (document.getElementsByClassName(
-          "lrtChip"
-        ).style.backgroundColor = "green");
-    }
-  }
-  */
 
   useEffect(() => {
     if (sid > 0) {
@@ -83,20 +70,22 @@ function LrtInfo({ sid, lang }) {
                   <small>{Dict.lrtStation.en[sid]}</small>
                 </div>
               </div>
-              {plat.end_service_status == 1
-                ? Dict.lrtCommon[lang].end_service
-                : ""}
+              {plat.end_service_status == 1 ? (
+                <div className="etaBox">
+                  <div className="lrt__route"></div>
+                  <div className="etaBox__row">
+                    <small>{Dict.lrtCommon[lang].end_service}</small>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
               {plat.route_list?.map((train) => (
                 <div className="etaBox">
                   <div className="lrt__route">
                     <Chip
                       size="small"
-                      className="lrtChip"
-                      style={{
-                        backgroundColor: "#CD9700",
-                        color: "white",
-                        width: "50px",
-                      }}
+                      className={"lrtChip_" + train.route_no}
                       label={train.route_no}
                     />
                   </div>

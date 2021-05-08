@@ -34,7 +34,7 @@
 
 .lrt__route {
   padding-right: 10px;
-  width: 50px;
+  width: 60px;
 }
 
 .station__platform {
@@ -66,14 +66,100 @@
   text-align: center;
   font-weight: lighter;
   font-size: small;
-  background: darkblue;
+  background: #fd722d;
   color: white;
   margin-top: 30px;
-  border: darkblue solid 2mm;
+  border: #fd722d solid 2mm;
   display: flex;
   justify-content: center;
 }
 
 .lrvTrain {
   width: 20px;
+}
+
+.lrtChip_505 {
+  background: white;
+  border: #db1f26 solid 1.5mm;
+  color: black;
+  width: 60px;
+}
+
+.lrtChip_507 {
+  background: white;
+  border: #00a650 solid 1.5mm;
+  color: black;
+  width: 60px;
+}
+
+.lrtChip_610 {
+  background: white;
+  border: #431115 solid 1.5mm;
+  color: black;
+  width: 60px;
+}
+
+.lrtChip_610P,
+.lrtChip_614 {
+  background: white;
+  border: #4dc6f4 solid 1.5mm;
+  color: black;
+  width: 60px;
+}
+
+.lrtChip_614P {
+  background: white;
+  border: #f46989 solid 1.5mm;
+  color: black;
+  width: 60px;
+}
+
+.lrtChip_615 {
+  background: white;
+  border: #fddd04 solid 1.5mm;
+  color: black;
+  width: 60px;
+}
+
+.lrtChip_615P {
+  background: white;
+  border: #215483 solid 1.5mm;
+  color: black;
+  width: 60px;
+}
+
+.lrtChip_705 {
+  background: white;
+  border: #64c542 solid 1.5mm;
+  color: black;
+  width: 60px;
+}
+
+.lrtChip_706 {
+  background: white;
+  border: #b365b9 solid 1.5mm;
+  color: black;
+  width: 60px;
+}
+
+.lrtChip_751 {
+  background: white;
+  border: #f47216 solid 1.5mm;
+  color: black;
+  width: 60px;
+}
+
+.lrtChip_751P {
+  background: white;
+  border: #000000 solid 1.5mm;
+  color: black;
+  width: 60px;
+}
+
+.lrtChip_761,
+.lrtChip_761P {
+  background: white;
+  border: #672290 solid 1.5mm;
+  color: black;
+  width: 60px;
 }

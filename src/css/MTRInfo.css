@@ -2,7 +2,6 @@
 
 .infobox {
   width: 360px;
-  min-height: 200px;
   height: auto;
   font-family: "Noto SansHK", "Ubuntu", serif;
 }
@@ -15,11 +14,39 @@
   justify-content: left;
 }
 
-.station__header {
+.mtrstation__header {
   width: 100%;
   height: 30px;
-  background: darkblue;
+  display: flex;
+  place-items: center;
+}
 
+.mtrstation__headerTCL {
+  background-color: #fe7f1d;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  place-items: center;
+}
+
+.mtrstation__headerTKL {
+  background-color: #6b208b;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  place-items: center;
+}
+.mtrstation__headerAEL {
+  background-color: #1c7670;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  place-items: center;
+}
+.mtrstation__headerWRL {
+  background-color: #a40084;
+  width: 100%;
+  height: 30px;
   display: flex;
   place-items: center;
 }
@@ -34,6 +61,8 @@
 
 .station__name {
   margin-left: 20px;
+  margin-right: 5px;
+  text-align: center;
 }
 
 .header__line {
@@ -53,4 +82,16 @@
 .mtr__time {
   width: 75px;
   text-align: right;
+}
+
+.etaBox__mtrfooter {
+  text-align: center;
+  font-weight: lighter;
+  font-size: small;
+  background: #005da0;
+  color: white;
+  margin-top: 30px;
+  border: #005da0 solid 2mm;
+  display: flex;
+  justify-content: center;
 }
