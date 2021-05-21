@@ -42,7 +42,6 @@
 .lrt__route {
   margin-right: 10px;
   width: 50px;
-  border: #00a650 solid 4px;
   border-radius: 50px;
 }
 
@@ -126,7 +125,7 @@
 
 .lrtChip_751P {
   background: white;
-  border: #000000 solid 1.5mm;
+  border: #000000 solid 4px;
   color: black;
   width: 60px;
 }
@@ -158,7 +157,6 @@
   width: 100%;
   height: 30px;
   background: darkblue;
-
   display: flex;
   place-items: center;
 }
@@ -168,9 +166,10 @@
   font-weight: lighter;
   font-size: small;
   background: #fd722d;
+  padding-top: 10px;
+  padding-bottom: 10px;
   color: white;
   margin-top: 30px;
-  border: #fd722d solid 2mm;
   display: flex;
   justify-content: center;
 }
