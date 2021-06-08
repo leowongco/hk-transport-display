@@ -18,6 +18,11 @@ const Route = {
   TKL: ["NOP", "QUB", "YAT", "TIK", "TKO", "LHP", "HAH", "POA"],
 };
 
+/*
+Tuen Ma Line Stations
+TML: ["WKS","MOS","HEO","TSH","SHM","CIO","STW","CKT","TAW","HIK","DIH","KAT","SUW","TKW","HOM","HUH","ETS","AUS","NAC","MEF","TWW","KSR","YUL","LOP","TIS","SIH","TUM",],
+*/
+
 const Common = {
   en: {
     UP: "Up",
@@ -33,6 +38,7 @@ const Common = {
     stn: "Station",
     lastUpdate: "Last Update",
     eta: "ETA",
+    defaultLine: "Urban Lines",
   },
   tc: {
     UP: "上行",
@@ -47,6 +53,7 @@ const Common = {
     stn: "站",
     lastUpdate: "最後更新",
     eta: "到站時間",
+    defaultLine: "市區線",
   },
 };
 
@@ -56,14 +63,14 @@ const Line = {
     TCL: "Tung Chung Line",
     WRL: "West Rail Line",
     TKL: "Tseung Kwan O Line",
-    default: "Urban Lines",
+    //TML: "Tuen Ma Line",
   },
   tc: {
     AEL: "機場快線",
     TCL: "東涌線",
     WRL: "西鐵線",
     TKL: "將軍澳線",
-    default: "市區線",
+    //TML: "屯馬線",
   },
 };
 
@@ -81,6 +88,21 @@ const Station = {
     SUN: "Sunny Bay",
     TUC: "Tung Chung",
 
+    WKS: "Wu Kai Sha",
+    MOS: "Ma On Shan",
+    HEO: "Heng On",
+    TSH: "Tai Shui Hang",
+    SHM: "Shek Mun",
+    CIO: "City One",
+    STW: "Sha Tin Wai",
+    CKT: "Che Kung Temple",
+    TAW: "Tai Wai",
+    HIK: "Hin Keng",
+    DIH: "Diamond Hill",
+    KAT: "Kai Tak",
+    SUW: "Sung Wong Toi",
+    TKW: "To Kwa Wan",
+    HOM: "Ho Man Tin",
     HUH: "Hung Hom",
     ETS: "East Tsim Sha Tsui",
     AUS: "Austin",
@@ -115,6 +137,21 @@ const Station = {
     SUN: "欣澳",
     TUC: "東涌",
 
+    WKS: "烏溪沙",
+    MOS: "馬鞍山",
+    HEO: "恆安",
+    TSH: "大水坑",
+    SHM: "石門",
+    CIO: "第一城",
+    STW: "沙田圍",
+    CKT: "車公廟",
+    TAW: "大圍",
+    HIK: "顯徑",
+    DIH: "鑽石山",
+    KAT: "啟德",
+    SUW: "宋皇臺",
+    TKW: "土瓜灣",
+    HOM: "何文田",
     HUH: "紅磡",
     ETS: "尖東",
     AUS: "柯士甸",

@@ -54,7 +54,7 @@ function MTR() {
         <div className={"mtr__header" + line}>
           <div className="mtr__Logo">{setLogo(line)}</div>
           <div className="mtr__title">
-            {line != "" ? Dict.Line[lang][line] : Dict.Line[lang].default}
+            {line != "" ? Dict.Line[lang][line] : Dict.Common[lang].defaultLine}
             {" " + Dict.Common[lang].eta}
           </div>
         </div>

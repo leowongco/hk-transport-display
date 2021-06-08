@@ -5,8 +5,10 @@ a {
 }
 
 .header__appBar {
-    background-color: #A5EBEC;
-  justify-content: center;
+  height: 60px;
+  display: flex;
+  background-color: #a5ebec;
+  z-index: 100;
   position: sticky;
   top: 0;
 }
