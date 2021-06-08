@@ -11,6 +11,7 @@ import LrtInfo from "./component/LrtInfo.js";
 import "./css/LRT.css";
 import Alert from "@material-ui/lab/Alert";
 import LRTLogo from "./img/LR_old.png";
+import GTranslateOutlinedIcon from "@material-ui/icons/GTranslateOutlined";
 
 function LRT() {
   const [station, setStation] = useState("");
@@ -45,6 +46,7 @@ function LRT() {
             variant="contained"
             color="secondary"
             className="langButton"
+            startIcon={<GTranslateOutlinedIcon />}
             onClick={
               swapLang == true
                 ? () => setSwapLang(false)
@@ -53,8 +55,8 @@ function LRT() {
           >
             <small>
               {swapLang == true
-                ? Dict.lrtCommon[lang].autoBtnOn
-                : Dict.lrtCommon[lang].autoBtnOff}
+                ? Dict.lrtCommon[lang].autoBtnOff
+                : Dict.lrtCommon[lang].autoBtnOn}
             </small>
           </Button>
           <div style={{ flex: "1 0 0" }} />

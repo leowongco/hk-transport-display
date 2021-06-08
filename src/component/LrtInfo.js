@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, CardContent, Chip } from "@material-ui/core";
+import { Card, CardContent, Chip, IconButton } from "@material-ui/core";
 import Dict from "./LRT_Dict.js";
 import "../css/LRTInfo.css";
-import LRTTrain from "../img/lrt_train.png"
+import LRTTrain from "../img/lrt_train.png";
+import Save from "@material-ui/icons/StarBorder";
+import Saved from "@material-ui/icons/Star";
 
 function LrtInfo({ sid, lang }) {
   const [lrtETA, setLRTEta] = useState();
@@ -40,8 +42,17 @@ function LrtInfo({ sid, lang }) {
 
   const handleLocalStorage = () => {
     var storage = window.localStorage;
-
   };
+  /*
+  const addFav = (props: any) => {
+    let array = favourites;
+    let addArray = true;
+    array.map((item === props.i){
+      array.splice(key , 1);
+      addArray = false;
+    })
+  }
+  */
 
   if (lrtETA?.status == 0) {
     return (
@@ -67,6 +78,14 @@ function LrtInfo({ sid, lang }) {
     return (
       <div className="lrtinfo">
         <Card className="infobox">
+          <div className="favouriteBox">
+            <IconButton
+              color="primary"
+              onClick={() => console.log("Save Btn>>> ", sid)}
+            >
+              <Save />
+            </IconButton>
+          </div>
           {lrtETA?.platform_list.map((plat) => (
             <CardContent>
               <div className="station__header">
@@ -114,7 +133,9 @@ function LrtInfo({ sid, lang }) {
                   <div className="lrtTrain__length">
                     {Array(train.train_length)
                       .fill()
-                      .map((_, i) => (<img src={LRTTrain} />))}
+                      .map((_, i) => (
+                        <img src={LRTTrain} />
+                      ))}
                   </div>
                 </div>
               ))}

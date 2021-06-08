@@ -13,6 +13,7 @@ import "./css/MTR.css";
 import AEL_Logo from "./img/AEL_Logo.png";
 import URL_Logo from "./img/URL_Logo.png";
 import WRL_Logo from "./img/WRL_Logo.png";
+import GTranslateOutlinedIcon from "@material-ui/icons/GTranslateOutlined";
 
 function MTR() {
   const [station, setStation] = useState([]);
@@ -53,7 +54,7 @@ function MTR() {
         <div className={"mtr__header" + line}>
           <div className="mtr__Logo">{setLogo(line)}</div>
           <div className="mtr__title">
-            {Dict.Line[lang][line]}
+            {line != "" ? Dict.Line[lang][line] : Dict.Line[lang].default}
             {" " + Dict.Common[lang].eta}
           </div>
         </div>
@@ -62,6 +63,7 @@ function MTR() {
             variant="contained"
             color="secondary"
             className="langButton"
+            startIcon={<GTranslateOutlinedIcon />}
             onClick={
               swapLang == true
                 ? () => setSwapLang(false)
@@ -70,8 +72,8 @@ function MTR() {
           >
             <small>
               {swapLang == true
-                ? Dict.Common[lang].autoBtnOn
-                : Dict.Common[lang].autoBtnOff}
+                ? Dict.Common[lang].autoBtnOff
+                : Dict.Common[lang].autoBtnOn}
             </small>
           </Button>
           <div style={{ flex: "1 0 0" }} />

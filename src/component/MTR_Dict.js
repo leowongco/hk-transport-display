@@ -27,8 +27,8 @@ const Common = {
     min: "min",
     etaAlert:
       "ETA information will be refresh every 10 seconds, reference data only.",
-    autoBtnOn: "Swap Language: On",
-    autoBtnOff: "Swap Language: Off",
+    autoBtnOn: "Turn on swap",
+    autoBtnOff: "Turn off swap",
     line: "Line",
     stn: "Station",
     lastUpdate: "Last Update",
@@ -41,8 +41,8 @@ const Common = {
     dep: "正在離開",
     min: "分鐘",
     etaAlert: "到站時間資訊每10秒自動更新，資料只供參考。",
-    autoBtnOn: "自動轉語言：開",
-    autoBtnOff: "自動轉語言：關",
+    autoBtnOn: "開啟轉語言",
+    autoBtnOff: "關閉轉語言",
     line: "路線",
     stn: "站",
     lastUpdate: "最後更新",
@@ -56,12 +56,14 @@ const Line = {
     TCL: "Tung Chung Line",
     WRL: "West Rail Line",
     TKL: "Tseung Kwan O Line",
+    default: "Urban Lines",
   },
   tc: {
     AEL: "機場快線",
     TCL: "東涌線",
     WRL: "西鐵線",
     TKL: "將軍澳線",
+    default: "市區線",
   },
 };
 

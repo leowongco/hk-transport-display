@@ -112,7 +112,7 @@ function Header() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className="header__title">
-            <TrainIcon /> 鉄道ご案内
+            香港鐵路資訊 HK Railway Info
           </Typography>
         </Toolbar>
       </AppBar>
@@ -169,11 +169,7 @@ function Header() {
         <Divider />
         <List>
           <ListItem>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={handleUpdateApp}
-            >
+            <Button color="secondary" onClick={handleUpdateApp}>
               Refresh App
             </Button>
           </ListItem>
