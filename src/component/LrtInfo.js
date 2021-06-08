@@ -78,6 +78,7 @@ function LrtInfo({ sid, lang }) {
     return (
       <div className="lrtinfo">
         <Card className="infobox">
+          {/*
           <div className="favouriteBox">
             <IconButton
               color="primary"
@@ -86,6 +87,7 @@ function LrtInfo({ sid, lang }) {
               <Save />
             </IconButton>
           </div>
+          */}
           {lrtETA?.platform_list.map((plat) => (
             <CardContent>
               <div className="station__header">
