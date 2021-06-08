@@ -169,4 +169,12 @@ const lrtStation = {
   },
 };
 
+const lrtZone = {
+"1": [265, 920, 260, 250, 1, 10, 15, 20, 30],
+"2": [],
+"3": [],
+"4": [],
+"5A": [],
+};
+
 export default { lrtStation, lrtCommon };

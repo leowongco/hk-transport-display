@@ -25,9 +25,10 @@
 .etaBox {
   display: flex;
   flex: 1;
-  margin: 8px;
   align-items: center;
   justify-content: left;
+  height: 1.5rem;
+  padding-bottom: 0.2rem;
 }
 
 .etaBox__row {

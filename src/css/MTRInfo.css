@@ -66,6 +66,7 @@
   margin: 8px;
   align-items: center;
   justify-content: left;
+  height: 1.5rem;
 }
 
 .station__name {
