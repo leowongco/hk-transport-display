@@ -113,7 +113,7 @@ function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className="header__title">
+          <Typography className="header__title">
             香港鐵路資訊 HK Railway Info
           </Typography>
 

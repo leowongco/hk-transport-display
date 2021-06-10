@@ -15,4 +15,5 @@ a {
 
 .header__title {
   justify-items: center;
+  max-width: 80%;
 }
