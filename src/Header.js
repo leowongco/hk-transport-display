@@ -21,6 +21,8 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import HomeIcon from "@material-ui/icons/Home";
 import TramIcon from "@material-ui/icons/Tram";
+import appInfo from "../package.json";
+import Chip from "@material-ui/core/Chip";
 
 const drawerWidth = 250;
 
@@ -114,6 +116,12 @@ function Header() {
           <Typography variant="h6" className="header__title">
             香港鐵路資訊 HK Railway Info
           </Typography>
+
+          <Chip
+            size="small"
+            color="secondary"
+            label={"Ver: " + appInfo.version}
+          />
         </Toolbar>
       </AppBar>
 

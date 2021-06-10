@@ -20,9 +20,7 @@ function MTR_trainInfo({ line, station }) {
 
         axios
           .get(mtrStnApi)
-          .then((res) =>
-            setTrainSchUp(res.data.data[line + "-" + station].UP)
-          )
+          .then((res) => setTrainSchUp(res.data.data[line + "-" + station].UP))
           .catch((error) => console.log(error));
       }, 3000);
     }
@@ -82,8 +80,6 @@ function MTR_trainInfo({ line, station }) {
           </div>
         ))}
       </div>
-
-     
     </div>
   );
 }

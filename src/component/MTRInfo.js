@@ -40,77 +40,13 @@ function MTRInfo({ line, station, lang }) {
       .catch((error) => console.log(error));
   }, [line, station]);
 
-  return (
+  if (mtrEta?.status == 0) {
     <div className="mtrInfo">
       <Card className="infobox">
-        {mtrEta.UP != null ? (
-          <CardContent>
-            <div className={"mtrstation__header"}>
-              <div className="station__name">
-                {Dict.Station[lang][station]}{" "}
-              </div>
-              <div className="header__line">
-                {" "}
-                {" (" +
-                  Dict.Line[lang][line] +
-                  " - " +
-                  Dict.Common[lang].UP +
-                  ")"}
-              </div>
-            </div>
-
-            {mtrEta.UP?.map((train) => (
-              <div className="etaBox">
-                <div className="mtr__dest">
-                  {Dict.Station[lang][train.dest]}
-                </div>
-                <div style={{ flex: "1 0 0" }} />
-                <div className={"mtr__plat" + line}>{train.plat}</div>
-                <div className="mtr__time">
-                  {train.ttnt < 1
-                    ? Dict.Common[lang].dep
-                    : train.ttnt + " " + Dict.Common[lang].min}
-                </div>
-              </div>
-            ))}
-          </CardContent>
-        ) : (
-          ""
-        )}
-
-        {mtrEta.DOWN != null ? (
-          <CardContent>
-            <div className={"mtrstation__header"}>
-              <div className="station__name">{Dict.Station[lang][station]}</div>
-              <div className="header__line">
-                {" "}
-                {" (" +
-                  Dict.Line[lang][line] +
-                  " - " +
-                  Dict.Common[lang].DOWN +
-                  ")"}
-              </div>
-            </div>
-
-            {mtrEta.DOWN?.map((train) => (
-              <div className="etaBox">
-                <div className="mtr__dest">
-                  {Dict.Station[lang][train.dest]}
-                </div>
-                <div style={{ flex: "1 0 0" }} />
-                <div className={"mtr__plat" + line}>{train.plat}</div>
-                <div className="mtr__time">
-                  {train.ttnt < 1
-                    ? Dict.Common[lang].dep
-                    : train.ttnt + " " + Dict.Common[lang].min}
-                </div>
-              </div>
-            ))}
-          </CardContent>
-        ) : (
-          ""
-        )}
-
+        <CardContent>
+          <p>未能讀取到站時間，請稍後再嘗試。</p>
+          <p>Cannnot Retrieve ETA information, Please try again later.</p>
+        </CardContent>
         {mtrEta?.sys_time ? (
           <div className="etaBox__mtrfooter">
             {Dict.Common[lang].lastUpdate + ": " + mtrEta?.sys_time}
@@ -119,8 +55,108 @@ function MTRInfo({ line, station, lang }) {
           ""
         )}
       </Card>
-    </div>
-  );
+    </div>;
+  } else if (mtrEta?.isdelay == "Y") {
+    <div className="mtrInfo">
+      <Card className="infobox">
+        <CardContent>
+          <p>未能讀取到站時間，請稍後再嘗試。</p>
+          <p>Cannnot Retrieve ETA information, Please try again later.</p>
+        </CardContent>
+        {mtrEta?.sys_time ? (
+          <div className="etaBox__mtrfooter">
+            {Dict.Common[lang].lastUpdate + ": " + mtrEta?.sys_time}
+          </div>
+        ) : (
+          ""
+        )}
+      </Card>
+    </div>;
+  } else {
+    return (
+      <div className="mtrInfo">
+        <Card className="infobox">
+          {mtrEta.UP != null && mtrEta.UP.length > 0 ? (
+            <CardContent>
+              <div className={"mtrstation__header"}>
+                <div className="station__name">
+                  {Dict.Station[lang][station]}{" "}
+                </div>
+                <div className="header__line">
+                  {" "}
+                  {" (" +
+                    Dict.Line[lang][line] +
+                    " - " +
+                    Dict.Common[lang].UP +
+                    ")"}
+                </div>
+              </div>
+
+              {mtrEta.UP?.map((train) => (
+                <div className="etaBox">
+                  <div className="mtr__dest">
+                    {Dict.Station[lang][train.dest]}
+                  </div>
+                  <div style={{ flex: "1 0 0" }} />
+                  <div className={"mtr__plat" + line}>{train.plat}</div>
+                  <div className="mtr__time">
+                    {train.ttnt < 1
+                      ? Dict.Common[lang].dep
+                      : train.ttnt + " " + Dict.Common[lang].min}
+                  </div>
+                </div>
+              ))}
+            </CardContent>
+          ) : (
+            ""
+          )}
+
+          {mtrEta.DOWN != null && mtrEta.DOWN.length > 0 ? (
+            <CardContent>
+              <div className={"mtrstation__header"}>
+                <div className="station__name">
+                  {Dict.Station[lang][station]}
+                </div>
+                <div className="header__line">
+                  {" "}
+                  {" (" +
+                    Dict.Line[lang][line] +
+                    " - " +
+                    Dict.Common[lang].DOWN +
+                    ")"}
+                </div>
+              </div>
+
+              {mtrEta.DOWN?.map((train) => (
+                <div className="etaBox">
+                  <div className="mtr__dest">
+                    {Dict.Station[lang][train.dest]}
+                  </div>
+                  <div style={{ flex: "1 0 0" }} />
+                  <div className={"mtr__plat" + line}>{train.plat}</div>
+                  <div className="mtr__time">
+                    {train.ttnt < 1
+                      ? Dict.Common[lang].dep
+                      : train.ttnt + " " + Dict.Common[lang].min}
+                  </div>
+                </div>
+              ))}
+            </CardContent>
+          ) : (
+            ""
+          )}
+
+          {mtrEta?.sys_time ? (
+            <div className="etaBox__mtrfooter">
+              {Dict.Common[lang].lastUpdate + ": " + mtrEta?.sys_time}
+            </div>
+          ) : (
+            ""
+          )}
+        </Card>
+      </div>
+    );
+  }
 }
 
 export default MTRInfo;
