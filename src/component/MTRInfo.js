@@ -6,6 +6,8 @@ import "../css/MTRInfo.css";
 
 function MTRInfo({ line, station, lang }) {
   const [mtrEta, setMtrEta] = useState([]);
+  const [mtrIsDelay, setMtrIsDelay] = useState("");
+  const [mtrStatus, setMtrStatus] = useState("");
 
   function routeColour(line) {
     switch (line) {
@@ -23,6 +25,8 @@ function MTRInfo({ line, station, lang }) {
         .get(mtrAPI)
         .then((res) => {
           setMtrEta(res.data.data[line + "-" + station]);
+          setMtrIsDelay(res.data.isdelay);
+          setMtrStatus(res.data.status);
         })
         .catch((error) => console.log(error));
     }, 10000);
@@ -35,48 +39,55 @@ function MTRInfo({ line, station, lang }) {
     axios
       .get(mtrAPI)
       .then((res) => {
+        setMtrIsDelay(res.data.isdelay);
+        setMtrStatus(res.data.status);
         setMtrEta(res.data.data[line + "-" + station]);
       })
       .catch((error) => console.log(error));
   }, [line, station]);
 
-  if (mtrEta?.status == 0) {
-    <div className="mtrInfo">
-      <Card className="infobox">
-        <CardContent>
-          <p>未能讀取到站時間，請稍後再嘗試。</p>
-          <p>Cannnot Retrieve ETA information, Please try again later.</p>
-        </CardContent>
-        {mtrEta?.sys_time ? (
-          <div className="etaBox__mtrfooter">
-            {Dict.Common[lang].lastUpdate + ": " + mtrEta?.sys_time}
-          </div>
-        ) : (
-          ""
-        )}
-      </Card>
-    </div>;
-  } else if (mtrEta?.isdelay == "Y") {
-    <div className="mtrInfo">
-      <Card className="infobox">
-        <CardContent>
-          <p>未能讀取到站時間，請稍後再嘗試。</p>
-          <p>Cannnot Retrieve ETA information, Please try again later.</p>
-        </CardContent>
-        {mtrEta?.sys_time ? (
-          <div className="etaBox__mtrfooter">
-            {Dict.Common[lang].lastUpdate + ": " + mtrEta?.sys_time}
-          </div>
-        ) : (
-          ""
-        )}
-      </Card>
-    </div>;
+
+  if (mtrStatus == "0") {
+    return (
+      <div className="mtrInfo">
+        <Card className="infobox">
+          <CardContent>
+            <p>未能讀取到站時間，請稍後再嘗試。</p>
+            <p>Cannnot Retrieve ETA information, Please try again later.</p>
+          </CardContent>
+          {mtrEta?.sys_time ? (
+            <div className="etaBox__mtrfooter">
+              {Dict.Common[lang].lastUpdate + ": " + mtrEta?.sys_time}
+            </div>
+          ) : (
+            ""
+          )}
+        </Card>
+      </div>
+    );
+  } else if (mtrIsDelay == "Y") {
+    return (
+      <div className="mtrInfo">
+        <Card className="infobox">
+          <CardContent>
+            <p>未能讀取到站時間，請稍後再嘗試。</p>
+            <p>Cannnot Retrieve ETA information, Please try again later.</p>
+          </CardContent>
+          {mtrEta?.sys_time ? (
+            <div className="etaBox__mtrfooter">
+              {Dict.Common[lang].lastUpdate + ": " + mtrEta?.sys_time}
+            </div>
+          ) : (
+            ""
+          )}
+        </Card>
+      </div>
+    );
   } else {
     return (
       <div className="mtrInfo">
         <Card className="infobox">
-          {mtrEta.UP != null && mtrEta.UP.length > 0 ? (
+          {mtrEta?.UP != null && mtrEta?.UP.length > 0 ? (
             <CardContent>
               <div className={"mtrstation__header"}>
                 <div className="station__name">
