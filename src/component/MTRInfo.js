@@ -46,22 +46,15 @@ function MTRInfo({ line, station, lang }) {
       .catch((error) => console.log(error));
   }, [line, station]);
 
-
   if (mtrStatus == "0") {
     return (
       <div className="mtrInfo">
         <Card className="infobox">
           <CardContent>
-            <p>未能讀取到站時間，請稍後再嘗試。</p>
-            <p>Cannnot Retrieve ETA information, Please try again later.</p>
+            <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
+            <p align="center">Cannnot Retrieve ETA information</p>
+            <p align="center">Please try again later.</p>
           </CardContent>
-          {mtrEta?.sys_time ? (
-            <div className="etaBox__mtrfooter">
-              {Dict.Common[lang].lastUpdate + ": " + mtrEta?.sys_time}
-            </div>
-          ) : (
-            ""
-          )}
         </Card>
       </div>
     );
@@ -70,16 +63,10 @@ function MTRInfo({ line, station, lang }) {
       <div className="mtrInfo">
         <Card className="infobox">
           <CardContent>
-            <p>未能讀取到站時間，請稍後再嘗試。</p>
-            <p>Cannnot Retrieve ETA information, Please try again later.</p>
+            <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
+            <p align="center">Cannnot Retrieve ETA information</p>
+            <p align="center">Please try again later.</p>
           </CardContent>
-          {mtrEta?.sys_time ? (
-            <div className="etaBox__mtrfooter">
-              {Dict.Common[lang].lastUpdate + ": " + mtrEta?.sys_time}
-            </div>
-          ) : (
-            ""
-          )}
         </Card>
       </div>
     );

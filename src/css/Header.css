@@ -17,3 +17,7 @@ a {
   justify-items: center;
   max-width: 80%;
 }
+
+.header__chip {
+  margin-left: 5px;
+}

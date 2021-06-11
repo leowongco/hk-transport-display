@@ -120,7 +120,8 @@ function Header() {
           <Chip
             size="small"
             color="secondary"
-            label={"Ver: " + appInfo.version}
+            label="Beta!"
+            className="header__chip"
           />
         </Toolbar>
       </AppBar>
@@ -176,6 +177,12 @@ function Header() {
         </List>
         <Divider />
         <List>
+          <ListItem>Version: {appInfo.version}</ListItem>
+          <ListItem>
+            <a href="http://dubdub.pro/" target="_blank">
+              DubDub Production
+            </a>
+          </ListItem>
           <ListItem>
             <Button color="secondary" onClick={handleUpdateApp}>
               Refresh App

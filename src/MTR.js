@@ -13,6 +13,7 @@ import "./css/MTR.css";
 import AEL_Logo from "./img/AEL_Logo.png";
 import URL_Logo from "./img/URL_Logo.png";
 import WRL_Logo from "./img/WRL_Logo.png";
+import TML_Logo from "./img/TML_Logo.png";
 import GTranslateOutlinedIcon from "@material-ui/icons/GTranslateOutlined";
 
 function MTR() {
@@ -34,8 +35,10 @@ function MTR() {
   function setLogo(mtrLine) {
     if (mtrLine == "AEL") {
       return <img src={AEL_Logo} />;
-    } else if (mtrLine == "WRL" || mtrLine == "TML") {
+    } else if (mtrLine == "WRL") {
       return <img src={WRL_Logo} />;
+    } else if (mtrLine == "TML") {
+      return <img src={TML_Logo} />;
     } else {
       return <img src={URL_Logo} />;
     }
