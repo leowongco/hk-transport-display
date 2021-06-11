@@ -34,7 +34,7 @@ function MTR() {
   function setLogo(mtrLine) {
     if (mtrLine == "AEL") {
       return <img src={AEL_Logo} />;
-    } else if (mtrLine == "WRL") {
+    } else if (mtrLine == "WRL" || mtrLine == "TML") {
       return <img src={WRL_Logo} />;
     } else {
       return <img src={URL_Logo} />;
