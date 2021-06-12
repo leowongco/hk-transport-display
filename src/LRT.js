@@ -15,6 +15,7 @@ import GTranslateOutlinedIcon from "@material-ui/icons/GTranslateOutlined";
 
 function LRT() {
   const [station, setStation] = useState("");
+  const [lrtZone, setLrtZone] = useState("");
   const [swapLang, setSwapLang] = useState(false);
   const [lang, setLang] = useState("tc");
 
@@ -27,6 +28,11 @@ function LRT() {
       }
     }, 8000);
   }
+
+  const handleZone = (e) => {
+    setStation([]);
+    setLrtZone(e.target.value);
+  };
 
   const handleStation = (e) => {
     setStation(e.target.value);
@@ -80,6 +86,19 @@ function LRT() {
           </Button>
         </div>
         <div className="lrt__topBar">
+          <FormControl className="zoneSelect">
+            <InputLabel>{Dict.lrtCommon[lang].zone}</InputLabel>
+            <Select
+              value={lrtZone || ""}
+              onChange={handleZone}
+              label="Zone"
+              fullWidth
+            >
+              {Object.entries(Dict.lrtZoneName[lang]).map(([id, name]) => (
+                <MenuItem value={id}>{name}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           <FormControl className="stationSelect">
             <InputLabel>{Dict.lrtCommon[lang].stn}</InputLabel>
             <Select
@@ -88,9 +107,13 @@ function LRT() {
               label="Station"
               fullWidth
             >
-              {Object.entries(Dict.lrtStation[lang]).map(([id, name]) => (
-                <MenuItem value={id}>{name}</MenuItem>
+              {Dict.lrtZoneStation[lrtZone]?.map((sid) => (
+                <MenuItem value={sid}>{Dict?.lrtStation[lang][sid]}</MenuItem>
               ))}
+
+              {/*Object.entries(Dict.lrtStation[lang]).map(([id, name]) => (
+                <MenuItem value={id}>{name}</MenuItem>
+              ))*/}
             </Select>
           </FormControl>
         </div>

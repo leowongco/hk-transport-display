@@ -11,6 +11,7 @@ const lrtCommon = {
     lastUpdate: "Last Update",
     stopped: "Not In Service",
     end_service: "End of today's service",
+    zone: "Fare Zone",
   },
   tc: {
     stn: "輕鐵站",
@@ -23,6 +24,7 @@ const lrtCommon = {
     lastUpdate: "最後更新",
     stopped: "不載客",
     end_service: "本日服務完結",
+    zone: "收費區",
   },
 };
 
@@ -169,12 +171,35 @@ const lrtStation = {
   },
 };
 
-const lrtZone = {
-"1": [265, 920, 260, 250, 1, 10, 15, 20, 30],
-"2": [],
-"3": [],
-"4": [],
-"5A": [],
+const lrtZoneName = {
+  en: {
+    z1: "Fare Zone 1",
+    z2: "Fare Zone 2",
+    z3: "Fare Zone 3",
+    z4: "Fare Zone 4",
+    z5: "Fare Zone 5",
+    z5a: "Fare Zone 5A",
+  },
+  tc: {
+    z1: "第1收費區",
+    z2: "第2收費區",
+    z3: "第3收費區",
+    z4: "第4收費區",
+    z5: "第5收費區",
+    z5a: "第5A收費區",
+  },
 };
 
-export default { lrtStation, lrtCommon };
+const lrtZoneStation = {
+  z1: [1, 10, 15, 20, 30, 240, 250, 260, 265, 920],
+  z2: [
+    40, 50, 60, 70, 75, 80, 170, 180, 190, 200, 212, 220, 230, 270, 275, 280,
+    295, 300, 310, 320, 330,
+  ],
+  z3: [90, 100, 110, 120, 130, 140, 150, 160, 340, 350, 360, 370],
+  z4: [380, 390, 400, 425, 430, 435, 445, 448, 450, 455, 460, 490, 500],
+  z5: [560, 570, 580, 590, 600],
+  z5a: [468, 480, 510, 520, 530, 540, 550],
+};
+
+export default { lrtStation, lrtCommon, lrtZoneName, lrtZoneStation };

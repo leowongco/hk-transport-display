@@ -163,7 +163,7 @@ function Header() {
               <ListItemIcon>
                 <TramIcon />
               </ListItemIcon>
-              輕鐵 LRV
+              輕鐵 Light Rail
             </Link>
           </ListItem>
           <ListItem>
