@@ -3,6 +3,7 @@ import axios from "axios";
 import { Card, CardContent, Chip } from "@material-ui/core";
 import Dict from "./MTR_Dict.js";
 import "../css/MTRInfo.css";
+import Alert from "@material-ui/lab/Alert";
 
 function MTRInfo({ line, station, lang }) {
   const [mtrEta, setMtrEta] = useState([]);
@@ -63,6 +64,11 @@ function MTRInfo({ line, station, lang }) {
       <div className="mtrInfo">
         <Card className="infobox">
           <CardContent>
+            {line == "TML" ? (
+              <Alert severity="warning">{Dict.Common[lang].tmlInfo}</Alert>
+            ) : (
+              ""
+            )}
             <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
             <p align="center">Cannnot Retrieve ETA information</p>
             <p align="center">Please try again later.</p>

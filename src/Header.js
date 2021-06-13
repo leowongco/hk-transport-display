@@ -102,7 +102,7 @@ function Header() {
 
   return (
     <div className="header">
-      <AppBar position="static" className="header__appBar">
+      <AppBar position="static" className="header__appBar" >
         <Toolbar>
           <IconButton
             edge="start"
@@ -179,7 +179,11 @@ function Header() {
         <List>
           <ListItem>Version: {appInfo.version}</ListItem>
           <ListItem>
-            <a href="http://dubdub.pro/" target="_blank">
+            <a
+              href="http://dubdub.pro/"
+              target="_blank"
+              onClick={handleDrawerClose}
+            >
               DubDub Production
             </a>
           </ListItem>

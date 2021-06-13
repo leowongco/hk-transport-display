@@ -66,9 +66,13 @@
 }
 
 .stationSelect {
-  width: 50%;
+  width: 40%;
 }
 
 .zoneSelect {
-  width: 50%;
+  width: 30%;
+}
+
+.routeSelect {
+  width: 30%;
 }

@@ -47,11 +47,6 @@ const Route = {
   ],
 };
 
-/*
-Tuen Ma Line Stations
-TML: ["WKS","MOS","HEO","TSH","SHM","CIO","STW","CKT","TAW","HIK","DIH","KAT","SUW","TKW","HOM","HUH","ETS","AUS","NAC","MEF","TWW","KSR","YUL","LOP","TIS","SIH","TUM",],
-*/
-
 const Common = {
   en: {
     UP: "Up",
@@ -68,6 +63,7 @@ const Common = {
     lastUpdate: "Last Update",
     eta: "ETA",
     defaultLine: "Urban Lines",
+    tmlInfo: "Tuen Ma Line will open on 27 June 2021.",
   },
   tc: {
     UP: "上行",
@@ -83,6 +79,7 @@ const Common = {
     lastUpdate: "最後更新",
     eta: "到站時間",
     defaultLine: "市區線",
+    tmlInfo: "屯馬線將於2021年6月27日通車",
   },
 };
 
@@ -92,14 +89,14 @@ const Line = {
     TCL: "Tung Chung Line",
     WRL: "West Rail Line",
     TKL: "Tseung Kwan O Line",
-    //TML: "Tuen Ma Line",
+    TML: "Tuen Ma Line",
   },
   tc: {
     AEL: "機場快線",
     TCL: "東涌線",
     WRL: "西鐵線",
     TKL: "將軍澳線",
-    //TML: "屯馬線",
+    TML: "屯馬線",
   },
 };
 

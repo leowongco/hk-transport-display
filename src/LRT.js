@@ -16,7 +16,9 @@ import GTranslateOutlinedIcon from "@material-ui/icons/GTranslateOutlined";
 function LRT() {
   const [station, setStation] = useState("");
   const [lrtZone, setLrtZone] = useState("");
+  const [lrtRoute, setLrtRoute] = useState("");
   const [swapLang, setSwapLang] = useState(false);
+  const [optionSelected, setOptionSelected] = useState("");
   const [lang, setLang] = useState("tc");
 
   if (swapLang == true) {
@@ -32,11 +34,69 @@ function LRT() {
   const handleZone = (e) => {
     setStation([]);
     setLrtZone(e.target.value);
+    setLrtRoute("");
+    setOptionSelected("zone");
+  };
+
+  const handleRoute = (e) => {
+    setStation([]);
+    setLrtZone("");
+    setLrtRoute(e.target.value);
+    setOptionSelected("route");
   };
 
   const handleStation = (e) => {
     setStation(e.target.value);
   };
+
+  function DisplayStation(props) {
+    if (optionSelected === "zone") {
+      return (
+        <FormControl className="stationSelect">
+          <InputLabel>{Dict.lrtCommon[lang].stn}</InputLabel>
+          <Select
+            value={station || ""}
+            onChange={handleStation}
+            label="Station"
+            fullWidth
+          >
+            {Dict.lrtZoneStation[lrtZone]?.map((sid) => (
+              <MenuItem value={sid}>{Dict?.lrtStation[lang][sid]}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      );
+    } else if (optionSelected === "route") {
+      return (
+        <FormControl className="stationSelect">
+          <InputLabel>{Dict.lrtCommon[lang].stn}</InputLabel>
+          <Select
+            value={station || ""}
+            onChange={handleStation}
+            label="Station"
+            fullWidth
+          >
+            {Dict.lrtRoutes[lrtRoute]?.map((sid) => (
+              <MenuItem value={sid}>{Dict?.lrtStation[lang][sid]}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      );
+    } else {
+      return (
+        <FormControl className="stationSelect">
+          <InputLabel>{Dict.lrtCommon[lang].stn}</InputLabel>
+          <Select
+            value={station || ""}
+            onChange={handleStation}
+            label="Station"
+            fullWidth
+            disabled
+          />
+        </FormControl>
+      );
+    }
+  }
 
   return (
     <div className="lrt">
@@ -99,23 +159,20 @@ function LRT() {
               ))}
             </Select>
           </FormControl>
-          <FormControl className="stationSelect">
-            <InputLabel>{Dict.lrtCommon[lang].stn}</InputLabel>
+          <FormControl className="routeSelect">
+            <InputLabel>{Dict.lrtCommon[lang].route}</InputLabel>
             <Select
-              value={station || ""}
-              onChange={handleStation}
-              label="Station"
+              value={lrtRoute || ""}
+              onChange={handleRoute}
+              label="Route"
               fullWidth
             >
-              {Dict.lrtZoneStation[lrtZone]?.map((sid) => (
-                <MenuItem value={sid}>{Dict?.lrtStation[lang][sid]}</MenuItem>
+              {Object.entries(Dict.lrtRoutes).map(([id, name]) => (
+                <MenuItem value={id}>{id}</MenuItem>
               ))}
-
-              {/*Object.entries(Dict.lrtStation[lang]).map(([id, name]) => (
-                <MenuItem value={id}>{name}</MenuItem>
-              ))*/}
             </Select>
           </FormControl>
+          <DisplayStation />
         </div>
         <div className="lrt__container">
           {station != "" ? <LrtInfo sid={station} lang={lang} /> : ""}

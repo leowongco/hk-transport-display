@@ -9,7 +9,12 @@ import Saved from "@material-ui/icons/Star";
 
 function LrtInfo({ sid, lang }) {
   const [lrtETA, setLRTEta] = useState();
+  const [lrtStnSaved, setLrtStnSaved] = useState(false);
+  const storage = window.localStorage;
+  const LrtStationArray = storage.getItem("LrtSaveStn");
   var { fLang } = "";
+
+  //storage.clear();
 
   if (lang === "tc") {
     fLang = "ch";
@@ -38,12 +43,31 @@ function LrtInfo({ sid, lang }) {
       .get(lrtAPI)
       .then((res) => setLRTEta(res.data))
       .catch((error) => console.log(error));
+    var LrtStationArray = storage.getItem("LrtSaveStn");
+    var checkSave = LrtStationArray?.indexOf(sid);
+    if (checkSave === -1 || LrtStationArray === null) {
+      setLrtStnSaved(false);
+    } else {
+      setLrtStnSaved(true);
+    }
   }, [sid]);
 
-  const handleLocalStorage = () => {
-    var storage = window.localStorage;
+  const handleLocalStorage = (sid) => {
+    if (lrtStnSaved === false) {
+      LrtStationArray.push(sid);
+      storage.setItem("LrtSaveStn", LrtStationArray);
+      setLrtStnSaved(true);
+    } else {
+    }
   };
+
+  console.log(LrtStationArray);
   /*
+
+  storage.setItem("LrtSaveStn", sid);
+      setLrtStnSaved(true);
+
+
   const addFav = (props: any) => {
     let array = favourites;
     let addArray = true;
@@ -78,16 +102,14 @@ function LrtInfo({ sid, lang }) {
     return (
       <div className="lrtinfo">
         <Card className="infobox">
-          {/*
+          {/* SaveBox
           <div className="favouriteBox">
-            <IconButton
-              color="primary"
-              onClick={() => console.log("Save Btn>>> ", sid)}
-            >
-              <Save />
+            <IconButton color="primary" onClick={() => handleLocalStorage(sid)}>
+              {lrtStnSaved === true ? <Saved /> : <Save />}
             </IconButton>
           </div>
           */}
+
           {lrtETA?.platform_list.map((plat) => (
             <CardContent>
               <div className="station__header">
