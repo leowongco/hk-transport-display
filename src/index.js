@@ -18,6 +18,7 @@ ReactDOM.render(
 // Learn more about service workers: https://cra.link/PWA
 serviceWorkerRegistration.register({
   onUpdate: () => {
+    alert("偵測到新版本，更新中。New Version Detected, Updating.");
     window.location.reload();
   },
 });
