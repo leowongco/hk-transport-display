@@ -1,4 +1,11 @@
 import React, { useEffect, useState } from "react";
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+} from "@material-ui/core";
 import axios from "axios";
 import { Card, CardContent, Chip, IconButton } from "@material-ui/core";
 import Dict from "./LRT_Dict.js";
@@ -10,9 +17,14 @@ import Saved from "@material-ui/icons/Star";
 function LrtInfo({ sid, lang }) {
   const [lrtETA, setLRTEta] = useState();
   const [lrtStnSaved, setLrtStnSaved] = useState(false);
-  const storage = window.localStorage;
-  const LrtStationArray = storage.getItem("LrtSaveStn");
   var { fLang } = "";
+
+  const storage = window.localStorage;
+  const LrtStationArray = JSON.parse(storage.getItem("LrtSaveStn"));
+  if (storage.getItem("LrtSaveStn") === null) {
+    var newArray = [];
+    storage.setItem("LrtSaveStn", JSON.stringify(newArray));
+  }
 
   //storage.clear();
 
@@ -43,7 +55,6 @@ function LrtInfo({ sid, lang }) {
       .get(lrtAPI)
       .then((res) => setLRTEta(res.data))
       .catch((error) => console.log(error));
-    var LrtStationArray = storage.getItem("LrtSaveStn");
     var checkSave = LrtStationArray?.indexOf(sid);
     if (checkSave === -1 || LrtStationArray === null) {
       setLrtStnSaved(false);
@@ -55,28 +66,15 @@ function LrtInfo({ sid, lang }) {
   const handleLocalStorage = (sid) => {
     if (lrtStnSaved === false) {
       LrtStationArray.push(sid);
-      storage.setItem("LrtSaveStn", LrtStationArray);
+      storage.setItem("LrtSaveStn", JSON.stringify(LrtStationArray));
       setLrtStnSaved(true);
     } else {
+      let findSID = LrtStationArray?.indexOf(sid);
+      LrtStationArray.splice(findSID, 1);
+      storage.setItem("LrtSaveStn", JSON.stringify(LrtStationArray));
+      setLrtStnSaved(false);
     }
   };
-
-  console.log(LrtStationArray);
-  /*
-
-  storage.setItem("LrtSaveStn", sid);
-      setLrtStnSaved(true);
-
-
-  const addFav = (props: any) => {
-    let array = favourites;
-    let addArray = true;
-    array.map((item === props.i){
-      array.splice(key , 1);
-      addArray = false;
-    })
-  }
-  */
 
   if (lrtETA?.status == 0) {
     return (
@@ -102,14 +100,11 @@ function LrtInfo({ sid, lang }) {
     return (
       <div className="lrtinfo">
         <Card className="infobox">
-          {/* SaveBox
           <div className="favouriteBox">
             <IconButton color="primary" onClick={() => handleLocalStorage(sid)}>
               {lrtStnSaved === true ? <Saved /> : <Save />}
             </IconButton>
           </div>
-          */}
-
           {lrtETA?.platform_list.map((plat) => (
             <CardContent>
               <div className="station__header">

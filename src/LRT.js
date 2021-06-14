@@ -20,6 +20,8 @@ function LRT() {
   const [swapLang, setSwapLang] = useState(false);
   const [optionSelected, setOptionSelected] = useState("");
   const [lang, setLang] = useState("tc");
+  const storage = window.localStorage;
+  const LrtStationArray = JSON.parse(storage.getItem("LrtSaveStn"));
 
   if (swapLang == true) {
     setTimeout(() => {
@@ -173,6 +175,21 @@ function LRT() {
             </Select>
           </FormControl>
           <DisplayStation />
+        </div>
+        <div className="lrt__topBar">
+          <FormControl className="saveStnSelect">
+            <InputLabel>{Dict.lrtCommon[lang].saveStation}</InputLabel>
+            <Select
+              value={station || ""}
+              onChange={handleStation}
+              label="Station"
+              fullWidth
+            >
+              {LrtStationArray?.map((sid) => (
+                <MenuItem value={sid}>{Dict?.lrtStation[lang][sid]}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </div>
         <div className="lrt__container">
           {station != "" ? <LrtInfo sid={station} lang={lang} /> : ""}

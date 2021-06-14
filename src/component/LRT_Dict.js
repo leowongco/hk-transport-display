@@ -13,6 +13,7 @@ const lrtCommon = {
     end_service: "End of today's service",
     zone: "Fare Zone",
     route: "Route",
+    saveStation: "Saved Light Rail Station",
   },
   tc: {
     stn: "輕鐵站",
@@ -27,6 +28,7 @@ const lrtCommon = {
     end_service: "本日服務完結",
     zone: "收費區",
     route: "路線",
+    saveStation: "已儲存輕鐵站",
   },
 };
 
