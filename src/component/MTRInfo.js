@@ -52,7 +52,9 @@ function MTRInfo({ line, station, lang }) {
       <div className="mtrInfo">
         <Card className="infobox">
           <CardContent>
-            <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
+            <p align="center">
+              未能讀取到站時間，請稍後再嘗試。<small>(0)</small>
+            </p>
             <p align="center">Cannnot Retrieve ETA information</p>
             <p align="center">Please try again later.</p>
           </CardContent>
@@ -69,7 +71,9 @@ function MTRInfo({ line, station, lang }) {
             ) : (
               ""
             )}
-            <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
+            <p align="center">
+              未能讀取到站時間，請稍後再嘗試。<small>(Y)</small>
+            </p>
             <p align="center">Cannnot Retrieve ETA information</p>
             <p align="center">Please try again later.</p>
           </CardContent>
