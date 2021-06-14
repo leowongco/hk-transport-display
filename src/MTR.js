@@ -64,7 +64,8 @@ function MTR() {
         <div className="mtr__functionBar">
           <Button
             variant="contained"
-            color="secondary"
+            size="small"
+            color={swapLang === true ? "secondary" : "primary"}
             className="langButton"
             startIcon={<GTranslateOutlinedIcon />}
             onClick={
@@ -86,6 +87,7 @@ function MTR() {
             variant="contained"
             color="primary"
             className="langButton"
+            size="small"
           >
             English
           </Button>
@@ -95,6 +97,7 @@ function MTR() {
             variant="contained"
             color="primary"
             className="langButton"
+            size="small"
           >
             中文
           </Button>
