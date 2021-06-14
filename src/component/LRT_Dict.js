@@ -14,6 +14,8 @@ const lrtCommon = {
     zone: "Fare Zone",
     route: "Route",
     saveStation: "Saved Light Rail Station",
+    saveFalse: "Save Me",
+    saveTrue: "Saved",
   },
   tc: {
     stn: "輕鐵站",
@@ -29,6 +31,8 @@ const lrtCommon = {
     zone: "收費區",
     route: "路線",
     saveStation: "已儲存輕鐵站",
+    saveFalse: "儲存我",
+    saveTrue: "已儲存",
   },
 };
 

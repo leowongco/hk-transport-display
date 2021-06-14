@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-} from "@material-ui/core";
 import axios from "axios";
-import { Card, CardContent, Chip, IconButton } from "@material-ui/core";
+import { Card, CardContent, Chip, IconButton, Button } from "@material-ui/core";
 import Dict from "./LRT_Dict.js";
 import "../css/LRTInfo.css";
 import LRTTrain from "../img/lrt_train.png";
@@ -20,7 +13,7 @@ function LrtInfo({ sid, lang }) {
   var { fLang } = "";
 
   const storage = window.localStorage;
-  const LrtStationArray = JSON.parse(storage.getItem("LrtSaveStn"));
+  const lrtStationArray = JSON.parse(storage.getItem("LrtSaveStn"));
   if (storage.getItem("LrtSaveStn") === null) {
     var newArray = [];
     storage.setItem("LrtSaveStn", JSON.stringify(newArray));
@@ -55,8 +48,8 @@ function LrtInfo({ sid, lang }) {
       .get(lrtAPI)
       .then((res) => setLRTEta(res.data))
       .catch((error) => console.log(error));
-    var checkSave = LrtStationArray?.indexOf(sid);
-    if (checkSave === -1 || LrtStationArray === null) {
+    var checkSave = lrtStationArray?.indexOf(sid);
+    if (checkSave === -1 || lrtStationArray === null) {
       setLrtStnSaved(false);
     } else {
       setLrtStnSaved(true);
@@ -65,13 +58,13 @@ function LrtInfo({ sid, lang }) {
 
   const handleLocalStorage = (sid) => {
     if (lrtStnSaved === false) {
-      LrtStationArray.push(sid);
-      storage.setItem("LrtSaveStn", JSON.stringify(LrtStationArray));
+      lrtStationArray.push(sid);
+      storage.setItem("LrtSaveStn", JSON.stringify(lrtStationArray));
       setLrtStnSaved(true);
     } else {
-      let findSID = LrtStationArray?.indexOf(sid);
-      LrtStationArray.splice(findSID, 1);
-      storage.setItem("LrtSaveStn", JSON.stringify(LrtStationArray));
+      let findSID = lrtStationArray?.indexOf(sid);
+      lrtStationArray.splice(findSID, 1);
+      storage.setItem("LrtSaveStn", JSON.stringify(lrtStationArray));
       setLrtStnSaved(false);
     }
   };
@@ -80,6 +73,19 @@ function LrtInfo({ sid, lang }) {
     return (
       <div className="lrtinfo">
         <Card className="infobox">
+          <div className="favouriteBox">
+            <Button
+              variant="contained"
+              color={lrtStnSaved === true ? "" : "primary"}
+              size="small"
+              endIcon={lrtStnSaved === true ? <Saved /> : <Save />}
+              onClick={() => handleLocalStorage(sid)}
+            >
+              {lrtStnSaved === true
+                ? Dict.lrtCommon[lang].saveTrue
+                : Dict.lrtCommon[lang].saveFalse}
+            </Button>
+          </div>
           <CardContent>
             <p>未能讀取到站時間，請稍後再嘗試。</p>
             <p>Cannnot Retrieve ETA information, Please try again later.</p>
@@ -101,9 +107,17 @@ function LrtInfo({ sid, lang }) {
       <div className="lrtinfo">
         <Card className="infobox">
           <div className="favouriteBox">
-            <IconButton color="primary" onClick={() => handleLocalStorage(sid)}>
-              {lrtStnSaved === true ? <Saved /> : <Save />}
-            </IconButton>
+            <Button
+              variant="contained"
+              color={lrtStnSaved === true ? "" : "primary"}
+              size="small"
+              endIcon={lrtStnSaved === true ? <Saved /> : <Save />}
+              onClick={() => handleLocalStorage(sid)}
+            >
+              {lrtStnSaved === true
+                ? Dict.lrtCommon[lang].saveTrue
+                : Dict.lrtCommon[lang].saveFalse}
+            </Button>
           </div>
           {lrtETA?.platform_list.map((plat) => (
             <CardContent>

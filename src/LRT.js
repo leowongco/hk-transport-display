@@ -5,7 +5,7 @@ import {
   MenuItem,
   Select,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Dict from "./component/LRT_Dict.js";
 import LrtInfo from "./component/LrtInfo.js";
 import "./css/LRT.css";
@@ -21,7 +21,7 @@ function LRT() {
   const [optionSelected, setOptionSelected] = useState("");
   const [lang, setLang] = useState("tc");
   const storage = window.localStorage;
-  const LrtStationArray = JSON.parse(storage.getItem("LrtSaveStn"));
+  const lrtStationArray = JSON.parse(storage.getItem("LrtSaveStn"));
 
   if (swapLang == true) {
     setTimeout(() => {
@@ -185,7 +185,7 @@ function LRT() {
               label="Station"
               fullWidth
             >
-              {LrtStationArray?.map((sid) => (
+              {lrtStationArray?.map((sid) => (
                 <MenuItem value={sid}>{Dict?.lrtStation[lang][sid]}</MenuItem>
               ))}
             </Select>
