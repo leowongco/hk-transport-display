@@ -30,8 +30,8 @@
 }
 
 .lrt__title {
+  font-weight: 550;
   font-size: x-large;
-  font-weight: bold;
   text-align: center;
   color: white;
 }
