@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, CardContent, Chip, IconButton, Button } from "@material-ui/core";
+import { Card, CardContent, Chip, Button } from "@material-ui/core";
 import Dict from "./LRT_Dict.js";
 import "../css/LRTInfo.css";
 import LRTTrain from "../img/lrt_train.png";
@@ -75,7 +75,7 @@ function LrtInfo({ sid, lang }) {
     }
   };
 
-  if (lrtETA?.status == 0) {
+  if (lrtETA?.status === 0) {
     return (
       <div className="lrtinfo">
         <Card className="infobox">
@@ -141,7 +141,7 @@ function LrtInfo({ sid, lang }) {
                   <small>{Dict.lrtStation.en[sid]}</small>
                 </div>
               </div>
-              {plat.end_service_status == 1 ? (
+              {plat.end_service_status === 1 ? (
                 <div className="etaBox">
                   <div className="lrt__route"></div>
                   <div className="etaBox__row">
@@ -167,7 +167,7 @@ function LrtInfo({ sid, lang }) {
                   </div>
                   <div className="etaBox__row">
                     <small>
-                      {train.stop == 1
+                      {train.stop === 1
                         ? Dict.lrtCommon[lang].stopped
                         : train["dest_" + fLang]}
                     </small>
@@ -180,7 +180,7 @@ function LrtInfo({ sid, lang }) {
                     {Array(train.train_length)
                       .fill()
                       .map((_, i) => (
-                        <img src={LRTTrain} />
+                        <img src={LRTTrain} alt="Light Rail Cab" />
                       ))}
                   </div>
                 </div>

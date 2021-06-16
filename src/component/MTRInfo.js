@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, CardContent, Chip } from "@material-ui/core";
+import { Card, CardContent } from "@material-ui/core";
 import Dict from "./MTR_Dict.js";
 import "../css/MTRInfo.css";
 import Alert from "@material-ui/lab/Alert";
@@ -12,6 +12,7 @@ function MTRInfo({ line, station, lang }) {
   const [mtrIsDelay, setMtrIsDelay] = useState("");
   const [mtrStatus, setMtrStatus] = useState("");
 
+  /*
   function routeColour(line) {
     switch (line) {
       case "TCL":
@@ -20,6 +21,7 @@ function MTRInfo({ line, station, lang }) {
         ).style.backgroundColor = "green");
     }
   }
+  */
 
   useEffect(() => {
     const inteval = setInterval(() => {
@@ -51,7 +53,7 @@ function MTRInfo({ line, station, lang }) {
       .catch((error) => console.log(error));
   }, [line, station]);
 
-  if (mtrStatus == "0") {
+  if (mtrStatus === "0") {
     return (
       <div className="mtrInfo">
         <Card className="infobox">
@@ -69,13 +71,13 @@ function MTRInfo({ line, station, lang }) {
         </Card>
       </div>
     );
-  } else if (mtrIsDelay == "Y") {
+  } else if (mtrIsDelay === "Y") {
     return (
       <div className="mtrInfo">
         <Card className="infobox">
           {isLoading === true ? <LinearProgress color="secondary" /> : ""}
           <CardContent>
-            {line == "TML" ? (
+            {line === "TML" ? (
               <Alert severity="warning">{Dict.Common[lang].tmlInfo}</Alert>
             ) : (
               ""

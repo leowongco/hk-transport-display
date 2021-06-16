@@ -13,7 +13,7 @@ import {
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import MenuIcon from "@material-ui/icons/Menu";
-import React, { useState } from "react";
+import React from "react";
 import TrainIcon from "@material-ui/icons/Train";
 import "./css/Header.css";
 import { Link } from "react-router-dom";
@@ -102,7 +102,7 @@ function Header() {
 
   return (
     <div className="header">
-      <AppBar position="static" className="header__appBar" >
+      <AppBar position="static" className="header__appBar">
         <Toolbar>
           <IconButton
             edge="start"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MTRETA from "./component/MTRInfo.js";
 import Alert from "@material-ui/lab/Alert";
 import Dict from "./component/MTR_Dict.js";
@@ -22,9 +22,9 @@ function MTR() {
   const [swapLang, setSwapLang] = useState(false);
   const [lang, setLang] = useState("tc");
 
-  if (swapLang == true) {
+  if (swapLang === true) {
     setTimeout(() => {
-      if (lang == "en") {
+      if (lang === "en") {
         setLang("tc");
       } else {
         setLang("en");
@@ -33,14 +33,14 @@ function MTR() {
   }
 
   function setLogo(mtrLine) {
-    if (mtrLine == "AEL") {
-      return <img src={AEL_Logo} />;
-    } else if (mtrLine == "WRL") {
-      return <img src={WRL_Logo} />;
-    } else if (mtrLine == "TML") {
-      return <img src={TML_Logo} />;
+    if (mtrLine === "AEL") {
+      return <img src={AEL_Logo} alt="Airport Express Logo" />;
+    } else if (mtrLine === "WRL") {
+      return <img src={WRL_Logo} alt="West Rail Line Logo" />;
+    } else if (mtrLine === "TML") {
+      return <img src={TML_Logo} alt="Tuen Ma Line Logo" />;
     } else {
-      return <img src={URL_Logo} />;
+      return <img src={URL_Logo} alt="Urban Lines  Logo" />;
     }
   }
 
@@ -57,7 +57,9 @@ function MTR() {
         <div className={"mtr__header" + line}>
           <div className="mtr__Logo">{setLogo(line)}</div>
           <div className="mtr__title">
-            {line != "" ? Dict.Line[lang][line] : Dict.Common[lang].defaultLine}
+            {line !== ""
+              ? Dict.Line[lang][line]
+              : Dict.Common[lang].defaultLine}
             {" " + Dict.Common[lang].eta}
           </div>
         </div>
@@ -69,13 +71,13 @@ function MTR() {
             className="langButton"
             startIcon={<GTranslateOutlinedIcon />}
             onClick={
-              swapLang == true
+              swapLang === true
                 ? () => setSwapLang(false)
                 : () => setSwapLang(true)
             }
           >
             <small>
-              {swapLang == true
+              {swapLang === true
                 ? Dict.Common[lang].autoBtnOff
                 : Dict.Common[lang].autoBtnOn}
             </small>
@@ -83,7 +85,7 @@ function MTR() {
           <div style={{ flex: "1 0 0" }} />
           <Button
             onClick={() => setLang("en")}
-            disabled={lang == "en" || swapLang == true}
+            disabled={lang === "en" || swapLang === true}
             variant="contained"
             color="primary"
             className="langButton"
@@ -93,7 +95,7 @@ function MTR() {
           </Button>
           <Button
             onClick={() => setLang("tc")}
-            disabled={lang == "tc" || swapLang == true}
+            disabled={lang === "tc" || swapLang === true}
             variant="contained"
             color="primary"
             className="langButton"
@@ -131,7 +133,7 @@ function MTR() {
           </FormControl>
         </div>
         <div className="mtr__etaContainer">
-          {line != "" && station != "" ? (
+          {line !== "" && station !== "" ? (
             <MTRETA line={line} station={station} lang={lang} />
           ) : (
             ""

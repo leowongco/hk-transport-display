@@ -5,7 +5,7 @@ import {
   MenuItem,
   Select,
 } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Dict from "./component/LRT_Dict.js";
 import LrtInfo from "./component/LrtInfo.js";
 import "./css/LRT.css";
@@ -23,9 +23,9 @@ function LRT() {
   const storage = window.localStorage;
   const lrtStationArray = JSON.parse(storage.getItem("LrtSaveStn"));
 
-  if (swapLang == true) {
+  if (swapLang === true) {
     setTimeout(() => {
-      if (lang == "en") {
+      if (lang === "en") {
         setLang("tc");
       } else {
         setLang("en");
@@ -105,7 +105,7 @@ function LRT() {
       <div className="container">
         <div className="lrt__header">
           <div className="lrt__logo">
-            <img src={LRTLogo} />
+            <img src={LRTLogo} alt="Light Rail Logo" />
           </div>
           <div className="lrt__title">{Dict.lrtCommon[lang].title}</div>
         </div>
@@ -117,13 +117,13 @@ function LRT() {
             className="langButton"
             startIcon={<GTranslateOutlinedIcon />}
             onClick={
-              swapLang == true
+              swapLang === true
                 ? () => setSwapLang(false)
                 : () => setSwapLang(true)
             }
           >
             <small>
-              {swapLang == true
+              {swapLang === true
                 ? Dict.lrtCommon[lang].autoBtnOff
                 : Dict.lrtCommon[lang].autoBtnOn}
             </small>
@@ -131,23 +131,23 @@ function LRT() {
           <div style={{ flex: "1 0 0" }} />
           <Button
             onClick={() => setLang("en")}
-            disabled={lang == "en" || swapLang == true}
+            disabled={lang === "en" || swapLang === true}
             variant="contained"
             color="primary"
             className="langButton"
             size="small"
           >
-            English
+            Eng
           </Button>
           <Button
             onClick={() => setLang("tc")}
-            disabled={lang == "tc" || swapLang == true}
+            disabled={lang === "tc" || swapLang === true}
             variant="contained"
             color="primary"
             className="langButton"
             size="small"
           >
-            中文
+            中
           </Button>
         </div>
         <div className="lrt__topBar">
@@ -195,7 +195,7 @@ function LRT() {
           </FormControl>
         </div>
         <div className="lrt__container">
-          {station != "" ? <LrtInfo sid={station} lang={lang} /> : ""}
+          {station !== "" ? <LrtInfo sid={station} lang={lang} /> : ""}
         </div>
         <div className="lrt__info">
           <Alert severity="info">{Dict.lrtCommon[lang].etaAlert}</Alert>
