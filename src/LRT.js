@@ -34,14 +34,14 @@ function LRT() {
   }
 
   const handleZone = (e) => {
-    setStation([]);
+    setStation("");
     setLrtZone(e.target.value);
     setLrtRoute("");
     setOptionSelected("zone");
   };
 
   const handleRoute = (e) => {
-    setStation([]);
+    setStation("");
     setLrtZone("");
     setLrtRoute(e.target.value);
     setOptionSelected("route");
@@ -137,7 +137,7 @@ function LRT() {
             className="langButton"
             size="small"
           >
-            Eng
+            English
           </Button>
           <Button
             onClick={() => setLang("tc")}
@@ -147,7 +147,7 @@ function LRT() {
             className="langButton"
             size="small"
           >
-            中
+            中文
           </Button>
         </div>
         <div className="lrt__topBar">

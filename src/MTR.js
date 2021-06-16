@@ -45,7 +45,7 @@ function MTR() {
   }
 
   const handleLine = (e) => {
-    setStation([]);
+    setStation("");
     setLine(e.target.value);
   };
   const handleStation = (e) => {
