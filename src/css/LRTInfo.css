@@ -1,5 +1,10 @@
 @import url(//fonts.googleapis.com/css2?family=Noto+Sans+HK&family=Ubuntu);
 
+.lrtinfo {
+  align-items: center;
+  justify-content: center;
+}
+
 .infobox {
   width: 360px;
   min-height: 200px;

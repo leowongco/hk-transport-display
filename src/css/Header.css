@@ -4,13 +4,18 @@ a {
   align-items: center;
 }
 
-.header__appBar {
+.header {
   height: 60px;
   display: flex;
-  background-color: #a5ebec;
-  z-index: 100;
+  align-items: center;
+  background-color: #0984e3;
   position: sticky;
   top: 0;
+  z-index: 100;
+}
+
+.header__appBar {
+  display: flex;
 }
 
 .header__title {

@@ -6,9 +6,11 @@ import "../css/LRTInfo.css";
 import LRTTrain from "../img/lrt_train.png";
 import Save from "@material-ui/icons/StarBorder";
 import Saved from "@material-ui/icons/Star";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 function LrtInfo({ sid, lang }) {
   const [lrtETA, setLRTEta] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const [lrtStnSaved, setLrtStnSaved] = useState(false);
   var { fLang } = "";
 
@@ -42,11 +44,15 @@ function LrtInfo({ sid, lang }) {
   }, [sid]);
 
   useEffect(() => {
+    setIsLoading(true);
     setLRTEta();
     let lrtAPI = `https://rt.data.gov.hk/v1/transport/mtr/lrt/getSchedule?station_id=${sid}`;
     axios
       .get(lrtAPI)
-      .then((res) => setLRTEta(res.data))
+      .then((res) => {
+        setLRTEta(res.data);
+        setIsLoading(false);
+      })
       .catch((error) => console.log(error));
     var checkSave = lrtStationArray?.indexOf(sid);
     if (checkSave === -1 || lrtStationArray === null) {
@@ -73,6 +79,7 @@ function LrtInfo({ sid, lang }) {
     return (
       <div className="lrtinfo">
         <Card className="infobox">
+          {isLoading === true ? <LinearProgress color="secondary" /> : ""}
           <div className="favouriteBox">
             <Button
               variant="contained"
@@ -89,6 +96,11 @@ function LrtInfo({ sid, lang }) {
           <CardContent>
             <p>未能讀取到站時間，請稍後再嘗試。</p>
             <p>Cannnot Retrieve ETA information, Please try again later.</p>
+            <p align="center">
+              <font size="1">
+                <i>API Capture Failed</i>
+              </font>
+            </p>
           </CardContent>
           <CardContent>
             {lrtETA?.system_time ? (
@@ -106,6 +118,7 @@ function LrtInfo({ sid, lang }) {
     return (
       <div className="lrtinfo">
         <Card className="infobox">
+          {isLoading === true ? <LinearProgress color="secondary" /> : ""}
           <div className="favouriteBox">
             <Button
               variant="contained"

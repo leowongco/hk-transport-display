@@ -4,9 +4,11 @@ import { Card, CardContent, Chip } from "@material-ui/core";
 import Dict from "./MTR_Dict.js";
 import "../css/MTRInfo.css";
 import Alert from "@material-ui/lab/Alert";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 function MTRInfo({ line, station, lang }) {
   const [mtrEta, setMtrEta] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [mtrIsDelay, setMtrIsDelay] = useState("");
   const [mtrStatus, setMtrStatus] = useState("");
 
@@ -35,6 +37,7 @@ function MTRInfo({ line, station, lang }) {
   }, [line, station]);
 
   useEffect(() => {
+    setIsLoading(true);
     setMtrEta([]);
     let mtrAPI = `https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=${line}&sta=${station}`;
     axios
@@ -43,6 +46,7 @@ function MTRInfo({ line, station, lang }) {
         setMtrIsDelay(res.data.isdelay);
         setMtrStatus(res.data.status);
         setMtrEta(res.data.data[line + "-" + station]);
+        setIsLoading(false);
       })
       .catch((error) => console.log(error));
   }, [line, station]);
@@ -51,12 +55,16 @@ function MTRInfo({ line, station, lang }) {
     return (
       <div className="mtrInfo">
         <Card className="infobox">
+          {isLoading === true ? <LinearProgress color="secondary" /> : ""}
           <CardContent>
-            <p align="center">
-              未能讀取到站時間，請稍後再嘗試。<small>(0)</small>
-            </p>
+            <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
             <p align="center">Cannnot Retrieve ETA information</p>
             <p align="center">Please try again later.</p>
+            <p align="center">
+              <font size="1">
+                <i>API Capture Failed</i>
+              </font>
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -65,17 +73,21 @@ function MTRInfo({ line, station, lang }) {
     return (
       <div className="mtrInfo">
         <Card className="infobox">
+          {isLoading === true ? <LinearProgress color="secondary" /> : ""}
           <CardContent>
             {line == "TML" ? (
               <Alert severity="warning">{Dict.Common[lang].tmlInfo}</Alert>
             ) : (
               ""
             )}
-            <p align="center">
-              未能讀取到站時間，請稍後再嘗試。<small>(Y)</small>
-            </p>
+            <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
             <p align="center">Cannnot Retrieve ETA information</p>
             <p align="center">Please try again later.</p>
+            <p align="center">
+              <font size="1">
+                <i>API Capture Success, no Data Returned.</i>
+              </font>
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -84,6 +96,7 @@ function MTRInfo({ line, station, lang }) {
     return (
       <div className="mtrInfo">
         <Card className="infobox">
+          {isLoading === true ? <LinearProgress color="secondary" /> : ""}
           {mtrEta?.UP != null && mtrEta?.UP.length > 0 ? (
             <CardContent>
               <div className={"mtrstation__header"}>
