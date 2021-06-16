@@ -1,6 +1,6 @@
 {
   "name": "hk-transport-display",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "private": true,
   "dependencies": {
     "@3m1/service-worker-updater": "^1.0.8",
