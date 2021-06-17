@@ -152,40 +152,40 @@ function LrtInfo({ sid, lang }) {
               ) : (
                 ""
               )}
-              {plat.route_list?.map((train) => (
-                <div className="etaBox">
-                  <div className={"lrt__route_" + train.route_no}>
-                    <Chip
-                      size="small"
-                      className="lrtChip"
-                      style={{
-                        backgroundColor: "white",
-                        color: "black",
-                        width: "50px",
-                      }}
-                      label={train.route_no}
-                    />
+              {plat.route_list?.map((train) =>
+                train.stop !== 1 ? (
+                  <div className="etaBox">
+                    <div className={"lrt__route_" + train.route_no}>
+                      <Chip
+                        size="small"
+                        className="lrtChip"
+                        style={{
+                          backgroundColor: "white",
+                          color: "black",
+                          width: "50px",
+                        }}
+                        label={train.route_no}
+                      />
+                    </div>
+                    <div className="etaBox__row">
+                      <small>{train["dest_" + fLang]}</small>
+                    </div>
+                    <div style={{ flex: "1 0 0" }} />
+                    <div className="etaBox__row">
+                      <small>{train["time_" + fLang]}</small>
+                    </div>
+                    <div className="lrtTrain__length">
+                      {Array(train.train_length)
+                        .fill()
+                        .map((_, i) => (
+                          <img src={LRTTrain} alt="Light Rail Cab" />
+                        ))}
+                    </div>
                   </div>
-                  <div className="etaBox__row">
-                    <small>
-                      {train.stop === 1
-                        ? Dict.lrtCommon[lang].stopped
-                        : train["dest_" + fLang]}
-                    </small>
-                  </div>
-                  <div style={{ flex: "1 0 0" }} />
-                  <div className="etaBox__row">
-                    <small>{train["time_" + fLang]}</small>
-                  </div>
-                  <div className="lrtTrain__length">
-                    {Array(train.train_length)
-                      .fill()
-                      .map((_, i) => (
-                        <img src={LRTTrain} alt="Light Rail Cab" />
-                      ))}
-                  </div>
-                </div>
-              ))}
+                ) : (
+                  ""
+                )
+              )}
             </CardContent>
           ))}
           {lrtETA?.system_time ? (

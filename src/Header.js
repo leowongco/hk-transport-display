@@ -9,6 +9,7 @@ import {
   Toolbar,
   Typography,
   useTheme,
+  ClickAwayListener,
 } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -128,7 +129,7 @@ function Header() {
 
       <Drawer
         className={classes.drawer}
-        variant="persistent"
+        variant="temporary"
         anchor="left"
         open={open}
         onClose={handleDrawerClose}

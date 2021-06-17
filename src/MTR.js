@@ -40,7 +40,7 @@ function MTR() {
     } else if (mtrLine === "TML") {
       return <img src={TML_Logo} alt="Tuen Ma Line Logo" />;
     } else {
-      return <img src={URL_Logo} alt="Urban Lines  Logo" />;
+      return <img src={URL_Logo} alt="Urban Lines Logo" />;
     }
   }
 
