@@ -37,8 +37,8 @@
 }
 
 .lrt__topBar {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   display: flex;
   width: 350px;
   max-width: 100%;
@@ -66,17 +66,17 @@
 }
 
 .stationSelect {
-  width: 40%;
+  width: 50%;
 }
 
 .zoneSelect {
-  width: 30%;
+  width: 50%;
 }
 
 .routeSelect {
-  width: 30%;
+  width: 50%;
 }
 
 .saveStnSelect {
-  width: 100%;
+  width: 50%;
 }

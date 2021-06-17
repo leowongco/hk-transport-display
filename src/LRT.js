@@ -5,7 +5,7 @@ import {
   MenuItem,
   Select,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Dict from "./component/LRT_Dict.js";
 import LrtInfo from "./component/LrtInfo.js";
 import "./css/LRT.css";
@@ -177,9 +177,9 @@ function LRT() {
               ))}
             </Select>
           </FormControl>
-          <DisplayStation />
         </div>
         <div className="lrt__topBar">
+          <DisplayStation />
           <FormControl className="saveStnSelect">
             <InputLabel>{Dict.lrtCommon[lang].saveStation}</InputLabel>
             <Select
