@@ -2,7 +2,7 @@
 
 .infobox {
   width: 360px;
-  height: auto;
+  height: 100%;
   font-family: "Noto SansHK", "Ubuntu", serif;
 }
 
@@ -154,4 +154,10 @@
   padding-bottom: 5px;
   display: flex;
   justify-content: center;
+}
+
+.MuiCard-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

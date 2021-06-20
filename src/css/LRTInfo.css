@@ -23,8 +23,7 @@
   float: right;
   vertical-align: text-top;
   padding-top: 10px;
-  padding-right: 30px;
-  padding-bottom: 5px;
+  padding-left: 15px;
 }
 
 .etaBox {
@@ -185,4 +184,10 @@
   color: white;
   display: flex;
   justify-content: center;
+}
+
+.MuiCard-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

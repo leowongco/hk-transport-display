@@ -58,7 +58,7 @@ function MTR() {
           <div className="mtr__Logo">{setLogo(line)}</div>
           <div className="mtr__title">
             {line !== ""
-              ? Dict.Line[lang][line]
+              ? Dict.MtrLines[line][lang + "_name"]
               : Dict.Common[lang].defaultLine}
             {" " + Dict.Common[lang].eta}
           </div>
@@ -113,8 +113,8 @@ function MTR() {
               label="Line"
               fullWidth
             >
-              {Object.entries(Dict.Line[lang]).map(([id, name]) => (
-                <MenuItem value={id}>{name}</MenuItem>
+              {Object.entries(Dict.MtrLines).map(([line, lineData]) => (
+                <MenuItem value={line}>{lineData[lang + "_name"]}</MenuItem>
               ))}
             </Select>
           </FormControl>
@@ -126,8 +126,10 @@ function MTR() {
               label="Station"
               fullWidth
             >
-              {Dict.Route[line]?.map((sid) => (
-                <MenuItem value={sid}>{Dict?.Station[lang][sid]}</MenuItem>
+              {Dict.MtrLines[line]?.stations.map((sid) => (
+                <MenuItem value={sid}>
+                  {Dict.MtrStations[sid][lang + "_name"]}
+                </MenuItem>
               ))}
             </Select>
           </FormControl>

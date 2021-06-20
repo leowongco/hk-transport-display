@@ -150,7 +150,7 @@ function LRT() {
             中文
           </Button>
         </div>
-        <div className="lrt__topBar">
+        <div className="lrt__topBar2">
           <FormControl className="zoneSelect">
             <InputLabel>{Dict.lrtCommon[lang].zone}</InputLabel>
             <Select
@@ -178,7 +178,7 @@ function LRT() {
             </Select>
           </FormControl>
         </div>
-        <div className="lrt__topBar">
+        <div className="lrt__topBar2">
           <DisplayStation />
           <FormControl className="saveStnSelect">
             <InputLabel>{Dict.lrtCommon[lang].saveStation}</InputLabel>

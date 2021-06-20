@@ -80,20 +80,24 @@ function LrtInfo({ sid, lang }) {
     return (
       <div className="lrtinfo">
         <Card className="infobox">
-          {isLoading === true ? <LinearProgress color="secondary" /> : ""}
-          <div className="favouriteBox">
-            <Button
-              variant="contained"
-              color={lrtStnSaved === true ? "" : "primary"}
-              size="small"
-              endIcon={lrtStnSaved === true ? <Saved /> : <Save />}
-              onClick={() => handleLocalStorage(sid)}
-            >
-              {lrtStnSaved === true
-                ? Dict.lrtCommon[lang].saveTrue
-                : Dict.lrtCommon[lang].saveFalse}
-            </Button>
-          </div>
+          {isLoading === true ? (
+            <LinearProgress color="secondary" />
+          ) : (
+            <div className="favouriteBox">
+              <Button
+                variant="contained"
+                color={lrtStnSaved === true ? "" : "primary"}
+                size="small"
+                endIcon={lrtStnSaved === true ? <Saved /> : <Save />}
+                onClick={() => handleLocalStorage(sid)}
+              >
+                {lrtStnSaved === true
+                  ? Dict.lrtCommon[lang].saveTrue
+                  : Dict.lrtCommon[lang].saveFalse}
+              </Button>
+            </div>
+          )}
+
           <CardContent>
             <p>未能讀取到站時間，請稍後再嘗試。</p>
             <p>Cannnot Retrieve ETA information, Please try again later.</p>
@@ -119,20 +123,24 @@ function LrtInfo({ sid, lang }) {
     return (
       <div className="lrtinfo">
         <Card className="infobox">
-          {isLoading === true ? <LinearProgress color="secondary" /> : ""}
-          <div className="favouriteBox">
-            <Button
-              variant="contained"
-              color={lrtStnSaved === true ? "" : "primary"}
-              size="small"
-              endIcon={lrtStnSaved === true ? <Saved /> : <Save />}
-              onClick={() => handleLocalStorage(sid)}
-            >
-              {lrtStnSaved === true
-                ? Dict.lrtCommon[lang].saveTrue
-                : Dict.lrtCommon[lang].saveFalse}
-            </Button>
-          </div>
+          {isLoading === true ? (
+            <LinearProgress color="secondary" />
+          ) : (
+            <div className="favouriteBox">
+              <Button
+                variant="contained"
+                color={lrtStnSaved === true ? "" : "primary"}
+                size="small"
+                endIcon={lrtStnSaved === true ? <Saved /> : <Save />}
+                onClick={() => handleLocalStorage(sid)}
+              >
+                {lrtStnSaved === true
+                  ? Dict.lrtCommon[lang].saveTrue
+                  : Dict.lrtCommon[lang].saveFalse}
+              </Button>
+            </div>
+          )}
+
           {lrtETA?.platform_list.map((plat) => (
             <CardContent>
               <div className="station__header">

@@ -38,7 +38,13 @@
 
 .lrt__topBar {
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  width: 350px;
+  max-width: 100%;
+}
+
+.lrt__topBar2 {
   display: flex;
   width: 350px;
   max-width: 100%;
@@ -63,6 +69,10 @@
   place-items: center;
   max-width: 500px;
   max-width: 100%;
+}
+
+.lrt__container {
+  padding-top: 10px;
 }
 
 .stationSelect {

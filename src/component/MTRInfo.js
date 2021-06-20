@@ -103,14 +103,14 @@ function MTRInfo({ line, station, lang }) {
           {isLoading === true ? <LinearProgress color="secondary" /> : ""}
           {mtrEta?.UP != null && mtrEta?.UP.length > 0 ? (
             <CardContent>
-              <div className={"mtrstation__header"}>
+              <div className={"mtrstation__header" + line}>
                 <div className="station__name">
-                  {Dict.Station[lang][station]}{" "}
+                  {Dict.MtrStations[station][lang + "_name"]}{" "}
                 </div>
                 <div className="header__line">
                   {" "}
                   {" (" +
-                    Dict.Line[lang][line] +
+                    Dict.MtrLines[line][lang + "_name"] +
                     " - " +
                     Dict.Common[lang].UP +
                     ")"}
@@ -120,7 +120,11 @@ function MTRInfo({ line, station, lang }) {
               {mtrEta.UP?.map((train) => (
                 <div className="etaBox">
                   <div className="mtr__dest">
-                    {Dict.Station[lang][train.dest]}
+                    {train.dest === "AWE" && station !== "AIR"
+                      ? Dict.MtrStations.AIR[lang + "_name"] +
+                        " / " +
+                        Dict.MtrStations[train.dest][lang + "_name"]
+                      : Dict.MtrStations[train.dest][lang + "_name"]}
                   </div>
                   <div style={{ flex: "1 0 0" }} />
                   <div className={"mtr__plat" + line}>{train.plat}</div>
@@ -138,14 +142,14 @@ function MTRInfo({ line, station, lang }) {
 
           {mtrEta.DOWN != null && mtrEta.DOWN.length > 0 ? (
             <CardContent>
-              <div className={"mtrstation__header"}>
+              <div className={"mtrstation__header" + line}>
                 <div className="station__name">
-                  {Dict.Station[lang][station]}
+                  {Dict.MtrStations[station][lang + "_name"]}
                 </div>
                 <div className="header__line">
                   {" "}
                   {" (" +
-                    Dict.Line[lang][line] +
+                    Dict.MtrLines[line][lang + "_name"] +
                     " - " +
                     Dict.Common[lang].DOWN +
                     ")"}
@@ -155,7 +159,7 @@ function MTRInfo({ line, station, lang }) {
               {mtrEta.DOWN?.map((train) => (
                 <div className="etaBox">
                   <div className="mtr__dest">
-                    {Dict.Station[lang][train.dest]}
+                    {Dict.MtrStations[train.dest][lang + "_name"]}
                   </div>
                   <div style={{ flex: "1 0 0" }} />
                   <div className={"mtr__plat" + line}>{train.plat}</div>
