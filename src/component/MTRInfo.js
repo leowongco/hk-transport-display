@@ -73,6 +73,10 @@ function MTRInfo({ line, station, lang }) {
     }
   }, [line, station]);
 
+  function NonServiceHours(props) {
+    return <p align="center">未有到站時間 No ETA Information</p>;
+  }
+
   if (mtrStatus === "0") {
     return (
       <div className="mtrInfo">
@@ -166,6 +170,11 @@ function MTRInfo({ line, station, lang }) {
                   : Dict.Common[lang].saveF}
               </Button>
             </div>
+          )}
+          {mtrEta.UP?.length == 0 && mtrEta.DOWN?.length == 0 ? (
+            <NonServiceHours />
+          ) : (
+            ""
           )}
           {mtrEta?.UP != null && mtrEta?.UP.length > 0 ? (
             <CardContent>

@@ -5,12 +5,14 @@ import DictM from "./MTR_Dict.js";
 import "../css/MTRInfo.css";
 import "../css/SaveStnInfo.css";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
 function MTRSaveInfo({ line, station, lang }) {
   const [mtrEta, setMtrEta] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [mtrIsDelay, setMtrIsDelay] = useState("");
   const [mtrStatus, setMtrStatus] = useState("");
+  const limitETA = 3;
 
   const storage = window.localStorage;
   const saveStnArray = JSON.parse(storage.getItem(line + "_SaveStn"));
@@ -53,7 +55,7 @@ function MTRSaveInfo({ line, station, lang }) {
     return (
       <div className="mtrSaveInfo">
         <Card className="infoBox">
-          {isLoading === true ? <LinearProgress color="secondary" /> : ""}
+          {isLoading === true ? <LinearProgress color="primary" /> : ""}
           <CardContent>
             <div className={"mtrstation__header" + line}>
               <div className="station__name">
@@ -63,8 +65,7 @@ function MTRSaveInfo({ line, station, lang }) {
                 {"(" + DictM.MtrLines[line][lang + "_name"] + ")"}
               </div>
             </div>
-            <p align="center">未有到站時間</p>
-            <p align="center">No ETA Information</p>
+            <p align="center">未有到站時間 No ETA Information</p>
           </CardContent>
         </Card>
       </div>
@@ -73,7 +74,7 @@ function MTRSaveInfo({ line, station, lang }) {
     return (
       <div className="mtrSaveInfo">
         <Card className="infoBox">
-          {isLoading === true ? <LinearProgress color="secondary" /> : ""}
+          {isLoading === true ? <LinearProgress color="primary" /> : ""}
           <CardContent>
             <div className={"mtrstation__header" + line}>
               <div className="station__name">
@@ -83,8 +84,7 @@ function MTRSaveInfo({ line, station, lang }) {
                 {"(" + DictM.MtrLines[line][lang + "_name"] + ")"}
               </div>
             </div>
-            <p align="center">未有到站時間</p>
-            <p align="center">No ETA Information</p>
+            <p align="center">未有到站時間 No ETA Information</p>
           </CardContent>
         </Card>
       </div>
@@ -93,7 +93,7 @@ function MTRSaveInfo({ line, station, lang }) {
     return (
       <div className="mtrSaveInfo">
         <Card className="infoBox">
-          {isLoading === true ? <LinearProgress color="secondary" /> : ""}
+          {isLoading === true ? <LinearProgress color="primary" /> : ""}
           <CardContent>
             <div className={"mtrstation__header" + line}>
               <div className="station__name">
@@ -103,8 +103,13 @@ function MTRSaveInfo({ line, station, lang }) {
                 {"(" + DictM.MtrLines[line][lang + "_name"] + ")"}
               </div>
             </div>
+            {mtrEta.UP?.length == 0 && mtrEta.DOWN?.length == 0 ? (
+              <p align="center">未有到站時間 No ETA Information</p>
+            ) : (
+              ""
+            )}
             <div className="saveStnETA">
-              {mtrEta.UP?.map((train) => (
+              {mtrEta.UP?.slice(0, limitETA).map((train, i, arr) => (
                 <div className="saveStnBox">
                   <div className="saveStnBoxRow">
                     <div className="saveStnBox_To">
@@ -112,12 +117,24 @@ function MTRSaveInfo({ line, station, lang }) {
                         DictM.MtrStations[train.dest][lang + "_name"]}
                     </div>
                     <div className={"mtr__plat" + line}>{train.plat}</div>
+                    {arr.length - 1 === i ? "" : <ArrowForwardIcon />}
                   </div>
+
                   <div className="saveStnBoxRow">
                     <div className="saveStnBoxTime">
-                      {train.ttnt < 1
-                        ? DictM.Common[lang].dep
-                        : train.ttnt + DictM.Common[lang].min}
+                      <small>
+                        {train.ttnt < 1
+                          ? DictM.Common[lang].dep
+                          : train.ttnt + DictM.Common[lang].min}
+                        {" (" +
+                          new Date(
+                            Date.parse(train.time.replace(/-/g, "/"))
+                          ).toLocaleTimeString("en-GB", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          }) +
+                          ")"}
+                      </small>
                     </div>
                   </div>
                 </div>
@@ -125,7 +142,7 @@ function MTRSaveInfo({ line, station, lang }) {
             </div>
             {mtrEta.UP?.length > 0 ? <Divider /> : ""}
             <div className="saveStnETA">
-              {mtrEta.DOWN?.map((train) => (
+              {mtrEta.DOWN?.slice(0, limitETA).map((train, i, arr) => (
                 <div className="saveStnBox">
                   <div className="saveStnBoxRow">
                     <div className="saveStnBox_To">
@@ -133,12 +150,23 @@ function MTRSaveInfo({ line, station, lang }) {
                         DictM.MtrStations[train.dest][lang + "_name"]}
                     </div>
                     <div className={"mtr__plat" + line}>{train.plat}</div>
+                    {arr.length - 1 === i ? "" : <ArrowForwardIcon />}
                   </div>
                   <div className="saveStnBoxRow">
                     <div className="saveStnBoxTime">
-                      {train.ttnt < 1
-                        ? DictM.Common[lang].dep
-                        : train.ttnt + DictM.Common[lang].min}
+                      <small>
+                        {train.ttnt < 1
+                          ? DictM.Common[lang].dep
+                          : train.ttnt + DictM.Common[lang].min}
+                        {" (" +
+                          new Date(
+                            Date.parse(train.time.replace(/-/g, "/"))
+                          ).toLocaleTimeString("en-GB", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          }) +
+                          ")"}
+                      </small>
                     </div>
                   </div>
                 </div>

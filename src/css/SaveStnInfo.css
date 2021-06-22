@@ -1,7 +1,7 @@
 .saveStnETA {
   padding-top: 5px;
   padding-bottom: 5px;
-  margin-left: 2px;
+  padding-left: 5px;
   display: flex;
   white-space: nowrap;
   overflow: scroll;
@@ -12,10 +12,14 @@
 
 .saveStnBoxRow {
   display: flex;
-  margin-left: 2px;
 }
 
 .saveStnBox_To {
-  padding-right: 2px;
+  padding-right: 8px;
+  font-weight: 500;
   text-overflow: ellipsis;
+}
+
+.saveStnBoxTime {
+  font-weight: 300;
 }
