@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SaveMTR from "./component/MTRSaveInfo";
 import { Button } from "@material-ui/core";
+import "./css/SaveStations.css";
 
 function SaveStations() {
   const [lang, setLang] = useState("tc");
@@ -11,6 +12,24 @@ function SaveStations() {
   const tklSaveStnArray = JSON.parse(storage.getItem("TKL_SaveStn"));
   const tclSaveStnArray = JSON.parse(storage.getItem("TCL_SaveStn"));
   const aelSaveStnArray = JSON.parse(storage.getItem("AEL_SaveStn"));
+  const tmlSaveStnArray = JSON.parse(storage.getItem("TML_SaveStn"));
+
+  if (storage.getItem("WRL_SaveStn") === null) {
+    var newArray = [];
+    storage.setItem("WRL_SaveStn", JSON.stringify(newArray));
+  } else if (storage.getItem("TKL_SaveStn") === null) {
+    var newArray = [];
+    storage.setItem("TKL_SaveStn", JSON.stringify(newArray));
+  } else if (storage.getItem("TCL_SaveStn") === null) {
+    var newArray = [];
+    storage.setItem("TCL_SaveStn", JSON.stringify(newArray));
+  } else if (storage.getItem("AEL_SaveStn") === null) {
+    var newArray = [];
+    storage.setItem("AEL_SaveStn", JSON.stringify(newArray));
+  } else if (storage.getItem("TML_SaveStn") === null) {
+    var newArray = [];
+    storage.setItem("TML_SaveStn", JSON.stringify(newArray));
+  }
 
   if (swapLang === true) {
     setTimeout(() => {
@@ -47,6 +66,11 @@ function SaveStations() {
           中文
         </Button>
       </div>
+      {tmlSaveStnArray.length > 0
+        ? tmlSaveStnArray?.map((stn) => (
+            <SaveMTR line="TML" station={stn} lang={lang} />
+          ))
+        : ""}
       {wrlSaveStnArray.length > 0
         ? wrlSaveStnArray?.map((stn) => (
             <SaveMTR line="WRL" station={stn} lang={lang} />

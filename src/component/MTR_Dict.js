@@ -359,14 +359,14 @@ const MtrStations = {
   },
   TUM: {
     tc_name: "屯門",
-    en_name: "North Point",
+    en_name: "Tuen Mun",
     lag: "",
     lon: "",
     active: "1",
   },
   NOP: {
     tc_name: "北角",
-    en_name: "Tuen Mun",
+    en_name: "North Point",
     lag: "",
     lon: "",
     active: "1",
