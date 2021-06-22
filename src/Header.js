@@ -160,7 +160,7 @@ function Header() {
         <Divider />
         <List>
           <ListItem>
-            <Link to="/lrv" onClick={handleDrawerClose}>
+            <Link to="/lrt" onClick={handleDrawerClose}>
               <ListItemIcon>
                 <TramIcon />
               </ListItemIcon>

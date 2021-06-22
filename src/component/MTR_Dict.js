@@ -13,7 +13,11 @@ const Common = {
     stn: "Station",
     lastUpdate: "Last Update",
     eta: "ETA",
+    to: "To ",
+    plat: "Platform",
     defaultLine: "Urban Lines",
+    saveF: "Save",
+    saveT: "Saved",
     tmlInfo: "Tuen Ma Line will open on 27 June 2021.",
   },
   tc: {
@@ -29,7 +33,11 @@ const Common = {
     stn: "站",
     lastUpdate: "最後更新",
     eta: "到站時間",
+    to: "往",
+    plat: "月台",
     defaultLine: "市區線",
+    saveF: "儲存",
+    saveT: "已儲存",
     tmlInfo: "屯馬線將於2021年6月27日通車",
   },
 };

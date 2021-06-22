@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, CardContent } from "@material-ui/core";
+import { Card, CardContent, Button } from "@material-ui/core";
 import Dict from "./MTR_Dict.js";
 import "../css/MTRInfo.css";
 import Alert from "@material-ui/lab/Alert";
+import Save from "@material-ui/icons/StarBorder";
+import Saved from "@material-ui/icons/Star";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
 function MTRInfo({ line, station, lang }) {
@@ -11,17 +13,27 @@ function MTRInfo({ line, station, lang }) {
   const [isLoading, setIsLoading] = useState(false);
   const [mtrIsDelay, setMtrIsDelay] = useState("");
   const [mtrStatus, setMtrStatus] = useState("");
+  const [stnSaved, setStnSaved] = useState(false);
 
-  /*
-  function routeColour(line) {
-    switch (line) {
-      case "TCL":
-        return (document.getElementsByClassName(
-          "header__line"
-        ).style.backgroundColor = "green");
-    }
+  const storage = window.localStorage;
+  const saveStationsArray = JSON.parse(storage.getItem(line + "_SaveStn"));
+  if (storage.getItem(line + "_SaveStn") === null) {
+    var newArray = [];
+    storage.setItem(line + "_SaveStn", JSON.stringify(newArray));
   }
-  */
+
+  const handleLocalStorage = (station) => {
+    if (stnSaved === false) {
+      saveStationsArray.push(station);
+      storage.setItem(line + "_SaveStn", JSON.stringify(saveStationsArray));
+      setStnSaved(true);
+    } else {
+      let findStn = saveStationsArray?.indexOf(station);
+      saveStationsArray.splice(findStn, 1);
+      storage.setItem(line + "_SaveStn", JSON.stringify(saveStationsArray));
+      setStnSaved(false);
+    }
+  };
 
   useEffect(() => {
     const inteval = setInterval(() => {
@@ -53,13 +65,35 @@ function MTRInfo({ line, station, lang }) {
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
+    var checkSave = saveStationsArray?.indexOf(station);
+    if (checkSave === -1 || saveStationsArray === null) {
+      setStnSaved(false);
+    } else {
+      setStnSaved(true);
+    }
   }, [line, station]);
 
   if (mtrStatus === "0") {
     return (
       <div className="mtrInfo">
         <Card className="infobox">
-          {isLoading === true ? <LinearProgress color="secondary" /> : ""}
+          {isLoading === true ? (
+            <LinearProgress color="secondary" />
+          ) : (
+            <div className="favouriteBox">
+              <Button
+                variant="contained"
+                color={stnSaved === true ? "" : "primary"}
+                size="small"
+                endIcon={stnSaved === true ? <Saved /> : <Save />}
+                onClick={() => handleLocalStorage(station)}
+              >
+                {stnSaved === true
+                  ? Dict.Common[lang].saveT
+                  : Dict.Common[lang].saveF}
+              </Button>
+            </div>
+          )}
           <CardContent>
             <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
             <p align="center">Cannnot Retrieve ETA information</p>
@@ -77,7 +111,23 @@ function MTRInfo({ line, station, lang }) {
     return (
       <div className="mtrInfo">
         <Card className="infobox">
-          {isLoading === true ? <LinearProgress color="secondary" /> : ""}
+          {isLoading === true ? (
+            <LinearProgress color="secondary" />
+          ) : (
+            <div className="favouriteBox">
+              <Button
+                variant="contained"
+                color={stnSaved === true ? "" : "primary"}
+                size="small"
+                endIcon={stnSaved === true ? <Saved /> : <Save />}
+                onClick={() => handleLocalStorage(station)}
+              >
+                {stnSaved === true
+                  ? Dict.Common[lang].saveT
+                  : Dict.Common[lang].saveF}
+              </Button>
+            </div>
+          )}
           <CardContent>
             {line === "TML" ? (
               <Alert severity="warning">{Dict.Common[lang].tmlInfo}</Alert>
@@ -100,7 +150,23 @@ function MTRInfo({ line, station, lang }) {
     return (
       <div className="mtrInfo">
         <Card className="infobox">
-          {isLoading === true ? <LinearProgress color="secondary" /> : ""}
+          {isLoading === true ? (
+            <LinearProgress color="secondary" />
+          ) : (
+            <div className="favouriteBox">
+              <Button
+                variant="contained"
+                color={stnSaved === true ? "" : "primary"}
+                size="small"
+                endIcon={stnSaved === true ? <Saved /> : <Save />}
+                onClick={() => handleLocalStorage(station)}
+              >
+                {stnSaved === true
+                  ? Dict.Common[lang].saveT
+                  : Dict.Common[lang].saveF}
+              </Button>
+            </div>
+          )}
           {mtrEta?.UP != null && mtrEta?.UP.length > 0 ? (
             <CardContent>
               <div className={"mtrstation__header" + line}>

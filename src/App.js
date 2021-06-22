@@ -2,6 +2,7 @@ import "./css/App.css";
 import LRT from "./LRT.js";
 import MTR from "./MTR.js";
 import Header from "./Header.js";
+import SaveStations from "./SaveStations";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from "react";
 import { firebaseApp } from "./component/firebase.js";
@@ -26,7 +27,7 @@ function App() {
           </Route>
           <Route path="/">
             <Header />
-            <LRT />
+            <SaveStations />
           </Route>
         </Switch>
       </div>
