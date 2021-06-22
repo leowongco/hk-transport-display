@@ -1,0 +1,21 @@
+.saveStnETA {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 2px;
+  display: flex;
+  white-space: nowrap;
+  overflow: scroll;
+}
+.saveStnBox {
+  padding-right: 2px;
+}
+
+.saveStnBoxRow {
+  display: flex;
+  margin-left: 2px;
+}
+
+.saveStnBox_To {
+  padding-right: 2px;
+  text-overflow: ellipsis;
+}
