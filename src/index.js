@@ -4,7 +4,6 @@ import "./css/index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import { onServiceWorkerUpdate } from "@3m1/service-worker-updater";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,12 +16,11 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA
 serviceWorkerRegistration.register({
-  onUpdate: (registration) => {
+  onUpdate: () => {
     const reloadMsg = window.confirm(
       "偵測到新版本，更新中。New Version Detected, Updating."
     );
     reloadMsg && window.location.reload();
-    onServiceWorkerUpdate(registration);
   },
 });
 
