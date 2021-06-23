@@ -8,7 +8,7 @@ import Save from "@material-ui/icons/StarBorder";
 import Saved from "@material-ui/icons/Star";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
-function LrtInfo({ sid, lang }) {
+function LrtInfo({ sid, lang, loc }) {
   const [lrtETA, setLRTEta] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [lrtStnSaved, setLrtStnSaved] = useState(false);

@@ -1,5 +1,6 @@
 const lrtCommon = {
   en: {
+    lrt: "Light Rail",
     stn: "Light Rail Station",
     plat: "Platform",
     select: "Please Select",
@@ -18,6 +19,7 @@ const lrtCommon = {
     saveTrue: "Saved",
   },
   tc: {
+    lrt: "輕鐵",
     stn: "輕鐵站",
     plat: "月台",
     select: "請選擇",

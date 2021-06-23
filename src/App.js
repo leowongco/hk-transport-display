@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from "react";
 import { firebaseApp } from "./component/firebase.js";
 
+import MTRMap from "./component/MTRRouteMap";
+
 function App() {
   firebaseApp.analytics();
   return (
@@ -21,9 +23,13 @@ function App() {
             <Header />
             <LRT />
           </Route>
-          <Route path="/mtr">
+          <Route path="/mtr/:link_Line/:link_Station">
             <Header />
             <MTR />
+          </Route>
+          <Route path="/mRoute/:line">
+            <Header />
+            <MTRMap />
           </Route>
           <Route path="/">
             <Header />

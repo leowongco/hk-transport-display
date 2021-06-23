@@ -9,7 +9,6 @@ import {
   Toolbar,
   Typography,
   useTheme,
-  ClickAwayListener,
 } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -23,7 +22,6 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import HomeIcon from "@material-ui/icons/Home";
 import TramIcon from "@material-ui/icons/Tram";
 import appInfo from "../package.json";
-import Chip from "@material-ui/core/Chip";
 
 const drawerWidth = 250;
 
@@ -168,7 +166,7 @@ function Header() {
             </Link>
           </ListItem>
           <ListItem>
-            <Link to="/mtr" onClick={handleDrawerClose}>
+            <Link to={"/mtr/l/s"} onClick={handleDrawerClose}>
               <ListItemIcon>
                 <TrainIcon />
               </ListItemIcon>
@@ -183,15 +181,11 @@ function Header() {
             <a
               href="http://dubdub.pro/"
               target="_blank"
+              rel="noreferrer"
               onClick={handleDrawerClose}
             >
               DubDub Production
             </a>
-          </ListItem>
-          <ListItem>
-            <Button color="secondary" onClick={handleUpdateApp}>
-              Refresh App
-            </Button>
           </ListItem>
         </List>
       </Drawer>

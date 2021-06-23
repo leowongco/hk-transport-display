@@ -46,16 +46,19 @@ const MtrLines = {
   AEL: {
     tc_name: "機場快線",
     en_name: "Airport Express",
+    colorCode: "#1c7670",
     stations: ["HOK", "KOW", "TSY", "AIR", "AWE"],
   },
   TCL: {
     tc_name: "東涌線",
     en_name: "Tung Chung Line",
+    colorCode: "#fe7f1d",
     stations: ["HOK", "KOW", "OLY", "NAC", "LAK", "TSY", "SUN", "TUC"],
   },
   WRL: {
     tc_name: "西鐵線",
     en_name: "West Rail Line",
+    colorCode: "#a40084",
     stations: [
       "HUH",
       "ETS",
@@ -74,11 +77,13 @@ const MtrLines = {
   TKL: {
     tc_name: "將軍澳線",
     en_name: "Tseung Kwan O Line",
+    colorCode: "#6b208b",
     stations: ["NOP", "QUB", "YAT", "TIK", "TKO", "LHP", "HAH", "POA"],
   },
   TML: {
     tc_name: "屯馬線",
     en_name: "Tuen Ma Line",
+    colorCode: "#9a3b26",
     stations: [
       "WKS",
       "MOS",

@@ -171,7 +171,7 @@ function MTRInfo({ line, station, lang }) {
               </Button>
             </div>
           )}
-          {mtrEta.UP?.length == 0 && mtrEta.DOWN?.length == 0 ? (
+          {mtrEta.UP?.length === 0 && mtrEta.DOWN?.length === 0 ? (
             <NonServiceHours />
           ) : (
             ""

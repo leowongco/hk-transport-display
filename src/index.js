@@ -17,11 +17,12 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA
 serviceWorkerRegistration.register({
-  onUpdate: () => {
+  onUpdate: (registration) => {
     const reloadMsg = window.confirm(
       "偵測到新版本，更新中。New Version Detected, Updating."
     );
     reloadMsg && window.location.reload();
+    onServiceWorkerUpdate(registration);
   },
 });
 

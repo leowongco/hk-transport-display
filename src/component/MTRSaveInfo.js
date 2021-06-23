@@ -7,6 +7,7 @@ import "../css/SaveStnInfo.css";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import Blink from "react-blink-text";
+import { Link } from "react-router-dom";
 
 function MTRSaveInfo({ line, station, lang }) {
   const [mtrEta, setMtrEta] = useState([]);
@@ -54,141 +55,147 @@ function MTRSaveInfo({ line, station, lang }) {
   if (mtrStatus === "0") {
     return (
       <div className="mtrSaveInfo">
-        <Card className="infoBox">
-          {isLoading === true ? <LinearProgress color="primary" /> : ""}
-          <CardContent>
-            <div className={"mtrstation__header" + line}>
-              <div className="station__name">
-                {DictM.MtrStations[station][lang + "_name"]}{" "}
+        <Link to={"/mtr/" + line + "/" + station}>
+          <Card className="infoBox">
+            {isLoading === true ? <LinearProgress color="primary" /> : ""}
+            <CardContent>
+              <div className={"mtrstation__header" + line}>
+                <div className="station__name">
+                  {DictM.MtrStations[station][lang + "_name"]}{" "}
+                </div>
+                <div className="header__line">
+                  {"(" + DictM.MtrLines[line][lang + "_name"] + ")"}
+                </div>
               </div>
-              <div className="header__line">
-                {"(" + DictM.MtrLines[line][lang + "_name"] + ")"}
-              </div>
-            </div>
-            <p align="center">未有到站時間 No ETA Information</p>
-          </CardContent>
-        </Card>
+              <p align="center">未有到站時間 No ETA Information</p>
+            </CardContent>
+          </Card>
+        </Link>
       </div>
     );
   } else if (mtrIsDelay === "Y") {
     return (
       <div className="mtrSaveInfo">
-        <Card className="infoBox">
-          {isLoading === true ? <LinearProgress color="primary" /> : ""}
-          <CardContent>
-            <div className={"mtrstation__header" + line}>
-              <div className="station__name">
-                {DictM.MtrStations[station][lang + "_name"]}{" "}
+        <Link to={"/mtr/" + line + "/" + station}>
+          <Card className="infoBox">
+            {isLoading === true ? <LinearProgress color="primary" /> : ""}
+            <CardContent>
+              <div className={"mtrstation__header" + line}>
+                <div className="station__name">
+                  {DictM.MtrStations[station][lang + "_name"]}{" "}
+                </div>
+                <div className="header__line">
+                  {"(" + DictM.MtrLines[line][lang + "_name"] + ")"}
+                </div>
               </div>
-              <div className="header__line">
-                {"(" + DictM.MtrLines[line][lang + "_name"] + ")"}
-              </div>
-            </div>
-            <p align="center">未有到站時間 No ETA Information</p>
-          </CardContent>
-        </Card>
+              <p align="center">未有到站時間 No ETA Information</p>
+            </CardContent>
+          </Card>
+        </Link>
       </div>
     );
   } else {
     return (
       <div className="mtrSaveInfo">
-        <Card className="infoBox">
-          {isLoading === true ? <LinearProgress color="primary" /> : ""}
-          <CardContent>
-            <div className={"mtrstation__header" + line}>
-              <div className="station__name">
-                {DictM.MtrStations[station][lang + "_name"]}{" "}
+        <Link to={"/mtr/" + line + "/" + station}>
+          <Card className="infoBox">
+            {isLoading === true ? <LinearProgress color="primary" /> : ""}
+            <CardContent>
+              <div className={"mtrstation__header" + line}>
+                <div className="station__name">
+                  {DictM.MtrStations[station][lang + "_name"]}{" "}
+                </div>
+                <div className="header__line">
+                  {"(" + DictM.MtrLines[line][lang + "_name"] + ")"}
+                </div>
               </div>
-              <div className="header__line">
-                {"(" + DictM.MtrLines[line][lang + "_name"] + ")"}
-              </div>
-            </div>
-            {mtrEta.UP?.length == 0 && mtrEta.DOWN?.length == 0 ? (
-              <p align="center">未有到站時間 No ETA Information</p>
-            ) : (
-              ""
-            )}
-            <div className="saveStnETA">
-              {mtrEta.UP?.slice(0, limitETA).map((train, i, arr) => (
-                <div className="saveStnBox">
-                  <div className="saveStnBoxRow">
-                    <div className="saveStnBox_To">
-                      {DictM.Common[lang].to +
-                        DictM.MtrStations[train.dest][lang + "_name"]}
+              {mtrEta.UP?.length === 0 && mtrEta.DOWN?.length === 0 ? (
+                <p align="center">未有到站時間 No ETA Information</p>
+              ) : (
+                ""
+              )}
+              <div className="saveStnETA">
+                {mtrEta.UP?.slice(0, limitETA).map((train, i, arr) => (
+                  <div className="saveStnBox">
+                    <div className="saveStnBoxRow">
+                      <div className="saveStnBox_To">
+                        {DictM.Common[lang].to +
+                          DictM.MtrStations[train.dest][lang + "_name"]}
+                      </div>
+                      <div className={"mtr__plat" + line}>{train.plat}</div>
+                      {arr.length - 1 === i ? "" : <ArrowForwardIcon />}
                     </div>
-                    <div className={"mtr__plat" + line}>{train.plat}</div>
-                    {arr.length - 1 === i ? "" : <ArrowForwardIcon />}
-                  </div>
 
-                  <div className="saveStnBoxRow">
-                    <div className="saveStnBoxTime">
-                      <small>
-                        {train.ttnt < 1 ? (
-                          <Blink
-                            fontSize="small"
-                            color="blue"
-                            text={DictM.Common[lang].dep}
-                          ></Blink>
-                        ) : (
-                          train.ttnt +
-                          DictM.Common[lang].min +
-                          " (" +
-                          new Date(
-                            Date.parse(train.time.replace(/-/g, "/"))
-                          ).toLocaleTimeString("en-GB", {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          }) +
-                          ")"
-                        )}
-                      </small>
+                    <div className="saveStnBoxRow">
+                      <div className="saveStnBoxTime">
+                        <small>
+                          {train.ttnt < 1 ? (
+                            <Blink
+                              fontSize="small"
+                              color="blue"
+                              text={DictM.Common[lang].dep}
+                            ></Blink>
+                          ) : (
+                            train.ttnt +
+                            DictM.Common[lang].min +
+                            " (" +
+                            new Date(
+                              Date.parse(train.time.replace(/-/g, "/"))
+                            ).toLocaleTimeString("en-GB", {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            }) +
+                            ")"
+                          )}
+                        </small>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-            {mtrEta.UP?.length > 0 ? <Divider /> : ""}
-            <div className="saveStnETA">
-              {mtrEta.DOWN?.slice(0, limitETA).map((train, i, arr) => (
-                <div className="saveStnBox">
-                  <div className="saveStnBoxRow">
-                    <div className="saveStnBox_To">
-                      {DictM.Common[lang].to +
-                        DictM.MtrStations[train.dest][lang + "_name"]}
+                ))}
+              </div>
+              {mtrEta.UP?.length > 0 ? <Divider /> : ""}
+              <div className="saveStnETA">
+                {mtrEta.DOWN?.slice(0, limitETA).map((train, i, arr) => (
+                  <div className="saveStnBox">
+                    <div className="saveStnBoxRow">
+                      <div className="saveStnBox_To">
+                        {DictM.Common[lang].to +
+                          DictM.MtrStations[train.dest][lang + "_name"]}
+                      </div>
+                      <div className={"mtr__plat" + line}>{train.plat}</div>
+                      {arr.length - 1 === i ? "" : <ArrowForwardIcon />}
                     </div>
-                    <div className={"mtr__plat" + line}>{train.plat}</div>
-                    {arr.length - 1 === i ? "" : <ArrowForwardIcon />}
-                  </div>
-                  <div className="saveStnBoxRow">
-                    <div className="saveStnBoxTime">
-                      <small>
-                        {train.ttnt < 1 ? (
-                          <Blink
-                            fontSize="small"
-                            color="blue"
-                            text={DictM.Common[lang].dep}
-                          ></Blink>
-                        ) : (
-                          train.ttnt +
-                          DictM.Common[lang].min +
-                          " (" +
-                          new Date(
-                            Date.parse(train.time.replace(/-/g, "/"))
-                          ).toLocaleTimeString("en-GB", {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          }) +
-                          ")"
-                        )}
-                      </small>
+                    <div className="saveStnBoxRow">
+                      <div className="saveStnBoxTime">
+                        <small>
+                          {train.ttnt < 1 ? (
+                            <Blink
+                              fontSize="small"
+                              color="blue"
+                              text={DictM.Common[lang].dep}
+                            ></Blink>
+                          ) : (
+                            train.ttnt +
+                            DictM.Common[lang].min +
+                            " (" +
+                            new Date(
+                              Date.parse(train.time.replace(/-/g, "/"))
+                            ).toLocaleTimeString("en-GB", {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            }) +
+                            ")"
+                          )}
+                        </small>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-            {mtrEta.DOWN?.length > 0 ? <Divider /> : ""}
-          </CardContent>
-        </Card>
+                ))}
+              </div>
+              {mtrEta.DOWN?.length > 0 ? <Divider /> : ""}
+            </CardContent>
+          </Card>
+        </Link>
       </div>
     );
   }

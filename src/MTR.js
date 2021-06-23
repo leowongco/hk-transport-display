@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MTRETA from "./component/MTRInfo.js";
 import Alert from "@material-ui/lab/Alert";
 import Dict from "./component/MTR_Dict.js";
@@ -15,12 +15,25 @@ import URL_Logo from "./img/URL_Logo.png";
 import WRL_Logo from "./img/WRL_Logo.png";
 import TML_Logo from "./img/TML_Logo.png";
 import GTranslateOutlinedIcon from "@material-ui/icons/GTranslateOutlined";
+import RouteIcon from "@material-ui/icons/LinearScale";
+import { Link, useParams } from "react-router-dom";
 
 function MTR() {
   const [station, setStation] = useState([]);
   const [line, setLine] = useState("");
   const [swapLang, setSwapLang] = useState(false);
   const [lang, setLang] = useState("tc");
+  const { link_Line, link_Station } = useParams();
+
+  useEffect(() => {
+    if (link_Line === "l" && link_Station === "s") {
+      setLine("");
+      setStation("");
+    } else {
+      setLine(link_Line);
+      setStation(link_Station);
+    }
+  }, [link_Line, link_Station]);
 
   if (swapLang === true) {
     setTimeout(() => {
@@ -51,6 +64,7 @@ function MTR() {
   const handleStation = (e) => {
     setStation(e.target.value);
   };
+
   return (
     <div className="mtr">
       <div className="container">
@@ -82,6 +96,17 @@ function MTR() {
                 : Dict.Common[lang].autoBtnOn}
             </small>
           </Button>
+          <Link to={"/mRoute/" + line}>
+            <Button
+              variant="contained"
+              color="primary"
+              className="routeButton"
+              size="small"
+              startIcon={<RouteIcon />}
+            >
+              路線圖
+            </Button>
+          </Link>
           <div style={{ flex: "1 0 0" }} />
           <Button
             onClick={() => setLang("en")}

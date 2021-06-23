@@ -6,6 +6,9 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
 import DictM from "./component/MTR_Dict.js";
+import DictL from "./component/LRT_Dict.js";
+
+import LrtInfo from "./component/LrtInfo.js";
 
 function SaveStations() {
   const [lang, setLang] = useState("tc");
@@ -17,22 +20,21 @@ function SaveStations() {
   const tclSaveStnArray = JSON.parse(storage.getItem("TCL_SaveStn"));
   const aelSaveStnArray = JSON.parse(storage.getItem("AEL_SaveStn"));
   const tmlSaveStnArray = JSON.parse(storage.getItem("TML_SaveStn"));
+  const lrtSaveStnArray = JSON.parse(storage.getItem("LrtSaveStn"));
+  var newArray = [];
 
   if (storage.getItem("WRL_SaveStn") === null) {
-    var newArray = [];
     storage.setItem("WRL_SaveStn", JSON.stringify(newArray));
   } else if (storage.getItem("TKL_SaveStn") === null) {
-    var newArray = [];
     storage.setItem("TKL_SaveStn", JSON.stringify(newArray));
   } else if (storage.getItem("TCL_SaveStn") === null) {
-    var newArray = [];
     storage.setItem("TCL_SaveStn", JSON.stringify(newArray));
   } else if (storage.getItem("AEL_SaveStn") === null) {
-    var newArray = [];
     storage.setItem("AEL_SaveStn", JSON.stringify(newArray));
   } else if (storage.getItem("TML_SaveStn") === null) {
-    var newArray = [];
     storage.setItem("TML_SaveStn", JSON.stringify(newArray));
+  } else if (storage.getItem("LrtSaveStn") === null) {
+    storage.setItem("LrtSaveStn", JSON.stringify(newArray));
   }
 
   if (swapLang === true) {
@@ -73,21 +75,49 @@ function SaveStations() {
       <div className="saveStnTabs">
         <Tabs>
           <TabList>
-            <Tab style={{ backgroundColor: "#9a3b26", color: "white" }}>
+            <Tab
+              style={{
+                backgroundColor: DictM.MtrLines.TML.colorCode,
+                color: "white",
+              }}
+            >
               {DictM.MtrLines.TML[lang + "_name"]}
             </Tab>
-            <Tab style={{ backgroundColor: "#a40084", color: "white" }}>
+            <Tab
+              style={{
+                backgroundColor: DictM.MtrLines.WRL.colorCode,
+                color: "white",
+              }}
+            >
               {DictM.MtrLines.WRL[lang + "_name"]}
             </Tab>
-            <Tab style={{ backgroundColor: "#6b208b", color: "white" }}>
+            <Tab
+              style={{
+                backgroundColor: DictM.MtrLines.TKL.colorCode,
+                color: "white",
+              }}
+            >
               {DictM.MtrLines.TKL[lang + "_name"]}
             </Tab>
-            <Tab style={{ backgroundColor: "#fe7f1d", color: "white" }}>
+            <Tab
+              style={{
+                backgroundColor: DictM.MtrLines.TCL.colorCode,
+                color: "white",
+              }}
+            >
               {DictM.MtrLines.TCL[lang + "_name"]}
             </Tab>
-            <Tab style={{ backgroundColor: "#1c7670", color: "white" }}>
+            <Tab
+              style={{
+                backgroundColor: DictM.MtrLines.AEL.colorCode,
+                color: "white",
+              }}
+            >
               {DictM.MtrLines.AEL[lang + "_name"]}
             </Tab>
+            {/* <Tab style={{ backgroundColor: "#02077b", color: "white" }}>
+              {DictL.lrtCommon[lang].lrt}
+              </Tab>*/}
           </TabList>
 
           <TabPanel>
@@ -96,10 +126,13 @@ function SaveStations() {
                 <SaveMTR line="TML" station={stn} lang={lang} />
               ))
             ) : (
-              <p align="center">
-                請先儲存{DictM.MtrLines.TML.tc_name}車站。 Please Save Stations
-                for {DictM.MtrLines.TML.en_name}.
-              </p>
+              <div>
+                <p align="center">請先儲存{DictM.MtrLines.TML.tc_name}車站。</p>
+                <p align="center">
+                  {" "}
+                  Please Save Station for {DictM.MtrLines.TML.en_name}.
+                </p>
+              </div>
             )}
           </TabPanel>
           <TabPanel>
@@ -108,10 +141,13 @@ function SaveStations() {
                 <SaveMTR line="WRL" station={stn} lang={lang} />
               ))
             ) : (
-              <p align="center">
-                請先儲存{DictM.MtrLines.WRL.tc_name}車站。 Please Save Stations
-                for {DictM.MtrLines.WRL.en_name}.
-              </p>
+              <div>
+                <p align="center">請先儲存{DictM.MtrLines.WRL.tc_name}車站。</p>
+                <p align="center">
+                  {" "}
+                  Please Save Station for {DictM.MtrLines.WRL.en_name}.
+                </p>
+              </div>
             )}
           </TabPanel>
           <TabPanel>
@@ -120,10 +156,13 @@ function SaveStations() {
                 <SaveMTR line="TKL" station={stn} lang={lang} />
               ))
             ) : (
-              <p align="center">
-                請先儲存{DictM.MtrLines.TKL.tc_name}車站。 Please Save Stations
-                for {DictM.MtrLines.TKL.en_name}.
-              </p>
+              <div>
+                <p align="center">請先儲存{DictM.MtrLines.TKL.tc_name}車站。</p>
+                <p align="center">
+                  {" "}
+                  Please Save Station for {DictM.MtrLines.TKL.en_name}.
+                </p>
+              </div>
             )}
           </TabPanel>
           <TabPanel>
@@ -132,10 +171,13 @@ function SaveStations() {
                 <SaveMTR line="TCL" station={stn} lang={lang} />
               ))
             ) : (
-              <p align="center">
-                請先儲存{DictM.MtrLines.TCL.tc_name}車站。 Please Save Stations
-                for {DictM.MtrLines.TCL.en_name}.
-              </p>
+              <div>
+                <p align="center">請先儲存{DictM.MtrLines.TCL.tc_name}車站。</p>
+                <p align="center">
+                  {" "}
+                  Please Save Station for {DictM.MtrLines.TCL.en_name}.
+                </p>
+              </div>
             )}
           </TabPanel>
           <TabPanel>
@@ -144,10 +186,28 @@ function SaveStations() {
                 <SaveMTR line="AEL" station={stn} lang={lang} />
               ))
             ) : (
-              <p align="center">
-                請先儲存{DictM.MtrLines.AEL.tc_name}車站。 Please Save Stations
-                for {DictM.MtrLines.AEL.en_name}.
-              </p>
+              <div>
+                <p align="center">請先儲存{DictM.MtrLines.AEL.tc_name}車站。</p>
+                <p align="center">
+                  {" "}
+                  Please Save Station for {DictM.MtrLines.AEL.en_name}.
+                </p>
+              </div>
+            )}
+          </TabPanel>
+          <TabPanel>
+            {lrtSaveStnArray?.length > 0 ? (
+              lrtSaveStnArray?.map((stn) => (
+                <LrtInfo sid={stn} lang={lang} loc="home" />
+              ))
+            ) : (
+              <div>
+                <p align="center">請先儲存{DictL.lrtCommon.tc.lrt}車站。</p>
+                <p align="center">
+                  {" "}
+                  Please Save Station for {DictL.lrtCommon.en.lrt}.
+                </p>
+              </div>
             )}
           </TabPanel>
         </Tabs>
