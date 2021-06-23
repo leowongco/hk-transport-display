@@ -114,6 +114,41 @@ const MtrLines = {
       "TUM",
     ],
   },
+  ISL: {
+    tc_name: "港島線",
+    en_name: "Island Line",
+    colorCode: "#0860a8",
+  },
+  TWL: {
+    tc_name: "荃灣綫",
+    en_name: "Tsuen Wan Line",
+    colorCode: "#ff0000",
+  },
+  KTL: {
+    tc_name: "觀塘綫",
+    en_name: "Kwun Tong Line",
+    colorCode: "#1a9431",
+  },
+  DRL: {
+    tc_name: "迪士尼線",
+    en_name: "Disneyland Resort Line",
+    colorCode: "#f550a6",
+  },
+  ERL: {
+    tc_name: "東鐵線",
+    en_name: "East Rail Line",
+    colorCode: "#5eb6e4",
+  },
+  SIL: {
+    tc_name: "南港島綫",
+    en_name: "South Island Line",
+    colorCode: "#b5bd00",
+  },
+  XRL: {
+    tc_name: "高速鐵路",
+    en_name: "High Speed Rail",
+    colorCode: "#9F968C",
+  },
 };
 
 const MtrStations = {
@@ -122,6 +157,7 @@ const MtrStations = {
     en_name: "Hong Kong",
     lag: "",
     lon: "",
+    interChange: ["TCL", "AEL", "TWL", "ISL"],
     active: "1",
   },
   KOW: {
@@ -129,6 +165,7 @@ const MtrStations = {
     en_name: "Kowloon",
     lag: "",
     lon: "",
+    interChange: ["TCL", "AEL", "XRL"],
     active: "1",
   },
   TSY: {
@@ -136,6 +173,7 @@ const MtrStations = {
     en_name: "Tsing Yi",
     lag: "",
     lon: "",
+    interChange: ["TCL", "AEL"],
     active: "1",
   },
   AIR: {
@@ -164,6 +202,7 @@ const MtrStations = {
     en_name: "Nam Cheong",
     lag: "",
     lon: "",
+    interChange: ["TCL", "WRL", "TML"],
     active: "1",
   },
   LAK: {
@@ -171,6 +210,7 @@ const MtrStations = {
     en_name: "Lai King",
     lag: "",
     lon: "",
+    interChange: ["TCL", "TWL"],
     active: "1",
   },
   SUN: {
@@ -178,6 +218,7 @@ const MtrStations = {
     en_name: "Sunny Bay",
     lag: "",
     lon: "",
+    interChange: ["TCL", "DRL"],
     active: "1",
   },
   TUC: {

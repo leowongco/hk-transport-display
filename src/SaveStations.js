@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import SaveMTR from "./component/MTRSaveInfo";
-import { Button } from "@material-ui/core";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Button,
+  Typography,
+} from "@material-ui/core";
 import "./css/SaveStations.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "react-tabs/style/react-tabs.css";
 
 import DictM from "./component/MTR_Dict.js";
@@ -13,6 +20,15 @@ import LrtInfo from "./component/LrtInfo.js";
 function SaveStations() {
   const [lang, setLang] = useState("tc");
   const [swapLang, setSwapLang] = useState(false);
+  const [expanded, setExpended] = useState("");
+
+  const handleChange = (panel) => (newExpanded) => {
+    if (panel != expanded) {
+      setExpended(newExpanded ? panel : false);
+    } else {
+      setExpended("");
+    }
+  };
 
   const storage = window.localStorage;
   const wrlSaveStnArray = JSON.parse(storage.getItem("WRL_SaveStn"));
@@ -115,9 +131,9 @@ function SaveStations() {
             >
               {DictM.MtrLines.AEL[lang + "_name"]}
             </Tab>
-            {/* <Tab style={{ backgroundColor: "#02077b", color: "white" }}>
+            <Tab style={{ backgroundColor: "#02077b", color: "white" }}>
               {DictL.lrtCommon[lang].lrt}
-              </Tab>*/}
+            </Tab>
           </TabList>
 
           <TabPanel>
@@ -198,7 +214,29 @@ function SaveStations() {
           <TabPanel>
             {lrtSaveStnArray?.length > 0 ? (
               lrtSaveStnArray?.map((stn) => (
-                <LrtInfo sid={stn} lang={lang} loc="home" />
+                <div className="lrtSaveStns">
+                  <Accordion
+                    square
+                    expanded={expanded === stn}
+                    onChange={handleChange(stn)}
+                  >
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls={stn}
+                      id={stn + "-header"}
+                      className="accordion-header"
+                    >
+                      <Typography>
+                        <b>{DictL.lrtStation[lang][stn]}</b>
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <div className="lrtSaveStn__container">
+                        <LrtInfo sid={stn} lang={lang} />
+                      </div>
+                    </AccordionDetails>
+                  </Accordion>
+                </div>
               ))
             ) : (
               <div>

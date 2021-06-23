@@ -1,0 +1,21 @@
+.mtrRouteMap {
+  justify-items: center;
+  align-items: center;
+}
+
+.routeTitle {
+  padding-top: 10px;
+  text-align: center;
+  font-weight: 450;
+  font-size: larger;
+}
+
+.routeInterChangeRows {
+  display: flex;
+  flex: 1;
+}
+
+.routeInterChangeRoute {
+  font-size: smaller;
+  white-space:pre-line;
+}

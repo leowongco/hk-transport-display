@@ -7,3 +7,8 @@
 .saveStnTabs {
   padding: 10px;
 }
+
+.lrtSaveStn__container {
+  justify-items: center;
+  align-items: center;
+}
