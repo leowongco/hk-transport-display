@@ -91,14 +91,14 @@ function SaveStations() {
       <div className="saveStnTabs">
         <Tabs>
           <TabList>
-            <Tab
+            {new Date().getTime() > 1624734000000 ? (<Tab
               style={{
                 backgroundColor: DictM.MtrLines.TML.colorCode,
                 color: "white",
               }}
             >
               {DictM.MtrLines.TML[lang + "_name"]}
-            </Tab>
+            </Tab>): ""}
             <Tab
               style={{
                 backgroundColor: DictM.MtrLines.WRL.colorCode,
