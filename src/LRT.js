@@ -180,19 +180,6 @@ function LRT() {
         </div>
         <div className="lrt__topBar2">
           <DisplayStation />
-          <FormControl className="saveStnSelect">
-            <InputLabel>{Dict.lrtCommon[lang].saveStation}</InputLabel>
-            <Select
-              value={station || ""}
-              onChange={handleStation}
-              label="Station"
-              fullWidth
-            >
-              {lrtStationArray?.map((sid) => (
-                <MenuItem value={sid}>{Dict?.lrtStation[lang][sid]}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
         </div>
         <div className="lrt__container">
           {station !== "" ? <LrtInfo sid={station} lang={lang} /> : ""}

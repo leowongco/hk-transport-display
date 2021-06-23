@@ -1,4 +1,4 @@
-@import url(//fonts.googleapis.com/css2?family=Noto+Sans+HK&family=Ubuntu);
+@import url(//fonts.googleapis.com/css2?family=Noto + Sans + HK&family=Ubuntu);
 
 .lrt {
   display: grid;
@@ -76,7 +76,7 @@
 }
 
 .stationSelect {
-  width: 50%;
+  width: 100%;
 }
 
 .zoneSelect {
@@ -84,9 +84,5 @@
 }
 
 .routeSelect {
-  width: 50%;
-}
-
-.saveStnSelect {
   width: 50%;
 }

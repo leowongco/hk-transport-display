@@ -138,9 +138,11 @@ function MTR() {
               label="Line"
               fullWidth
             >
-              {Object.entries(Dict.MtrLines).map(([line, lineData]) => (
-                <MenuItem value={line}>{lineData[lang + "_name"]}</MenuItem>
-              ))}
+              {Object.entries(Dict.MtrLines)
+                .slice(0, 5)
+                .map(([line, lineData]) => (
+                  <MenuItem value={line}>{lineData[lang + "_name"]}</MenuItem>
+                ))}
             </Select>
           </FormControl>
           <FormControl className="stationSelect">
