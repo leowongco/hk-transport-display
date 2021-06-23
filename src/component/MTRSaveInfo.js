@@ -6,6 +6,7 @@ import "../css/MTRInfo.css";
 import "../css/SaveStnInfo.css";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import Blink from "react-blink-text";
 
 function MTRSaveInfo({ line, station, lang }) {
   const [mtrEta, setMtrEta] = useState([]);
@@ -15,7 +16,6 @@ function MTRSaveInfo({ line, station, lang }) {
   const limitETA = 3;
 
   const storage = window.localStorage;
-  const saveStnArray = JSON.parse(storage.getItem(line + "_SaveStn"));
   if (storage.getItem(line + "_SaveStn") === null) {
     var newArray = [];
     storage.setItem(line + "_SaveStn", JSON.stringify(newArray));
@@ -123,17 +123,24 @@ function MTRSaveInfo({ line, station, lang }) {
                   <div className="saveStnBoxRow">
                     <div className="saveStnBoxTime">
                       <small>
-                        {train.ttnt < 1
-                          ? DictM.Common[lang].dep
-                          : train.ttnt + DictM.Common[lang].min}
-                        {" (" +
+                        {train.ttnt < 1 ? (
+                          <Blink
+                            fontSize="small"
+                            color="blue"
+                            text={DictM.Common[lang].dep}
+                          ></Blink>
+                        ) : (
+                          train.ttnt +
+                          DictM.Common[lang].min +
+                          " (" +
                           new Date(
                             Date.parse(train.time.replace(/-/g, "/"))
                           ).toLocaleTimeString("en-GB", {
                             hour: "2-digit",
                             minute: "2-digit",
                           }) +
-                          ")"}
+                          ")"
+                        )}
                       </small>
                     </div>
                   </div>
@@ -155,17 +162,24 @@ function MTRSaveInfo({ line, station, lang }) {
                   <div className="saveStnBoxRow">
                     <div className="saveStnBoxTime">
                       <small>
-                        {train.ttnt < 1
-                          ? DictM.Common[lang].dep
-                          : train.ttnt + DictM.Common[lang].min}
-                        {" (" +
+                        {train.ttnt < 1 ? (
+                          <Blink
+                            fontSize="small"
+                            color="blue"
+                            text={DictM.Common[lang].dep}
+                          ></Blink>
+                        ) : (
+                          train.ttnt +
+                          DictM.Common[lang].min +
+                          " (" +
                           new Date(
                             Date.parse(train.time.replace(/-/g, "/"))
                           ).toLocaleTimeString("en-GB", {
                             hour: "2-digit",
                             minute: "2-digit",
                           }) +
-                          ")"}
+                          ")"
+                        )}
                       </small>
                     </div>
                   </div>

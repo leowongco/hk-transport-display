@@ -115,15 +115,15 @@ function Header() {
             <MenuIcon />
           </IconButton>
           <Typography className="header__title">
-            香港鐵路資訊 HK Railway Info
+            <Link to="/">香港鐵路資訊 HK Railway Info</Link>
           </Typography>
 
-          <Chip
+          {/* <Chip
             size="small"
             color="secondary"
             label="Beta!"
             className="header__chip"
-          />
+          />*/}
         </Toolbar>
       </AppBar>
 

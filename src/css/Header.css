@@ -24,6 +24,11 @@ a {
   max-width: 80%;
 }
 
+.header__title > a {
+  color: white;
+  text-decoration: none;
+}
+
 .header__chip {
   margin-left: 5px;
 }
