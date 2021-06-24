@@ -5,7 +5,6 @@
   display: flex;
   white-space: nowrap;
   overflow: scroll;
-  position: relative;
 }
 .saveStnBox {
   padding-right: 3px;
@@ -16,14 +15,18 @@
 }
 
 .saveStnBox_To {
-  padding-right: 4px;
-  padding-bottom: 18px;
+  padding-right: 5px;
+  padding-bottom: 10px;
   font-weight: 500;
   text-overflow: ellipsis;
 }
 
+.trainArrowBox {
+  position: relative;
+  top: 8px;
+  right: 2px;
+}
+
 .saveStnBoxTime {
-  position: absolute;
   font-weight: 300;
-  bottom: 0;
 }

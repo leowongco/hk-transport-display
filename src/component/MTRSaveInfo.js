@@ -123,7 +123,9 @@ function MTRSaveInfo({ line, station, lang }) {
                           DictM.MtrStations[train.dest][lang + "_name"]}
                       </div>
                       <div className={"mtr__plat" + line}>{train.plat}</div>
-                      {arr.length - 1 === i ? "" : <ArrowForwardIcon />}
+                      <div className="trainArrowBox">
+                        {arr.length - 1 === i ? "" : <ArrowForwardIcon />}
+                      </div>
                     </div>
 
                     <div className="saveStnBoxRow">
