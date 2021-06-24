@@ -135,7 +135,7 @@ function SaveStations() {
               {DictL.lrtCommon[lang].lrt}
             </Tab>
           </TabList>
-
+          {new Date().getTime() > 1624734000000 ? (
           <TabPanel>
             {tmlSaveStnArray?.length > 0 ? (
               tmlSaveStnArray?.map((stn) => (
@@ -151,6 +151,7 @@ function SaveStations() {
               </div>
             )}
           </TabPanel>
+          ):""}
           <TabPanel>
             {wrlSaveStnArray?.length > 0 ? (
               wrlSaveStnArray?.map((stn) => (

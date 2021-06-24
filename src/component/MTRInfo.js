@@ -192,8 +192,11 @@ function MTRInfo({ line, station, lang }) {
                 </div>
               </div>
 
-              {mtrEta.UP?.map((train) => (
-                <div className="etaBox">
+              {mtrEta.UP?.map((train, i) => (
+                <div
+                  className="etaBox"
+                  style={{ backgroundColor: i % 2 === 0 ? "white" : "#aae2fd" }}
+                >
                   <div className="mtr__dest">
                     {train.dest === "AWE" && station !== "AIR"
                       ? Dict.MtrStations.AIR[lang + "_name"] +
@@ -231,8 +234,11 @@ function MTRInfo({ line, station, lang }) {
                 </div>
               </div>
 
-              {mtrEta.DOWN?.map((train) => (
-                <div className="etaBox">
+              {mtrEta.DOWN?.map((train, i) => (
+                <div
+                  className="etaBox"
+                  style={{ backgroundColor: i % 2 === 0 ? "white" : "#aae2fd" }}
+                >
                   <div className="mtr__dest">
                     {Dict.MtrStations[train.dest][lang + "_name"]}
                   </div>

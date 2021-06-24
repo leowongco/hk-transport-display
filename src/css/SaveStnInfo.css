@@ -5,9 +5,10 @@
   display: flex;
   white-space: nowrap;
   overflow: scroll;
+  position: relative;
 }
 .saveStnBox {
-  padding-right: 2px;
+  padding-right: 3px;
 }
 
 .saveStnBoxRow {
@@ -15,11 +16,14 @@
 }
 
 .saveStnBox_To {
-  padding-right: 8px;
+  padding-right: 4px;
+  padding-bottom: 18px;
   font-weight: 500;
   text-overflow: ellipsis;
 }
 
 .saveStnBoxTime {
+  position: absolute;
   font-weight: 300;
+  bottom: 0;
 }
