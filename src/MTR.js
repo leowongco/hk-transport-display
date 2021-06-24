@@ -104,7 +104,7 @@ function MTR() {
               size="small"
               startIcon={<RouteIcon />}
             >
-              路線圖
+              {Dict.Common[lang].routeMap}
             </Button>
           </Link>
           <div style={{ flex: "1 0 0" }} />

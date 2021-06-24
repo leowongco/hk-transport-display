@@ -137,8 +137,7 @@
 }
 
 .etaBox__mtrfooter {
-  text-align: center;
-  font-weight: lighter;
+  font-weight: 300;
   font-size: small;
   background: #005da0;
   color: white;

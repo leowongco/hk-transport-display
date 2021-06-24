@@ -93,8 +93,11 @@ function LRT() {
             onChange={handleStation}
             label="Station"
             fullWidth
-            disabled
-          />
+          >
+            {Object.entries(Dict.lrtStation[lang]).map(([id, name]) => (
+              <MenuItem value={id}>{name}</MenuItem>
+            ))}
+          </Select>
         </FormControl>
       );
     }

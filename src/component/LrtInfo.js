@@ -198,7 +198,18 @@ function LrtInfo({ sid, lang, loc }) {
           ))}
           {lrtETA?.system_time ? (
             <div className="etaBox__footer">
-              {Dict.lrtCommon[lang].lastUpdate + ": " + lrtETA?.system_time}
+              {Dict.lrtCommon[lang].lastUpdate +
+                ": " +
+                new Date(
+                  Date.parse(lrtETA?.system_time.replace(/-/g, "/"))
+                ).toLocaleString("en-GB", {
+                  year: "numeric",
+                  month: "numeric",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  second: "2-digit",
+                })}
             </div>
           ) : (
             ""

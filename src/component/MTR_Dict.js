@@ -7,8 +7,8 @@ const Common = {
     min: "min",
     etaAlert:
       "ETA information will be refresh every 10 seconds, reference data only.",
-    autoBtnOn: "Auto swap",
-    autoBtnOff: "Auto swap",
+    autoBtnOn: "Auto",
+    autoBtnOff: "Auto",
     line: "Line",
     stn: "Station",
     lastUpdate: "Last Update",
@@ -18,6 +18,7 @@ const Common = {
     defaultLine: "Urban Lines",
     saveF: "Save",
     saveT: "Saved",
+    routeMap: "Route",
     tmlInfo: "Tuen Ma Line will open on 27 June 2021.",
   },
   tc: {
@@ -27,8 +28,8 @@ const Common = {
     dep: "正在離開",
     min: "分鐘",
     etaAlert: "到站時間資訊每10秒自動更新，資料只供參考。",
-    autoBtnOn: "自動轉",
-    autoBtnOff: "自動轉",
+    autoBtnOn: "自動",
+    autoBtnOff: "自動",
     line: "路線",
     stn: "站",
     lastUpdate: "最後更新",
@@ -38,6 +39,7 @@ const Common = {
     defaultLine: "市區線",
     saveF: "儲存",
     saveT: "已儲存",
+    routeMap: "路線圖",
     tmlInfo: "屯馬線將於2021年6月27日通車",
   },
 };
