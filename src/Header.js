@@ -22,6 +22,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import HomeIcon from "@material-ui/icons/Home";
 import TramIcon from "@material-ui/icons/Tram";
 import SettingsIcon from "@material-ui/icons/Settings";
+import CachedIcon from "@material-ui/icons/Cached";
 import appInfo from "../package.json";
 
 const drawerWidth = 250;
@@ -200,6 +201,11 @@ function Header() {
             >
               DubDub Production
             </a>
+          </ListItem>
+          <ListItem>
+            <Button onClick={() => handleUpdateApp()}>
+              <CachedIcon />
+            </Button>
           </ListItem>
         </List>
       </Drawer>
