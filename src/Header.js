@@ -21,6 +21,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import HomeIcon from "@material-ui/icons/Home";
 import TramIcon from "@material-ui/icons/Tram";
+import SettingsIcon from "@material-ui/icons/Settings";
 import appInfo from "../package.json";
 
 const drawerWidth = 250;
@@ -174,6 +175,19 @@ function Header() {
             </Link>
           </ListItem>
         </List>
+        {/*
+        <Divider />
+        <List>
+          <ListItem>
+            <Link to={"/settings"} onClick={handleDrawerClose}>
+              <ListItemIcon>
+                <SettingsIcon />
+              </ListItemIcon>
+              設定 Settings
+            </Link>
+          </ListItem>
+        </List>
+        */}
         <Divider />
         <List>
           <ListItem>Version: {appInfo.version}</ListItem>

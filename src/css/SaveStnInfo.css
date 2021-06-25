@@ -30,6 +30,12 @@
   padding-top: 5px;
 }
 
+.header__time{
+  padding-right: 5px;
+  font-size: small;
+  color: white;
+}
+
 .saveStnBoxTime,
 .saveStnBoxTime > Blink {
   font-weight: 300 !important;

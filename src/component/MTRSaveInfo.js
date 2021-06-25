@@ -52,6 +52,8 @@ function MTRSaveInfo({ line, station, lang }) {
       .catch((error) => console.log(error));
   }, [line, station]);
 
+  console.log(mtrEta?.sys_time);
+
   if (mtrStatus === "0") {
     return (
       <div className="mtrSaveInfo">
@@ -112,8 +114,17 @@ function MTRSaveInfo({ line, station, lang }) {
                 <div className="station__name">
                   {DictM.MtrStations[station][lang + "_name"]}{" "}
                 </div>
-                <div className="header__line">
-                  {"(" + DictM.MtrLines[line][lang + "_name"] + ")"}
+                <div style={{ flex: "1 0 0" }} />
+                <div className="header__time">
+                  {mtrEta?.sys_time
+                    ? DictM.Common[lang].lastUpdate +
+                      ": " +
+                      new Date(mtrEta?.sys_time).toLocaleTimeString("en-GB", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        second: "2-digit",
+                      })
+                    : ""}
                 </div>
               </div>
               {isLoading === true ? (

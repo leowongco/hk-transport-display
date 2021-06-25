@@ -3,6 +3,7 @@ import LRT from "./LRT.js";
 import MTR from "./MTR.js";
 import Header from "./Header.js";
 import SaveStations from "./SaveStations";
+import Settings from "./Settings";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from "react";
 import { firebaseApp } from "./component/firebase.js";
@@ -30,6 +31,10 @@ function App() {
           <Route path="/mRoute/:line">
             <Header />
             <MTRMap />
+          </Route>
+          <Route path="/settings">
+            <Header />
+            <Settings />
           </Route>
           <Route path="/">
             <Header />

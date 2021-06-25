@@ -1,0 +1,35 @@
+.settings,
+.settingPart {
+  justify-content: center;
+  place-content: center;
+  padding: 10px;
+}
+
+.settingHeading{
+  font-size: x-large;
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+
+.settingRow {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  font-size: large;
+}
+
+.saveStnLine{
+  flex: 0.2;
+}
+
+.saveStnCount{
+  flex: 0.25;
+}
+
+.saveStnDetails{
+  flex: 0.4;
+}
+
+.saveStnActions{
+  flex: 0.15;
+}
