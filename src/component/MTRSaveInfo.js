@@ -52,8 +52,6 @@ function MTRSaveInfo({ line, station, lang }) {
       .catch((error) => console.log(error));
   }, [line, station]);
 
-  console.log(mtrEta?.sys_time);
-
   if (mtrStatus === "0") {
     return (
       <div className="mtrSaveInfo">
