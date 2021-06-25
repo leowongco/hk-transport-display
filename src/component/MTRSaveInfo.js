@@ -57,7 +57,6 @@ function MTRSaveInfo({ line, station, lang }) {
       <div className="mtrSaveInfo">
         <Link to={"/mtr/" + line + "/" + station}>
           <Card className="infoBox">
-            {isLoading === true ? <LinearProgress color="primary" /> : ""}
             <CardContent>
               <div className={"mtrstation__header" + line}>
                 <div className="station__name">
@@ -67,6 +66,11 @@ function MTRSaveInfo({ line, station, lang }) {
                   {"(" + DictM.MtrLines[line][lang + "_name"] + ")"}
                 </div>
               </div>
+              {isLoading === true ? (
+                <LinearProgress color="primary" className="loadingBar" />
+              ) : (
+                ""
+              )}
               <p align="center">未有到站時間 No ETA Information</p>
             </CardContent>
           </Card>
@@ -78,7 +82,6 @@ function MTRSaveInfo({ line, station, lang }) {
       <div className="mtrSaveInfo">
         <Link to={"/mtr/" + line + "/" + station}>
           <Card className="infoBox">
-            {isLoading === true ? <LinearProgress color="primary" /> : ""}
             <CardContent>
               <div className={"mtrstation__header" + line}>
                 <div className="station__name">
@@ -88,6 +91,11 @@ function MTRSaveInfo({ line, station, lang }) {
                   {"(" + DictM.MtrLines[line][lang + "_name"] + ")"}
                 </div>
               </div>
+              {isLoading === true ? (
+                <LinearProgress color="primary" className="loadingBar" />
+              ) : (
+                ""
+              )}
               <p align="center">未有到站時間 No ETA Information</p>
             </CardContent>
           </Card>
@@ -99,7 +107,6 @@ function MTRSaveInfo({ line, station, lang }) {
       <div className="mtrSaveInfo">
         <Link to={"/mtr/" + line + "/" + station}>
           <Card className="infoBox">
-            {isLoading === true ? <LinearProgress color="primary" /> : ""}
             <CardContent>
               <div className={"mtrstation__header" + line}>
                 <div className="station__name">
@@ -109,6 +116,11 @@ function MTRSaveInfo({ line, station, lang }) {
                   {"(" + DictM.MtrLines[line][lang + "_name"] + ")"}
                 </div>
               </div>
+              {isLoading === true ? (
+                <LinearProgress color="primary" className="loadingBar" />
+              ) : (
+                ""
+              )}
               {mtrEta.UP?.length === 0 && mtrEta.DOWN?.length === 0 ? (
                 <p align="center">未有到站時間 No ETA Information</p>
               ) : (
@@ -165,7 +177,9 @@ function MTRSaveInfo({ line, station, lang }) {
                           DictM.MtrStations[train.dest][lang + "_name"]}
                       </div>
                       <div className={"mtr__plat" + line}>{train.plat}</div>
-                      {arr.length - 1 === i ? "" : <ArrowForwardIcon />}
+                      <div className="trainArrowBox">
+                        {arr.length - 1 === i ? "" : <ArrowForwardIcon />}
+                      </div>
                     </div>
                     <div className="saveStnBoxRow">
                       <div className="saveStnBoxTime">

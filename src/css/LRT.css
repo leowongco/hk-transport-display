@@ -3,7 +3,6 @@
   place-items: center;
   height: 100%;
   max-width: 100%;
-  font-family: "Noto SansHK", "Ubuntu", serif;
 }
 
 .lrt__header {
@@ -28,7 +27,7 @@
 }
 
 .lrt__title {
-  font-weight: 550;
+  font-weight: 500;
   font-size: x-large;
   text-align: center;
   color: white;

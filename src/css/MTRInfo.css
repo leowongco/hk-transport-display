@@ -1,7 +1,6 @@
 .infobox {
   width: 360px;
   height: 100%;
-  font-family: "Noto SansHK", "Ubuntu", serif;
 }
 
 .etaBox {
@@ -87,6 +86,7 @@
   background-color: #1c7670;
   color: white;
   text-align: center;
+  font-weight: 300 !important;
   border-radius: 50%;
 }
 
@@ -97,6 +97,7 @@
   background-color: #fe7f1d;
   color: white;
   text-align: center;
+  font-weight: 300 !important;
   border-radius: 50%;
 }
 
@@ -107,6 +108,7 @@
   background-color: #a40084;
   color: white;
   text-align: center;
+  font-weight: 300 !important;
   border-radius: 50%;
 }
 
@@ -117,6 +119,7 @@
   background-color: #6b208b;
   color: white;
   text-align: center;
+  font-weight: 300 !important;
   border-radius: 50%;
 }
 
@@ -127,6 +130,7 @@
   background-color: #9a3b26;
   color: white;
   text-align: center;
+  font-weight: 300 !important;
   border-radius: 50%;
 }
 
