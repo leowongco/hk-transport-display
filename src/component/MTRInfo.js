@@ -37,7 +37,6 @@ function MTRInfo({ line, station, lang }) {
 
   useEffect(() => {
     const inteval = setInterval(() => {
-      //setIsLoading(true);
       let mtrAPI = `https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=${line}&sta=${station}`;
       axios
         .get(mtrAPI)
@@ -45,7 +44,7 @@ function MTRInfo({ line, station, lang }) {
           setMtrEta(res.data.data[line + "-" + station]);
           setMtrIsDelay(res.data.isdelay);
           setMtrStatus(res.data.status);
-          //setIsLoading(false);
+          setIsLoading(false);
         })
         .catch((error) => console.log(error));
     }, 10000);

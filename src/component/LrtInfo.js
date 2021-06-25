@@ -30,14 +30,13 @@ function LrtInfo({ sid, lang, loc }) {
   }
 
   useEffect(() => {
-    //setIsLoading(true);
     const inteval = setInterval(() => {
       let lrtAPI = `https://rt.data.gov.hk/v1/transport/mtr/lrt/getSchedule?station_id=${sid}`;
       axios
         .get(lrtAPI)
         .then((res) => {
           setLRTEta(res.data);
-          // setIsLoading(false);
+          setIsLoading(false);
         })
         .catch((error) => console.log(error));
     }, 10000);

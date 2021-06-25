@@ -31,6 +31,7 @@ function MTRSaveInfo({ line, station, lang }) {
           setMtrEta(res.data.data[line + "-" + station]);
           setMtrIsDelay(res.data.isdelay);
           setMtrStatus(res.data.status);
+          setIsLoading(false);
         })
         .catch((error) => console.log(error));
     }, 10000);
@@ -116,7 +117,7 @@ function MTRSaveInfo({ line, station, lang }) {
                 <div className="header__time">
                   {mtrEta?.sys_time
                     ? DictM.Common[lang].lastUpdate +
-                      ": " +
+                      ":" +
                       new Date(
                         Date.parse(mtrEta?.sys_time.replace(/-/g, "/"))
                       ).toLocaleTimeString("en-GB", {
@@ -178,7 +179,9 @@ function MTRSaveInfo({ line, station, lang }) {
                   </div>
                 ))}
               </div>
+
               {mtrEta.UP?.length > 0 ? <Divider /> : ""}
+
               <div className="saveStnETA">
                 {mtrEta.DOWN?.slice(0, limitETA).map((train, i, arr) => (
                   <div className="saveStnBox">
@@ -219,6 +222,7 @@ function MTRSaveInfo({ line, station, lang }) {
                   </div>
                 ))}
               </div>
+
               {mtrEta.DOWN?.length > 0 ? <Divider /> : ""}
             </CardContent>
           </Card>
