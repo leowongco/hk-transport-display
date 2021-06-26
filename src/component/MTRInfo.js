@@ -3,7 +3,6 @@ import axios from "axios";
 import { Card, CardContent, Button } from "@material-ui/core";
 import Dict from "./MTR_Dict.js";
 import "../css/MTRInfo.css";
-import Alert from "@material-ui/lab/Alert";
 import Save from "@material-ui/icons/StarBorder";
 import Saved from "@material-ui/icons/Star";
 import LinearProgress from "@material-ui/core/LinearProgress";
