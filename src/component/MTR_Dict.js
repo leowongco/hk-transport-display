@@ -19,7 +19,6 @@ const Common = {
     saveF: "Save",
     saveT: "Saved",
     routeMap: "Route",
-    tmlInfo: "Tuen Ma Line will open on 27 June 2021.",
   },
   tc: {
     UP: "上行",
@@ -40,7 +39,6 @@ const Common = {
     saveF: "儲存",
     saveT: "已儲存",
     routeMap: "路線圖",
-    tmlInfo: "屯馬線將於2021年6月27日通車",
   },
 };
 
@@ -57,25 +55,7 @@ const MtrLines = {
     colorCode: "#fe7f1d",
     stations: ["HOK", "KOW", "OLY", "NAC", "LAK", "TSY", "SUN", "TUC"],
   },
-  WRL: {
-    tc_name: "西鐵線",
-    en_name: "West Rail Line",
-    colorCode: "#a40084",
-    stations: [
-      "HUH",
-      "ETS",
-      "AUS",
-      "NAC",
-      "MEF",
-      "TWW",
-      "KSR",
-      "YUL",
-      "LOP",
-      "TIS",
-      "SIH",
-      "TUM",
-    ],
-  },
+
   TKL: {
     tc_name: "將軍澳線",
     en_name: "Tseung Kwan O Line",
@@ -204,7 +184,7 @@ const MtrStations = {
     en_name: "Nam Cheong",
     lag: "",
     lon: "",
-    interChange: ["TCL", "WRL", "TML"],
+    interChange: ["TCL", "TML"],
     active: "1",
   },
   LAK: {

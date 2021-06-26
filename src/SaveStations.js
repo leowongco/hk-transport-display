@@ -31,7 +31,6 @@ function SaveStations() {
   };
 
   const storage = window.localStorage;
-  const wrlSaveStnArray = JSON.parse(storage.getItem("WRL_SaveStn"));
   const tklSaveStnArray = JSON.parse(storage.getItem("TKL_SaveStn"));
   const tclSaveStnArray = JSON.parse(storage.getItem("TCL_SaveStn"));
   const aelSaveStnArray = JSON.parse(storage.getItem("AEL_SaveStn"));
@@ -39,9 +38,7 @@ function SaveStations() {
   const lrtSaveStnArray = JSON.parse(storage.getItem("LrtSaveStn"));
   var newArray = [];
 
-  if (storage.getItem("WRL_SaveStn") === null) {
-    storage.setItem("WRL_SaveStn", JSON.stringify(newArray));
-  } else if (storage.getItem("TKL_SaveStn") === null) {
+  if (storage.getItem("TKL_SaveStn") === null) {
     storage.setItem("TKL_SaveStn", JSON.stringify(newArray));
   } else if (storage.getItem("TCL_SaveStn") === null) {
     storage.setItem("TCL_SaveStn", JSON.stringify(newArray));
@@ -101,14 +98,6 @@ function SaveStations() {
             </Tab>
             <Tab
               style={{
-                backgroundColor: DictM.MtrLines.WRL.colorCode,
-                color: "white",
-              }}
-            >
-              {DictM.MtrLines.WRL[lang + "_name"]}
-            </Tab>
-            <Tab
-              style={{
                 backgroundColor: DictM.MtrLines.TKL.colorCode,
                 color: "white",
               }}
@@ -146,21 +135,6 @@ function SaveStations() {
                 <p align="center">
                   {" "}
                   Please Save Station for {DictM.MtrLines.TML.en_name}.
-                </p>
-              </div>
-            )}
-          </TabPanel>
-          <TabPanel>
-            {wrlSaveStnArray?.length > 0 ? (
-              wrlSaveStnArray?.map((stn) => (
-                <SaveMTR line="WRL" station={stn} lang={lang} />
-              ))
-            ) : (
-              <div>
-                <p align="center">請先儲存{DictM.MtrLines.WRL.tc_name}車站。</p>
-                <p align="center">
-                  {" "}
-                  Please Save Station for {DictM.MtrLines.WRL.en_name}.
                 </p>
               </div>
             )}

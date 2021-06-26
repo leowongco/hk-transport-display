@@ -132,11 +132,6 @@ function MTRInfo({ line, station, lang }) {
             </div>
           )}
           <CardContent>
-            {line === "TML" ? (
-              <Alert severity="warning">{Dict.Common[lang].tmlInfo}</Alert>
-            ) : (
-              ""
-            )}
             <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
             <p align="center">Cannnot Retrieve ETA information</p>
             <p align="center">Please try again later.</p>

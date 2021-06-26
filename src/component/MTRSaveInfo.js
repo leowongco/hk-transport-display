@@ -63,9 +63,6 @@ function MTRSaveInfo({ line, station, lang }) {
                 <div className="station__name">
                   {DictM.MtrStations[station][lang + "_name"]}{" "}
                 </div>
-                <div className="header__line">
-                  {"(" + DictM.MtrLines[line][lang + "_name"] + ")"}
-                </div>
               </div>
               {isLoading === true ? (
                 <LinearProgress color="primary" className="loadingBar" />
@@ -87,9 +84,6 @@ function MTRSaveInfo({ line, station, lang }) {
               <div className={"mtrstation__header" + line}>
                 <div className="station__name">
                   {DictM.MtrStations[station][lang + "_name"]}{" "}
-                </div>
-                <div className="header__line">
-                  {"(" + DictM.MtrLines[line][lang + "_name"] + ")"}
                 </div>
               </div>
               {isLoading === true ? (

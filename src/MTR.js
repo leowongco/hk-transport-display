@@ -12,7 +12,6 @@ import {
 import "./css/MTR.css";
 import AEL_Logo from "./img/AEL_Logo.png";
 import URL_Logo from "./img/URL_Logo.png";
-import WRL_Logo from "./img/WRL_Logo.png";
 import TML_Logo from "./img/TML_Logo.png";
 import GTranslateOutlinedIcon from "@material-ui/icons/GTranslateOutlined";
 import RouteIcon from "@material-ui/icons/LinearScale";
@@ -48,8 +47,6 @@ function MTR() {
   function setLogo(mtrLine) {
     if (mtrLine === "AEL") {
       return <img src={AEL_Logo} alt="Airport Express Logo" />;
-    } else if (mtrLine === "WRL") {
-      return <img src={WRL_Logo} alt="West Rail Line Logo" />;
     } else if (mtrLine === "TML") {
       return <img src={TML_Logo} alt="Tuen Ma Line Logo" />;
     } else {
@@ -139,7 +136,7 @@ function MTR() {
               fullWidth
             >
               {Object.entries(Dict.MtrLines)
-                .slice(0, 5)
+                .slice(0, 4)
                 .map(([line, lineData]) => (
                   <MenuItem value={line}>{lineData[lang + "_name"]}</MenuItem>
                 ))}
