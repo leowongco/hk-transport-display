@@ -91,18 +91,14 @@ function SaveStations() {
       <div className="saveStnTabs">
         <Tabs>
           <TabList>
-            {new Date().getTime() > 1624734000000 ? (
-              <Tab
-                style={{
-                  backgroundColor: DictM.MtrLines.TML.colorCode,
-                  color: "white",
-                }}
-              >
-                {DictM.MtrLines.TML[lang + "_name"]}
-              </Tab>
-            ) : (
-              ""
-            )}
+            <Tab
+              style={{
+                backgroundColor: DictM.MtrLines.TML.colorCode,
+                color: "white",
+              }}
+            >
+              {DictM.MtrLines.TML[lang + "_name"]}
+            </Tab>
             <Tab
               style={{
                 backgroundColor: DictM.MtrLines.WRL.colorCode,
@@ -139,27 +135,21 @@ function SaveStations() {
               {DictL.lrtCommon[lang].lrt}
             </Tab>
           </TabList>
-          {new Date().getTime() > 1624734000000 ? (
-            <TabPanel>
-              {tmlSaveStnArray?.length > 0 ? (
-                tmlSaveStnArray?.map((stn) => (
-                  <SaveMTR line="TML" station={stn} lang={lang} />
-                ))
-              ) : (
-                <div>
-                  <p align="center">
-                    請先儲存{DictM.MtrLines.TML.tc_name}車站。
-                  </p>
-                  <p align="center">
-                    {" "}
-                    Please Save Station for {DictM.MtrLines.TML.en_name}.
-                  </p>
-                </div>
-              )}
-            </TabPanel>
-          ) : (
-            ""
-          )}
+          <TabPanel>
+            {tmlSaveStnArray?.length > 0 ? (
+              tmlSaveStnArray?.map((stn) => (
+                <SaveMTR line="TML" station={stn} lang={lang} />
+              ))
+            ) : (
+              <div>
+                <p align="center">請先儲存{DictM.MtrLines.TML.tc_name}車站。</p>
+                <p align="center">
+                  {" "}
+                  Please Save Station for {DictM.MtrLines.TML.en_name}.
+                </p>
+              </div>
+            )}
+          </TabPanel>
           <TabPanel>
             {wrlSaveStnArray?.length > 0 ? (
               wrlSaveStnArray?.map((stn) => (
