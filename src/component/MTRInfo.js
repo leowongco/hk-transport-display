@@ -177,11 +177,7 @@ function MTRInfo({ line, station, lang }) {
                 </div>
                 <div className="header__line">
                   {" "}
-                  {" (" +
-                    Dict.MtrLines[line][lang + "_name"] +
-                    " - " +
-                    Dict.Common[lang].UP +
-                    ")"}
+                  {" (" + Dict.Common[lang].UP + ")"}
                 </div>
               </div>
 
@@ -219,11 +215,7 @@ function MTRInfo({ line, station, lang }) {
                 </div>
                 <div className="header__line">
                   {" "}
-                  {" (" +
-                    Dict.MtrLines[line][lang + "_name"] +
-                    " - " +
-                    Dict.Common[lang].DOWN +
-                    ")"}
+                  {" (" + Dict.Common[lang].DOWN + ")"}
                 </div>
               </div>
 

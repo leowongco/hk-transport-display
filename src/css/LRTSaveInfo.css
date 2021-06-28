@@ -54,7 +54,7 @@
 }
 
 .lrtStn_RouteDest {
-  font-weight: 500;
+  font-weight: 800 !important;
   font-size: small;
   text-align: start;
 }
