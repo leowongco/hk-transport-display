@@ -201,6 +201,12 @@ function SaveStations() {
                     >
                       <Typography>
                         <b>{DictL.lrtStations[stn][lang + "_name"]}</b>
+
+                        {" (" +
+                          DictL.lrtZoneNames[DictL.lrtStations[stn].zone][
+                            lang + "_name"
+                          ] +
+                          ")"}
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
