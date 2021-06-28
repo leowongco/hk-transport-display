@@ -1,12 +1,11 @@
-@import url(//fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;500&family=Ubuntu);
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;500&family=Ubuntu);
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif, "Noto SansHK", "Ubuntu", serif;
+  font-family: "Noto SansHK", "Ubuntu", sans-serif, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
