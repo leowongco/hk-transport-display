@@ -15,7 +15,7 @@ import "react-tabs/style/react-tabs.css";
 import DictM from "./component/MTR_Dict.js";
 import DictL from "./component/LRT_Dict.js";
 
-import LrtInfo from "./component/LrtInfo.js";
+import LrtInfo from "./component/LRTSaveInfo";
 
 function SaveStations() {
   const [lang, setLang] = useState("tc");
@@ -200,7 +200,7 @@ function SaveStations() {
                       className="accordion-header"
                     >
                       <Typography>
-                        <b>{DictL.lrtStation[lang][stn]}</b>
+                        <b>{DictL.lrtStations[stn][lang + "_name"]}</b>
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>

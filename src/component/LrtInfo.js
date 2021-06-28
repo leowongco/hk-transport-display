@@ -8,7 +8,7 @@ import Save from "@material-ui/icons/StarBorder";
 import Saved from "@material-ui/icons/Star";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
-function LrtInfo({ sid, lang, loc }) {
+function LrtInfo({ sid, lang }) {
   const [lrtETA, setLRTEta] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [lrtStnSaved, setLrtStnSaved] = useState(false);
@@ -20,8 +20,6 @@ function LrtInfo({ sid, lang, loc }) {
     var newArray = [];
     storage.setItem("LrtSaveStn", JSON.stringify(newArray));
   }
-
-  //storage.clear();
 
   if (lang === "tc") {
     fLang = "ch";
@@ -144,9 +142,12 @@ function LrtInfo({ sid, lang, loc }) {
             <CardContent>
               <div className="station__header">
                 <div className="station__platform">{plat.platform_id}</div>
-                <div className="station__name"> {Dict.lrtStation.tc[sid]}</div>
                 <div className="station__name">
-                  <small>{Dict.lrtStation.en[sid]}</small>
+                  {" "}
+                  {Dict.lrtStations[sid].tc_name}
+                </div>
+                <div className="station__name">
+                  <small>{Dict.lrtStations[sid].en_name}</small>
                 </div>
               </div>
               {plat.end_service_status === 1 ? (

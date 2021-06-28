@@ -1,0 +1,73 @@
+.loadingBar {
+  padding-top: 5px;
+}
+
+.lrt_infoBox {
+  width: 85vw;
+}
+
+.lrtStn_header {
+  display: flex;
+  flex: 1;
+  background: darkblue;
+  color: white;
+  font-weight: 500;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.lrtStn_hTime {
+  padding-right: 5px;
+  font-weight: 400 !important;
+  font-size: small;
+  color: white;
+}
+
+.lrtStn_RouteContainer {
+  display: flex;
+  flex: 1;
+}
+
+.lrtStn_Rows {
+  padding-bottom: 10px;
+}
+
+.lrtStn_RouteRow {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.lrtStn_RouteNumber {
+  font-size: small;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  margin-right: 4px;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.lrtStn_RouteDest {
+  font-weight: 500;
+  font-size: small;
+  text-align: start;
+}
+
+.lrtStn_RouteCabs {
+  padding-right: 5px;
+  width: 60px;
+}
+
+.lrtStn_RouteCabs > div {
+  font-size: x-small;
+}
+
+.lrtStn_RouteCabs > img {
+  width: 18px;
+  height: 12px;
+}

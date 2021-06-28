@@ -63,7 +63,9 @@ function LRT() {
             fullWidth
           >
             {Dict.lrtZoneStation[lrtZone]?.map((sid) => (
-              <MenuItem value={sid}>{Dict?.lrtStation[lang][sid]}</MenuItem>
+              <MenuItem value={sid}>
+                {Dict?.lrtStations[sid][lang + "_name"]}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>
@@ -78,8 +80,10 @@ function LRT() {
             label="Station"
             fullWidth
           >
-            {Dict.lrtRoutes[lrtRoute]?.map((sid) => (
-              <MenuItem value={sid}>{Dict?.lrtStation[lang][sid]}</MenuItem>
+            {Dict.lrtRoutes[lrtRoute].stations?.map((sid) => (
+              <MenuItem value={sid}>
+                {Dict?.lrtStations[sid][lang + "_name"]}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>
@@ -94,8 +98,8 @@ function LRT() {
             label="Station"
             fullWidth
           >
-            {Object.entries(Dict.lrtStation[lang]).map(([id, name]) => (
-              <MenuItem value={id}>{name}</MenuItem>
+            {Object.entries(Dict.lrtStations).map(([id, name]) => (
+              <MenuItem value={id}>{name[lang + "_name"]}</MenuItem>
             ))}
           </Select>
         </FormControl>
@@ -162,8 +166,8 @@ function LRT() {
               label="Zone"
               fullWidth
             >
-              {Object.entries(Dict.lrtZoneName[lang]).map(([id, name]) => (
-                <MenuItem value={id}>{name}</MenuItem>
+              {Object.entries(Dict.lrtZoneNames).map(([id, name]) => (
+                <MenuItem value={id}>{name[lang + "_name"]}</MenuItem>
               ))}
             </Select>
           </FormControl>
@@ -175,7 +179,7 @@ function LRT() {
               label="Route"
               fullWidth
             >
-              {Object.entries(Dict.lrtRoutes).map(([id, name]) => (
+              {Object.entries(Dict.lrtRoutes).map(([id]) => (
                 <MenuItem value={id}>{id}</MenuItem>
               ))}
             </Select>
