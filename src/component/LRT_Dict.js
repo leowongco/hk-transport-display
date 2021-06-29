@@ -11,7 +11,8 @@ const lrtCommon = {
     title: "Light Rail ETA",
     lastUpdate: "Last Update",
     to: "To ",
-    dep: "Dep. Here",
+    depHere: "Dep. Here",
+    dep: "Maybe Departed",
     end_service: "End of today's service",
     zone: "Fare Zone",
     route: "Route",
@@ -30,7 +31,8 @@ const lrtCommon = {
     title: "輕鐵 到站時間",
     lastUpdate: "最後更新",
     to: "往",
-    dep: "此站開出",
+    depHere: "此站開出",
+    dep: "可能已經開出",
     end_service: "本日服務完結",
     zone: "收費區",
     route: "路線",
@@ -591,7 +593,7 @@ const lrtRoutes = {
   505: {
     route_name: "",
     route_rmk: "",
-    color_code: "#db1f26",
+    colorCode: "#db1f26",
     stations: [
       100, 120, 130, 140, 150, 160, 170, 200, 60, 295, 280, 270, 265, 920,
     ],
@@ -599,7 +601,7 @@ const lrtRoutes = {
   507: {
     route_name: "",
     route_rmk: "",
-    color_code: "#00a650",
+    colorCode: "#00a650",
     stations: [
       140, 150, 160, 212, 220, 230, 75, 70, 295, 280, 270, 265, 260, 250, 1,
     ],
@@ -607,7 +609,7 @@ const lrtRoutes = {
   610: {
     route_name: "",
     route_rmk: "",
-    color_code: "#431115",
+    colorCode: "#431115",
     stations: [
       1, 10, 15, 20, 30, 40, 50, 200, 170, 212, 220, 230, 80, 90, 100, 350, 260,
       270, 380, 390, 400, 560, 570, 580, 590, 600,
@@ -616,7 +618,7 @@ const lrtRoutes = {
   614: {
     route_name: "",
     route_rmk: "",
-    color_code: "#4dc6f4",
+    colorCode: "#4dc6f4",
     stations: [
       1, 240, 250, 260, 265, 270, 280, 300, 310, 320, 330, 340, 100, 350, 360,
       370, 380, 390, 400, 560, 570, 580, 590, 600,
@@ -625,13 +627,13 @@ const lrtRoutes = {
   "614P": {
     route_name: "",
     route_rmk: "",
-    color_code: "#f46989",
+    colorCode: "#f46989",
     stations: [1, 240, 250, 260, 265, 270, 280, 300, 310, 320, 330, 340, 100],
   },
   615: {
     route_name: "",
     route_rmk: "",
-    color_code: "#fddd04",
+    colorCode: "#fddd04",
     stations: [
       1, 10, 15, 20, 30, 40, 50, 200, 170, 160, 150, 140, 130, 120, 110, 100,
       350, 360, 370, 380, 390, 400, 560, 570, 580, 590, 600,
@@ -640,7 +642,7 @@ const lrtRoutes = {
   "615P": {
     route_name: "",
     route_rmk: "",
-    color_code: "#215483",
+    colorCode: "#215483",
     stations: [
       1, 10, 15, 20, 30, 40, 50, 200, 170, 160, 150, 140, 130, 120, 110, 100,
     ],
@@ -648,7 +650,8 @@ const lrtRoutes = {
   705: {
     route_name: "天水圍循環線 TSW Circular",
     route_rmk: "",
-    color_code: "#64c542",
+    route_type: "loop",
+    colorCode: "#64c542",
     stations: [
       430, 435, 450, 455, 500, 510, 520, 530, 540, 550, 480, 468, 460, 448, 445,
     ],
@@ -656,7 +659,8 @@ const lrtRoutes = {
   706: {
     route_name: "天水圍循環線 TSW Circular",
     route_rmk: "",
-    color_code: "#b365b9",
+    route_type: "loop",
+    colorCode: "#b365b9",
     stations: [
       430, 445, 448, 460, 468, 480, 550, 540, 530, 520, 510, 500, 455, 450, 435,
     ],
@@ -664,7 +668,7 @@ const lrtRoutes = {
   751: {
     route_name: "",
     route_rmk: "",
-    color_code: "#f47216",
+    colorCode: "#f47216",
     stations: [
       550, 480, 468, 490, 500, 455, 450, 435, 430, 425, 380, 370, 360, 350, 100,
       90, 75, 295, 270, 275,
@@ -673,13 +677,13 @@ const lrtRoutes = {
   "751P": {
     route_name: "",
     route_rmk: "",
-    color_code: "#000000",
+    colorCode: "#000000",
     stations: [400, 435, 450, 455, 500, 490, 468, 480, 550],
   },
   "761P": {
     route_name: "",
     route_rmk: "",
-    color_code: "#672290",
+    colorCode: "#672290",
     stations: [
       550, 480, 468, 460, 448, 445, 425, 390, 400, 560, 570, 580, 590, 600,
     ],

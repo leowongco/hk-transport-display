@@ -120,7 +120,7 @@ function LRTSaveInfo({ sid, lang }) {
                             className="lrtStn_RouteNumber"
                             style={{
                               background:
-                                DictL.lrtRoutes[train.route_no].color_code,
+                                DictL.lrtRoutes[train.route_no].colorCode,
                             }}
                           >
                             {train.route_no}
@@ -140,13 +140,17 @@ function LRTSaveInfo({ sid, lang }) {
                                 <img src={LRTTrain} alt="Light Rail Cab" />
                               ))}
                             {train.arrival_departure === "D" ? (
-                              <div>{DictL.lrtCommon[lang].dep}</div>
+                              <div>{DictL.lrtCommon[lang].depHere}</div>
                             ) : (
                               ""
                             )}
                           </div>
                           <div className="lrtStn_Time">
-                            <small>{train["time_" + fLang]}</small>
+                            <small>
+                              {train.time_en === "-"
+                                ? DictL.lrtCommon[lang].dep
+                                : train["time_" + fLang]}
+                            </small>
                           </div>
                         </div>
                       </div>

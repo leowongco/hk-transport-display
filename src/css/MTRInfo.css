@@ -60,7 +60,7 @@
 .station__name {
   margin-left: 15px;
   margin-right: 5px;
-  font-weight: 800 !important;
+  font-weight: 500 !important;
   text-align: center;
   white-space: nowrap;
   overflow: -moz-hidden-unscrollable;
@@ -139,7 +139,7 @@
 }
 
 .mtr__time {
-  font-weight: 800 !important;
+  font-weight: 500 !important;
   width: 75px;
   text-align: right;
 }
