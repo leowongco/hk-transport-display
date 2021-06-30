@@ -92,7 +92,7 @@ function LRTSaveInfo({ sid, lang }) {
                     <div style={{ flex: "1 0 0" }} />
                     <div className="lrtStn_hTime">
                       {DictL.lrtCommon[lang].lastUpdate +
-                        ":" +
+                        ": " +
                         new Date(
                           Date.parse(lrtETA?.system_time.replace(/-/g, "/"))
                         ).toLocaleString("en-GB", {

@@ -180,7 +180,11 @@ function LrtInfo({ sid, lang }) {
                     </div>
                     <div style={{ flex: "1 0 0" }} />
                     <div className="etaBox__row">
-                      <small>{train["time_" + fLang]}</small>
+                      <small>
+                        {train.time_en === "-"
+                          ? Dict.lrtCommon[lang].dep
+                          : train["time_" + fLang]}
+                      </small>
                     </div>
                     <div className="lrtTrain__length">
                       {Array(train.train_length)

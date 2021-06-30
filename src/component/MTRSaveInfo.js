@@ -111,7 +111,7 @@ function MTRSaveInfo({ line, station, lang }) {
                 <div className="header__time">
                   {mtrEta?.sys_time
                     ? DictM.Common[lang].lastUpdate +
-                      ":" +
+                      ": " +
                       new Date(
                         Date.parse(mtrEta?.sys_time.replace(/-/g, "/"))
                       ).toLocaleTimeString("en-GB", {

@@ -21,6 +21,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import HomeIcon from "@material-ui/icons/Home";
 import TramIcon from "@material-ui/icons/Tram";
+import DeveloperModeIcon from "@material-ui/icons/DeveloperMode";
 import SettingsIcon from "@material-ui/icons/Settings";
 import CachedIcon from "@material-ui/icons/Cached";
 import appInfo from "../package.json";
@@ -100,6 +101,8 @@ function Header() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const demoButton = () => {};
 
   return (
     <div className="header">
@@ -205,6 +208,9 @@ function Header() {
           <ListItem>
             <Button onClick={() => handleUpdateApp()}>
               <CachedIcon />
+            </Button>
+            <Button onClick={() => demoButton()} disabled>
+              <DeveloperModeIcon />
             </Button>
           </ListItem>
         </List>
