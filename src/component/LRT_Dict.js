@@ -404,9 +404,9 @@ const lrtStations = {
     active: "1",
   },
   425: {
-    tc_name: "",
+    tc_name: "坑尾村",
     en_name: "Hang Mei Tsuen",
-    lag: "坑尾村",
+    lag: "",
     lon: "",
     zone: "4",
     active: "1",
