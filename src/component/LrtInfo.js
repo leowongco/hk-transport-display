@@ -82,7 +82,7 @@ function LrtInfo({ sid, lang }) {
     );
   }
 
-  function HandleTrainCab(trainLength, arrdep) {
+  function handleTrainCab(trainLength, arrdep) {
     if (arrdep === "D") {
       return (
         <TextLoop>
@@ -101,17 +101,21 @@ function LrtInfo({ sid, lang }) {
         </TextLoop>
       );
     } else {
-      return Array(trainLength)
-        .fill()
-        .map((_, i) => (
-          <img className="lrtCabArray" src={LRTTrain} alt="Light Rail Cab" />
-        ));
+      return (
+        <div>
+          {Array(trainLength)
+            .fill()
+            .map((_, i) => (
+              <img
+                className="lrtCabArray"
+                src={LRTTrain}
+                alt="Light Rail Cab"
+              />
+            ))}
+        </div>
+      );
     }
   }
-
-  /*
-  <div>{Dict.lrtCommon[lang].depHere}</div>
-  */
 
   if (lrtETA?.status === 0) {
     return (
@@ -123,7 +127,7 @@ function LrtInfo({ sid, lang }) {
             <div className="favouriteBox">
               <Button
                 variant="contained"
-                color={lrtStnSaved === true ? null : "primary"}
+                color={lrtStnSaved === true ? "" : "primary"}
                 size="small"
                 endIcon={lrtStnSaved === true ? <Saved /> : <Save />}
                 onClick={() => handleLocalStorage(sid)}
@@ -164,7 +168,7 @@ function LrtInfo({ sid, lang }) {
             <div className="favouriteBox">
               <Button
                 variant="contained"
-                color={lrtStnSaved === true ? null : "primary"}
+                color={lrtStnSaved === true ? "" : "primary"}
                 size="small"
                 endIcon={lrtStnSaved === true ? <Saved /> : <Save />}
                 onClick={() => handleLocalStorage(sid)}
@@ -231,7 +235,7 @@ function LrtInfo({ sid, lang }) {
                         : null */}
                         </div>
                         <div className="lrtTrain__length">
-                          {HandleTrainCab(
+                          {handleTrainCab(
                             train.train_length,
                             train.arrival_departure
                           )}

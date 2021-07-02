@@ -55,7 +55,7 @@ function LRTSaveInfo({ sid, lang }) {
       .catch((error) => console.log(error));
   }, [sid]);
 
-  function HandleTrainCab(trainLength, arrdep) {
+  function handleTrainCab(trainLength, arrdep) {
     if (arrdep === "D") {
       return (
         <TextLoop>
@@ -157,7 +157,7 @@ function LRTSaveInfo({ sid, lang }) {
                             </div>
                             <div className="lrtStn_RouteRow">
                               <div className="lrtStn_RouteCabs">
-                                {HandleTrainCab(
+                                {handleTrainCab(
                                   train.train_length,
                                   train.arrival_departure
                                 )}
