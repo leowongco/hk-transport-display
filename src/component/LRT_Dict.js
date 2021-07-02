@@ -19,6 +19,7 @@ const lrtCommon = {
     saveStation: "Saved Light Rail Station",
     saveFalse: "Save",
     saveTrue: "Saved",
+    routeMap: "Route",
   },
   tc: {
     lrt: "輕鐵",
@@ -39,6 +40,7 @@ const lrtCommon = {
     saveStation: "已儲存輕鐵站",
     saveFalse: "儲存",
     saveTrue: "已儲存",
+    routeMap: "路線圖",
   },
 };
 

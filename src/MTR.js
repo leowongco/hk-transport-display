@@ -93,17 +93,19 @@ function MTR() {
                 : Dict.Common[lang].autoBtnOn}
             </small>
           </Button>
-          <Link to={"/mRoute/" + line}>
-            <Button
-              variant="contained"
-              color="primary"
-              className="routeButton"
-              size="small"
-              startIcon={<RouteIcon />}
-            >
-              {Dict.Common[lang].routeMap}
-            </Button>
-          </Link>
+          {line !== "" ? (
+            <Link to={"/mRoute/" + line}>
+              <Button
+                variant="contained"
+                color="primary"
+                className="routeButton"
+                size="small"
+                startIcon={<RouteIcon />}
+              >
+                {Dict.Common[lang].routeMap}
+              </Button>
+            </Link>
+          ) : null}
           <div style={{ flex: "1 0 0" }} />
           <Button
             onClick={() => setLang("en")}

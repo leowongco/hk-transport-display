@@ -166,9 +166,7 @@ function MTRInfo({ line, station, lang }) {
           )}
           {mtrEta.UP?.length === 0 && mtrEta.DOWN?.length === 0 ? (
             <NonServiceHours />
-          ) : (
-            null
-          )}
+          ) : null}
           {mtrEta?.UP != null && mtrEta?.UP.length > 0 ? (
             <CardContent>
               <div className={"mtrstation__header" + line}>
@@ -176,8 +174,15 @@ function MTRInfo({ line, station, lang }) {
                   {Dict.MtrStations[station][lang + "_name"]}{" "}
                 </div>
                 <div className="header__line">
-                  {" "}
-                  {" (" + Dict.Common[lang].UP + ")"}
+                  {" (" +
+                    Dict.Common[lang].boundFor +
+                    " " +
+                    Dict.MtrStations[
+                      Dict.MtrLines[line].stations[
+                        Dict.MtrLines[line].stations.length - 1
+                      ]
+                    ][lang + "_name"] +
+                    ")"}
                 </div>
               </div>
 
@@ -212,8 +217,13 @@ function MTRInfo({ line, station, lang }) {
                   {Dict.MtrStations[station][lang + "_name"]}
                 </div>
                 <div className="header__line">
-                  {" "}
-                  {" (" + Dict.Common[lang].DOWN + ")"}
+                  {" (" +
+                    Dict.Common[lang].boundFor +
+                    " " +
+                    Dict.MtrStations[Dict.MtrLines[line].stations[0]][
+                      lang + "_name"
+                    ] +
+                    ")"}
                 </div>
               </div>
 

@@ -29,7 +29,7 @@ function Settings() {
         <div className="settingRow">
           <div className="saveStnLine">{DictM.MtrLines.TKL.tc_name}</div>
           <div className="saveStnCount">
-            已儲存車站數目: {tklSaveStnArray?.length}
+            已儲存數目: {tklSaveStnArray?.length}
           </div>
           <div className="saveStnDetails">
             {tklSaveStnArray?.map((stn, i) => DictM.MtrStations[stn].tc_name)}
@@ -42,7 +42,7 @@ function Settings() {
         <div className="settingRow">
           <div className="saveStnLine">{DictM.MtrLines.TCL.tc_name}</div>
           <div className="saveStnCount">
-            已儲存車站數目: {tclSaveStnArray?.length}
+            已儲存數目: {tclSaveStnArray?.length}
           </div>
           <div className="saveStnDetails">
             {tclSaveStnArray?.map((stn, i) => DictM.MtrStations[stn].tc_name)}
@@ -55,7 +55,7 @@ function Settings() {
         <div className="settingRow">
           <div className="saveStnLine">{DictM.MtrLines.AEL.tc_name}</div>
           <div className="saveStnCount">
-            已儲存車站數目: {aelSaveStnArray?.length}
+            已儲存數目: {aelSaveStnArray?.length}
           </div>
           <div className="saveStnDetails">
             {aelSaveStnArray?.map((stn, i) => DictM.MtrStations[stn].tc_name)}
@@ -68,7 +68,7 @@ function Settings() {
         <div className="settingRow">
           <div className="saveStnLine">{DictM.MtrLines.TML.tc_name}</div>
           <div className="saveStnCount">
-            已儲存車站數目: {tmlSaveStnArray?.length}
+            已儲存數目: {tmlSaveStnArray?.length}
           </div>
           <div className="saveStnDetails">
             {tmlSaveStnArray?.map((stn, i) => DictM.MtrStations[stn].tc_name)}
@@ -80,10 +80,10 @@ function Settings() {
         <div className="settingRow">
           <div className="saveStnLine">{DictL.lrtCommon.tc.lrt}</div>
           <div className="saveStnCount">
-            已儲存車站數目: {lrtSaveStnArray?.length}
+            已儲存數目: {lrtSaveStnArray?.length}
           </div>
           <div className="saveStnDetails">
-            {lrtSaveStnArray?.map((stn, i) => DictL.lrtStation.tc[stn])}
+            {lrtSaveStnArray?.map((stn, i) => DictL.lrtStations[stn].tc_name)}
           </div>
           <div className="saveStnActions">
             {lrtSaveStnArray.length === 0 ? "" : "Delete All"}

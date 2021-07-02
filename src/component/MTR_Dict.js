@@ -19,6 +19,7 @@ const Common = {
     saveF: "Save",
     saveT: "Saved",
     routeMap: "Route",
+    boundFor: "to",
   },
   tc: {
     UP: "上行",
@@ -39,6 +40,7 @@ const Common = {
     saveF: "儲存",
     saveT: "已儲存",
     routeMap: "路線圖",
+    boundFor: "往",
   },
 };
 

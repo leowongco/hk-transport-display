@@ -12,6 +12,7 @@ import "./css/LRT.css";
 import Alert from "@material-ui/lab/Alert";
 import LRTLogo from "./img/LR_old.png";
 import GTranslateOutlinedIcon from "@material-ui/icons/GTranslateOutlined";
+import RouteIcon from "@material-ui/icons/LinearScale";
 
 function LRT() {
   const [station, setStation] = useState("");
@@ -134,6 +135,16 @@ function LRT() {
                 ? Dict.lrtCommon[lang].autoBtnOff
                 : Dict.lrtCommon[lang].autoBtnOn}
             </small>
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            className="routeButton"
+            size="small"
+            startIcon={<RouteIcon />}
+            disabled
+          >
+            {Dict.lrtCommon[lang].routeMap}
           </Button>
           <div style={{ flex: "1 0 0" }} />
           <Button
