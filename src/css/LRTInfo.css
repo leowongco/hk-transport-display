@@ -41,15 +41,17 @@
 
 .lrtTrain__length {
   width: 50px;
+  place-items: baseline;
 }
 
-.lrtTrain__length > img {
+.lrtCabArray {
   width: 18px;
   height: 12px;
 }
 
 .lrtTrain__length > div {
   font-size: x-small;
+  font-weight: 400;
 }
 
 .lrt__route {

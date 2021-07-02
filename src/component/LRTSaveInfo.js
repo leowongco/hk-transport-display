@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Card, CardContent } from "@material-ui/core";
+import TextLoop from "react-text-loop";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import "../css/LRTSaveInfo.css";
 
@@ -54,6 +55,33 @@ function LRTSaveInfo({ sid, lang }) {
       .catch((error) => console.log(error));
   }, [sid]);
 
+  function HandleTrainCab(trainLength, arrdep) {
+    if (arrdep === "D") {
+      return (
+        <TextLoop>
+          <div>
+            {Array(trainLength)
+              .fill()
+              .map((_, i) => (
+                <img
+                  className="lrtCabArray"
+                  src={LRTTrain}
+                  alt="Light Rail Cab"
+                />
+              ))}
+          </div>
+          <div>{DictL.lrtCommon[lang].depHere}</div>
+        </TextLoop>
+      );
+    } else {
+      return Array(trainLength)
+        .fill()
+        .map((_, i) => (
+          <img className="lrtCabArray" src={LRTTrain} alt="Light Rail Cab" />
+        ));
+    }
+  }
+
   if (lrtETA?.status === 0) {
     return (
       <div className="lrtSaveInfo">
@@ -104,7 +132,7 @@ function LRTSaveInfo({ sid, lang }) {
                     <small>{DictL.lrtCommon[lang].end_service}</small>
                   </div>
                 ) : null}
-                {plat.route_list.length > 0
+                {plat.route_list?.length > 0
                   ? plat.route_list?.map((train) =>
                       train.stop !== 1 ? (
                         <div className="lrtStn_Rows">
@@ -129,14 +157,10 @@ function LRTSaveInfo({ sid, lang }) {
                             </div>
                             <div className="lrtStn_RouteRow">
                               <div className="lrtStn_RouteCabs">
-                                {Array(train.train_length)
-                                  .fill()
-                                  .map((_, i) => (
-                                    <img src={LRTTrain} alt="Light Rail Cab" />
-                                  ))}
-                                {train.arrival_departure === "D" ? (
-                                  <div>{DictL.lrtCommon[lang].depHere}</div>
-                                ) : null}
+                                {HandleTrainCab(
+                                  train.train_length,
+                                  train.arrival_departure
+                                )}
                               </div>
                               <div className="lrtStn_Time">
                                 <small>
