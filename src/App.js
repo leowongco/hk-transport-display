@@ -1,49 +1,51 @@
 import "./css/App.css";
-import LRT from "./LRT.js";
-import MTR from "./MTR.js";
-import Header from "./Header.js";
-import SaveStations from "./SaveStations";
-import Settings from "./Settings";
-import TT from "./component/LRTSaveInfo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import React from "react";
+import React, { Suspense } from "react";
+import { PageLoading } from "./PageLoading";
 import { firebaseApp } from "./component/firebase.js";
 
-import MTRMap from "./component/MTRRouteMap";
+const LRT = React.lazy(() => import("./LRT.js"));
+const MTR = React.lazy(() => import("./MTR.js"));
+const Header = React.lazy(() => import("./Header.js"));
+const SaveStations = React.lazy(() => import("./SaveStations.js"));
+const Settings = React.lazy(() => import("./Settings.js"));
+const MTRMap = React.lazy(() => import("./component/MTRRouteMap"));
 
 function App() {
   firebaseApp.analytics();
   return (
-    <Router>
-      <div className="App">
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-        />
-        <Switch>
-          <Route path="/lrt">
-            <Header />
-            <LRT />
-          </Route>
-          <Route path="/mtr/:link_Line/:link_Station">
-            <Header />
-            <MTR />
-          </Route>
-          <Route path="/mRoute/:line">
-            <Header />
-            <MTRMap />
-          </Route>
-          <Route path="/settings">
-            <Header />
-            <Settings />
-          </Route>
-          <Route path="/">
-            <Header />
-            <SaveStations />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <Suspense fallback={<PageLoading />}>
+      <Router>
+        <div className="App">
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+          />
+          <Switch>
+            <Route path="/lrt">
+              <Header />
+              <LRT />
+            </Route>
+            <Route path="/mtr/:link_Line/:link_Station">
+              <Header />
+              <MTR />
+            </Route>
+            <Route path="/mRoute/:line">
+              <Header />
+              <MTRMap />
+            </Route>
+            <Route path="/settings">
+              <Header />
+              <Settings />
+            </Route>
+            <Route path="/">
+              <Header />
+              <SaveStations />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </Suspense>
   );
 }
 

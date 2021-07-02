@@ -73,6 +73,14 @@ function LrtInfo({ sid, lang }) {
     }
   };
 
+  function PlayArrSound(routeNo, dest, plat) {
+    console.log(
+      "Arriving Info>>> Route No:" + routeNo,
+      "To:" + dest,
+      "Plat:" + plat
+    );
+  }
+
   if (lrtETA?.status === 0) {
     return (
       <div className="lrtinfo">
@@ -185,6 +193,13 @@ function LrtInfo({ sid, lang }) {
                           ? Dict.lrtCommon[lang].dep
                           : train["time_" + fLang]}
                       </small>
+                      {/* train.time_en === "Arriving"
+                        ? PlayArrSound(
+                            train.route_no,
+                            train.dest_en,
+                            plat.platform_id
+                          )
+                        : "" */}
                     </div>
                     <div className="lrtTrain__length">
                       {Array(train.train_length)
