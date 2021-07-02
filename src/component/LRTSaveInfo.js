@@ -104,51 +104,53 @@ function LRTSaveInfo({ sid, lang }) {
                     <small>{DictL.lrtCommon[lang].end_service}</small>
                   </div>
                 ) : null}
-
-                {plat.route_list?.map((train) =>
-                  train.stop !== 1 ? (
-                    <div className="lrtStn_Rows">
-                      <div className="lrtStn_RouteContainer">
-                        <div className="lrtStn_RouteRow">
-                          <div
-                            className="lrtStn_RouteNumber"
-                            style={{
-                              background:
-                                DictL.lrtRoutes[train.route_no].colorCode,
-                            }}
-                          >
-                            {train.route_no}
-                          </div>
-                          <div className="lrtStn_RouteDest">
-                            {DictL.lrtRoutes[train.route_no].route_name === null
-                              ? DictL.lrtCommon[lang].to +
-                                train["dest_" + fLang]
-                              : train["dest_" + fLang]}
+                {plat.route_list.length > 0
+                  ? plat.route_list?.map((train) =>
+                      train.stop !== 1 ? (
+                        <div className="lrtStn_Rows">
+                          <div className="lrtStn_RouteContainer">
+                            <div className="lrtStn_RouteRow">
+                              <div
+                                className="lrtStn_RouteNumber"
+                                style={{
+                                  background:
+                                    DictL.lrtRoutes[train.route_no].colorCode,
+                                }}
+                              >
+                                {train.route_no}
+                              </div>
+                              <div className="lrtStn_RouteDest">
+                                {DictL.lrtRoutes[train.route_no].route_name ===
+                                null
+                                  ? DictL.lrtCommon[lang].to +
+                                    train["dest_" + fLang]
+                                  : train["dest_" + fLang]}
+                              </div>
+                            </div>
+                            <div className="lrtStn_RouteRow">
+                              <div className="lrtStn_RouteCabs">
+                                {Array(train.train_length)
+                                  .fill()
+                                  .map((_, i) => (
+                                    <img src={LRTTrain} alt="Light Rail Cab" />
+                                  ))}
+                                {train.arrival_departure === "D" ? (
+                                  <div>{DictL.lrtCommon[lang].depHere}</div>
+                                ) : null}
+                              </div>
+                              <div className="lrtStn_Time">
+                                <small>
+                                  {train.time_en === "-"
+                                    ? DictL.lrtCommon[lang].dep
+                                    : train["time_" + fLang]}
+                                </small>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                        <div className="lrtStn_RouteRow">
-                          <div className="lrtStn_RouteCabs">
-                            {Array(train.train_length)
-                              .fill()
-                              .map((_, i) => (
-                                <img src={LRTTrain} alt="Light Rail Cab" />
-                              ))}
-                            {train.arrival_departure === "D" ? (
-                              <div>{DictL.lrtCommon[lang].depHere}</div>
-                            ) : null}
-                          </div>
-                          <div className="lrtStn_Time">
-                            <small>
-                              {train.time_en === "-"
-                                ? DictL.lrtCommon[lang].dep
-                                : train["time_" + fLang]}
-                            </small>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ) : null
-                )}
+                      ) : null
+                    )
+                  : null}
               </div>
             ))}
           </CardContent>

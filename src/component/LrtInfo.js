@@ -81,6 +81,23 @@ function LrtInfo({ sid, lang }) {
     );
   }
 
+  function HandleTrainCab(trainLength, arrdep) {
+    if (arrdep === "D") {
+      //logics for swapping words
+      return Array(trainLength)
+        .fill()
+        .map((_, i) => <img src={LRTTrain} alt="Light Rail Cab" />);
+    } else {
+      return Array(trainLength)
+        .fill()
+        .map((_, i) => <img src={LRTTrain} alt="Light Rail Cab" />);
+    }
+  }
+
+  /*
+  <div>{Dict.lrtCommon[lang].depHere}</div>
+  */
+
   if (lrtETA?.status === 0) {
     return (
       <div className="lrtinfo">
@@ -198,11 +215,10 @@ function LrtInfo({ sid, lang }) {
                         : null */}
                     </div>
                     <div className="lrtTrain__length">
-                      {Array(train.train_length)
-                        .fill()
-                        .map((_, i) => (
-                          <img src={LRTTrain} alt="Light Rail Cab" />
-                        ))}
+                      {HandleTrainCab(
+                        train.train_length,
+                        train.arrival_departure
+                      )}
                     </div>
                   </div>
                 ) : null
