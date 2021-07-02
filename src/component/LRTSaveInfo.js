@@ -61,9 +61,7 @@ function LRTSaveInfo({ sid, lang }) {
           <CardContent>
             {isLoading === true ? (
               <LinearProgress color="primary" className="loadingBar" />
-            ) : (
-              ""
-            )}
+            ) : null}
             <p align="center">未有到站時間 No ETA Information</p>
           </CardContent>
         </Card>
@@ -76,9 +74,7 @@ function LRTSaveInfo({ sid, lang }) {
           <CardContent>
             {isLoading === true ? (
               <LinearProgress color="primary" className="loadingBar" />
-            ) : (
-              ""
-            )}
+            ) : null}
 
             {lrtETA?.platform_list.map((plat) => (
               <div className="lrtStn_Container">
@@ -107,9 +103,7 @@ function LRTSaveInfo({ sid, lang }) {
                   <div className="lrtStn_Rows">
                     <small>{DictL.lrtCommon[lang].end_service}</small>
                   </div>
-                ) : (
-                  ""
-                )}
+                ) : null}
 
                 {plat.route_list?.map((train) =>
                   train.stop !== 1 ? (
@@ -126,7 +120,7 @@ function LRTSaveInfo({ sid, lang }) {
                             {train.route_no}
                           </div>
                           <div className="lrtStn_RouteDest">
-                            {DictL.lrtRoutes[train.route_no].route_name === ""
+                            {DictL.lrtRoutes[train.route_no].route_name === null
                               ? DictL.lrtCommon[lang].to +
                                 train["dest_" + fLang]
                               : train["dest_" + fLang]}
@@ -141,9 +135,7 @@ function LRTSaveInfo({ sid, lang }) {
                               ))}
                             {train.arrival_departure === "D" ? (
                               <div>{DictL.lrtCommon[lang].depHere}</div>
-                            ) : (
-                              ""
-                            )}
+                            ) : null}
                           </div>
                           <div className="lrtStn_Time">
                             <small>
@@ -155,9 +147,7 @@ function LRTSaveInfo({ sid, lang }) {
                         </div>
                       </div>
                     </div>
-                  ) : (
-                    ""
-                  )
+                  ) : null
                 )}
               </div>
             ))}

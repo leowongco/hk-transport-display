@@ -5,7 +5,7 @@ import styled from "styled-components";
 // Prevent flash
 // ref: https://github.com/gregberge/loadable-components/issues/322
 export const PageLoading = () => {
-  const delay = 200; // 200ms
+  const delay = 100; // 200ms
   const [showLoadingIndicator, setLoadingIndicatorVisibility] = useState(false);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const FixWrapper = styled.div`
     -50%,
     -50%
   ); /* This is a shorthand of
-                                         translateX(-50%) and translateY(-50%) */
+  translateX(-50%) and translateY(-50%) */
 `;
 
 const Wrapper = styled.div`

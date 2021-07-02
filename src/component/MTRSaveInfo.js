@@ -66,9 +66,7 @@ function MTRSaveInfo({ line, station, lang }) {
               </div>
               {isLoading === true ? (
                 <LinearProgress color="primary" className="loadingBar" />
-              ) : (
-                ""
-              )}
+              ) : null}
               <p align="center">未有到站時間 No ETA Information</p>
             </CardContent>
           </Card>
@@ -88,9 +86,7 @@ function MTRSaveInfo({ line, station, lang }) {
               </div>
               {isLoading === true ? (
                 <LinearProgress color="primary" className="loadingBar" />
-              ) : (
-                ""
-              )}
+              ) : null}
               <p align="center">未有到站時間 No ETA Information</p>
             </CardContent>
           </Card>
@@ -119,19 +115,15 @@ function MTRSaveInfo({ line, station, lang }) {
                         minute: "2-digit",
                         second: "2-digit",
                       })
-                    : ""}
+                    : null}
                 </div>
               </div>
               {isLoading === true ? (
                 <LinearProgress color="primary" className="loadingBar" />
-              ) : (
-                ""
-              )}
+              ) : null}
               {mtrEta.UP?.length === 0 && mtrEta.DOWN?.length === 0 ? (
                 <p align="center">未有到站時間 No ETA Information</p>
-              ) : (
-                ""
-              )}
+              ) : null}
               <div className="saveStnETA">
                 {mtrEta.UP?.slice(0, limitETA).map((train, i, arr) => (
                   <div className="saveStnBox">
@@ -142,7 +134,7 @@ function MTRSaveInfo({ line, station, lang }) {
                       </div>
                       <div className={"mtr__plat" + line}>{train.plat}</div>
                       <div className="trainArrowBox">
-                        {arr.length - 1 === i ? "" : <ArrowForwardIcon />}
+                        {arr.length - 1 === i ? null : <ArrowForwardIcon />}
                       </div>
                     </div>
 
@@ -174,7 +166,7 @@ function MTRSaveInfo({ line, station, lang }) {
                 ))}
               </div>
 
-              {mtrEta.UP?.length > 0 ? <Divider /> : ""}
+              {mtrEta.UP?.length > 0 ? <Divider /> : null}
 
               <div className="saveStnETA">
                 {mtrEta.DOWN?.slice(0, limitETA).map((train, i, arr) => (
@@ -186,7 +178,7 @@ function MTRSaveInfo({ line, station, lang }) {
                       </div>
                       <div className={"mtr__plat" + line}>{train.plat}</div>
                       <div className="trainArrowBox">
-                        {arr.length - 1 === i ? "" : <ArrowForwardIcon />}
+                        {arr.length - 1 === i ? null : <ArrowForwardIcon />}
                       </div>
                     </div>
                     <div className="saveStnBoxRow">
@@ -217,7 +209,7 @@ function MTRSaveInfo({ line, station, lang }) {
                 ))}
               </div>
 
-              {mtrEta.DOWN?.length > 0 ? <Divider /> : ""}
+              {mtrEta.DOWN?.length > 0 ? <Divider /> : null}
             </CardContent>
           </Card>
         </Link>

@@ -167,7 +167,7 @@ function MTRInfo({ line, station, lang }) {
           {mtrEta.UP?.length === 0 && mtrEta.DOWN?.length === 0 ? (
             <NonServiceHours />
           ) : (
-            ""
+            null
           )}
           {mtrEta?.UP != null && mtrEta?.UP.length > 0 ? (
             <CardContent>
@@ -203,9 +203,7 @@ function MTRInfo({ line, station, lang }) {
                 </div>
               ))}
             </CardContent>
-          ) : (
-            ""
-          )}
+          ) : null}
 
           {mtrEta.DOWN != null && mtrEta.DOWN.length > 0 ? (
             <CardContent>
@@ -237,9 +235,7 @@ function MTRInfo({ line, station, lang }) {
                 </div>
               ))}
             </CardContent>
-          ) : (
-            ""
-          )}
+          ) : null}
 
           {mtrEta?.sys_time ? (
             <div className="etaBox__mtrfooter">
@@ -256,9 +252,7 @@ function MTRInfo({ line, station, lang }) {
                   second: "2-digit",
                 })}
             </div>
-          ) : (
-            ""
-          )}
+          ) : null}
         </Card>
       </div>
     );

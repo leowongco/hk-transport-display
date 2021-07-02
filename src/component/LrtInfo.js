@@ -91,7 +91,7 @@ function LrtInfo({ sid, lang }) {
             <div className="favouriteBox">
               <Button
                 variant="contained"
-                color={lrtStnSaved === true ? "" : "primary"}
+                color={lrtStnSaved === true ? null : "primary"}
                 size="small"
                 endIcon={lrtStnSaved === true ? <Saved /> : <Save />}
                 onClick={() => handleLocalStorage(sid)}
@@ -117,9 +117,7 @@ function LrtInfo({ sid, lang }) {
               <div className="etaBox__footer">
                 {Dict.lrtCommon[lang].lastUpdate + ": " + lrtETA?.system_time}
               </div>
-            ) : (
-              ""
-            )}
+            ) : null}
           </CardContent>
         </Card>
       </div>
@@ -134,7 +132,7 @@ function LrtInfo({ sid, lang }) {
             <div className="favouriteBox">
               <Button
                 variant="contained"
-                color={lrtStnSaved === true ? "" : "primary"}
+                color={lrtStnSaved === true ? null : "primary"}
                 size="small"
                 endIcon={lrtStnSaved === true ? <Saved /> : <Save />}
                 onClick={() => handleLocalStorage(sid)}
@@ -165,9 +163,7 @@ function LrtInfo({ sid, lang }) {
                     <small>{Dict.lrtCommon[lang].end_service}</small>
                   </div>
                 </div>
-              ) : (
-                ""
-              )}
+              ) : null}
               {plat.route_list?.map((train) =>
                 train.stop !== 1 ? (
                   <div className="etaBox">
@@ -199,7 +195,7 @@ function LrtInfo({ sid, lang }) {
                             train.dest_en,
                             plat.platform_id
                           )
-                        : "" */}
+                        : null */}
                     </div>
                     <div className="lrtTrain__length">
                       {Array(train.train_length)
@@ -209,9 +205,7 @@ function LrtInfo({ sid, lang }) {
                         ))}
                     </div>
                   </div>
-                ) : (
-                  ""
-                )
+                ) : null
               )}
             </CardContent>
           ))}
@@ -230,9 +224,7 @@ function LrtInfo({ sid, lang }) {
                   second: "2-digit",
                 })}
             </div>
-          ) : (
-            ""
-          )}
+          ) : null}
         </Card>
       </div>
     );
