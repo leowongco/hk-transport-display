@@ -91,8 +91,8 @@
   background-color: #1c7670;
   color: white;
   text-align: center;
+  border-radius: 50%;
   font-weight: 500 !important;
-  border-radius: 40%;
 }
 
 .mtr__platTCL {
@@ -102,19 +102,8 @@
   background-color: #fe7f1d;
   color: white;
   text-align: center;
-  font-weight: 400 !important;
   border-radius: 50%;
-}
-
-.mtr__platWRL {
-  margin-right: 20px;
-  width: 20px;
-  height: 20px;
-  background-color: #a40084;
-  color: white;
-  text-align: center;
-  font-weight: 400 !important;
-  border-radius: 50%;
+  font-weight: 500 !important;
 }
 
 .mtr__platTKL {
@@ -124,8 +113,8 @@
   background-color: #6b208b;
   color: white;
   text-align: center;
-  font-weight: 400 !important;
   border-radius: 50%;
+  font-weight: 500 !important;
 }
 
 .mtr__platTML {
@@ -135,8 +124,8 @@
   background-color: #9a3b26;
   color: white;
   text-align: center;
-  font-weight: 400 !important;
   border-radius: 50%;
+  font-weight: 500 !important;
 }
 
 .mtr__time {

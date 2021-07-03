@@ -58,7 +58,7 @@ function LRTSaveInfo({ sid, lang }) {
   function handleTrainCab(trainLength, arrdep) {
     if (arrdep === "D") {
       return (
-        <TextLoop>
+        <TextLoop interval={2000}>
           <div>
             {Array(trainLength)
               .fill()

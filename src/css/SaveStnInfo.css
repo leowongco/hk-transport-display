@@ -13,10 +13,6 @@
   display: none;
 }
 
-.saveStnBox {
-  padding-right: 3px;
-}
-
 .saveStnBoxRow {
   display: flex;
 }
@@ -31,6 +27,7 @@
 .trainArrowBox {
   position: relative;
   top: 10px;
+  left: -8px;
 }
 
 .loadingBar {
@@ -38,7 +35,6 @@
 }
 
 .header__time {
-  padding-right: 5px;
   font-size: small;
   color: white;
 }
