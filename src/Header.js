@@ -24,6 +24,7 @@ import TramIcon from "@material-ui/icons/Tram";
 import DeveloperModeIcon from "@material-ui/icons/DeveloperMode";
 import SettingsIcon from "@material-ui/icons/Settings";
 import CachedIcon from "@material-ui/icons/Cached";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import appInfo from "../package.json";
 
 const drawerWidth = 250;
@@ -152,11 +153,19 @@ function Header() {
         <Divider />
         <List>
           <ListItem>
-            <Link to="/" onClick={handleDrawerClose}>
+            <Link to="/mtr-status" onClick={handleDrawerClose}>
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
               主頁 Home
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/mtr-status" onClick={handleDrawerClose}>
+              <ListItemIcon>
+                <CheckCircleIcon />
+              </ListItemIcon>
+              <span>港鐵狀態 MTR Status</span>
             </Link>
           </ListItem>
         </List>

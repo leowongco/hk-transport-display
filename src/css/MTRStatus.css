@@ -6,7 +6,6 @@
 }
 
 .mtrStatus_Rows {
-  width: 50vw;
   display: flex;
 }
 
@@ -17,12 +16,16 @@
   padding-top: 3px;
   padding-bottom: 3px;
   font-weight: 500;
-  flex: 5;
+  min-width: 100px;
+  flex: 3;
 }
 
 .mtrStatus_Status {
-  flex: 3;
+  flex: 5;
   padding-left: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .mtrStatus_DetailBtn {

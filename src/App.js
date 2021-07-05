@@ -39,7 +39,7 @@ function App() {
               <Header />
               <Settings />
             </Route>
-            <Route path="/mtr_status">
+            <Route path="/mtr-status">
               <Header />
               <MTRStatus />
             </Route>

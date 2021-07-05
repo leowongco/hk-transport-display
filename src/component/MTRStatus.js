@@ -3,11 +3,12 @@ import axios from "axios";
 import convert from "xml-js";
 
 import "../css/MTRStatus.css";
-import Dict from "./MTR_Dict";
-import StatusDict from "./MTRStatus_Dict";
+import Dict from "./MTR_Dict.js";
+import StatusDict from "./MTRStatus_Dict.js";
 
 function MTRStatus() {
   const [lineStatus, setLineStatus] = useState();
+  const [loading, setLoading] = useState(false);
 
   const removeJsonTextAttribute = function (value, parentElement) {
     try {
@@ -24,12 +25,15 @@ function MTRStatus() {
       } else {
         parentElement._parent[keyName] = value;
       }
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   useEffect(() => {
-    let coreApi = "https://cors-anywhere.herokuapp.com/";
-    let mtrStatusApi = `https://www.mtr.com.hk/alert/ryg_line_status.xml?_=${Date.now()}`;
+    let coreApi = "https://cors.bridged.cc/";
+    let mtrStatusApi = `https://www.mtr.com.hk/alert/ryg_line_status.xml?t=${Date.now()}`;
+    setLoading(true);
     axios
       .get(`${coreApi}${mtrStatusApi}`, {
         headers: {
@@ -37,7 +41,7 @@ function MTRStatus() {
         },
       })
       .then((res) => {
-        let temp = convert.xml2js(res.data, {
+        var temp = convert.xml2js(res.data, {
           compact: true,
           trim: true,
           ignoreDeclaration: true,
@@ -49,22 +53,24 @@ function MTRStatus() {
           textFn: removeJsonTextAttribute,
         });
         setLineStatus(temp.ryg_status.line);
+        setLoading(false);
       })
       .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {
     const inteval = setInterval(() => {
-      let coreApi = "https://cors-anywhere.herokuapp.com/";
-      let mtrStatusApi = `https://www.mtr.com.hk/alert/ryg_line_status.xml?_=${Date.now()}`;
+      let coreApi = "https://cors.bridged.cc/";
+      let mtrStatusApi = `https://www.mtr.com.hk/alert/ryg_line_status.xml?t=${Date.now()}`;
       axios
         .get(`${coreApi}${mtrStatusApi}`, {
           headers: {
             "X-Requested-With": "XMLHttpRequest",
+            "Content-Type": "text-xml",
           },
         })
         .then((res) => {
-          let temp = convert.xml2js(res.data, {
+          var temp = convert.xml2js(res.data, {
             compact: true,
             trim: true,
             ignoreDeclaration: true,
@@ -85,6 +91,7 @@ function MTRStatus() {
   return (
     <div className="mtrStatus">
       <div className="mtrStatus_Container">
+        {!loading ? null : <p>Loading...</p>}
         {lineStatus?.map((mLine) => (
           <div className="mtrStatus_Rows">
             <div
