@@ -126,7 +126,7 @@ const MtrLines = {
     en_name: "Disneyland Resort Line",
     colorCode: "#f550a6",
   },
-  ERL: {
+  EAL: {
     tc_name: "東鐵線",
     en_name: "East Rail Line",
     colorCode: "#5eb6e4",

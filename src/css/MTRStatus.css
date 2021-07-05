@@ -1,0 +1,30 @@
+.mtrStatus_Container {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.mtrStatus_Rows {
+  width: 50vw;
+  display: flex;
+}
+
+.mtrStatus_Line {
+  color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-weight: 500;
+  flex: 5;
+}
+
+.mtrStatus_Status {
+  flex: 3;
+  padding-left: 8px;
+}
+
+.mtrStatus_DetailBtn {
+  flex: 2;
+}
