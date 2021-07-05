@@ -37,6 +37,7 @@
 .header__time {
   font-size: small;
   color: white;
+  margin-right: 5px;
 }
 
 .saveStnBoxTime,

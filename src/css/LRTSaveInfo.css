@@ -61,6 +61,7 @@
 .lrtStn_RouteCabs {
   padding-right: 5px;
   width: 50px;
+  margin-top: 5px;
 }
 
 .lrtStn_RouteCabs > div {

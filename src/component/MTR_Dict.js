@@ -141,6 +141,11 @@ const MtrLines = {
     en_name: "High Speed Rail",
     colorCode: "#9F968C",
   },
+  LR: {
+    tc_name: "輕鐵",
+    en_name: "Light Rail",
+    colorCode: "#CD9700",
+  },
 };
 
 const MtrStations = {

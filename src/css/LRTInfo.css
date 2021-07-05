@@ -34,14 +34,16 @@
 
 .etaBox__row {
   padding-right: 4px;
-  justify-content: center;
-  place-items: center;
+  justify-content: baseline;
+  align-items: baseline;
   font-weight: 600 !important;
 }
 
 .lrtTrain__length {
   width: 50px;
-  place-items: baseline;
+  justify-content: baseline;
+  align-items: baseline;
+  margin-top: 5px;
 }
 
 .lrtCabArray {
