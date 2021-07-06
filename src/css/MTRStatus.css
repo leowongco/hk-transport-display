@@ -2,7 +2,7 @@
   width: 90%;
   margin: 0 auto;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 .mtrStatus_Rows {
@@ -17,7 +17,14 @@
   padding-bottom: 3px;
   font-weight: 500;
   min-width: 100px;
-  flex: 3;
+  flex: 2;
+  margin: auto;
+}
+
+.mtrStatus_StatusIcon {
+  margin: auto;
+  padding-left: 3px;
+  white-space: nowrap;
 }
 
 .mtrStatus_Status {
@@ -26,6 +33,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin: auto;
 }
 
 .mtrStatus_DetailBtn {

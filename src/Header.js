@@ -153,7 +153,7 @@ function Header() {
         <Divider />
         <List>
           <ListItem>
-            <Link to="/mtr-status" onClick={handleDrawerClose}>
+            <Link to="/" onClick={handleDrawerClose}>
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>

@@ -2,6 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import convert from "xml-js";
 
+import { Button, ButtonGroup } from "@material-ui/core";
+import CheckCircleTwoToneIcon from "@material-ui/icons/CheckCircleTwoTone";
+import ErrorTwoToneIcon from "@material-ui/icons/ErrorTwoTone";
+import RemoveCircleTwoToneIcon from "@material-ui/icons/RemoveCircleTwoTone";
+import AccessTimeTwoToneIcon from "@material-ui/icons/AccessTimeTwoTone";
+import { RiTyphoonFill } from "react-icons/ri";
+
 import "../css/MTRStatus.css";
 import Dict from "./MTR_Dict.js";
 import StatusDict from "./MTRStatus_Dict.js";
@@ -88,10 +95,32 @@ function MTRStatus() {
     return () => clearInterval(inteval);
   }, []);
 
+  function StatusIcon(status) {
+    switch (status) {
+      case "green":
+        return <CheckCircleTwoToneIcon style={{ color: "green" }} />;
+      case "pink":
+      case "yellow":
+        return <ErrorTwoToneIcon style={{ color: "yellow" }} />;
+      case "red":
+        return <RemoveCircleTwoToneIcon style={{ color: "red" }} />;
+      case "typhoon":
+        return <RiTyphoonFill style={{ color: "#1a15bd" }} />;
+      default:
+        return <AccessTimeTwoToneIcon style={{ color: "grey" }} />;
+    }
+  }
+
   return (
     <div className="mtrStatus">
       <div className="mtrStatus_Container">
-        {!loading ? null : <p>Loading...</p>}
+        {!loading ? null : (
+          <p>
+            讀取港鐵車務狀況中...
+            <br />
+            Reading MTR Service Status...
+          </p>
+        )}
         {lineStatus?.map((mLine) => (
           <div className="mtrStatus_Rows">
             <div
@@ -100,20 +129,22 @@ function MTRStatus() {
             >
               {Dict.MtrLines[mLine.line_code].tc_name}
               <br />
-              {Dict.MtrLines[mLine.line_code].en_name}
+              <small>{Dict.MtrLines[mLine.line_code].en_name}</small>
+            </div>
+            <div className="mtrStatus_StatusIcon">
+              {StatusIcon(mLine.status)}
             </div>
             <div className="mtrStatus_Status">
               {StatusDict.StatusLight[mLine.status].tc_name}
               <br />
-              {StatusDict.StatusLight[mLine.status].en_name}
+              <small>{StatusDict.StatusLight[mLine.status].en_name}</small>
             </div>
-            {mLine.status !== "red" ||
-            mLine.status !== "yellow" ||
-            mLine.status !== "pink" ? null : (
+            {Object.keys(mLine.url_en).length === 0 ? null : (
               <div className="mtrStatus_DetailBtn">
-                <a href={mLine.url_tc} target="_blank">
-                  詳情
-                </a>
+                <ButtonGroup color="primary" size="small">
+                  <Button href={mLine.url_tc}>詳情</Button>
+                  <Button href={mLine.url_en}>Details</Button>
+                </ButtonGroup>
               </div>
             )}
           </div>
