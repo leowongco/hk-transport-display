@@ -6,10 +6,14 @@ const StatusLight = {
   yellow: {
     tc_name: "服務延誤",
     en_name: "Service Delay",
+    tc_rmk: "額外候車及行車時間",
+    en_rmk: "Additional waiting and travelling time",
   },
   red: {
     tc_name: "服務受阻",
     en_name: "Service Disruption",
+    tc_rmk: "請考慮使用其他交通工具",
+    en_rmk: "Consider using other transport",
   },
   typhoon: {
     tc_name: "熱帶氣旋警告信號生效",
@@ -22,6 +26,8 @@ const StatusLight = {
   pink: {
     tc_name: "服務延誤",
     en_name: "Service Delay",
+    tc_rmk: "額外候車及行車時間",
+    en_rmk: "Additional waiting and travelling time",
   },
 };
 
