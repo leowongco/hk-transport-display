@@ -41,7 +41,8 @@
 }
 
 .mtrStatus_Footer {
-  position: absolute;
+  background: white;
+  position: static;
   margin-left: auto;
   margin-right: auto;
   left: 0;
@@ -49,4 +50,5 @@
   bottom: 15px;
   text-align: center;
   font-size: small;
+  padding-top: 15px;
 }

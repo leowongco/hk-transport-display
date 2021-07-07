@@ -173,15 +173,17 @@ function MTRStatus({ type }) {
   } else {
     return (
       <div className="mtrStatus">
-        <div className="mtrStatus_Container">
-          {loading ? (
+        {loading ? (
+          <div className="mtrStatus_Container">
             <p>
               讀取港鐵車務狀況中...
               <br />
               Reading MTR Service Status...
             </p>
-          ) : (
-            lineStatus?.map((mLine) => (
+          </div>
+        ) : (
+          <div className="mtrStatus_Container">
+            {lineStatus?.map((mLine) => (
               <div className="mtrStatus_Rows">
                 <div
                   className="mtrStatus_Line"
@@ -210,13 +212,14 @@ function MTRStatus({ type }) {
                   </div>
                 )}
               </div>
-            ))
-          )}
-          <div className="mtrStatus_Footer">
-            資料每3分鐘自動更新。 Information will be refrashed automatically
-            every 3 minutes.
+            ))}
+            <div className="mtrStatus_Footer">
+              資料每3分鐘自動更新。
+              <br /> Information will be refrashed automatically every 3
+              minutes.
+            </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
