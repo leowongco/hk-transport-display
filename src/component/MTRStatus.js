@@ -140,9 +140,9 @@ function MTRStatus({ type }) {
                   </Button>
                 }
               >
-                <AlertTitle>
-                  港鐵服務延誤/受阻 <br /> MTR Service Delay/Disruption
-                </AlertTitle>
+                <div>
+                  <b>港鐵服務延誤/受阻 MTR Service Delay/Disruption</b>
+                </div>
                 <TextLoop interval={3000} noWrap="true">
                   <span>有一條/多條港鐵路線服務延誤/受阻，</span>
                   <span>請考慮重新計劃行程。</span>
@@ -150,7 +150,8 @@ function MTRStatus({ type }) {
                   <span>please re-considerd the travelling plan.</span>
                 </TextLoop>
               </Alert>
-            ) : (
+            ) : null}
+            {goodServices ? (
               <Alert
                 severity="success"
                 action={
@@ -164,7 +165,7 @@ function MTRStatus({ type }) {
                   <span>All Normal MTR Train Services.</span>
                 </TextLoop>
               </Alert>
-            )}
+            ) : null}
           </div>
         </div>
       </div>
@@ -211,6 +212,10 @@ function MTRStatus({ type }) {
               </div>
             ))
           )}
+          <div className="mtrStatus_Footer">
+            資料每3分鐘自動更新。 Information will be refrashed automatically
+            every 3 minutes.
+          </div>
         </div>
       </div>
     );
