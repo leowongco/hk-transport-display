@@ -45,6 +45,7 @@ function App() {
             </Route>
             <Route path="/">
               <Header />
+              <MTRStatus type="banner" />
               <SaveStations />
             </Route>
           </Switch>

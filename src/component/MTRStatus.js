@@ -151,7 +151,14 @@ function MTRStatus({ type }) {
                 </TextLoop>
               </Alert>
             ) : (
-              <Alert severity="success">
+              <Alert
+                severity="success"
+                action={
+                  <Button color="inherit" size="small" href="./mtr-status">
+                    <DoubleArrowIcon />
+                  </Button>
+                }
+              >
                 <TextLoop interval={5000}>
                   <span>所有港鐵列車服務正常。</span>
                   <span>All Normal MTR Train Services.</span>

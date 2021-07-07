@@ -16,7 +16,6 @@ import DictM from "./component/MTR_Dict.js";
 import DictL from "./component/LRT_Dict.js";
 
 import LrtInfo from "./component/LRTSaveInfo";
-import MTRStatus from "./component/MTRStatus";
 
 function SaveStations() {
   const [lang, setLang] = useState("tc");
@@ -63,7 +62,6 @@ function SaveStations() {
 
   return (
     <div className="saveStations">
-      <MTRStatus type="banner" />
       <div className="controlBtns">
         <div style={{ flex: "1 0 0" }} />
         <Button
