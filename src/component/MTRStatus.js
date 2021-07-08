@@ -5,6 +5,7 @@ import convert from "xml-js";
 import { Button, ButtonGroup } from "@material-ui/core";
 import { Alert, AlertTitle } from "@material-ui/lab";
 import TextLoop from "react-text-loop";
+import Marquee from "react-fast-marquee";
 import CheckCircleTwoToneIcon from "@material-ui/icons/CheckCircleTwoTone";
 import ErrorTwoToneIcon from "@material-ui/icons/ErrorTwoTone";
 import RemoveCircleTwoToneIcon from "@material-ui/icons/RemoveCircleTwoTone";
@@ -115,22 +116,48 @@ function MTRStatus({ type }) {
   }
 
   if (type === "banner") {
-    var goodServices = lineStatus?.every((item, index, array) => {
+    var goodServices = lineStatus?.every((item) => {
       return item.status === "green" || item.status === "grey";
     });
 
-    var badServices = lineStatus?.some((item, index, array) => {
+    var badServices = lineStatus?.some((item) => {
       return (
         item.status === "yellow" ||
         item.status === "pink" ||
         item.status === "red"
       );
     });
+
+    var typhoonServices = lineStatus?.some((item) => {
+      return item.status === "typhoon";
+    });
+
     return (
       <div className="mtrStatus">
         <div className="mtrStatus_BannerContainer">
           <div className="mtrStatus_BannerRow">{/* header */}</div>
           <div className="mtrStatus_BannerRow">
+            {typhoonServices ? (
+              <Alert
+                severity="info"
+                action={
+                  <Button color="inherit" size="small" href="./mtr-status">
+                    <DoubleArrowIcon />
+                  </Button>
+                }
+              >
+                <div>
+                  <b>熱帶氣旋 Tropical Cyclone</b>
+                </div>
+                <Marquee gradientWidth="0">
+                  有港鐵路線受熱帶氣旋影響，請及早計劃行程。
+                </Marquee>
+                <Marquee gradientWidth="0">
+                  MTR Lines are affacted by Tropical Cyclone, please plan for
+                  travelling early.
+                </Marquee>
+              </Alert>
+            ) : null}
             {badServices ? (
               <Alert
                 severity="warning"
@@ -143,12 +170,13 @@ function MTRStatus({ type }) {
                 <div>
                   <b>港鐵服務延誤/受阻 MTR Service Delay/Disruption</b>
                 </div>
-                <TextLoop interval={3000} noWrap="true">
-                  <span>有一條/多條港鐵路線服務延誤/受阻，</span>
-                  <span>請考慮重新計劃行程。</span>
-                  <span>One or more MTR Lines has been delayed,</span>
-                  <span>please re-considerd the travelling plan.</span>
-                </TextLoop>
+                <Marquee gradientWidth="0">
+                  有港鐵路線服務延誤/受阻，請考慮重新計劃行程。
+                </Marquee>
+                <Marquee gradientWidth="0">
+                  One or more MTR Lines has been delayed, please re-considerd
+                  the travelling plan.
+                </Marquee>
               </Alert>
             ) : null}
             {goodServices ? (
@@ -162,7 +190,7 @@ function MTRStatus({ type }) {
               >
                 <TextLoop interval={5000}>
                   <span>所有港鐵列車服務正常。</span>
-                  <span>All Normal MTR Train Services.</span>
+                  <span>All MTR Train Services are Normal.</span>
                 </TextLoop>
               </Alert>
             ) : null}
@@ -215,8 +243,7 @@ function MTRStatus({ type }) {
             ))}
             <div className="mtrStatus_Footer">
               資料每3分鐘自動更新。
-              <br /> Information will be refrashed automatically every 3
-              minutes.
+              <br /> Information will update automatically every 3 minutes.
             </div>
           </div>
         )}
