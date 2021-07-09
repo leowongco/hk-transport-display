@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./css/Settings.css";
 
-import { Chip, ButtonGroup, Button } from "@material-ui/core";
+import { Chip, ButtonGroup, Button, Divider } from "@material-ui/core";
 
 import DictM from "./component/MTR_Dict.js";
 import DictL from "./component/LRT_Dict.js";
@@ -96,7 +96,7 @@ function Settings() {
           </ButtonGroup>
         </div>
       </div>
-
+      <Divider />
       <div className="settingPart">
         <div className="settingHeading">
           {langDict.saveStnHeading[lang + "_name"]}
@@ -261,6 +261,7 @@ function Settings() {
           </div>
         </div>
       </div>
+      <Divider />
       <div className="settingPart">
         <div className="settingHeading">
           {langDict.dataSource[lang + "_name"]}
