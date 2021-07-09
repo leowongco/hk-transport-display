@@ -165,8 +165,18 @@ function Settings() {
           {langDict.languageHead.tc_name + "/" + langDict.languageHead.en_name}
           <div style={{ flex: "1 0 0" }} />
           <ButtonGroup size="small" color="primary" variant="contained">
-            <Button onClick={() => handleLangChange("tc")}>中文</Button>
-            <Button onClick={() => handleLangChange("en")}>English</Button>
+            <Button
+              onClick={() => handleLangChange("tc")}
+              disabled={lang === "tc"}
+            >
+              中文
+            </Button>
+            <Button
+              onClick={() => handleLangChange("en")}
+              disabled={lang === "en"}
+            >
+              English
+            </Button>
           </ButtonGroup>
         </div>
       </div>
@@ -452,6 +462,7 @@ function Settings() {
           </div>
         </Marquee>
       </div>
+      <Divider />
       <Dialog maxWidth="md" open={open} onClose={handleClose}>
         <DialogTitle id="confirmation-dialog-title">
           {langDict.confirmTitle[lang + "_name"]}

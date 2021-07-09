@@ -11,6 +11,7 @@ const SaveStations = React.lazy(() => import("./SaveStations.js"));
 const Settings = React.lazy(() => import("./Settings.js"));
 const MTRMap = React.lazy(() => import("./component/MTRRouteMap"));
 const MTRStatus = React.lazy(() => import("./component/MTRStatus"));
+const WeatherBanner = React.lazy(() => import("./component/HK_weather"));
 
 function App() {
   firebaseApp.analytics();
@@ -46,6 +47,7 @@ function App() {
             <Route path="/">
               <Header />
               <MTRStatus type="banner" />
+              <WeatherBanner />
               <SaveStations />
             </Route>
           </Switch>
