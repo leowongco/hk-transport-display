@@ -35,9 +35,13 @@
 
 .saveStnActions {
   flex: 3;
+  padding-right: 5px;
+}
+
+.saveStnActions > .MuiButton-root {
   font-size: small;
   text-align: right;
-  padding-right: 5px;
+  white-space: nowrap;
 }
 
 .saveStnDetails > .MuiChip-root {
