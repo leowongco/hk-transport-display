@@ -18,7 +18,7 @@ import DictL from "./component/LRT_Dict.js";
 import LrtInfo from "./component/LRTSaveInfo";
 
 function SaveStations() {
-  const [lang, setLang] = useState("tc");
+  //const [lang, setLang] = useState("tc");
   const [swapLang, setSwapLang] = useState(false);
   const [expanded, setExpended] = useState("");
 
@@ -36,6 +36,7 @@ function SaveStations() {
   const aelSaveStnArray = JSON.parse(storage.getItem("AEL_SaveStn"));
   const tmlSaveStnArray = JSON.parse(storage.getItem("TML_SaveStn"));
   const lrtSaveStnArray = JSON.parse(storage.getItem("LrtSaveStn"));
+  const lang = storage.getItem("savedLanguage");
   var newArray = [];
 
   if (storage.getItem("TKL_SaveStn") === null) {
@@ -50,41 +51,9 @@ function SaveStations() {
     storage.setItem("LrtSaveStn", JSON.stringify(newArray));
   }
 
-  if (swapLang === true) {
-    setTimeout(() => {
-      if (lang === "en") {
-        setLang("tc");
-      } else {
-        setLang("en");
-      }
-    }, 8000);
-  }
-
   return (
     <div className="saveStations">
-      <div className="controlBtns">
-        <div style={{ flex: "1 0 0" }} />
-        <Button
-          onClick={() => setLang("en")}
-          disabled={lang === "en" || swapLang === true}
-          variant="contained"
-          color="primary"
-          className="langButton"
-          size="small"
-        >
-          English
-        </Button>
-        <Button
-          onClick={() => setLang("tc")}
-          disabled={lang === "tc" || swapLang === true}
-          variant="contained"
-          color="primary"
-          className="langButton"
-          size="small"
-        >
-          中文
-        </Button>
-      </div>
+      <div className="controlBtns"></div>
       <div className="saveStnTabs">
         <Tabs>
           <TabList>

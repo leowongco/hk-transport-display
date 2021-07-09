@@ -32,3 +32,8 @@ a {
 .header__chip {
   margin-left: 5px;
 }
+
+.bottomController {
+  position: absolute;
+  bottom: 0;
+}

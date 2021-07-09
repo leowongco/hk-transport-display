@@ -188,7 +188,6 @@ function Header() {
             </Link>
           </ListItem>
         </List>
-        {/*
         <Divider />
         <List>
           <ListItem>
@@ -200,10 +199,11 @@ function Header() {
             </Link>
           </ListItem>
         </List>
-        */}
         <Divider />
-        <List>
-          <ListItem>Version: {appInfo.version}</ListItem>
+        <List className="bottomController">
+          <ListItem>
+            <small>Version: {appInfo.version}</small>
+          </ListItem>
           <ListItem>
             <a
               href="http://dubdub.pro/"
