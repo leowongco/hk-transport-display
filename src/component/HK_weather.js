@@ -26,7 +26,7 @@ function HK_weather() {
     axios
       .get(weatherWarningApi)
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         setWarningIcon();
       })
       .catch((error) => console.log(error));
@@ -50,7 +50,6 @@ function HK_weather() {
       axios
         .get(weatherWarningApi)
         .then((res) => {
-          console.log(res.data);
           setWarningIcon();
         })
         .catch((error) => console.log(error));
@@ -61,20 +60,22 @@ function HK_weather() {
   return (
     <div className="hk_weather">
       <div className="weatherBanner_Container">
-        <div className="weatherBanner_WeatherIcon">
-          {weatherIcon ? (
+        {weatherIcon ? (
+          <div className="weatherBanner_WeatherIcon">
             <img
               src={`https://www.hko.gov.hk/images/HKOWxIconOutline/pic${weatherIcon}.png`}
             />
-          ) : null}
-        </div>
+          </div>
+        ) : null}
         <div className="weatherBanner_WarningIcon">{/* warning */}</div>
-        <div className="weatherBanner_Temperature">
-          {temperature ? <span>{temperature}&#8451;</span> : null}
-        </div>
-        <div className="weatherBanner_Humidity">
-          {humidity ? <span>{humidity}%</span> : null}
-        </div>
+        {temperature ? (
+          <div className="weatherBanner_Temperature">
+            {temperature + "\u2103"}
+          </div>
+        ) : null}
+        {humidity ? (
+          <div className="weatherBanner_Humidity">{humidity + "\u0025"}</div>
+        ) : null}
       </div>
     </div>
   );
