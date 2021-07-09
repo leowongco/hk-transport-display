@@ -6,9 +6,9 @@
 }
 
 .settingHeading {
-  font-size: x-large;
-  font-weight: 500;
-  padding-bottom: 10px;
+  font-size: large;
+  font-weight: 800;
+  padding-bottom: 5px;
 }
 
 .settingRow {
@@ -27,22 +27,25 @@
   padding-bottom: 3px;
 }
 
-.saveStnCount {
-  flex: 3;
-  font-size: small;
-}
-
 .saveStnDetails {
-  flex: 5;
+  flex: 7;
   font-size: small;
+  padding-left: 5px;
 }
 
 .saveStnActions {
-  flex: 2;
+  flex: 3;
   font-size: small;
+  text-align: right;
+  padding-right: 5px;
 }
 
 .saveStnDetails > .MuiChip-root {
   margin-right: 3px;
   margin-bottom: 3px;
+}
+
+.settingRowTicker {
+  white-space: nowrap;
+  padding-right: 5px;
 }

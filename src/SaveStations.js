@@ -4,7 +4,6 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Button,
   Typography,
 } from "@material-ui/core";
 import "./css/SaveStations.css";
@@ -18,12 +17,10 @@ import DictL from "./component/LRT_Dict.js";
 import LrtInfo from "./component/LRTSaveInfo";
 
 function SaveStations() {
-  //const [lang, setLang] = useState("tc");
-  const [swapLang, setSwapLang] = useState(false);
   const [expanded, setExpended] = useState("");
 
   const handleChange = (panel) => (newExpanded) => {
-    if (panel != expanded) {
+    if (panel !== expanded) {
       setExpended(newExpanded ? panel : false);
     } else {
       setExpended("");
@@ -92,7 +89,7 @@ function SaveStations() {
               {DictM.MtrLines.AEL[lang + "_name"]}
             </Tab>
             <Tab style={{ backgroundColor: "#02077b", color: "white" }}>
-              {DictL.lrtCommon[lang].lrt}
+              {DictM.MtrLines.LR[lang + "_name"]}
             </Tab>
           </TabList>
           <TabPanel>
