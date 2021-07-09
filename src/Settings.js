@@ -33,7 +33,7 @@ function Settings() {
     },
     delAll: {
       tc_name: "刪除所有車站",
-      en_name: "Delete All Stations",
+      en_name: "Delete All",
     },
     dataSource: {
       tc_name: "資料來源",
@@ -206,6 +206,7 @@ function Settings() {
                 onClick={() => {
                   handleDeleteAll("tkl");
                 }}
+                variant="outlined"
               >
                 {langDict.delAll[lang + "_name"]}
               </Button>
@@ -242,6 +243,7 @@ function Settings() {
                 onClick={() => {
                   handleDeleteAll("tcl");
                 }}
+                variant="outlined"
               >
                 {langDict.delAll[lang + "_name"]}
               </Button>
@@ -278,6 +280,7 @@ function Settings() {
                 onClick={() => {
                   handleDeleteAll("ael");
                 }}
+                variant="outlined"
               >
                 {langDict.delAll[lang + "_name"]}
               </Button>
@@ -313,6 +316,7 @@ function Settings() {
                 onClick={() => {
                   handleDeleteAll("tml");
                 }}
+                variant="outlined"
               >
                 {langDict.delAll[lang + "_name"]}
               </Button>
@@ -348,6 +352,7 @@ function Settings() {
                 onClick={() => {
                   handleDeleteAll("lrt");
                 }}
+                variant="outlined"
               >
                 {langDict.delAll[lang + "_name"]}
               </Button>

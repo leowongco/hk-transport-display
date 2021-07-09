@@ -39,9 +39,8 @@
 }
 
 .saveStnActions > .MuiButton-root {
-  font-size: small;
+  font-size: x-small;
   text-align: right;
-  white-space: nowrap;
 }
 
 .saveStnDetails > .MuiChip-root {
