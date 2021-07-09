@@ -49,6 +49,8 @@ function SaveStations() {
     storage.setItem("TML_SaveStn", JSON.stringify(newArray));
   } else if (storage.getItem("LrtSaveStn") === null) {
     storage.setItem("LrtSaveStn", JSON.stringify(newArray));
+  } else if (storage.getItem("savedLanguage") === null) {
+    storage.setItem("savedLanguage", "tc");
   }
 
   return (
