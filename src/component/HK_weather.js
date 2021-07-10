@@ -7,7 +7,7 @@ function HK_weather() {
   const [temperature, setTemperature] = useState("");
   const [humidity, setHumidity] = useState("");
   const [weatherIcon, setWeatherIcon] = useState("");
-  const [warningIcon, setWarningIcon] = useState("");
+  const [warning, setWarning] = useState("");
 
   useEffect(() => {
     const weatherReportApi =
@@ -19,15 +19,14 @@ function HK_weather() {
       .get(weatherReportApi)
       .then((res) => {
         setHumidity(res.data.humidity.data[0].value);
-        setTemperature(res.data.temperature.data[1].value);
+        setTemperature(res.data.temperature.data[1]);
         setWeatherIcon(res.data.icon);
       })
       .catch((error) => console.log(error));
     axios
       .get(weatherWarningApi)
       .then((res) => {
-        //console.log(res.data);
-        setWarningIcon();
+        setWarning(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -43,14 +42,14 @@ function HK_weather() {
         .get(weatherReportApi)
         .then((res) => {
           setHumidity(res.data.humidity.data[0].value);
-          setTemperature(res.data.temperature.data[1].value);
+          setTemperature(res.data.temperature.data[1]);
           setWeatherIcon(res.data.icon);
         })
         .catch((error) => console.log(error));
       axios
         .get(weatherWarningApi)
         .then((res) => {
-          setWarningIcon();
+          setWarning(res.data);
         })
         .catch((error) => console.log(error));
     }, 600000);
@@ -70,7 +69,7 @@ function HK_weather() {
         <div className="weatherBanner_WarningIcon">{/* warning */}</div>
         {temperature ? (
           <div className="weatherBanner_Temperature">
-            {temperature + "\u2103"}
+            {temperature.value + String.fromCharCode(176) + temperature.unit}
           </div>
         ) : null}
         {humidity ? (

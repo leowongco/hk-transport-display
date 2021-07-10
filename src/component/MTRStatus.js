@@ -3,7 +3,7 @@ import axios from "axios";
 import convert from "xml-js";
 
 import { Button, ButtonGroup } from "@material-ui/core";
-import { Alert, AlertTitle } from "@material-ui/lab";
+import { Alert } from "@material-ui/lab";
 import TextLoop from "react-text-loop";
 import Marquee from "react-fast-marquee";
 import CheckCircleTwoToneIcon from "@material-ui/icons/CheckCircleTwoTone";
@@ -17,7 +17,7 @@ import "../css/MTRStatus.css";
 import Dict from "./MTR_Dict.js";
 import StatusDict from "./MTRStatus_Dict.js";
 
-function MTRStatus({ type }) {
+function MTRStatus({ type, lang }) {
   const [lineStatus, setLineStatus] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -150,11 +150,13 @@ function MTRStatus({ type }) {
                   <b>熱帶氣旋 Tropical Cyclone</b>
                 </div>
                 <Marquee gradientWidth="0">
-                  有港鐵路線受熱帶氣旋影響，請及早計劃行程。
+                  <span>有港鐵路線受熱帶氣旋影響，請及早計劃行程。</span>
                 </Marquee>
                 <Marquee gradientWidth="0">
-                  MTR Lines are affacted by Tropical Cyclone, please plan for
-                  travelling early.
+                  <span>
+                    MTR Lines are affacted by Tropical Cyclone, please plan for
+                    travelling early.
+                  </span>
                 </Marquee>
               </Alert>
             ) : null}
@@ -168,14 +170,18 @@ function MTRStatus({ type }) {
                 }
               >
                 <div>
-                  <b>港鐵服務延誤/受阻 MTR Service Delay/Disruption</b>
+                  <b>
+                    港鐵服務延誤/受阻 <br /> MTR Service Delay/Disruption
+                  </b>
                 </div>
                 <Marquee gradientWidth="0">
-                  有港鐵路線服務延誤/受阻，請考慮重新計劃行程。
+                  <span>有港鐵路線服務延誤/受阻，請考慮重新計劃行程。</span>
                 </Marquee>
                 <Marquee gradientWidth="0">
-                  One or more MTR Lines has been delayed, please re-considerd
-                  the travelling plan.
+                  <span>
+                    One or more MTR Lines has been delayed, please re-considerd
+                    the travelling plan.
+                  </span>
                 </Marquee>
               </Alert>
             ) : null}
@@ -188,10 +194,17 @@ function MTRStatus({ type }) {
                   </Button>
                 }
               >
-                <TextLoop interval={5000}>
-                  <span>所有港鐵列車服務正常。</span>
-                  <span>All MTR Train Services are Normal.</span>
-                </TextLoop>
+                {lang === "tc" ? (
+                  <TextLoop interval={5000}>
+                    <span>所有港鐵列車服務正常。</span>
+                    <span>All MTR Train Services are Normal.</span>
+                  </TextLoop>
+                ) : (
+                  <TextLoop interval={5000}>
+                    <span>All MTR Train Services are Normal.</span>
+                    <span>所有港鐵列車服務正常。</span>
+                  </TextLoop>
+                )}
               </Alert>
             ) : null}
           </div>
