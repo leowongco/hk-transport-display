@@ -7,7 +7,8 @@ function HK_weather() {
   const [temperature, setTemperature] = useState("");
   const [humidity, setHumidity] = useState("");
   const [weatherIcon, setWeatherIcon] = useState("");
-  const [warning, setWarning] = useState("");
+  const [warning, setWarning] = useState([]);
+  const warningArr = [];
 
   useEffect(() => {
     const weatherReportApi =
@@ -56,6 +57,18 @@ function HK_weather() {
     return () => clearInterval(inteval);
   }, []);
 
+  function ShowWarnings(props) {
+    if (warning.WHOT !== null) {
+      warningArr.push("vhot");
+    }
+
+    return warningArr.map((icon) => (
+      <img
+        src={`https://www.hko.gov.hk/en/wxinfo/dailywx/images/${icon}.gif`}
+      />
+    ));
+  }
+
   return (
     <div className="hk_weather">
       <div className="weatherBanner_Container">
@@ -66,7 +79,9 @@ function HK_weather() {
             />
           </div>
         ) : null}
-        <div className="weatherBanner_WarningIcon">{/* warning */}</div>
+        <div className="weatherBanner_WarningIcon">
+          <ShowWarnings />
+        </div>
         {temperature ? (
           <div className="weatherBanner_Temperature">
             {temperature.value + String.fromCharCode(176) + temperature.unit}

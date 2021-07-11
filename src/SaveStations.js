@@ -38,15 +38,20 @@ function SaveStations() {
 
   if (storage.getItem("TKL_SaveStn") === null) {
     storage.setItem("TKL_SaveStn", JSON.stringify(newArray));
-  } else if (storage.getItem("TCL_SaveStn") === null) {
+  }
+  if (storage.getItem("TCL_SaveStn") === null) {
     storage.setItem("TCL_SaveStn", JSON.stringify(newArray));
-  } else if (storage.getItem("AEL_SaveStn") === null) {
+  }
+  if (storage.getItem("AEL_SaveStn") === null) {
     storage.setItem("AEL_SaveStn", JSON.stringify(newArray));
-  } else if (storage.getItem("TML_SaveStn") === null) {
+  }
+  if (storage.getItem("TML_SaveStn") === null) {
     storage.setItem("TML_SaveStn", JSON.stringify(newArray));
-  } else if (storage.getItem("LrtSaveStn") === null) {
+  }
+  if (storage.getItem("LrtSaveStn") === null) {
     storage.setItem("LrtSaveStn", JSON.stringify(newArray));
-  } else if (storage.getItem("savedLanguage") === null) {
+  }
+  if (storage.getItem("savedLanguage") === null) {
     storage.setItem("savedLanguage", "tc");
   }
 

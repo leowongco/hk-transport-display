@@ -16,6 +16,12 @@
   vertical-align: middle;
 }
 
+.weatherBanner_WarningIcon > img {
+  height: 23px;
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
 .weatherBanner_Temperature,
 .weatherBanner_Humidity {
   padding-right: 5px;
