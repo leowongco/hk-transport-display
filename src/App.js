@@ -4,10 +4,10 @@ import React, { Suspense } from "react";
 import { PageLoading } from "./PageLoading";
 import { firebaseApp } from "./component/firebase.js";
 
-const LRT = React.lazy(() => import("./LRT.js"));
-const MTR = React.lazy(() => import("./MTR.js"));
-const Header = React.lazy(() => import("./Header.js"));
-const SaveStations = React.lazy(() => import("./SaveStations.js"));
+const LRT = React.lazy(() => import("./LRT"));
+const MTR = React.lazy(() => import("./MTR"));
+const Header = React.lazy(() => import("./Header"));
+const SaveStations = React.lazy(() => import("./SaveStations"));
 const Settings = React.lazy(() => import("./Settings.js"));
 const MTRMap = React.lazy(() => import("./component/MTRRouteMap"));
 const MTRStatus = React.lazy(() => import("./component/MTRStatus"));

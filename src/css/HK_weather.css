@@ -10,22 +10,25 @@
   align-items: center !important;
 }
 
+.weatherBanner_WeatherIcon,
+.weatherBanner_WarningIcon {
+  padding-right: 5px;
+}
+
 .weatherBanner_WeatherIcon > img {
   height: 23px;
-  padding-right: 5px;
   vertical-align: middle;
 }
 
 .weatherBanner_WarningIcon > img {
   height: 23px;
-  padding-right: 5px;
   vertical-align: middle;
 }
 
 .weatherBanner_Temperature,
 .weatherBanner_Humidity {
   padding-right: 5px;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 300;
   color: white;
 }

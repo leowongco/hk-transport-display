@@ -385,6 +385,11 @@ function Settings() {
             港鐵 MTR
           </a>
         </div>
+        <div className="settingRow">
+          <a href="http://www.hko.gov.hk" target="_blank" rel="noreferrer">
+            香港天文台 Hong Kong Observatory
+          </a>
+        </div>
       </div>
       <Divider />
       <div className="settingPart">
