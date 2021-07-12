@@ -17,9 +17,12 @@ import "../css/MTRStatus.css";
 import Dict from "./MTR_Dict.js";
 import StatusDict from "./MTRStatus_Dict.js";
 
-function MTRStatus({ type, lang }) {
+function MTRStatus({ type }) {
   const [lineStatus, setLineStatus] = useState();
   const [loading, setLoading] = useState(false);
+  const coreApi = "https://cors.bridged.cc/";
+  const mtrStatusApi = `https://www.mtr.com.hk/alert/ryg_line_status.xml?t=${Date.now()}`;
+  const lang = window.localStorage.getItem("savedLanguage");
 
   const removeJsonTextAttribute = function (value, parentElement) {
     try {
@@ -42,8 +45,6 @@ function MTRStatus({ type, lang }) {
   };
 
   useEffect(() => {
-    let coreApi = "https://cors.bridged.cc/";
-    let mtrStatusApi = `https://www.mtr.com.hk/alert/ryg_line_status.xml?t=${Date.now()}`;
     setLoading(true);
     axios
       .get(`${coreApi}${mtrStatusApi}`, {
@@ -71,8 +72,6 @@ function MTRStatus({ type, lang }) {
 
   useEffect(() => {
     const inteval = setInterval(() => {
-      let coreApi = "https://cors.bridged.cc/";
-      let mtrStatusApi = `https://www.mtr.com.hk/alert/ryg_line_status.xml?t=${Date.now()}`;
       axios
         .get(`${coreApi}${mtrStatusApi}`, {
           headers: {
@@ -179,8 +178,8 @@ function MTRStatus({ type, lang }) {
                 </Marquee>
                 <Marquee gradientWidth="0">
                   <span>
-                    One or more MTR Lines has been delayed, please re-considerd
-                    the travelling plan.
+                    One or more MTR Lines has been delayed, please plan
+                    accordingly.
                   </span>
                 </Marquee>
               </Alert>

@@ -138,7 +138,7 @@ function HK_weather() {
   return (
     <div className="hk_weather">
       <div className="weatherBanner_Container">
-        {weatherIcon ? (
+        {!isLoading ? (
           <div className="weatherBanner_WeatherIcon">
             <img
               src={`https://www.hko.gov.hk/images/HKOWxIconOutline/pic${weatherIcon}.png`}
@@ -151,12 +151,12 @@ function HK_weather() {
             <ShowWarnings />
           </div>
         ) : null}
-        {temperature ? (
+        {!isLoading ? (
           <div className="weatherBanner_Temperature">
             {temperature.value + String.fromCharCode(176) + temperature.unit}
           </div>
         ) : null}
-        {humidity ? (
+        {!isLoading ? (
           <div className="weatherBanner_Humidity">{humidity + "\u0025"}</div>
         ) : null}
       </div>
