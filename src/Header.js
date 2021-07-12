@@ -160,6 +160,9 @@ function Header() {
               主頁 Home
             </Link>
           </ListItem>
+        </List>
+        <Divider />
+        <List>
           <ListItem>
             <Link to="/mtr-status" onClick={handleDrawerClose}>
               <ListItemIcon>
@@ -168,9 +171,6 @@ function Header() {
               <span>港鐵狀態 MTR Status</span>
             </Link>
           </ListItem>
-        </List>
-        <Divider />
-        <List>
           <ListItem>
             <Link to="/lrt" onClick={handleDrawerClose}>
               <ListItemIcon>
