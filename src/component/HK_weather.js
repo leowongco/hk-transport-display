@@ -4,6 +4,7 @@ import axios from "axios";
 import "../css/HK_weather.css";
 
 function HK_weather() {
+  const [isLoading, setIsLoading] = useState(false);
   const [temperature, setTemperature] = useState("");
   const [humidity, setHumidity] = useState("");
   const [weatherIcon, setWeatherIcon] = useState("");
@@ -19,6 +20,7 @@ function HK_weather() {
 
   //First Get Data
   useEffect(() => {
+    setIsLoading(true);
     axios
       .all([weatherReport, weatherWarning])
       .then(
@@ -28,6 +30,7 @@ function HK_weather() {
           setWeatherIcon(report.data.icon);
 
           setWarningData(warning.data);
+          setIsLoading(false);
         })
       )
       .catch((error) => console.log(error));
@@ -56,28 +59,80 @@ function HK_weather() {
   function ShowWarnings(props) {
     let warningArr = [];
 
-    if (warningData.WHOT) {
-      warningArr.push("WHOT");
-    }
-    if (warningData.WCOLD) {
-      warningArr.push("WCOLD");
-    }
-    if (warningData.WMSGN) {
-      warningArr.push("WMSGNL");
-    }
-    if (warningData.WTS) {
-      warningArr.push("WTS");
-    }
-    if (warningData.WL) {
-      warningArr.push("WL");
-    }
-    if (warningData.WNFNTSA) {
-      warningArr.push("WNFNTSA");
-    }
+    if (!isLoading) {
+      // Typhoon Icons
+      if (warningData.WTCSGNL?.code === "TC1") {
+        warningArr.push("TC1");
+      }
+      if (warningData.WTCSGNL?.code === "TC3") {
+        warningArr.push("TC3");
+      }
+      if (warningData.WTCSGNL?.code === "TC8NE") {
+        warningArr.push("TC8NE");
+      }
+      if (warningData.WTCSGNL?.code === "TC8SE") {
+        warningArr.push("TC8SE");
+      }
+      if (warningData.WTCSGNL?.code === "TC8NW") {
+        warningArr.push("TC8NW");
+      }
+      if (warningData.WTCSGNL?.code === "TC8SW") {
+        warningArr.push("TC8SW");
+      }
+      if (warningData.WTCSGNL?.code === "TC9") {
+        warningArr.push("TC9");
+      }
+      if (warningData.WTCSGNL?.code === "TC10") {
+        warningArr.push("TC10");
+      }
+      // Rain Icons
+      if (warningData.WRAIN?.code === "WRAINA") {
+        warningArr.push("WRAINA");
+      }
+      if (warningData.WRAIN?.code === "WRAINR") {
+        warningArr.push("WRAINR");
+      }
+      if (warningData.WRAIN?.code === "WRAINB") {
+        warningArr.push("WRAINB");
+      }
+      if (warningData.WTS?.code === "WTS") {
+        warningArr.push("WTS");
+      }
+      if (warningData.WL?.code === "WL") {
+        warningArr.push("WL");
+      }
+      if (warningData.WHOT?.code === "WHOT") {
+        warningArr.push("WHOT");
+      }
+      if (warningData.WCOLD?.code === "WCOLD") {
+        warningArr.push("WCOLD");
+      }
+      if (warningData.WMSGN?.code === "WMSGNL") {
+        warningArr.push("WMSGNL");
+      }
+      if (warningData.WNFNTSA?.code === "WNFNTSA") {
+        warningArr.push("WNFNTSA");
+      }
+      if (warningData.WFIRE?.code === "WFIREY") {
+        warningArr.push("WFIREY");
+      }
+      if (warningData.WFIRE?.code === "WFIRER") {
+        warningArr.push("WFIRER");
+      }
+      if (warningData.WFROST?.code === "WFROST") {
+        warningArr.push("WFROST");
+      }
+      if (warningData.WTMW?.code === "WTMW") {
+        warningArr.push("WTMW");
+      }
 
-    return warningArr?.map((warn) => (
-      <img src={require(`../img/weather-icon/warnings/${warn}.png`).default} />
-    ));
+      return warningArr?.map((warn) => (
+        <img
+          src={require(`../img/weather-icon/warnings/${warn}.png`).default}
+          alt="warning icon"
+        />
+      ));
+    }
   }
 
   return (
@@ -87,10 +142,11 @@ function HK_weather() {
           <div className="weatherBanner_WeatherIcon">
             <img
               src={`https://www.hko.gov.hk/images/HKOWxIconOutline/pic${weatherIcon}.png`}
+              alt="weather icon"
             />
           </div>
         ) : null}
-        {warningData ? (
+        {!isLoading ? (
           <div className="weatherBanner_WarningIcon">
             <ShowWarnings />
           </div>
