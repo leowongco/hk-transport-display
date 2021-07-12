@@ -3,19 +3,11 @@ import axios from "axios";
 
 import "../css/HK_weather.css";
 
-//Weather Warning Icons
-import WHOTicon from "../img/weather-icon/warnings/WHOT.png";
-import WCOLDicon from "../img/weather-icon/warnings/WCOLD.png";
-import WMSGNLicon from "../img/weather-icon/warnings/WMSGNL.png";
-import WTSicon from "../img/weather-icon/warnings/WTS.png";
-import WLicon from "../img/weather-icon/warnings/WL.png";
-import WNFNTSAicon from "../img/weather-icon/warnings/WNFNTSA.png";
-
 function HK_weather() {
   const [temperature, setTemperature] = useState("");
   const [humidity, setHumidity] = useState("");
   const [weatherIcon, setWeatherIcon] = useState("");
-  const [warningData, setWarningData] = useState();
+  const [warningData, setWarningData] = useState([]);
 
   // Api Links
   const weatherReportApi =
@@ -62,24 +54,30 @@ function HK_weather() {
 
   //Loading Warning Icons
   function ShowWarnings(props) {
-    if (warningData.WHOT !== null) {
-      return <img src={WHOTicon} />;
+    let warningArr = [];
+
+    if (warningData.WHOT) {
+      warningArr.push("WHOT");
     }
-    if (warningData.WCOLD !== null) {
-      return <img src={WCOLDicon} />;
+    if (warningData.WCOLD) {
+      warningArr.push("WCOLD");
     }
-    if (warningData.WMSGNL !== null) {
-      return <img src={WMSGNLicon} />;
+    if (warningData.WMSGN) {
+      warningArr.push("WMSGNL");
     }
-    if (warningData.WTS !== null) {
-      return <img src={WTSicon} />;
+    if (warningData.WTS) {
+      warningArr.push("WTS");
     }
-    if (warningData.WL !== null) {
-      return <img src={WLicon} />;
+    if (warningData.WL) {
+      warningArr.push("WL");
     }
-    if (warningData.WNFNTSA !== null) {
-      return <img src={WNFNTSAicon} />;
+    if (warningData.WNFNTSA) {
+      warningArr.push("WNFNTSA");
     }
+
+    return warningArr?.map((warn) => (
+      <img src={require(`../img/weather-icon/warnings/${warn}.png`).default} />
+    ));
   }
 
   return (

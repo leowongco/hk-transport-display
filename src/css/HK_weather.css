@@ -23,6 +23,7 @@
 .weatherBanner_WarningIcon > img {
   height: 23px;
   vertical-align: middle;
+  padding-right: 3px;
 }
 
 .weatherBanner_Temperature,
