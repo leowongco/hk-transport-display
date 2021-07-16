@@ -159,6 +159,8 @@ function HK_weather() {
         {!isLoading ? (
           <div className="weatherBanner_Humidity">{humidity + "\u0025"}</div>
         ) : null}
+        <div style={{ flex: "1 0 0" }} />
+        <div className="currentTime">{/* Clock */}</div>
       </div>
     </div>
   );

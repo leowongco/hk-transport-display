@@ -4,6 +4,8 @@ import React, { Suspense } from "react";
 import { PageLoading } from "./PageLoading";
 import { firebaseApp } from "./component/firebase.js";
 
+import WeatherBanner from "./component/HK_weather";
+
 const LRT = React.lazy(() => import("./LRT"));
 const MTR = React.lazy(() => import("./MTR"));
 const Header = React.lazy(() => import("./Header"));
@@ -11,7 +13,6 @@ const SaveStations = React.lazy(() => import("./SaveStations"));
 const Settings = React.lazy(() => import("./Settings.js"));
 const MTRMap = React.lazy(() => import("./component/MTRRouteMap"));
 const MTRStatus = React.lazy(() => import("./component/MTRStatus"));
-const WeatherBanner = React.lazy(() => import("./component/HK_weather"));
 
 function App() {
   firebaseApp.analytics();

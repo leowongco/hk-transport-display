@@ -23,6 +23,7 @@ function MTRStatus({ type }) {
   const coreApi = "https://cors.bridged.cc/";
   const mtrStatusApi = `https://www.mtr.com.hk/alert/ryg_line_status.xml?t=${Date.now()}`;
   const lang = window.localStorage.getItem("savedLanguage");
+  const mtrBadLines = [];
 
   const removeJsonTextAttribute = function (value, parentElement) {
     try {
@@ -146,15 +147,13 @@ function MTRStatus({ type }) {
                 }
               >
                 <div>
-                  <b>熱帶氣旋 Tropical Cyclone</b>
+                  <b>{lang === "tc" ? "熱帶氣旋" : "Tropical Cyclone"}</b>
                 </div>
                 <Marquee gradientWidth="0">
-                  <span>有港鐵路線受熱帶氣旋影響，請及早計劃行程。</span>
-                </Marquee>
-                <Marquee gradientWidth="0">
                   <span>
-                    MTR Lines are affacted by Tropical Cyclone, please plan for
-                    travelling early.
+                    {lang === "tc"
+                      ? "有港鐵路線受熱帶氣旋影響，請及早計劃行程。"
+                      : "MTR Lines are affacted by Tropical Cyclone, please plan accordingly."}
                   </span>
                 </Marquee>
               </Alert>
@@ -170,16 +169,16 @@ function MTRStatus({ type }) {
               >
                 <div>
                   <b>
-                    港鐵服務延誤/受阻 <br /> MTR Service Delay/Disruption
+                    {lang === "tc"
+                      ? "港鐵服務延誤/受阻"
+                      : "MTR Service Delay/Disruption"}
                   </b>
                 </div>
                 <Marquee gradientWidth="0">
-                  <span>有港鐵路線服務延誤/受阻，請考慮重新計劃行程。</span>
-                </Marquee>
-                <Marquee gradientWidth="0">
                   <span>
-                    One or more MTR Lines has been delayed, please plan
-                    accordingly.
+                    {lang === "tc"
+                      ? "有港鐵路線服務延誤/受阻，請考慮重新計劃行程。"
+                      : "One or more MTR Lines has been delayed, please plan accordingly."}
                   </span>
                 </Marquee>
               </Alert>
