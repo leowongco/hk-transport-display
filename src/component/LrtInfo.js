@@ -13,6 +13,7 @@ function LrtInfo({ sid, lang }) {
   const [lrtETA, setLRTEta] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [lrtStnSaved, setLrtStnSaved] = useState(false);
+  const lrtAPI = `https://rt.data.gov.hk/v1/transport/mtr/lrt/getSchedule?station_id=${sid}`;
   var { fLang } = "";
 
   const storage = window.localStorage;
@@ -30,7 +31,6 @@ function LrtInfo({ sid, lang }) {
 
   useEffect(() => {
     const inteval = setInterval(() => {
-      let lrtAPI = `https://rt.data.gov.hk/v1/transport/mtr/lrt/getSchedule?station_id=${sid}`;
       axios
         .get(lrtAPI)
         .then((res) => {
@@ -45,7 +45,6 @@ function LrtInfo({ sid, lang }) {
   useEffect(() => {
     setIsLoading(true);
     setLRTEta();
-    let lrtAPI = `https://rt.data.gov.hk/v1/transport/mtr/lrt/getSchedule?station_id=${sid}`;
     axios
       .get(lrtAPI)
       .then((res) => {

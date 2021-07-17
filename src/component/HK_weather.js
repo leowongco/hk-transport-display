@@ -141,7 +141,9 @@ function HK_weather() {
         {!isLoading ? (
           <div className="weatherBanner_WeatherIcon">
             <img
-              src={`https://www.hko.gov.hk/images/HKOWxIconOutline/pic${weatherIcon}.png`}
+              src={`https://www.hko.gov.hk/images/HKOWxIconOutline/pic${weatherIcon.slice(
+                -1
+              )}.png`}
               alt="weather icon"
             />
           </div>
