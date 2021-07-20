@@ -9,6 +9,7 @@ function HK_weather() {
   const [humidity, setHumidity] = useState("");
   const [weatherIcon, setWeatherIcon] = useState("");
   const [warningData, setWarningData] = useState([]);
+  const [liveTime, setLiveTime] = useState("");
 
   // Api Links
   const weatherReportApi =
@@ -135,6 +136,25 @@ function HK_weather() {
     }
   }
 
+  //Live Clock
+  useEffect(() => {
+    const interval = setInterval(
+      () =>
+        setLiveTime(
+          new Date().toLocaleString("en-GB", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          })
+        ),
+      1000
+    );
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
     <div className="hk_weather">
       <div className="weatherBanner_Container">
@@ -162,7 +182,7 @@ function HK_weather() {
           <div className="weatherBanner_Humidity">{humidity + "\u0025"}</div>
         ) : null}
         <div style={{ flex: "1 0 0" }} />
-        <div className="currentTime">{/* Clock */}</div>
+        <div className="currentTime">{liveTime}</div>
       </div>
     </div>
   );

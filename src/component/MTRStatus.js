@@ -3,6 +3,7 @@ import axios from "axios";
 import convert from "xml-js";
 
 import { Button, ButtonGroup } from "@material-ui/core";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import { Alert } from "@material-ui/lab";
 import TextLoop from "react-text-loop";
 import Marquee from "react-fast-marquee";
@@ -115,6 +116,16 @@ function MTRStatus({ type }) {
     }
   }
 
+  function MTRBlankStatus(props) {
+    return (
+      <div className="mtrBlankStatus">
+        <div>
+          <CircularProgress color="secondary" size={30} />
+        </div>
+      </div>
+    );
+  }
+
   if (type === "banner") {
     var goodServices = lineStatus?.every((item) => {
       return item.status === "green" || item.status === "grey";
@@ -134,79 +145,83 @@ function MTRStatus({ type }) {
 
     return (
       <div className="mtrStatus">
-        <div className="mtrStatus_BannerContainer">
-          <div className="mtrStatus_BannerRow">{/* header */}</div>
-          <div className="mtrStatus_BannerRow">
-            {typhoonServices ? (
-              <Alert
-                severity="info"
-                action={
-                  <Button color="inherit" size="small" href="./mtr-status">
-                    <DoubleArrowIcon />
-                  </Button>
-                }
-              >
-                <div>
-                  <b>{lang === "tc" ? "熱帶氣旋" : "Tropical Cyclone"}</b>
-                </div>
-                <Marquee gradientWidth="0">
-                  <span>
-                    {lang === "tc"
-                      ? "有港鐵路線受熱帶氣旋影響，請及早計劃行程。"
-                      : "MTR Lines are affacted by Tropical Cyclone, please plan accordingly."}
-                  </span>
-                </Marquee>
-              </Alert>
-            ) : null}
-            {badServices ? (
-              <Alert
-                severity="warning"
-                action={
-                  <Button color="inherit" size="small" href="./mtr-status">
-                    <DoubleArrowIcon />
-                  </Button>
-                }
-              >
-                <div>
-                  <b>
-                    {lang === "tc"
-                      ? "港鐵服務延誤/受阻"
-                      : "MTR Service Delay/Disruption"}
-                  </b>
-                </div>
-                <Marquee gradientWidth="0">
-                  <span>
-                    {lang === "tc"
-                      ? "有港鐵路線服務延誤/受阻，請考慮重新計劃行程。"
-                      : "One or more MTR Lines has been delayed, please plan accordingly."}
-                  </span>
-                </Marquee>
-              </Alert>
-            ) : null}
-            {goodServices ? (
-              <Alert
-                severity="success"
-                action={
-                  <Button color="inherit" size="small" href="./mtr-status">
-                    <DoubleArrowIcon />
-                  </Button>
-                }
-              >
-                {lang === "tc" ? (
-                  <TextLoop interval={5000}>
-                    <span>所有港鐵列車服務正常。</span>
-                    <span>All MTR Train Services are Normal.</span>
-                  </TextLoop>
-                ) : (
-                  <TextLoop interval={5000}>
-                    <span>All MTR Train Services are Normal.</span>
-                    <span>所有港鐵列車服務正常。</span>
-                  </TextLoop>
-                )}
-              </Alert>
-            ) : null}
+        {!loading ? (
+          <div className="mtrStatus_BannerContainer">
+            <div className="mtrStatus_BannerRow">{/* header */}</div>
+            <div className="mtrStatus_BannerRow">
+              {typhoonServices ? (
+                <Alert
+                  severity="info"
+                  action={
+                    <Button color="inherit" size="small" href="./mtr-status">
+                      <DoubleArrowIcon />
+                    </Button>
+                  }
+                >
+                  <div>
+                    <b>{lang === "tc" ? "熱帶氣旋" : "Tropical Cyclone"}</b>
+                  </div>
+                  <Marquee gradientWidth="0">
+                    <span>
+                      {lang === "tc"
+                        ? "有港鐵路線受熱帶氣旋影響，請及早計劃行程。"
+                        : "MTR Lines are affacted by Tropical Cyclone, please plan accordingly."}
+                    </span>
+                  </Marquee>
+                </Alert>
+              ) : null}
+              {badServices ? (
+                <Alert
+                  severity="warning"
+                  action={
+                    <Button color="inherit" size="small" href="./mtr-status">
+                      <DoubleArrowIcon />
+                    </Button>
+                  }
+                >
+                  <div>
+                    <b>
+                      {lang === "tc"
+                        ? "港鐵服務延誤/受阻"
+                        : "MTR Service Delay/Disruption"}
+                    </b>
+                  </div>
+                  <Marquee gradientWidth="0">
+                    <span>
+                      {lang === "tc"
+                        ? "有港鐵路線服務延誤/受阻，請考慮重新計劃行程。"
+                        : "One or more MTR Lines has been delayed, please plan accordingly."}
+                    </span>
+                  </Marquee>
+                </Alert>
+              ) : null}
+              {goodServices ? (
+                <Alert
+                  severity="success"
+                  action={
+                    <Button color="inherit" size="small" href="./mtr-status">
+                      <DoubleArrowIcon />
+                    </Button>
+                  }
+                >
+                  {lang === "tc" ? (
+                    <TextLoop interval={5000}>
+                      <span>所有港鐵列車服務正常。</span>
+                      <span>All MTR Train Services are Normal.</span>
+                    </TextLoop>
+                  ) : (
+                    <TextLoop interval={5000}>
+                      <span>All MTR Train Services are Normal.</span>
+                      <span>所有港鐵列車服務正常。</span>
+                    </TextLoop>
+                  )}
+                </Alert>
+              ) : null}
+            </div>
           </div>
-        </div>
+        ) : (
+          <MTRBlankStatus />
+        )}
       </div>
     );
   } else {

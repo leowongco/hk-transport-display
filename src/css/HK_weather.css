@@ -5,7 +5,7 @@
   padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  height: 25px;
+  height: 30px;
   background: royalblue;
   align-items: center !important;
 }
@@ -16,18 +16,19 @@
 }
 
 .weatherBanner_WeatherIcon > img {
-  height: 23px;
+  height: 28px;
   vertical-align: middle;
 }
 
 .weatherBanner_WarningIcon > img {
-  height: 23px;
+  height: 25px;
   vertical-align: middle;
   padding-right: 3px;
 }
 
 .weatherBanner_Temperature,
-.weatherBanner_Humidity {
+.weatherBanner_Humidity,
+.currentTime {
   padding-right: 5px;
   font-size: 15px;
   font-weight: 300;

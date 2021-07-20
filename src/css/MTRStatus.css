@@ -52,3 +52,15 @@
   font-size: small;
   padding-top: 15px;
 }
+
+.mtrBlankStatus {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  flex: 1;
+}
+
+.mtrBlankStatus > div {
+  padding-top: 5px;
+  margin: 0 auto;
+}
