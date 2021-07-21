@@ -27,10 +27,16 @@
 }
 
 .weatherBanner_Temperature,
-.weatherBanner_Humidity,
-.currentTime {
+.weatherBanner_Humidity {
   padding-right: 5px;
   font-size: 15px;
   font-weight: 300;
   color: white;
+}
+
+.currentTime {
+  font-size: 20px;
+  font-weight: 300;
+  color: white;
+  margin-right: 10px;
 }

@@ -16,43 +16,37 @@ function HK_weather() {
     "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=en";
   const weatherWarningApi =
     "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=en";
-  const weatherReport = axios.get(weatherReportApi);
-  const weatherWarning = axios.get(weatherWarningApi);
-
-  //First Get Data
-  useEffect(() => {
-    setIsLoading(true);
-    axios
-      .all([weatherReport, weatherWarning])
-      .then(
-        axios.spread(function (report, warning) {
-          setHumidity(report.data.humidity.data[0].value);
-          setTemperature(report.data.temperature.data[1]);
-          setWeatherIcon(report.data.icon);
-
-          setWarningData(warning.data);
-          setIsLoading(false);
-        })
-      )
-      .catch((error) => console.log(error));
-  }, []);
 
   //Getting Data every 10 mins
   useEffect(() => {
+    var countTime = 0;
     const inteval = setInterval(() => {
-      axios
-        .all([weatherReport, weatherWarning])
-        .then(
-          axios.spread(function (report, warning) {
-            setHumidity(report.data.humidity.data[0].value);
-            setTemperature(report.data.temperature.data[1]);
-            setWeatherIcon(report.data.icon);
+      setLiveTime(
+        new Date().toLocaleString("en-GB", {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        })
+      );
+      if (countTime % 60 === 0) {
+        const weatherReport = axios.get(weatherReportApi);
+        const weatherWarning = axios.get(weatherWarningApi);
+        axios
+          .all([weatherReport, weatherWarning])
+          .then(
+            axios.spread(function (report, warning) {
+              setHumidity(report.data.humidity.data[0].value);
+              setTemperature(report.data.temperature.data[1]);
+              setWeatherIcon(report.data.icon);
 
-            setWarningData(warning.data);
-          })
-        )
-        .catch((error) => console.log(error));
-    }, 600000);
+              setWarningData(warning.data);
+            })
+          )
+          .catch((error) => console.log(error));
+      }
+      countTime += 1;
+      console.log(countTime, countTime % 60);
+    }, 1000);
     return () => clearInterval(inteval);
   }, []);
 
@@ -135,25 +129,6 @@ function HK_weather() {
       ));
     }
   }
-
-  //Live Clock
-  useEffect(() => {
-    const interval = setInterval(
-      () =>
-        setLiveTime(
-          new Date().toLocaleString("en-GB", {
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-          })
-        ),
-      1000
-    );
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
 
   return (
     <div className="hk_weather">

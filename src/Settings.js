@@ -13,6 +13,7 @@ import {
   DialogTitle,
 } from "@material-ui/core";
 import Marquee from "react-fast-marquee";
+import { Link } from "react-router-dom";
 
 import DictM from "./component/MTR_Dict.js";
 import DictL from "./component/LRT_Dict.js";
