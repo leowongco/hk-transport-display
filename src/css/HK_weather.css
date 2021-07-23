@@ -11,6 +11,8 @@
   display: flex;
   flex: 1;
   padding-bottom: 5px;
+  padding-top: 5px;
+  min-height: 30px;
   align-items: center !important;
 }
 
@@ -18,6 +20,7 @@
   font-weight: 500;
   font-size: small;
   color: yellow;
+  width: 100%;
 }
 
 .weatherBanner_WeatherIcon,

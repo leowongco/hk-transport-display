@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Marquee from "react-fast-marquee";
+import { Divider } from "@material-ui/core";
 
 import "../css/HK_weather.css";
 
@@ -48,7 +49,7 @@ function HK_weather() {
           .catch((error) => console.log(error));
       }
       countTime += 1;
-      console.log(countTime, countTime % 60);
+      // console.log(countTime, countTime % 60);
     }, 1000);
     return () => clearInterval(inteval);
   }, []);
@@ -137,7 +138,7 @@ function HK_weather() {
     <div className="hk_weather">
       <div className="weatherBanner_Container">
         <div className="weatherBanner_Row">
-          {!isLoading ? (
+          {weatherIcon.length !== 0 ? (
             <div className="weatherBanner_WeatherIcon">
               <img
                 src={`https://www.hko.gov.hk/images/HKOWxIconOutline/pic${weatherIcon.slice(
@@ -152,26 +153,31 @@ function HK_weather() {
               <ShowWarnings />
             </div>
           ) : null}
-          {!isLoading ? (
+          {temperature !== "" ? (
             <div className="weatherBanner_Temperature">
               {temperature.value + String.fromCharCode(176) + temperature.unit}
             </div>
           ) : null}
-          {!isLoading ? (
+          {humidity !== "" ? (
             <div className="weatherBanner_Humidity">{humidity + "\u0025"}</div>
           ) : null}
           <div style={{ flex: "1 0 0" }} />
           <div className="currentTime">{liveTime}</div>
         </div>
-        <div className="weatherBanner_Row">
-          {!isLoading && specialWxTips !== "" ? (
+
+        {typeof specialWxTips !== "undefined" && specialWxTips !== "" ? (
+          <div className="weatherBanner_Row">
             <div className="weatherBanner_SpecialWxTips">
+              <Divider />
               <Marquee gradientWidth={0} pauseOnHover="true" speed={35}>
-                {specialWxTips + " ⚠️ "}
+                {specialWxTips +
+                  String.fromCharCode(160) +
+                  "⚠️" +
+                  String.fromCharCode(160)}
               </Marquee>
             </div>
-          ) : null}
-        </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );
