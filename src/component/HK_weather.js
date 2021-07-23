@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Marquee from "react-fast-marquee";
 
 import "../css/HK_weather.css";
 
 function HK_weather() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [temperature, setTemperature] = useState("");
   const [humidity, setHumidity] = useState("");
   const [weatherIcon, setWeatherIcon] = useState("");
   const [warningData, setWarningData] = useState([]);
+  const [specialWxTips, setSpecialWxTips] = useState("");
   const [liveTime, setLiveTime] = useState("");
+  const lang = window.localStorage.getItem("savedLanguage");
 
   // Api Links
-  const weatherReportApi =
-    "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=en";
-  const weatherWarningApi =
-    "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=en";
+  const weatherReportApi = `https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=${lang}`;
+  const weatherWarningApi = `https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=${lang}`;
 
   //Getting Data every 10 mins
   useEffect(() => {
@@ -29,6 +30,7 @@ function HK_weather() {
         })
       );
       if (countTime % 60 === 0) {
+        setIsLoading(true);
         const weatherReport = axios.get(weatherReportApi);
         const weatherWarning = axios.get(weatherWarningApi);
         axios
@@ -38,8 +40,9 @@ function HK_weather() {
               setHumidity(report.data.humidity.data[0].value);
               setTemperature(report.data.temperature.data[1]);
               setWeatherIcon(report.data.icon);
-
+              setSpecialWxTips(report.data.specialWxTips);
               setWarningData(warning.data);
+              setIsLoading(false);
             })
           )
           .catch((error) => console.log(error));
@@ -133,31 +136,42 @@ function HK_weather() {
   return (
     <div className="hk_weather">
       <div className="weatherBanner_Container">
-        {!isLoading ? (
-          <div className="weatherBanner_WeatherIcon">
-            <img
-              src={`https://www.hko.gov.hk/images/HKOWxIconOutline/pic${weatherIcon.slice(
-                -1
-              )}.png`}
-              alt="weather icon"
-            />
-          </div>
-        ) : null}
-        {!isLoading ? (
-          <div className="weatherBanner_WarningIcon">
-            <ShowWarnings />
-          </div>
-        ) : null}
-        {!isLoading ? (
-          <div className="weatherBanner_Temperature">
-            {temperature.value + String.fromCharCode(176) + temperature.unit}
-          </div>
-        ) : null}
-        {!isLoading ? (
-          <div className="weatherBanner_Humidity">{humidity + "\u0025"}</div>
-        ) : null}
-        <div style={{ flex: "1 0 0" }} />
-        <div className="currentTime">{liveTime}</div>
+        <div className="weatherBanner_Row">
+          {!isLoading ? (
+            <div className="weatherBanner_WeatherIcon">
+              <img
+                src={`https://www.hko.gov.hk/images/HKOWxIconOutline/pic${weatherIcon.slice(
+                  -1
+                )}.png`}
+                alt="weather icon"
+              />
+            </div>
+          ) : null}
+          {!isLoading ? (
+            <div className="weatherBanner_WarningIcon">
+              <ShowWarnings />
+            </div>
+          ) : null}
+          {!isLoading ? (
+            <div className="weatherBanner_Temperature">
+              {temperature.value + String.fromCharCode(176) + temperature.unit}
+            </div>
+          ) : null}
+          {!isLoading ? (
+            <div className="weatherBanner_Humidity">{humidity + "\u0025"}</div>
+          ) : null}
+          <div style={{ flex: "1 0 0" }} />
+          <div className="currentTime">{liveTime}</div>
+        </div>
+        <div className="weatherBanner_Row">
+          {!isLoading && specialWxTips !== "" ? (
+            <div className="weatherBanner_SpecialWxTips">
+              <Marquee gradientWidth={0} pauseOnHover="true" speed={35}>
+                {specialWxTips + " ⚠️ "}
+              </Marquee>
+            </div>
+          ) : null}
+        </div>
       </div>
     </div>
   );

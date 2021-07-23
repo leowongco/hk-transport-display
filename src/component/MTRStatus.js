@@ -119,9 +119,11 @@ function MTRStatus({ type }) {
   function MTRBlankStatus(props) {
     return (
       <div className="mtrBlankStatus">
-        <div>
+        <div className="mtrBlankStatus_text">港鐵車務狀況</div>
+        <div className="mtrBlankStatus_circle">
           <CircularProgress color="secondary" size={30} />
         </div>
+        <div className="mtrBlankStatus_text">MTR Service Status</div>
       </div>
     );
   }

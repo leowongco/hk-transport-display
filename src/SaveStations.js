@@ -18,6 +18,7 @@ import LrtInfo from "./component/LRTSaveInfo";
 
 function SaveStations() {
   const [expanded, setExpended] = useState("");
+  const [haveData, setHaveData] = useState(false);
 
   const handleChange = (panel) => (newExpanded) => {
     if (panel !== expanded) {
