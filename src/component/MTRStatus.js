@@ -13,6 +13,7 @@ import RemoveCircleTwoToneIcon from "@material-ui/icons/RemoveCircleTwoTone";
 import AccessTimeTwoToneIcon from "@material-ui/icons/AccessTimeTwoTone";
 import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 import { RiTyphoonFill } from "react-icons/ri";
+import { Text, Typo } from "reactypo";
 
 import "../css/MTRStatus.css";
 import Dict from "./MTR_Dict.js";
@@ -119,11 +120,19 @@ function MTRStatus({ type }) {
   function MTRBlankStatus(props) {
     return (
       <div className="mtrBlankStatus">
-        <div className="mtrBlankStatus_text">港鐵車務狀況</div>
+        <div className="mtrBlankStatus_text">
+          <Typo>
+            <Text pace={50}>港鐵車務狀況</Text>
+          </Typo>
+        </div>
         <div className="mtrBlankStatus_circle">
           <CircularProgress color="secondary" size={30} />
         </div>
-        <div className="mtrBlankStatus_text">MTR Service Status</div>
+        <div className="mtrBlankStatus_text">
+          <Typo>
+            <Text pace={50}>MTR Service Status</Text>
+          </Typo>
+        </div>
       </div>
     );
   }

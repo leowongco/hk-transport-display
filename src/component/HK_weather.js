@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Marquee from "react-fast-marquee";
-import { Divider } from "@material-ui/core";
 
 import "../css/HK_weather.css";
 
@@ -167,15 +166,14 @@ function HK_weather() {
 
         {typeof specialWxTips !== "undefined" && specialWxTips !== "" ? (
           <div className="weatherBanner_Row">
-            <div className="weatherBanner_SpecialWxTips">
-              <Divider />
-              <Marquee gradientWidth={0} pauseOnHover="true" speed={35}>
+            <Marquee gradientWidth={0} pauseOnHover="true" speed={35}>
+              <div className="weatherBanner_SpecialWxTips">
                 {specialWxTips +
                   String.fromCharCode(160) +
                   "⚠️" +
                   String.fromCharCode(160)}
-              </Marquee>
-            </div>
+              </div>
+            </Marquee>
           </div>
         ) : null}
       </div>

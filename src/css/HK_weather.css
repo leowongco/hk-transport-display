@@ -1,8 +1,13 @@
+.hk_weather {
+  position: sticky;
+  z-index: 80;
+}
+
 .weatherBanner_Container {
   padding-left: 20px;
   padding-right: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   height: 100%;
   background: royalblue;
 }
@@ -17,8 +22,7 @@
 }
 
 .weatherBanner_SpecialWxTips {
-  font-weight: 500;
-  font-size: small;
+  font-size: smaller !important;
   color: yellow;
   width: 100%;
 }
@@ -42,13 +46,11 @@
 .weatherBanner_Temperature,
 .weatherBanner_Humidity {
   padding-right: 5px;
-  font-size: small;
   font-weight: 300;
   color: white;
 }
 
 .currentTime {
-  font-size: small;
   color: white;
   margin-right: 10px;
 }

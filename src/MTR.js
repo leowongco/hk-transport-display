@@ -28,9 +28,11 @@ function MTR() {
     if (link_Line === "l" && link_Station === "s") {
       setLine("");
       setStation("");
+      setLang(window.localStorage.getItem("savedLanguage"));
     } else {
       setLine(link_Line);
       setStation(link_Station);
+      setLang(window.localStorage.getItem("savedLanguage"));
     }
   }, [link_Line, link_Station]);
 
@@ -43,6 +45,15 @@ function MTR() {
       }
     }, 8000);
   }
+
+  const handleSwapLangBtn = () => {
+    if (!swapLang) {
+      setSwapLang(true);
+    } else {
+      setLang(window.localStorage.getItem("savedLanguage"));
+      setSwapLang(false);
+    }
+  };
 
   function setLogo(mtrLine) {
     if (mtrLine === "AEL") {
@@ -81,11 +92,7 @@ function MTR() {
             color={swapLang === true ? "secondary" : "primary"}
             className="langButton"
             startIcon={<GTranslateOutlinedIcon />}
-            onClick={
-              swapLang === true
-                ? () => setSwapLang(false)
-                : () => setSwapLang(true)
-            }
+            onClick={() => handleSwapLangBtn()}
           >
             <small>
               {swapLang === true
@@ -93,6 +100,7 @@ function MTR() {
                 : Dict.Common[lang].autoBtnOn}
             </small>
           </Button>
+          <div style={{ flex: "1 0 0" }} />
           {line !== "" ? (
             <Link to={"/mRoute/" + line}>
               <Button
@@ -106,27 +114,6 @@ function MTR() {
               </Button>
             </Link>
           ) : null}
-          <div style={{ flex: "1 0 0" }} />
-          <Button
-            onClick={() => setLang("en")}
-            disabled={lang === "en" || swapLang === true}
-            variant="contained"
-            color="primary"
-            className="langButton"
-            size="small"
-          >
-            English
-          </Button>
-          <Button
-            onClick={() => setLang("tc")}
-            disabled={lang === "tc" || swapLang === true}
-            variant="contained"
-            color="primary"
-            className="langButton"
-            size="small"
-          >
-            中文
-          </Button>
         </div>
         <div className="mtr__functionBar">
           <FormControl className="lineSelect">
