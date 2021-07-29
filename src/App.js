@@ -13,6 +13,7 @@ const SaveStations = React.lazy(() => import("./SaveStations"));
 const Settings = React.lazy(() => import("./Settings.js"));
 const MTRMap = React.lazy(() => import("./component/MTRRouteMap"));
 const MTRStatus = React.lazy(() => import("./component/MTRStatus"));
+const HKTram = React.lazy(() => import("./HKTram"));
 
 function App() {
   firebaseApp.analytics();
@@ -44,6 +45,10 @@ function App() {
             <Route path="/mtr-status">
               <Header />
               <MTRStatus />
+            </Route>
+            <Route path="/hktram">
+              <Header />
+              <HKTram />
             </Route>
             <Route path="/">
               <Header />

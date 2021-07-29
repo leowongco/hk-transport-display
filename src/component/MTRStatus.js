@@ -14,6 +14,7 @@ import AccessTimeTwoToneIcon from "@material-ui/icons/AccessTimeTwoTone";
 import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 import { RiTyphoonFill } from "react-icons/ri";
 import { Text, Typo } from "reactypo";
+import { Link } from "react-router-dom";
 
 import "../css/MTRStatus.css";
 import Dict from "./MTR_Dict.js";
@@ -107,7 +108,7 @@ function MTRStatus({ type }) {
         return <CheckCircleTwoToneIcon style={{ color: "green" }} />;
       case "pink":
       case "yellow":
-        return <ErrorTwoToneIcon style={{ color: "yellow" }} />;
+        return <ErrorTwoToneIcon style={{ color: "#dbd51f" }} />;
       case "red":
         return <RemoveCircleTwoToneIcon style={{ color: "red" }} />;
       case "typhoon":
@@ -158,15 +159,16 @@ function MTRStatus({ type }) {
       <div className="mtrStatus">
         {!loading ? (
           <div className="mtrStatus_BannerContainer">
-            <div className="mtrStatus_BannerRow">{/* header */}</div>
             <div className="mtrStatus_BannerRow">
               {typhoonServices ? (
                 <Alert
                   severity="info"
                   action={
-                    <Button color="inherit" size="small" href="./mtr-status">
-                      <DoubleArrowIcon />
-                    </Button>
+                    <Link to="/mtr-status">
+                      <Button color="inherit" size="small">
+                        <DoubleArrowIcon />
+                      </Button>
+                    </Link>
                   }
                 >
                   <div>
@@ -185,9 +187,11 @@ function MTRStatus({ type }) {
                 <Alert
                   severity="warning"
                   action={
-                    <Button color="inherit" size="small" href="./mtr-status">
-                      <DoubleArrowIcon />
-                    </Button>
+                    <Link to="/mtr-status">
+                      <Button color="inherit" size="small">
+                        <DoubleArrowIcon />
+                      </Button>
+                    </Link>
                   }
                 >
                   <div>
@@ -210,9 +214,11 @@ function MTRStatus({ type }) {
                 <Alert
                   severity="success"
                   action={
-                    <Button color="inherit" size="small" href="./mtr-status">
-                      <DoubleArrowIcon />
-                    </Button>
+                    <Link to="/mtr-status">
+                      <Button color="inherit" size="small">
+                        <DoubleArrowIcon />
+                      </Button>
+                    </Link>
                   }
                 >
                   {lang === "tc" ? (
@@ -270,10 +276,14 @@ function MTRStatus({ type }) {
                 </div>
                 {Object.keys(mLine.url_en).length === 0 ? null : (
                   <div className="mtrStatus_DetailBtn">
-                    <ButtonGroup color="primary" size="small">
-                      <Button href={mLine.url_tc}>詳情</Button>
-                      <Button href={mLine.url_en}>Details</Button>
-                    </ButtonGroup>
+                    <Button
+                      href={mLine["url_" + lang]}
+                      color="primary"
+                      size="small"
+                      variant="outlined"
+                    >
+                      {lang === "en" ? "Details" : "詳情"}
+                    </Button>
                   </div>
                 )}
               </div>

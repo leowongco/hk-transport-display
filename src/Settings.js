@@ -469,6 +469,7 @@ function Settings() {
         </Marquee>
       </div>
       <Divider />
+      <div className="settingFooter"></div>
       <Dialog maxWidth="md" open={open} onClose={handleClose}>
         <DialogTitle id="confirmation-dialog-title">
           {langDict.confirmTitle[lang + "_name"]}

@@ -191,6 +191,17 @@ function Header() {
         <Divider />
         <List>
           <ListItem>
+            <Link to={"/hktram"} onClick={handleDrawerClose}>
+              <ListItemIcon>
+                <TramIcon />
+              </ListItemIcon>
+              電車 HK Tramways
+            </Link>
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
+          <ListItem>
             <Link to={"/settings"} onClick={handleDrawerClose}>
               <ListItemIcon>
                 <SettingsIcon />

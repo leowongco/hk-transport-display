@@ -18,7 +18,6 @@
   font-weight: 500;
   min-width: 100px;
   flex: 2;
-  margin: auto;
 }
 
 .mtrStatus_StatusIcon {
@@ -37,7 +36,12 @@
 }
 
 .mtrStatus_DetailBtn {
-  flex: 2;
+  flex: 1;
+  justify-self: end;
+}
+
+.mtrStatus_DetailBtn > .MuiButton-root {
+  white-space: nowrap;
 }
 
 .mtrStatus_Footer {

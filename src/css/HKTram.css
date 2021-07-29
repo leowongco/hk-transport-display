@@ -1,0 +1,37 @@
+.hktram_header {
+  display: flex;
+  flex: 1;
+  place-items: center;
+  border: thick double #007549;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+}
+
+.hktram_logo {
+  padding-right: 20px;
+}
+.hktram_logo > img {
+  height: 70px;
+}
+
+.hktram_title {
+  font-size: larger;
+  font-weight: 500;
+  color: #007549;
+}
+
+.hktram_topBar {
+  padding-top: 10px;
+  display: flex;
+  width: 70%;
+}
+
+.boundSelect {
+  width: 30% !important;
+}
+
+.stationSelect {
+  width: 70% !important;
+}

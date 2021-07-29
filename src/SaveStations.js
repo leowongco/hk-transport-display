@@ -34,6 +34,7 @@ function SaveStations() {
   const aelSaveStnArray = JSON.parse(storage.getItem("AEL_SaveStn"));
   const tmlSaveStnArray = JSON.parse(storage.getItem("TML_SaveStn"));
   const lrtSaveStnArray = JSON.parse(storage.getItem("LrtSaveStn"));
+  const hkTramStnArray = JSON.parse(storage.getItem("HKTramSaveStn"));
   const lang = storage.getItem("savedLanguage");
   var newArray = [];
 
@@ -52,132 +53,155 @@ function SaveStations() {
   if (storage.getItem("LrtSaveStn") === null) {
     storage.setItem("LrtSaveStn", JSON.stringify(newArray));
   }
+  if (storage.getItem("HKTramSaveStn") === null) {
+    storage.setItem("HKTramSaveStn", JSON.stringify(newArray));
+  }
   if (storage.getItem("savedLanguage") === null) {
     storage.setItem("savedLanguage", "tc");
   }
 
-  return (
-    <div className="saveStations">
-      <div className="controlBtns"></div>
-      <div className="saveStnTabs">
-        <Tabs>
-          <TabList>
+  if (
+    tklSaveStnArray?.length === 0 &&
+    tclSaveStnArray?.length === 0 &&
+    aelSaveStnArray?.length === 0 &&
+    tmlSaveStnArray?.length === 0 &&
+    lrtSaveStnArray?.length === 0 &&
+    hkTramStnArray?.length === 0
+  ) {
+    return (
+      <div className="saveStations">
+        <div className="saveStations_BlankContainer">
+          <div className="saveStations_BlankHeading">請先儲存車站</div>
+          <div className="saveStations_BlankHeading">
+            Please Save Stations First
+          </div>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="saveStations">
+        <div className="controlBtns"></div>
+        <div className="saveStnTabs">
+          <Tabs>
+            <TabList>
+              {tmlSaveStnArray?.length > 0 ? (
+                <Tab
+                  style={{
+                    backgroundColor: DictM.MtrLines.TML.colorCode,
+                    color: "white",
+                  }}
+                >
+                  {DictM.MtrLines.TML[lang + "_name"]}
+                </Tab>
+              ) : null}
+              {tklSaveStnArray?.length > 0 ? (
+                <Tab
+                  style={{
+                    backgroundColor: DictM.MtrLines.TKL.colorCode,
+                    color: "white",
+                  }}
+                >
+                  {DictM.MtrLines.TKL[lang + "_name"]}
+                </Tab>
+              ) : null}
+              {tclSaveStnArray?.length > 0 ? (
+                <Tab
+                  style={{
+                    backgroundColor: DictM.MtrLines.TCL.colorCode,
+                    color: "white",
+                  }}
+                >
+                  {DictM.MtrLines.TCL[lang + "_name"]}
+                </Tab>
+              ) : null}
+              {aelSaveStnArray?.length > 0 ? (
+                <Tab
+                  style={{
+                    backgroundColor: DictM.MtrLines.AEL.colorCode,
+                    color: "white",
+                  }}
+                >
+                  {DictM.MtrLines.AEL[lang + "_name"]}
+                </Tab>
+              ) : null}
+              {lrtSaveStnArray?.length > 0 ? (
+                <Tab style={{ backgroundColor: "#02077b", color: "white" }}>
+                  {DictM.MtrLines.LR[lang + "_name"]}
+                </Tab>
+              ) : null}
+            </TabList>
+
+            {/* Tab Content */}
             {tmlSaveStnArray?.length > 0 ? (
-              <Tab
-                style={{
-                  backgroundColor: DictM.MtrLines.TML.colorCode,
-                  color: "white",
-                }}
-              >
-                {DictM.MtrLines.TML[lang + "_name"]}
-              </Tab>
+              <TabPanel>
+                {tmlSaveStnArray?.map((stn) => (
+                  <SaveMTR line="TML" station={stn} lang={lang} />
+                ))}
+              </TabPanel>
             ) : null}
             {tklSaveStnArray?.length > 0 ? (
-              <Tab
-                style={{
-                  backgroundColor: DictM.MtrLines.TKL.colorCode,
-                  color: "white",
-                }}
-              >
-                {DictM.MtrLines.TKL[lang + "_name"]}
-              </Tab>
+              <TabPanel>
+                {tklSaveStnArray?.map((stn) => (
+                  <SaveMTR line="TKL" station={stn} lang={lang} />
+                ))}
+              </TabPanel>
             ) : null}
+
             {tclSaveStnArray?.length > 0 ? (
-              <Tab
-                style={{
-                  backgroundColor: DictM.MtrLines.TCL.colorCode,
-                  color: "white",
-                }}
-              >
-                {DictM.MtrLines.TCL[lang + "_name"]}
-              </Tab>
+              <TabPanel>
+                {tclSaveStnArray?.map((stn) => (
+                  <SaveMTR line="TCL" station={stn} lang={lang} />
+                ))}
+              </TabPanel>
             ) : null}
             {aelSaveStnArray?.length > 0 ? (
-              <Tab
-                style={{
-                  backgroundColor: DictM.MtrLines.AEL.colorCode,
-                  color: "white",
-                }}
-              >
-                {DictM.MtrLines.AEL[lang + "_name"]}
-              </Tab>
+              <TabPanel>
+                {aelSaveStnArray?.map((stn) => (
+                  <SaveMTR line="AEL" station={stn} lang={lang} />
+                ))}
+              </TabPanel>
             ) : null}
             {lrtSaveStnArray?.length > 0 ? (
-              <Tab style={{ backgroundColor: "#02077b", color: "white" }}>
-                {DictM.MtrLines.LR[lang + "_name"]}
-              </Tab>
-            ) : null}
-          </TabList>
-
-          {/* Tab Content */}
-          {tmlSaveStnArray?.length > 0 ? (
-            <TabPanel>
-              {tmlSaveStnArray?.map((stn) => (
-                <SaveMTR line="TML" station={stn} lang={lang} />
-              ))}
-            </TabPanel>
-          ) : null}
-          {tklSaveStnArray?.length > 0 ? (
-            <TabPanel>
-              {tklSaveStnArray?.map((stn) => (
-                <SaveMTR line="TKL" station={stn} lang={lang} />
-              ))}
-            </TabPanel>
-          ) : null}
-
-          {tclSaveStnArray?.length > 0 ? (
-            <TabPanel>
-              {tclSaveStnArray?.map((stn) => (
-                <SaveMTR line="TCL" station={stn} lang={lang} />
-              ))}
-            </TabPanel>
-          ) : null}
-          {aelSaveStnArray?.length > 0 ? (
-            <TabPanel>
-              {aelSaveStnArray?.map((stn) => (
-                <SaveMTR line="AEL" station={stn} lang={lang} />
-              ))}
-            </TabPanel>
-          ) : null}
-          {lrtSaveStnArray?.length > 0 ? (
-            <TabPanel>
-              {lrtSaveStnArray?.map((stn) => (
-                <div className="lrtSaveStns">
-                  <Accordion
-                    square
-                    expanded={expanded === stn}
-                    onChange={handleChange(stn)}
-                  >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls={stn}
-                      id={stn + "-header"}
-                      className="accordion-header"
+              <TabPanel>
+                {lrtSaveStnArray?.map((stn) => (
+                  <div className="lrtSaveStns">
+                    <Accordion
+                      square
+                      expanded={expanded === stn}
+                      onChange={handleChange(stn)}
                     >
-                      <Typography>
-                        <b>{DictL.lrtStations[stn][lang + "_name"]}</b>
+                      <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls={stn}
+                        id={stn + "-header"}
+                        className="accordion-header"
+                      >
+                        <Typography>
+                          <b>{DictL.lrtStations[stn][lang + "_name"]}</b>
 
-                        {" (" +
-                          DictL.lrtZoneNames[DictL.lrtStations[stn].zone][
-                            lang + "_name"
-                          ] +
-                          ")"}
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <div className="lrtSaveStn__container">
-                        <LrtInfo sid={stn} lang={lang} />
-                      </div>
-                    </AccordionDetails>
-                  </Accordion>
-                </div>
-              ))}
-            </TabPanel>
-          ) : null}
-        </Tabs>
+                          {" (" +
+                            DictL.lrtZoneNames[DictL.lrtStations[stn].zone][
+                              lang + "_name"
+                            ] +
+                            ")"}
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <div className="lrtSaveStn__container">
+                          <LrtInfo sid={stn} lang={lang} />
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+                ))}
+              </TabPanel>
+            ) : null}
+          </Tabs>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default SaveStations;

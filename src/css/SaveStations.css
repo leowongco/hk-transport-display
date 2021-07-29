@@ -11,3 +11,17 @@
 .MuiAccordionDetails-root {
   display: grid;
 }
+
+.saveStations_BlankContainer {
+  padding-top: 10px;
+  flex: 1;
+  justify-content: center;
+}
+
+.saveStations_BlankHeading {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: large;
+  font-weight: 300;
+}
