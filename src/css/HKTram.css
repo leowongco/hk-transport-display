@@ -25,7 +25,7 @@
 .hktram_topBar {
   padding-top: 10px;
   display: flex;
-  width: 70%;
+  width: 360px;
 }
 
 .boundSelect {
