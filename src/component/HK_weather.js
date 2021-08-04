@@ -5,7 +5,6 @@ import Marquee from "react-fast-marquee";
 import "../css/HK_weather.css";
 
 function HK_weather() {
-  const [isLoading, setIsLoading] = useState(true);
   const [temperature, setTemperature] = useState("");
   const [humidity, setHumidity] = useState("");
   const [weatherIcon, setWeatherIcon] = useState("");
@@ -30,7 +29,6 @@ function HK_weather() {
         })
       );
       if (countTime % 60 === 0) {
-        setIsLoading(true);
         const weatherReport = axios.get(weatherReportApi);
         const weatherWarning = axios.get(weatherWarningApi);
         axios
@@ -42,7 +40,6 @@ function HK_weather() {
               setWeatherIcon(report.data.icon);
               setSpecialWxTips(report.data.specialWxTips);
               setWarningData(warning.data);
-              setIsLoading(false);
             })
           )
           .catch((error) => console.log(error));
@@ -145,25 +142,21 @@ function HK_weather() {
               />
             </div>
           ) : null}
-          {!isLoading ? (
-            <div className="weatherBanner_WarningIcon">
-              <ShowWarnings />{" "}
-            </div>
-          ) : null}
-          {temperature !== "" ? (
+          <div className="weatherBanner_WarningIcon">
+            <ShowWarnings />
+          </div>
+          {typeof temperature !== "undefined" && temperature !== "" ? (
             <div className="weatherBanner_Temperature">
               {temperature.value + String.fromCharCode(176) + temperature.unit}
             </div>
           ) : null}
-          {humidity !== "" ? (
+          {typeof humidity !== "undefined" && humidity !== "" ? (
             <div className="weatherBanner_Humidity">{humidity + "\u0025"}</div>
           ) : null}
           <div style={{ flex: "1 0 0" }} />
           <div className="currentTime">{liveTime}</div>
         </div>
-        {!isLoading &&
-        typeof specialWxTips !== "undefined" &&
-        specialWxTips !== "" ? (
+        {typeof specialWxTips !== "undefined" && specialWxTips !== "" ? (
           <div className="weatherBanner_RowTip">
             <Marquee gradientWidth={0} speed={50}>
               {specialWxTips?.map((tip, i) => (
