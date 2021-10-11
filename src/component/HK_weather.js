@@ -101,7 +101,7 @@ function HK_weather() {
     if (warningData.WCOLD?.code === "WCOLD") {
       warningArr.push("WCOLD");
     }
-    if (warningData.WMSGN?.code === "WMSGNL") {
+    if (warningData.WMSGNL?.code === "WMSGNL") {
       warningArr.push("WMSGNL");
     }
     if (warningData.WFNTSA?.code === "WFNTSA") {
