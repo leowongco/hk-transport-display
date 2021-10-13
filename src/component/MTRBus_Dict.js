@@ -1,3 +1,10 @@
+const common = {
+  scheduleDep: {
+    en_name: "Schedule",
+    tc_name: "預定班次",
+  },
+};
+
 const route = {
   506: {
     en_name: "Tuen Mun Ferry Pier to Siu Lun (Circular)",
@@ -293,4 +300,4 @@ const stops = {
   },
 };
 
-export default { route, stops };
+export default { common, route, stops };
