@@ -1,6 +1,6 @@
 {
   "name": "hk-transport-display",
-  "version": "1.4.4-0",
+  "version": "1.4.4-1",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",
