@@ -101,6 +101,11 @@ function MTRBusInfo() {
               <div className="mtrBusInfo_ETABoxRow">
                 <div className="mtrBusInfo_busStop">
                   {MTRBus_Dict.stops[bStop.busStopId][lang + "_name"]}
+                  <span>
+                    {"(" +
+                      MTRBus_Dict.dest[bStop.bus[0].lineRef][lang + "_name"] +
+                      ")"}
+                  </span>
                 </div>
               </div>
 

@@ -84,6 +84,17 @@ const route = {
   },
 };
 
+const dest = {
+  "K12_TPMS": {
+    en_name: "to Tai Po Market Station",
+    tc_name: "大埔墟站 方向",
+  },
+  "K12_EG": {
+    en_name: "to Eightland Garden",
+    tc_name: "八號花園 方向",
+  },
+}
+
 const stops = {
   //route 506
   "506-U010": {
@@ -300,4 +311,4 @@ const stops = {
   },
 };
 
-export default { common, route, stops };
+export default { common, route, stops, dest };

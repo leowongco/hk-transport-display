@@ -92,7 +92,7 @@
   padding-bottom: 3px;
 }
 
-.mtrBusInfo_busStop{
+.mtrBusInfo_busStop {
   background: royalblue;
   color: white;
   padding-left: 5px;
@@ -100,12 +100,18 @@
   font-weight: 500;
 }
 
+.mtrBusInfo_busStop > span {
+  padding-left: 5px;
+  font-size: small;
+  font-weight: 300;
+}
+
 .mtrBusInfo_BusETA_BusTime {
   text-align: right;
 }
 
 .mtrBusInfo_BusETA_BusTime > span {
-  font-size:xx-small;
+  font-size: xx-small;
   font-weight: 300;
   font-style: italic;
   padding-left: 5px;
