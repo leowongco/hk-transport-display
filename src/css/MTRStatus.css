@@ -5,6 +5,10 @@
   padding-bottom: 20px;
 }
 
+.mtrStatus_BannerRow > span {
+  color: white !important;
+}
+
 .mtrStatus_Rows {
   display: flex;
 }

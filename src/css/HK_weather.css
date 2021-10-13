@@ -15,7 +15,6 @@
 .weatherBanner_Row {
   display: flex;
   flex: 1;
-  padding-bottom: 5px;
   padding-top: 5px;
   min-height: 23px;
   align-items: center !important;
@@ -25,12 +24,11 @@
   display: flex;
   flex: 1;
   padding-bottom: 5px;
-  padding-top: 5px;
+  font-size: small !important;
   align-items: center !important;
 }
 
 .weatherBanner_SpecialWxTips {
-  font-size: smaller !important;
   color: yellow;
   width: 100%;
   white-space: nowrap;

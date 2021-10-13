@@ -4,7 +4,7 @@ import convert from "xml-js";
 
 import { Button, ButtonGroup } from "@material-ui/core";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { Alert } from "@material-ui/lab";
+import { Alert, AlertTitle } from "@material-ui/lab";
 import TextLoop from "react-text-loop";
 import Marquee from "react-fast-marquee";
 import CheckCircleTwoToneIcon from "@material-ui/icons/CheckCircleTwoTone";
@@ -171,15 +171,13 @@ function MTRStatus({ type }) {
                     </Link>
                   }
                 >
-                  <div>
+                  <AlertTitle>
                     <b>{lang === "tc" ? "熱帶氣旋" : "Tropical Cyclone"}</b>
-                  </div>
+                  </AlertTitle>
                   <Marquee gradientWidth="0">
-                    <span>
-                      {lang === "tc"
-                        ? "有港鐵路線受熱帶氣旋影響，請及早計劃行程。"
-                        : "MTR Lines are affacted by Tropical Cyclone, please plan accordingly."}
-                    </span>
+                    {lang === "tc"
+                      ? "有港鐵路線受熱帶氣旋影響，請及早計劃行程。"
+                      : "MTR Lines are affacted by Tropical Cyclone, please plan accordingly."}
                   </Marquee>
                 </Alert>
               ) : null}
@@ -194,13 +192,14 @@ function MTRStatus({ type }) {
                     </Link>
                   }
                 >
-                  <div>
+                  <AlertTitle>
                     <b>
                       {lang === "tc"
                         ? "港鐵服務延誤/受阻"
                         : "MTR Service Delay/Disruption"}
                     </b>
-                  </div>
+                  </AlertTitle>
+
                   <Marquee gradientWidth="0">
                     <span>
                       {lang === "tc"
