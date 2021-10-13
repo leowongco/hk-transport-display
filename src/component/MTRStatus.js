@@ -23,7 +23,7 @@ import StatusDict from "./MTRStatus_Dict.js";
 function MTRStatus({ type }) {
   const [lineStatus, setLineStatus] = useState();
   const [loading, setLoading] = useState(false);
-  const coreApi = "https://cors.bridged.cc/";
+  const coreApi = "https://cors.lwp.workers.dev/?";
   const mtrStatusApi = `https://www.mtr.com.hk/alert/ryg_line_status.xml?t=${Date.now()}`;
   const lang = window.localStorage.getItem("savedLanguage");
   const mtrBadLines = [];
