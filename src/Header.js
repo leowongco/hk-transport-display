@@ -25,6 +25,7 @@ import DeveloperModeIcon from "@material-ui/icons/DeveloperMode";
 import SettingsIcon from "@material-ui/icons/Settings";
 import CachedIcon from "@material-ui/icons/Cached";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
 import appInfo from "../package.json";
 
 const drawerWidth = 250;
@@ -185,6 +186,14 @@ function Header() {
                 <TrainIcon />
               </ListItemIcon>
               市區線 Urban Lines
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to={"/mtrbus"} onClick={handleDrawerClose}>
+              <ListItemIcon>
+                <DirectionsBusIcon />
+              </ListItemIcon>
+              港鐵巴士 MTR Bus
             </Link>
           </ListItem>
         </List>

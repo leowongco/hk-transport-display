@@ -4,6 +4,8 @@ import Marquee from "react-fast-marquee";
 import { Link, useParams } from "react-router-dom";
 
 import Chip from "@mui/material/Chip";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 
 import BusAlertIcon from "@mui/icons-material/BusAlert";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
@@ -12,29 +14,23 @@ import MTRBus_Dict from "./MTRBus_Dict";
 
 import "../css/MTRBusInfo.css";
 
-function MTRBusInfo({ bus }) {
-  const { busRoute } = useParams();
+function MTRBusInfo({ busRoute, lang }) {
   const apiURL = "https://rt.data.gov.hk/v1/transport/mtr/bus/getSchedule";
-  const [lang, setLang] = useState("tc");
   var apiLang = "";
 
   const [isLoading, setIsLoading] = useState(false);
   const [mtrBusData, setMtrBusData] = useState();
 
-  useEffect(() => {
-    if (window.localStorage.getItem("savedLanguage")) {
-      setLang(window.localStorage.getItem("savedLanguage"));
-    }
-    //check language
-    if (lang === "tc") {
-      apiLang = "zh";
-    } else {
-      apiLang = lang;
-    }
-  }, [lang]);
+  //check language
+  if (lang === "tc") {
+    apiLang = "zh";
+  } else {
+    apiLang = lang;
+  }
 
   useEffect(() => {
     setIsLoading(true);
+    setMtrBusData();
     axios
       .post(apiURL, {
         language: apiLang,
@@ -43,7 +39,7 @@ function MTRBusInfo({ bus }) {
       .then((res) => {
         setMtrBusData(res.data);
         setIsLoading(false);
-        console.log(res.data);
+        //console.log(res.data);
       })
       .catch((err) => console.log(err));
   }, [lang, busRoute]);
@@ -111,71 +107,150 @@ function MTRBusInfo({ bus }) {
               </div>
             </div>
           ) : null}
-          {mtrBusData?.busStop
-            .filter((bStop) => {
-              return bStop.isSuspended !== "1";
-            })
-            .map((bStop, i) => (
-              <div className="mtrBusInfo_ETABox">
-                <div className="mtrBusInfo_ETABoxRow">
-                  <div className="mtrBusInfo_busStop">
-                    {MTRBus_Dict.stops[bStop.busStopId] !== undefined
-                      ? i +
-                        1 +
-                        ". " +
-                        MTRBus_Dict.stops[bStop.busStopId][lang + "_name"]
-                      : bStop.busStopId}
-
-                    {
-                      <span>
-                        {MTRBus_Dict.dest[
-                          bStop.bus[0].lineRef.replace([busRoute + "_"], "")
-                        ] !== undefined
-                          ? MTRBus_Dict.dest[
-                              bStop.bus[0].lineRef.replace([busRoute + "_"], "")
-                            ][lang + "_name"]
-                          : bStop.bus[0].lineRef}
-                      </span>
-                    }
-                  </div>
-                </div>
-
-                {bStop.bus.map((mbus, i) => (
-                  <div className="mtrBusInfo_ETABoxRow">
-                    <div className="mtrBusInfo_BusETA">
-                      <div className="mtrBusInfo_BusETA_BusID">
-                        {i + 1 + ". "}
-                        {mbus.busId !== null ? (
-                          <Chip
-                            color="info"
-                            icon={<DirectionsBusIcon />}
-                            label={"#" + mbus.busId}
-                            size="small"
-                          />
-                        ) : (
-                          <Chip
-                            color="info"
-                            icon={<DirectionsBusIcon />}
-                            size="small"
-                          />
-                        )}
-                      </div>
-                      <div style={{ flex: "1 0 0" }} />
-                      <div className="mtrBusInfo_BusETA_BusTime">
-                        {mbus.arrivalTimeText === ""
-                          ? mbus.departureTimeText
-                          : mbus.arrivalTimeText}
-                        <span>
-                          {mbus.isScheduled === "1"
-                            ? MTRBus_Dict.common.scheduleDep[lang + "_name"]
-                            : null}
-                        </span>
+          <Tabs>
+            <TabList>
+              <Tab>
+                {MTRBus_Dict.route[busRoute].bound.UP !== undefined
+                  ? MTRBus_Dict.route[busRoute].bound.UP.dest !== "CIR"
+                    ? MTRBus_Dict.common.boundFor[lang + "_name"] +
+                      MTRBus_Dict.dest[
+                        MTRBus_Dict.route[busRoute].bound.UP.dest
+                      ][lang + "_name"]
+                    : MTRBus_Dict.dest[
+                        MTRBus_Dict.route[busRoute].bound.UP.dest
+                      ][lang + "_name"]
+                  : null}
+              </Tab>
+              <Tab>
+                {MTRBus_Dict.route[busRoute].bound.DOWN !== undefined
+                  ? MTRBus_Dict.common.boundFor[lang + "_name"] +
+                    MTRBus_Dict.dest[
+                      MTRBus_Dict.route[busRoute].bound.DOWN.dest
+                    ][lang + "_name"]
+                  : null}
+              </Tab>
+            </TabList>
+            <TabPanel>
+              {
+                /* Showing Outbound or Circular Bus Data */
+                MTRBus_Dict.route[busRoute].bound.UP.stops?.map((bStop, i) => (
+                  <div className="mtrBusInfo_ETABox">
+                    <div className="mtrBusInfo_ETABoxRow">
+                      <div className="mtrBusInfo_busStop">
+                        {i +
+                          1 +
+                          ". " +
+                          MTRBus_Dict.stops[bStop][lang + "_name"]}
                       </div>
                     </div>
+                    {mtrBusData?.busStop
+                      .filter((items) => {
+                        return items.busStopId.includes(bStop);
+                      })
+                      .map((item) =>
+                        item.bus.map((mbus, i) => (
+                          <div className="mtrBusInfo_ETABoxRow">
+                            <div className="mtrBusInfo_BusETA">
+                              <div className="mtrBusInfo_BusETA_BusID">
+                                {i + 1 + ". "}
+                                {mbus.busId !== null ? (
+                                  <Chip
+                                    color="info"
+                                    icon={<DirectionsBusIcon />}
+                                    label={"#" + mbus.busId}
+                                    size="small"
+                                  />
+                                ) : (
+                                  <Chip
+                                    color="info"
+                                    icon={<DirectionsBusIcon />}
+                                    size="small"
+                                  />
+                                )}
+                              </div>
+                              <div style={{ flex: "1 0 0" }} />
+                              <div className="mtrBusInfo_BusETA_BusTime">
+                                {mbus.arrivalTimeText === ""
+                                  ? mbus.departureTimeText
+                                  : mbus.arrivalTimeText}
+                                <span>
+                                  {mbus.isScheduled === "1"
+                                    ? MTRBus_Dict.common.scheduleDep[
+                                        lang + "_name"
+                                      ]
+                                    : null}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        ))
+                      )}
                   </div>
-                ))}
-              </div>
-            ))}
+                ))
+              }
+            </TabPanel>
+            <TabPanel>
+              {
+                /* Showing Inbound Bus Data */
+                MTRBus_Dict.route[busRoute].bound.DOWN?.stops.map(
+                  (bStop, i) => (
+                    <div className="mtrBusInfo_ETABox">
+                      <div className="mtrBusInfo_ETABoxRow">
+                        <div className="mtrBusInfo_busStop">
+                          {i +
+                            1 +
+                            ". " +
+                            MTRBus_Dict.stops[bStop][lang + "_name"]}
+                        </div>
+                      </div>
+                      {mtrBusData?.busStop
+                        .filter((items) => {
+                          return items.busStopId.includes(bStop);
+                        })
+                        .map((item) =>
+                          item.bus.map((mbus, i) => (
+                            <div className="mtrBusInfo_ETABoxRow">
+                              <div className="mtrBusInfo_BusETA">
+                                <div className="mtrBusInfo_BusETA_BusID">
+                                  {i + 1 + ". "}
+                                  {mbus.busId !== null ? (
+                                    <Chip
+                                      color="info"
+                                      icon={<DirectionsBusIcon />}
+                                      label={"#" + mbus.busId}
+                                      size="small"
+                                    />
+                                  ) : (
+                                    <Chip
+                                      color="info"
+                                      icon={<DirectionsBusIcon />}
+                                      size="small"
+                                    />
+                                  )}
+                                </div>
+                                <div style={{ flex: "1 0 0" }} />
+                                <div className="mtrBusInfo_BusETA_BusTime">
+                                  {mbus.arrivalTimeText === ""
+                                    ? mbus.departureTimeText
+                                    : mbus.arrivalTimeText}
+                                  <span>
+                                    {mbus.isScheduled === "1"
+                                      ? MTRBus_Dict.common.scheduleDep[
+                                          lang + "_name"
+                                        ]
+                                      : null}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          ))
+                        )}
+                    </div>
+                  )
+                )
+              }
+            </TabPanel>
+          </Tabs>
           <div className="mtrBusInfoRow">
             <div className="mtrBusInfo_routeStatusTime">
               {MTRBus_Dict.common.lastUpdate[lang + "_name"] +

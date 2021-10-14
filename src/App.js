@@ -15,6 +15,7 @@ const MTRMap = React.lazy(() => import("./component/MTRRouteMap"));
 const MTRStatus = React.lazy(() => import("./component/MTRStatus"));
 const HKTram = React.lazy(() => import("./HKTram"));
 const MTRBusInfo = React.lazy(() => import("./component/MTRBusInfo"));
+const MTRBus = React.lazy(() => import("./MTRBus"));
 
 function App() {
   firebaseApp.analytics();
@@ -35,9 +36,9 @@ function App() {
               <Header />
               <MTR />
             </Route>
-            <Route path="/mtrbus/:busRoute">
+            <Route path="/mtrbus">
               <Header />
-              <MTRBusInfo />
+              <MTRBus />
             </Route>
             <Route path="/mRoute/:line">
               <Header />

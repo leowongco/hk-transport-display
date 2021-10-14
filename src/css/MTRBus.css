@@ -1,0 +1,38 @@
+.mtrBus {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  max-width: 100%;
+}
+
+.mtrBus_Header {
+  margin-top: 5px;
+  height: 80px;
+  width: 350px;
+  max-width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  display: flex;
+  place-items: center;
+  flex: 1;
+  background-color: navy;
+}
+
+.mtrBus_HeaderTitle {
+  font-weight: 500;
+  font-size: x-large;
+  text-align: center;
+  color: white;
+}
+
+.mtrBus_TopBar {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  max-width: 100%;
+}
+
+.BusNumberSelect {
+  width: 100%;
+  place-items: center;
+}
