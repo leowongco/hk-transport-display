@@ -35,7 +35,7 @@ function App() {
               <Header />
               <MTR />
             </Route>
-            <Route path="/mtrbus">
+            <Route path="/mtrbus/:busRoute">
               <Header />
               <MTRBusInfo />
             </Route>
