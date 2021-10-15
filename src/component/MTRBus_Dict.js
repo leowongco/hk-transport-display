@@ -3470,7 +3470,7 @@ const stops = {
     lon: "114.00307",
   },
   "K75A-U030": {
-    tc_name: "石&#22487;村",
+    tc_name: "石埗村",
     en_name: "Shek Po Tsuen",
     lat: "22.440307",
     lon: "113.998965",

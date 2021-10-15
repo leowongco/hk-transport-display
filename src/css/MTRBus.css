@@ -29,10 +29,10 @@
   margin-top: 5px;
   margin-bottom: 10px;
   display: flex;
-  max-width: 100%;
+  max-width: 90%;
+  margin: auto;
 }
 
 .BusNumberSelect {
   width: 100%;
-  place-items: center;
 }

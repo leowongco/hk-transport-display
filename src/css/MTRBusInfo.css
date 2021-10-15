@@ -18,10 +18,11 @@
   display: flex;
   flex: 1;
   margin-bottom: 10px;
-  width: 100%;
+  width: 98%;
   border-style: solid;
   border-color: navy;
   border-width: 3px;
+  margin: auto;
 }
 
 .mtrBusInfo_busNumber {
@@ -43,14 +44,15 @@
 }
 
 .mtrBusInfo_routeStatusRemarkTitle {
-  align-content: center;
   text-align: center;
   background: #f8bd3b;
   color: #04254f;
   width: 100%;
+  margin: auto;
   font-weight: 700;
   padding-top: 2px;
   padding-bottom: 2px;
+  margin-bottom: 10px;
 }
 
 .mtrBusInfo_routeStatusRemarkContent {
@@ -86,17 +88,19 @@
 }
 
 .mtrBusInfoRow {
-  display: flex;
-  flex: 1;
-  padding-bottom: 10px;
+  display: block;
+  margin: auto;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .mtrBusInfo_ETABox {
   margin-bottom: 5px;
   border-style: solid;
   border-color: royalblue;
-  border-width: 3px;
-  width: 100%;
+  border-width: 2px;
+  width: 98%;
+  margin: auto;
 }
 
 .mtrBusInfo_BusETA {
