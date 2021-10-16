@@ -808,18 +808,27 @@ const stops = {
     en_name: "Tuen Mun Ferry Pier",
     lat: "22.372986",
     lon: "113.966502",
+    connections: {
+      LR: "1",
+    },
   },
   "506-U020": {
     tc_name: "美樂花園",
     en_name: "Melody Garden",
     lat: "22.375834",
     lon: "113.960628",
+    connections: {
+      LR: "10",
+    },
   },
   "506-U030": {
     tc_name: "輕鐵蝴蝶站",
     en_name: "LR Butterfly Stop",
     lat: "22.378364",
     lon: "113.961965",
+    connections: {
+      LR: "15",
+    },
   },
   "506-U040": {
     tc_name: "輕鐵車廠站",
@@ -832,42 +841,64 @@ const stops = {
     en_name: "LR Lung Mun Stop",
     lat: "22.385399",
     lon: "113.965222",
+    connections: {
+      LR: "30",
+    },
   },
   "506-U060": {
     tc_name: "輕鐵青雲站",
     en_name: "LR Tsing Wun Stop",
     lat: "22.393627",
     lon: "113.96752",
+    connections: {
+      LR: "50",
+    },
   },
   "506-U070": {
     tc_name: "輕鐵建安站",
     en_name: "LR Kin On Stop",
     lat: "22.395064",
     lon: "113.969953",
+    connections: {
+      LR: "60",
+    },
   },
   "506-U080": {
     tc_name: "港鐵屯門站",
     en_name: "MTR Tuen Mun Station",
     lat: "22.394117",
     lon: "113.973992",
+    connections: {
+      TML: "TUM",
+      LR: "290",
+    },
   },
   "506-U090": {
     tc_name: "屯門市中心",
     en_name: "Tuen Mun Town Centre",
     lat: "22.391352",
     lon: "113.975474",
+    connections: {
+      LR: "280",
+    },
   },
   "506-U100": {
     tc_name: "安定邨",
     en_name: "On Ting Estate",
     lat: "22.387312",
     lon: "113.975341",
+    connections: {
+      LR: "270",
+    },
   },
   "506-U110": {
     tc_name: "輕鐵三聖站",
     en_name: "LR Sam Shing Stop",
     lat: "22.382916",
     lon: "113.976276",
+    connections: {
+      LR: "920",
+    },
   },
   "506-D010": {
     tc_name: "兆麟",
@@ -880,30 +911,46 @@ const stops = {
     en_name: "Yau Oi Estate",
     lat: "22.387783",
     lon: "113.975189",
+    connections: {
+      LR: "270",
+    },
   },
   "506-D030": {
     tc_name: "輕鐵市中心站",
     en_name: "LR Town Centre Stop",
     lat: "22.392125",
     lon: "113.975128",
+    connections: {
+      LR: "280",
+    },
   },
   "506-D040": {
     tc_name: "輕鐵屯門站 (港鐵屯門站)",
     en_name: "LR Tuen Mun Stop (MTR Tuen Mun Station)",
     lat: "22.393937",
     lon: "113.973896",
+    connections: {
+      TML: "TUM",
+      LR: "295",
+    },
   },
   "506-D050": {
     tc_name: "輕鐵建安站",
     en_name: "LR Kin On Stop",
     lat: "22.394687",
     lon: "113.970746",
+    connections: {
+      LR: "60",
+    },
   },
   "506-D060": {
     tc_name: "輕鐵青雲站",
     en_name: "LR Tsing Wun Stop",
     lat: "22.393382",
     lon: "113.967707",
+    connections: {
+      LR: "50",
+    },
   },
   "506-D070": {
     tc_name: "聖彼得堂",
@@ -922,18 +969,27 @@ const stops = {
     en_name: "Sun Tuen Mun Centre",
     lat: "22.382269",
     lon: "113.963833",
+    connections: {
+      LR: "20",
+    },
   },
   "506-D100": {
     tc_name: "輕鐵蝴蝶站",
     en_name: "LR Butterfly Stop",
     lat: "22.377547",
     lon: "113.961481",
+    connections: {
+      LR: "15",
+    },
   },
   "506-D110": {
     tc_name: "蝴蝶邨蝶心樓",
     en_name: "Tip Sum House, Butterfly Estate",
     lat: "22.374219",
     lon: "113.962106",
+    connections: {
+      LR: "10",
+    },
   },
   "506-D120": {
     tc_name: "湖景邨湖碧樓",
@@ -946,12 +1002,18 @@ const stops = {
     en_name: "Pierhead Garden",
     lat: "22.373192",
     lon: "113.966053",
+    connections: {
+      LR: "1",
+    },
   },
   "506-U011": {
     tc_name: "屯門碼頭",
     en_name: "Tuen Mun Ferry Pier",
     lat: "22.372986",
     lon: "113.966502",
+    connections: {
+      LR: "1",
+    },
   },
   //Route K12
   "K12-U010": {
@@ -1125,6 +1187,10 @@ const stops = {
     en_name: "MTR Siu Hong Station (South), (LR Siu Hong Stop)",
     lat: "22.410247",
     lon: "113.978583",
+    connections: {
+      TML: "SIH",
+      LR: "100",
+    },
   },
   "K51-U060": {
     tc_name: "井財街",
@@ -1143,12 +1209,19 @@ const stops = {
     en_name: "Tak Ching Court (MTR Tuen Mun Station)",
     lat: "22.39494",
     lon: "113.9746",
+    connections: {
+      TML: "TUM",
+      LR: "295",
+    },
   },
   "K51-U090": {
     tc_name: "屯門市中心 (輕鐵市中心站)",
     en_name: "Tuen Mun Town Centre (LR Town Centre Stop)",
     lat: "22.39153",
     lon: "113.9755",
+    connections: {
+      LR: "280",
+    },
   },
   "K51-U100": {
     tc_name: "屯門官立中學",
@@ -1335,6 +1408,9 @@ const stops = {
     en_name: "Hanford Garden (LR Sam Shing Stop)",
     lat: "22.382064",
     lon: "113.977151",
+    connections: {
+      LR: "920",
+    },
   },
   "K51-D160": {
     tc_name: "胡陳金枝中學",
@@ -1365,12 +1441,19 @@ const stops = {
     en_name: "LR Town Centre Stop",
     lat: "22.392116",
     lon: "113.975082",
+    connections: {
+      LR: "280",
+    },
   },
   "K51-D210": {
     tc_name: "港鐵屯門站 (輕鐵屯門站)",
     en_name: "MTR Tuen Mun Station (LR Tuen Mun Stop)",
     lat: "22.395021",
     lon: "113.974444",
+    connections: {
+      TML: "TUM",
+      LR: "295",
+    },
   },
   "K51-D220": {
     tc_name: "聖公會聖西門呂明才中學",
@@ -1383,18 +1466,28 @@ const stops = {
     en_name: "Prime View Garden",
     lat: "22.40334",
     lon: "113.979247",
+    connections: {
+      LR: "330",
+    },
   },
   "K51-D240": {
     tc_name: "輕鐵鳳地站",
     en_name: "LR Fung Tei Stop",
     lat: "22.407254",
     lon: "113.978641",
+    connections: {
+      LR: "340",
+    },
   },
   "K51-D250": {
     tc_name: "港鐵兆康站 (南), (輕鐵兆康站)",
     en_name: "MTR Siu Hong Station (South), (LR Siu Hong Stop)",
     lat: "22.410378",
     lon: "113.978607",
+    connections: {
+      TML: "SIH",
+      LR: "100",
+    },
   },
   "K51-D260": {
     tc_name: "彩暉花園",
@@ -1426,12 +1519,19 @@ const stops = {
     en_name: "Tuen Mun Station (LR Tuen Mun Stop)",
     lat: "22.394225",
     lon: "113.973358",
+    connections: {
+      TML: "TUM",
+      LR: "295",
+    },
   },
   "K52-U020": {
     tc_name: "屯門市中心",
     en_name: "Tuen Mun Town Centre",
     lat: "22.391543",
     lon: "113.975435",
+    connections: {
+      LR: "280",
+    },
   },
   "K52-U030": {
     tc_name: "屯門官立中學",
@@ -1456,6 +1556,9 @@ const stops = {
     en_name: "LR Sam Shing Stop",
     lat: "22.382769",
     lon: "113.976256",
+    connections: {
+      LR: "920",
+    },
   },
   "K52-U070": {
     tc_name: "屯門中央廣場",
@@ -1480,6 +1583,9 @@ const stops = {
     en_name: "Tuen Mun Ferry Pier",
     lat: "22.372801",
     lon: "113.967391",
+    connections: {
+      LR: "1",
+    },
   },
   "K52-U110": {
     tc_name: "湖景邨湖畔樓",
@@ -1504,6 +1610,9 @@ const stops = {
     en_name: "LR Butterfly Stop",
     lat: "22.377549",
     lon: "113.961472",
+    connections: {
+      LR: "15",
+    },
   },
   "K52-U150": {
     tc_name: "屯門公眾騎術學校",
@@ -1654,6 +1763,9 @@ const stops = {
     en_name: "LR Butterfly Stop",
     lat: "22.378359",
     lon: "113.961955",
+    connections: {
+      LR: "15",
+    },
   },
   "K52-D160": {
     tc_name: "兆山苑",
@@ -1678,6 +1790,9 @@ const stops = {
     en_name: "Pierhead Garden (LR Tuen Mun Ferry Pier Stop)",
     lat: "22.373244",
     lon: "113.965958",
+    connections: {
+      LR: "1",
+    },
   },
   "K52-D200": {
     tc_name: "邁亞美海灣",
@@ -1702,6 +1817,9 @@ const stops = {
     en_name: "LR Sam Shing Stop",
     lat: "22.382943",
     lon: "113.976283",
+    connections: {
+      LR: "920",
+    },
   },
   "K52-D240": {
     tc_name: "胡陳金枝中學",
@@ -1732,12 +1850,19 @@ const stops = {
     en_name: "LR Town Centre Stop",
     lat: "22.392116",
     lon: "113.975082",
+    connections: {
+      LR: "280",
+    },
   },
   "K52-D290": {
     tc_name: "屯門站 (輕鐵屯門站)",
     en_name: "Tuen Mun Station (LR Tuen Mun Stop)",
     lat: "22.394225",
     lon: "113.973358",
+    connections: {
+      TML: "TUM",
+      LR: "295",
+    },
   },
   // Route K52A
   "K52A-U010": {
@@ -1745,18 +1870,28 @@ const stops = {
     en_name: "Tuen Mun Station",
     lat: "22.394225",
     lon: "113.973358",
+    connections: {
+      TML: "TUM",
+      LR: "295",
+    },
   },
   "K52A-U020": {
     tc_name: "輕鐵建安站",
     en_name: "LR Kin On Stop",
     lat: "22.394687",
     lon: "113.970746",
+    connections: {
+      LR: "60",
+    },
   },
   "K52A-U030": {
     tc_name: "輕鐵青雲站",
     en_name: "LR Tsing Wun Stop",
     lat: "22.393382",
     lon: "113.967707",
+    connections: {
+      LR: "50",
+    },
   },
 
   "K52A-U040": {
@@ -1776,12 +1911,18 @@ const stops = {
     en_name: "Sun Tuen Mun Centre",
     lat: "22.382269",
     lon: "113.963833",
+    connections: {
+      LR: "20",
+    },
   },
   "K52A-U070": {
     tc_name: "輕鐵蝴蝶站",
     en_name: "LR Butterfly Stop",
     lat: "22.377547",
     lon: "113.961481",
+    connections: {
+      LR: "15",
+    },
   },
   "K52A-U080": {
     tc_name: "屯門公眾騎術學校",
@@ -1934,36 +2075,55 @@ const stops = {
     en_name: "LR Butterfly Stop",
     lat: "22.378359",
     lon: "113.961955",
+    connections: {
+      LR: "15",
+    },
   },
   "K52A-D150": {
     tc_name: "輕鐵車廠站",
     en_name: "Light Rail Depot Stop",
     lat: "22.382203",
     lon: "113.96359",
+    connections: {
+      LR: "20",
+    },
   },
   "K52A-D160": {
     tc_name: "輕鐵龍門站",
     en_name: "LR Lung Mun Stop",
     lat: "22.385399",
     lon: "113.965222",
+    connections: {
+      LR: "30",
+    },
   },
   "K52A-D170": {
     tc_name: "輕鐵青雲站",
     en_name: "LR Tsing Wun Stop",
     lat: "22.393627",
     lon: "113.96752",
+    connections: {
+      LR: "50",
+    },
   },
   "K52A-D180": {
     tc_name: "輕鐵建安站",
     en_name: "LR Kin On Stop",
     lat: "22.395064",
     lon: "113.969953",
+    connections: {
+      LR: "60",
+    },
   },
   "K52A-D190": {
     tc_name: "屯門站",
     en_name: "Tuen Mun Station",
     lat: "22.394225",
     lon: "113.973358",
+    connections: {
+      TML: "TUM",
+      LR: "295",
+    },
   },
   // Route K53
   "K53-U010": {
@@ -1971,12 +2131,19 @@ const stops = {
     en_name: "Tuen Mun Station (LR Tuen Mun Stop)",
     lat: "22.394225",
     lon: "113.973358",
+    connections: {
+      TML: "TUM",
+      LR: "295",
+    },
   },
   "K53-U020": {
     tc_name: "屯門市中心",
     en_name: "Tuen Mun Town Centre",
     lat: "22.391543",
     lon: "113.975435",
+    connections: {
+      LR: "280",
+    },
   },
   "K53-U030": {
     tc_name: "屯門官立中學",
@@ -2122,6 +2289,9 @@ const stops = {
     en_name: "Hanford Garden (LR Sam Shing Stop)",
     lat: "22.382079",
     lon: "113.977158",
+    connections: {
+      LR: "920",
+    },
   },
   "K53-D120": {
     tc_name: "胡陳金枝中學",
@@ -2152,12 +2322,19 @@ const stops = {
     en_name: "LR Town Centre Stop",
     lat: "22.392116",
     lon: "113.975082",
+    connections: {
+      LR: "280",
+    },
   },
   "K53-U011": {
     tc_name: "屯門站 (輕鐵屯門站)",
     en_name: "Tuen Mun Station (LR Tuen Mun Stop)",
     lat: "22.394225",
     lon: "113.973358",
+    connections: {
+      TML: "TUM",
+      LR: "295",
+    },
   },
   //Route K58
   "K58-U010": {
@@ -2177,6 +2354,10 @@ const stops = {
     en_name: "MTR Siu Hong Station (North), (LR Siu Hong Stop)",
     lat: "22.4134",
     lon: "113.97902",
+    connections: {
+      TML: "SIH",
+      LR: "100",
+    },
   },
   "K58-U040": {
     tc_name: "兆康苑",
@@ -2189,6 +2370,9 @@ const stops = {
     en_name: "LR Kei Lun Stop",
     lat: "22.41013",
     lon: "113.976505",
+    connections: {
+      LR: "110",
+    },
   },
   "K58-U060": {
     tc_name: "屯門醫院",
@@ -2207,6 +2391,9 @@ const stops = {
     en_name: "Shi Hui Wen Secondary School",
     lat: "22.404952",
     lon: "113.968844",
+    connections: {
+      LR: "212",
+    },
   },
   "K58-U090": {
     tc_name: "何壽基小學",
@@ -2219,30 +2406,45 @@ const stops = {
     en_name: "Leung King Estate",
     lat: "22.407089",
     lon: "113.964247",
+    connections: {
+      LR: "150",
+    },
   },
   "K58-U110": {
     tc_name: "輕鐵新圍站",
     en_name: "LR San Wai Stop",
     lat: "22.405394",
     lon: "113.964648",
+    connections: {
+      LR: "160",
+    },
   },
   "K58-U120": {
     tc_name: "輕鐵石排站",
     en_name: "LR Shek Pai Stop",
     lat: "22.401886",
     lon: "113.96805",
+    connections: {
+      LR: "170",
+    },
   },
   "K58-U130": {
     tc_name: "輕鐵鳴琴站",
     en_name: "LR Ming Kum Stop",
     lat: "22.396961",
     lon: "113.967622",
+    connections: {
+      LR: "200",
+    },
   },
   "K58-U140": {
     tc_name: "輕鐵建安站",
     en_name: "LR Kin On Stop",
     lat: "22.395021",
     lon: "113.969976",
+    connections: {
+      LR: "60",
+    },
   },
 
   "K58-U150": {
@@ -2250,12 +2452,19 @@ const stops = {
     en_name: "MTR Tuen Mun Station",
     lat: "22.394225",
     lon: "113.973358",
+    connections: {
+      TML: "TUM",
+      LR: "295",
+    },
   },
   "K58-U160": {
     tc_name: "屯門市中心",
     en_name: "Tuen Mun Town Centre",
     lat: "22.391389",
     lon: "113.975465",
+    connections: {
+      LR: "280",
+    },
   },
   "K58-U170": {
     tc_name: "屯門官立中學",
@@ -2328,42 +2537,64 @@ const stops = {
     en_name: "LR Town Centre Stop",
     lat: "22.392096",
     lon: "113.97512",
+    connections: {
+      LR: "280",
+    },
   },
   "K58-D080": {
     tc_name: "輕鐵屯門站 (港鐵屯門站)",
     en_name: "LR Tuen Mun Stop (MTR Tuen Mun Station)",
     lat: "22.39395",
     lon: "113.9737",
+    connections: {
+      TML: "TUM",
+      LR: "295",
+    },
   },
   "K58-D090": {
     tc_name: "輕鐵建安站",
     en_name: "LR Kin On Stop",
     lat: "22.394699",
     lon: "113.970762",
+    connections: {
+      LR: "60",
+    },
   },
   "K58-D100": {
     tc_name: "輕鐵鳴琴站",
     en_name: "LR Ming Kum Stop",
     lat: "22.396769",
     lon: "113.967425",
+    connections: {
+      LR: "200",
+    },
   },
   "K58-D110": {
     tc_name: "輕鐵石排站",
     en_name: "LR Shek Pai Stop",
     lat: "22.401983",
     lon: "113.967883",
+    connections: {
+      LR: "170",
+    },
   },
   "K58-D120": {
     tc_name: "輕鐵新圍站",
     en_name: "LR San Wai Stop",
     lat: "22.405404",
     lon: "113.963966",
+    connections: {
+      LR: "160",
+    },
   },
   "K58-D130": {
     tc_name: "輕鐵田景站",
     en_name: "LR Tin King Stop",
     lat: "22.407716",
     lon: "113.96598",
+    connections: {
+      LR: "140",
+    },
   },
   "K58-D140": {
     tc_name: "青田遊樂場",
@@ -2376,6 +2607,9 @@ const stops = {
     en_name: "Lok Sang House, Kin Sang Estate",
     lat: "22.405169",
     lon: "113.968901",
+    connections: {
+      LR: "212",
+    },
   },
   "K58-D160": {
     tc_name: "建生邨泰生樓",
@@ -2388,6 +2622,9 @@ const stops = {
     en_name: "LR Kei Lun Stop",
     lat: "22.411042",
     lon: "113.97648",
+    connections: {
+      LR: "110",
+    },
   },
   "K58-D180": {
     tc_name: "紫田村",
@@ -2400,6 +2637,10 @@ const stops = {
     en_name: "MTR Siu Hong Station (North), (LR Siu Hong Stop)",
     lat: "22.41357",
     lon: "113.9791",
+    connections: {
+      TML: "SIH",
+      LR: "100",
+    },
   },
   "K58-D200": {
     tc_name: "倚嶺南庭",
@@ -2419,36 +2660,55 @@ const stops = {
     en_name: "Yuen Long Station (LR Yuen Long Stop, MTR Yuen Long Station)",
     lat: "22.44514396",
     lon: "114.035187",
+    connections: {
+      TML: "YUL",
+      LR: "600",
+    },
   },
   "K65-U020": {
     tc_name: "又新街",
     en_name: "Yau San Street",
     lat: "22.44451201",
     lon: "114.0315245",
+    connections: {
+      LR: "590",
+    },
   },
   "K65-U030": {
     tc_name: "大棠路",
     en_name: "Tai Tong Road",
     lat: "22.4446245",
     lon: "114.028421",
+    connections: {
+      LR: "580",
+    },
   },
   "K65-U040": {
     tc_name: "康樂路",
     en_name: "Hong Lok Road",
     lat: "22.44478103",
     lon: "114.026429",
+    connections: {
+      LR: "580",
+    },
   },
   "K65-U050": {
     tc_name: "元朗警署",
     en_name: "Yuen Long Police Station",
     lat: "22.44449303",
     lon: "114.024142",
+    connections: {
+      LR: "570",
+    },
   },
   "K65-U060": {
     tc_name: "輕鐵水邊圍站",
     en_name: "LR Shui Pin Wai Stop",
     lat: "22.44449303",
     lon: "114.02119",
+    connections: {
+      LR: "560",
+    },
   },
   "K65-U070": {
     tc_name: "元朗公園",
@@ -2479,12 +2739,18 @@ const stops = {
     en_name: "LR Hang Mei Tsuen Stop",
     lat: "22.445754",
     lon: "114.004915",
+    connections: {
+      LR: "425",
+    },
   },
   "K65-U120": {
     tc_name: "天盛苑 (港鐵天水圍站)",
     en_name: "Tin Shing Court (MTR Tin Shui Wai Station)",
     lat: "22.44692696",
     lon: "114.003126",
+    connections: {
+      TML: "TIS",
+    },
   },
   "K65-U130": {
     tc_name: "石埗路",
@@ -2611,12 +2877,18 @@ const stops = {
     en_name: "Tin Shing Court (MTR Tin Shui Wai Station)",
     lat: "22.44694096",
     lon: "114.00282",
+    connections: {
+      TML: "TIS",
+    },
   },
   "K65-D110": {
     tc_name: "輕鐵坑尾村站",
     en_name: "LR Hang Mei Tsuen Stop",
     lat: "22.44588903",
     lon: "114.00512",
+    connections: {
+      LR: "425",
+    },
   },
   "K65-D120": {
     tc_name: "坑尾村",
@@ -2635,36 +2907,55 @@ const stops = {
     en_name: "LR Ping Shan Stop",
     lat: "22.44322099",
     lon: "114.012915",
+    connections: {
+      LR: "400",
+    },
   },
   "K65-D150": {
     tc_name: "輕鐵水邊圍站",
     en_name: "LR Shui Pin Wai Stop",
     lat: "22.44457601",
     lon: "114.019733",
+    connections: {
+      LR: "560",
+    },
   },
   "K65-D160": {
     tc_name: "元朗廣場",
     en_name: "Yuen Long Plaza",
     lat: "22.44457601",
     lon: "114.023787",
+    connections: {
+      LR: "570",
+    },
   },
   "K65-D170": {
     tc_name: "開心廣場",
     en_name: "Yuen Long Landmark",
     lat: "22.44446897",
     lon: "114.02828",
+    connections: {
+      LR: "590",
+    },
   },
   "K65-D180": {
     tc_name: "谷亭街",
     en_name: "Kuk Ting Street",
     lat: "22.44441197",
     lon: "114.030327",
+    connections: {
+      LR: "590",
+    },
   },
   "K65-D190": {
     tc_name: "元朗站 (輕鐵元朗站, 港鐵元朗站)",
     en_name: "Yuen Long Station (LR Yuen Long Stop, MTR Yuen Long Station)",
     lat: "22.44514396",
     lon: "22.44514396",
+    connections: {
+      TML: "YUL",
+      LR: "600",
+    },
   },
   //Route K66
   "K66-U010": {
@@ -2684,6 +2975,9 @@ const stops = {
     en_name: "Ping Cheong Path (MTR Long Ping Station)",
     lat: "22.447672",
     lon: "114.023295",
+    connections: {
+      TML: "LOP",
+    },
   },
   "K66-U040": {
     tc_name: "元朗盲人安老院",
@@ -2696,6 +2990,9 @@ const stops = {
     en_name: "Yuen Long Town Hall (LR Fung Nin Road Stop)",
     lat: "22.4434668",
     lon: "114.0223167",
+    connections: {
+      LR: "570",
+    },
   },
   "K66-U060": {
     tc_name: "安康路",
@@ -2912,6 +3209,9 @@ const stops = {
     en_name: "Yuen Long Town Hall (LR Fung Nin Road Stop)",
     lat: "22.44362078",
     lon: "114.0222338",
+    connections: {
+      LR: "570",
+    },
   },
   "K66-D200": {
     tc_name: "水邊圍邨康水樓",
@@ -2924,6 +3224,9 @@ const stops = {
     en_name: "Yuet Ping House, Long Ping Estate (MTR Long Ping Station)",
     lat: "22.44785153",
     lon: "114.0227269",
+    connections: {
+      TML: "LOP",
+    },
   },
   "K66-D220": {
     tc_name: "惠州學校",
@@ -3015,6 +3318,9 @@ const stops = {
     en_name: "Ping Cheong Path (MTR Long Ping Station)",
     lat: "22.447648",
     lon: "114.023001",
+    connections: {
+      TML: "LOP",
+    },
   },
   "K68-U130": {
     tc_name: "元朗盲人安老院",
@@ -3027,6 +3333,9 @@ const stops = {
     en_name: "Lut Sau Hall (LR Fung Nin Road Stop)",
     lat: "22.442588",
     lon: "114.022245",
+    connections: {
+      LR: "570",
+    },
   },
   "K68-U150": {
     tc_name: "元朗劇院",
@@ -3087,6 +3396,9 @@ const stops = {
     en_name: "Yuen Long Plaza (LR Fung Nin Road Stop)",
     lat: "22.444676",
     lon: "114.023705",
+    connections: {
+      LR: "570",
+    },
   },
   "K68-D080": {
     tc_name: "元朗安寧路",
@@ -3099,6 +3411,9 @@ const stops = {
     en_name: "Tai Kiu Tsuen (MTR Long Ping Station)",
     lat: "22.447538",
     lon: "114.026826",
+    connections: {
+      TML: "LOP",
+    },
   },
   "K68-D100": {
     tc_name: "惠州學校",
@@ -3184,6 +3499,9 @@ const stops = {
     en_name: "Yat Tam House, Tin Yat Estate",
     lat: "22.468098",
     lon: "113.999163",
+    connections: {
+      LR: "550",
+    },
   },
   "K73-U030": {
     tc_name: "天逸邨逸洋樓",
@@ -3214,12 +3532,18 @@ const stops = {
     en_name: "Kenswood Court, Tin Shing Road",
     lat: "22.457444",
     lon: "114.005577",
+    connections: {
+      LR: "455",
+    },
   },
   "K73-U080": {
     tc_name: "天慈邨",
     en_name: "Tin Tsz Estate",
     lat: "22.453279",
     lon: "114.006118",
+    connections: {
+      LR: "435",
+    },
   },
   "K73-U090": {
     tc_name: "鳳池村",
@@ -3244,12 +3568,18 @@ const stops = {
     en_name: "Yuen Long West (LR Fung Nin Road Stop)",
     lat: "22.445181",
     lon: "114.024919",
+    connections: {
+      LR: "570",
+    },
   },
   "K73-D010": {
     tc_name: "元朗西 (輕鐵豐年路站)",
     en_name: "Yuen Long West (LR Fung Nin Road Stop)",
     lat: "22.445181",
     lon: "114.024919",
+    connections: {
+      LR: "570",
+    },
   },
   "K73-D020": {
     tc_name: "元朗安寧路",
@@ -3262,6 +3592,9 @@ const stops = {
     en_name: "Tai Kiu Tsuen (MTR Long Ping Station)",
     lat: "22.447489",
     lon: "114.026856",
+    connections: {
+      TML: "LOP",
+    },
   },
   "K73-D040": {
     tc_name: "惠州學校",
@@ -3298,6 +3631,9 @@ const stops = {
     en_name: "LR Tin Tsz Stop",
     lat: "22.453358",
     lon: "114.00589",
+    connections: {
+      LR: "435",
+    },
   },
   "K73-D100": {
     tc_name: "天水圍游泳池",
@@ -3334,6 +3670,9 @@ const stops = {
     en_name: "Tin Chak Estate",
     lat: "22.468127",
     lon: "113.999183",
+    connections: {
+      LR: "550",
+    },
   },
   "K73-D160": {
     tc_name: "天恆",
@@ -3347,6 +3686,9 @@ const stops = {
     en_name: "Tin Shui",
     lat: "22.455322",
     lon: "113.998689",
+    connections: {
+      LR: "460",
+    },
   },
   "K74-U020": {
     tc_name: "天水圍公園",
@@ -3359,6 +3701,9 @@ const stops = {
     en_name: "Tin Tsz Estate",
     lat: "22.453288",
     lon: "114.006135",
+    connections: {
+      LR: "435",
+    },
   },
   "K74-U040": {
     tc_name: "鳳池村",
@@ -3383,18 +3728,28 @@ const stops = {
     en_name: "Yuen Long Plaza (LR Fung Nin Road Stop)",
     lat: "22.44467",
     lon: "114.023718",
+    connections: {
+      LR: "570",
+    },
   },
   "K74-U080": {
     tc_name: "開心廣場",
     en_name: "Yuen Long Landmark",
     lat: "22.4444",
     lon: "114.02836",
+    connections: {
+      LR: "590",
+    },
   },
   "K74-U090": {
     tc_name: "港鐵元朗站(朗日路) (港鐵元朗站)",
     en_name: "MTR Yuen Long Station (Long Yat Road) (MTR Yuen Long Station)",
     lat: "22.446625",
     lon: "114.0349444",
+    connections: {
+      TML: "YUL",
+      LR: "600",
+    },
   },
   "K74-D010": {
     tc_name: "東成里(近博愛醫院)",
@@ -3413,6 +3768,9 @@ const stops = {
     en_name: "Tai Kiu Tsuen (MTR Long Ping Station)",
     lat: "22.447487",
     lon: "114.026853",
+    connections: {
+      TML: "LOP",
+    },
   },
   "K74-D040": {
     tc_name: "惠州學校",
@@ -3443,6 +3801,9 @@ const stops = {
     en_name: "LR Tin Tsz Stop",
     lat: "22.45321",
     lon: "114.005918",
+    connections: {
+      LR: "435",
+    },
   },
   "K74-D090": {
     tc_name: "天水圍公園",
@@ -3455,6 +3816,9 @@ const stops = {
     en_name: "Tin Shui",
     lat: "22.455322",
     lon: "113.998689",
+    connections: {
+      LR: "460",
+    },
   },
   //Route K75A
   "K75A-U010": {
@@ -3462,12 +3826,18 @@ const stops = {
     en_name: "Tin Shui Wai Station (LR Tin Shui Wai Stop)",
     lat: "22.44654",
     lon: "114.0037516",
+    connections: {
+      LR: "430",
+    },
   },
   "K75A-U020": {
     tc_name: "天盛苑 (港鐵天水圍站)",
     en_name: "Tin Shing Court (MTR Tin Shui Wai Station)",
     lat: "22.446839",
     lon: "114.00307",
+    connections: {
+      TML: "TIS",
+    },
   },
   "K75A-U030": {
     tc_name: "石埗村",
@@ -3480,6 +3850,9 @@ const stops = {
     en_name: "LR Hung Shui Kiu Stop",
     lat: "22.433489",
     lon: "113.99772",
+    connections: {
+      LR: "380",
+    },
   },
   "K75A-D020": {
     tc_name: "鄉事委員會",
@@ -3540,12 +3913,18 @@ const stops = {
     en_name: "Tin Shing Court (MTR Tin Shui Wai Station)",
     lat: "22.446928",
     lon: "114.002891",
+    connections: {
+      TML: "TIS",
+    },
   },
   "K75A-U011": {
     tc_name: "天水圍站 (輕鐵天水圍站)",
     en_name: "Tin Shui Wai Station (LR Tin Shui Wai Stop)",
     lat: "22.44654",
     lon: "114.0037516",
+    connections: {
+      LR: "430",
+    },
   },
   //Route K75P
   "K75P-U010": {
@@ -3553,6 +3932,9 @@ const stops = {
     en_name: "Tin Shui",
     lat: "22.455356",
     lon: "113.998975",
+    connections: {
+      LR: "460",
+    },
   },
   "K75P-U020": {
     tc_name: "天水圍公園",
@@ -3571,12 +3953,18 @@ const stops = {
     en_name: "LR Tin Yiu Stop",
     lat: "22.450039",
     lon: "114.002836",
+    connections: {
+      LR: "445",
+    },
   },
   "K75P-U050": {
     tc_name: "天盛苑 (港鐵天水圍站)",
     en_name: "Tin Shing Court (MTR Tin Shui Wai Station)",
     lat: "22.446917",
     lon: "114.003097",
+    connections: {
+      TML: "TIS",
+    },
   },
   "K75P-U060": {
     tc_name: "石埗路",
@@ -3637,6 +4025,9 @@ const stops = {
     en_name: "LR Hung Shui Kiu Stop",
     lat: "22.433889",
     lon: "113.997633",
+    connections: {
+      LR: "380",
+    },
   },
   "K75P-D020": {
     tc_name: "洪水橋巴士廠",
@@ -3661,12 +4052,18 @@ const stops = {
     en_name: "Tin Shing Court (MTR Tin Shui Wai Station)",
     lat: "22.446897",
     lon: "114.002789",
+    connections: {
+      TML: "TIS",
+    },
   },
   "K75P-D060": {
     tc_name: "天水圍警署",
     en_name: "Tin Shui Wai Police Station",
     lat: "22.449461",
     lon: "114.002956",
+    connections: {
+      LR: "445",
+    },
   },
   "K75P-D070": {
     tc_name: "賞湖居",
@@ -3685,6 +4082,9 @@ const stops = {
     en_name: "Tin Shui",
     lat: "22.455356",
     lon: "113.998975",
+    connections: {
+      LR: "460",
+    },
   },
   //Route K76
   "K76-U010": {
@@ -3698,42 +4098,63 @@ const stops = {
     en_name: "Yat Tam House, Tin Yat Estate",
     lat: "22.468178",
     lon: "113.999383",
+    connections: {
+      LR: "550",
+    },
   },
   "K76-U030": {
     tc_name: "天富苑欣富閣",
     en_name: "Yan Fu House, Tin Fu Court",
     lat: "22.464353",
     lon: "113.997442",
+    connections: {
+      LR: "480",
+    },
   },
   "K76-U040": {
     tc_name: "天盛苑 (港鐵天水圍站)",
     en_name: "Tin Shing Court (MTR Tin Shui Wai Station)",
     lat: "22.446864",
     lon: "114.002819",
+    connections: {
+      TML: "TIS",
+    },
   },
   "K76-U050": {
     tc_name: "天水圍站 (港鐵天水圍站)",
     en_name: "Tin Shui Wai Station (MTR Tin Shui Wai Station)",
     lat: "22.446556",
     lon: "114.003731",
+    connections: {
+      TML: "TIS",
+    },
   },
   "K76-D010": {
     tc_name: "天水圍站 (港鐵天水圍站)",
     en_name: "Tin Shui Wai Station (MTR Tin Shui Wai Station)",
     lat: "22.446556",
     lon: "114.003731",
+    connections: {
+      TML: "TIS",
+    },
   },
   "K76-D020": {
     tc_name: "天恩邨",
     en_name: "Tin Yan Estate",
     lat: "22.464592",
     lon: "113.99725",
+    connections: {
+      LR: "468",
+    },
   },
   "K76-D030": {
     tc_name: "天澤邨",
     en_name: "Tin Chak Estate",
     lat: "22.468061",
     lon: "113.999058",
+    connections: {
+      LR: "550",
+    },
   },
   "K76-D040": {
     tc_name: "天恆",

@@ -42,7 +42,7 @@ function MTRBus() {
             >
               {Object.entries(MTRBus_Dict?.route).map(([id, name]) => (
                 <MenuItem value={id}>
-                  {id + " " + name[lang + "_name"]}
+                  {"["+id + "] " + name[lang + "_name"]}
                 </MenuItem>
               ))}
             </Select>
