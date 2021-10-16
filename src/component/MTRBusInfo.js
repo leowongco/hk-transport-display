@@ -109,26 +109,30 @@ function MTRBusInfo({ busRoute, lang }) {
           ) : null}
           <Tabs>
             <TabList>
-              <Tab>
-                {MTRBus_Dict.route[busRoute].bound.UP !== undefined
-                  ? MTRBus_Dict.route[busRoute].bound.UP.dest !== "CIR"
+              {MTRBus_Dict.route[busRoute].bound.UP !== undefined ? (
+                <Tab>
+                  {MTRBus_Dict.route[busRoute].bound.UP.dest !== "CIR"
                     ? MTRBus_Dict.common.boundFor[lang + "_name"] +
                       MTRBus_Dict.dest[
                         MTRBus_Dict.route[busRoute].bound.UP.dest
                       ][lang + "_name"]
                     : MTRBus_Dict.dest[
                         MTRBus_Dict.route[busRoute].bound.UP.dest
+                      ][lang + "_name"]}
+                </Tab>
+              ) : null}
+              {MTRBus_Dict.route[busRoute].bound.DOWN !== undefined ? (
+                <Tab>
+                  {MTRBus_Dict.route[busRoute].bound.DOWN.dest !== "CIR"
+                    ? MTRBus_Dict.common.boundFor[lang + "_name"] +
+                      MTRBus_Dict.dest[
+                        MTRBus_Dict.route[busRoute].bound.DOWN.dest
                       ][lang + "_name"]
-                  : null}
-              </Tab>
-              <Tab>
-                {MTRBus_Dict.route[busRoute].bound.DOWN !== undefined
-                  ? MTRBus_Dict.common.boundFor[lang + "_name"] +
-                    MTRBus_Dict.dest[
-                      MTRBus_Dict.route[busRoute].bound.DOWN.dest
-                    ][lang + "_name"]
-                  : null}
-              </Tab>
+                    : MTRBus_Dict.dest[
+                        MTRBus_Dict.route[busRoute].bound.DOWN.dest
+                      ][lang + "_name"]}
+                </Tab>
+              ) : null}
             </TabList>
             <TabPanel>
               {
