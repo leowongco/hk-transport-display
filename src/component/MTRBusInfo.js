@@ -7,9 +7,11 @@ import {
   Typography,
   AccordionDetails,
   LinearProgress,
+  Chip,
+  Avatar,
+  Dialog,
 } from "@mui/material";
 
-import Chip from "@mui/material/Chip";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
@@ -30,6 +32,9 @@ function MTRBusInfo({ busRoute, lang }) {
   const [isLoading, setIsLoading] = useState(false);
   const [mtrBusData, setMtrBusData] = useState();
   const [expanded, setExpended] = useState("");
+
+  const [lrETADialogOpen, setlrETADialogOpen] = useState(false);
+  const [tmlETADialogOpen, settmlETADialogOpen] = useState(false);
 
   //check language
   if (lang === "tc") {
@@ -76,6 +81,135 @@ function MTRBusInfo({ busRoute, lang }) {
       setExpended("");
     }
   };
+
+  const handleCloseDialog = (e) => {
+    setlrETADialogOpen(false);
+    settmlETADialogOpen(false);
+  };
+
+  //Props
+  function MTRBusConnectionsPanel(props) {
+    return (
+      <div className="mtrBusInfo_ETABoxRow">
+        {
+          // Displaying Connection Buttons
+          MTRBus_Dict.stops[props.busStop].connections?.LR ||
+          MTRBus_Dict.stops[props.busStop].connections?.TML ? (
+            <div className="mtrBusInfo_busStopConnectionsEtaPanel">
+              {MTRBus_Dict.stops[props.busStop].connections?.LR ? (
+                <Chip
+                  avatar={<Avatar alt="Light Rail Connection" src={BusLR} />}
+                  label={MTRBus_Dict.common.BusLReta[lang + "_name"]}
+                  color="warning"
+                  size="small"
+                  sx={{
+                    background: "navy",
+                    fontWeight: "600",
+                  }}
+                />
+              ) : null}
+              {MTRBus_Dict.stops[props.busStop].connections?.TML ? (
+                <Chip
+                  avatar={<Avatar alt="Tune Ma Line Connection" src={BusTML} />}
+                  label={MTRBus_Dict.common.BusTMLeta[lang + "_name"]}
+                  color="warning"
+                  size="small"
+                  sx={{
+                    background: "#9a3b26",
+                    fontWeight: "600",
+                  }}
+                />
+              ) : null}
+            </div>
+          ) : null
+        }
+      </div>
+    );
+  }
+
+  function MTRBusETABox(props) {
+    return (
+      <div className="mtrBusInfo_ETABox">
+        <Accordion
+          square
+          expanded={expanded === props.busStop}
+          onChange={handleChange(props.busStop)}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls={props.busStop}
+            id={props.busStop + "-header"}
+            className="mtrBusInfo_busStop"
+          >
+            <Typography>
+              <b>{props.index + 1 + ". "}</b>
+              <small>{MTRBus_Dict.stops[props.busStop][lang + "_name"]}</small>
+            </Typography>
+            <div className="mtrBusInfo_busStopConnections">
+              {MTRBus_Dict.stops[props.busStop].connections?.LR ? (
+                <img src={BusLR} />
+              ) : null}
+              {MTRBus_Dict.stops[props.busStop].connections?.TML ? (
+                <img src={BusTML} />
+              ) : null}
+            </div>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className="mtrBusInfo_ETABoxContainer">
+              {/* <MTRBusConnectionsPanel busStop={props.busStop} /> */}
+              {mtrBusData?.routeStatusRemarkTitle !== null ? (
+                <div className="mtrBusInfo_ETABoxRow">
+                  <small style={{ color: "black", paddingLeft: "5px" }}>
+                    {mtrBusData?.routeStatusRemarkTitle}
+                  </small>
+                </div>
+              ) : null}
+              {mtrBusData?.busStop
+                .filter((items) => {
+                  return items.busStopId.includes(props.busStop);
+                })
+                .map((item) =>
+                  item.bus.map((mbus, i) => (
+                    <div className="mtrBusInfo_ETABoxRow">
+                      <div className="mtrBusInfo_BusETA">
+                        <div className="mtrBusInfo_BusETA_BusID">
+                          {i + 1 + ". "}
+                          {mbus.busId !== null ? (
+                            <Chip
+                              color="info"
+                              icon={<DirectionsBusIcon />}
+                              label={"#" + mbus.busId}
+                              size="small"
+                            />
+                          ) : (
+                            <Chip
+                              color="info"
+                              icon={<DirectionsBusIcon />}
+                              size="small"
+                            />
+                          )}
+                        </div>
+                        <div style={{ flex: "1 0 0" }} />
+                        <div className="mtrBusInfo_BusETA_BusTime">
+                          {mbus.arrivalTimeText === ""
+                            ? mbus.departureTimeText
+                            : mbus.arrivalTimeText}
+                          <span>
+                            {mbus.isScheduled === "1"
+                              ? MTRBus_Dict.common.scheduleDep[lang + "_name"]
+                              : null}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                )}
+            </div>
+          </AccordionDetails>
+        </Accordion>
+      </div>
+    );
+  }
 
   // Show Contents
   if (mtrBusData?.routeStatusColour === "red") {
@@ -138,7 +272,7 @@ function MTRBusInfo({ busRoute, lang }) {
             ) : null}
             <Tabs>
               <TabList>
-                {MTRBus_Dict.route[busRoute].bound.UP !== undefined ? (
+                {MTRBus_Dict.route[busRoute].bound.UP ? (
                   <Tab>
                     <small>
                       {MTRBus_Dict.route[busRoute].bound.UP.dest !== "CIR"
@@ -152,7 +286,7 @@ function MTRBusInfo({ busRoute, lang }) {
                     </small>
                   </Tab>
                 ) : null}
-                {MTRBus_Dict.route[busRoute].bound.DOWN !== undefined ? (
+                {MTRBus_Dict.route[busRoute].bound.DOWN ? (
                   <Tab>
                     <small>
                       {MTRBus_Dict.route[busRoute].bound.DOWN.dest !== "CIR"
@@ -172,83 +306,7 @@ function MTRBusInfo({ busRoute, lang }) {
                   /* Showing Outbound or Circular Bus Data */
                   MTRBus_Dict.route[busRoute].bound.UP?.stops.map(
                     (bStop, i) => (
-                      <div className="mtrBusInfo_ETABox">
-                        <Accordion
-                          square
-                          expanded={expanded === bStop}
-                          onChange={handleChange(bStop)}
-                        >
-                          <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls={bStop}
-                            id={bStop + "-header"}
-                            className="mtrBusInfo_busStop"
-                          >
-                            <Typography>
-                              <b>{i + 1 + ". "}</b>
-                              <small>
-                                {MTRBus_Dict.stops[bStop][lang + "_name"]}
-                              </small>
-                            </Typography>
-                            <div className="mtrBusInfo_busStopConnections">
-                              {MTRBus_Dict.stops[bStop].connections?.LR !==
-                              undefined ? (
-                                <img src={BusLR} />
-                              ) : null}
-                              {MTRBus_Dict.stops[bStop].connections?.TML !==
-                              undefined ? (
-                                <img src={BusTML} />
-                              ) : null}
-                            </div>
-                          </AccordionSummary>
-                          <AccordionDetails>
-                            <div className="mtrBusInfo_ETABoxContainer">
-                              {mtrBusData?.busStop
-                                .filter((items) => {
-                                  return items.busStopId.includes(bStop);
-                                })
-                                .map((item) =>
-                                  item.bus.map((mbus, i) => (
-                                    <div className="mtrBusInfo_ETABoxRow">
-                                      <div className="mtrBusInfo_BusETA">
-                                        <div className="mtrBusInfo_BusETA_BusID">
-                                          {i + 1 + ". "}
-                                          {mbus.busId !== null ? (
-                                            <Chip
-                                              color="info"
-                                              icon={<DirectionsBusIcon />}
-                                              label={"#" + mbus.busId}
-                                              size="small"
-                                            />
-                                          ) : (
-                                            <Chip
-                                              color="info"
-                                              icon={<DirectionsBusIcon />}
-                                              size="small"
-                                            />
-                                          )}
-                                        </div>
-                                        <div style={{ flex: "1 0 0" }} />
-                                        <div className="mtrBusInfo_BusETA_BusTime">
-                                          {mbus.arrivalTimeText === ""
-                                            ? mbus.departureTimeText
-                                            : mbus.arrivalTimeText}
-                                          <span>
-                                            {mbus.isScheduled === "1"
-                                              ? MTRBus_Dict.common.scheduleDep[
-                                                  lang + "_name"
-                                                ]
-                                              : null}
-                                          </span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  ))
-                                )}
-                            </div>
-                          </AccordionDetails>
-                        </Accordion>
-                      </div>
+                      <MTRBusETABox busStop={bStop} index={i} />
                     )
                   )
                 }
@@ -258,83 +316,7 @@ function MTRBusInfo({ busRoute, lang }) {
                   /* Showing Inbound Bus Data */
                   MTRBus_Dict.route[busRoute].bound.DOWN?.stops.map(
                     (bStop, i) => (
-                      <div className="mtrBusInfo_ETABox">
-                        <Accordion
-                          square
-                          expanded={expanded === bStop}
-                          onChange={handleChange(bStop)}
-                        >
-                          <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls={bStop}
-                            id={bStop + "-header"}
-                            className="accordion-header"
-                          >
-                            <Typography>
-                              <b>{i + 1 + ". "}</b>
-                              <small>
-                                {MTRBus_Dict.stops[bStop][lang + "_name"]}
-                              </small>
-                            </Typography>
-                            <div className="mtrBusInfo_busStopConnections">
-                              {MTRBus_Dict.stops[bStop].connections?.LR !==
-                              undefined ? (
-                                <img src={BusLR} />
-                              ) : null}
-                              {MTRBus_Dict.stops[bStop].connections?.TML !==
-                              undefined ? (
-                                <img src={BusTML} />
-                              ) : null}
-                            </div>
-                          </AccordionSummary>
-                          <AccordionDetails>
-                            <div className="mtrBusInfo_ETABoxContainer">
-                              {mtrBusData?.busStop
-                                .filter((items) => {
-                                  return items.busStopId.includes(bStop);
-                                })
-                                .map((item) =>
-                                  item.bus.map((mbus, i) => (
-                                    <div className="mtrBusInfo_ETABoxRow">
-                                      <div className="mtrBusInfo_BusETA">
-                                        <div className="mtrBusInfo_BusETA_BusID">
-                                          {i + 1 + ". "}
-                                          {mbus.busId !== null ? (
-                                            <Chip
-                                              color="info"
-                                              icon={<DirectionsBusIcon />}
-                                              label={"#" + mbus.busId}
-                                              size="small"
-                                            />
-                                          ) : (
-                                            <Chip
-                                              color="info"
-                                              icon={<DirectionsBusIcon />}
-                                              size="small"
-                                            />
-                                          )}
-                                        </div>
-                                        <div style={{ flex: "1 0 0" }} />
-                                        <div className="mtrBusInfo_BusETA_BusTime">
-                                          {mbus.arrivalTimeText === ""
-                                            ? mbus.departureTimeText
-                                            : mbus.arrivalTimeText}
-                                          <span>
-                                            {mbus.isScheduled === "1"
-                                              ? MTRBus_Dict.common.scheduleDep[
-                                                  lang + "_name"
-                                                ]
-                                              : null}
-                                          </span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  ))
-                                )}
-                            </div>
-                          </AccordionDetails>
-                        </Accordion>
-                      </div>
+                      <MTRBusETABox busStop={bStop} index={i} />
                     )
                   )
                 }
@@ -362,6 +344,13 @@ function MTRBusInfo({ busRoute, lang }) {
                 </Marquee>
               </div>
             </div>
+            {/* // Light Rail Dialog */}
+            <Dialog
+              fullWidth="true"
+              maxWidth="sm"
+              open={lrETADialogOpen}
+              onClose={handleCloseDialog}
+            ></Dialog>
           </div>
         )}
       </div>

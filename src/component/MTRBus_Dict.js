@@ -23,6 +23,14 @@ const common = {
     en_name: "MTR Bus ETA",
     tc_name: "港鐵巴士到站時間",
   },
+  BusLReta:{
+    en_name: "Light Rail ETA",
+    tc_name: "輕鐵班次",
+  },
+  BusTMLeta:{
+    en_name: "Tuen Ma Line ETA",
+    tc_name: "屯馬線班次",
+  },
 };
 
 const route = {
@@ -835,6 +843,9 @@ const stops = {
     en_name: "Light Rail Depot Stop",
     lat: "22.382203",
     lon: "113.96359",
+    connections: {
+      LR: "20",
+    },
   },
   "506-U050": {
     tc_name: "輕鐵龍門站",
