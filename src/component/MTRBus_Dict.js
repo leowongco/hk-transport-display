@@ -1,6 +1,6 @@
 const common = {
   scheduleDep: {
-    en_name: "Schedule",
+    en_name: "Scheduled",
     tc_name: "預定班次",
   },
   lastUpdate: {

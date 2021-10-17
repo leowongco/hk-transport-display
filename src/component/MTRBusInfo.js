@@ -16,6 +16,8 @@ import "react-tabs/style/react-tabs.css";
 import BusAlertIcon from "@mui/icons-material/BusAlert";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import BusLR from "../img/bus_LR.jpg";
+import BusTML from "../img/bus_TML.jpg";
 
 import MTRBus_Dict from "./MTRBus_Dict";
 
@@ -180,6 +182,16 @@ function MTRBusInfo({ busRoute, lang }) {
                                 {MTRBus_Dict.stops[bStop][lang + "_name"]}
                               </small>
                             </Typography>
+                            <div className="mtrBusInfo_busStopConnections">
+                              {MTRBus_Dict.stops[bStop].connections?.LR !==
+                              undefined ? (
+                                <img src={BusLR} />
+                              ) : null}
+                              {MTRBus_Dict.stops[bStop].connections?.TML !==
+                              undefined ? (
+                                <img src={BusTML} />
+                              ) : null}
+                            </div>
                           </AccordionSummary>
                           <AccordionDetails>
                             <div className="mtrBusInfo_ETABoxContainer">
@@ -256,6 +268,16 @@ function MTRBusInfo({ busRoute, lang }) {
                                 {MTRBus_Dict.stops[bStop][lang + "_name"]}
                               </small>
                             </Typography>
+                            <div className="mtrBusInfo_busStopConnections">
+                              {MTRBus_Dict.stops[bStop].connections?.LR !==
+                              undefined ? (
+                                <img src={BusLR} />
+                              ) : null}
+                              {MTRBus_Dict.stops[bStop].connections?.TML !==
+                              undefined ? (
+                                <img src={BusTML} />
+                              ) : null}
+                            </div>
                           </AccordionSummary>
                           <AccordionDetails>
                             <div className="mtrBusInfo_ETABoxContainer">

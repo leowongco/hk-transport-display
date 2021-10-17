@@ -125,6 +125,12 @@
   font-weight: 300;
 }
 
+.mtrBusInfo_busStopConnections{
+  display: flex;
+  flex: 1;
+  padding-left: 5px;
+}
+
 .mtrBusInfo_BusETA_BusTime {
   text-align: right;
   font-size: small;
