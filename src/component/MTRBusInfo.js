@@ -16,8 +16,8 @@ import "react-tabs/style/react-tabs.css";
 import BusAlertIcon from "@mui/icons-material/BusAlert";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import BusLR from "../img/bus_LR.jpg";
-import BusTML from "../img/bus_TML.jpg";
+import BusLR from "../img/bus_LR.png";
+import BusTML from "../img/bus_TML.png";
 
 import MTRBus_Dict from "./MTRBus_Dict";
 
@@ -110,8 +110,16 @@ function MTRBusInfo({ busRoute, lang }) {
   } else {
     return (
       <div className="mtrbusinfo">
-        {isLoading === true ? (
-          <LinearProgress color="secondary" />
+        {isLoading ? (
+          <div className="mtrBusInfoContainer">
+            <div className="mtrBusInfoHeader">
+              <div className="mtrBusInfo_busNumber">{busRoute}</div>
+              <div className="mtrBusInfo_busRoute">
+                {MTRBus_Dict.route[busRoute][lang + "_name"]}
+              </div>
+            </div>
+            <LinearProgress color="secondary" />
+          </div>
         ) : (
           <div className="mtrBusInfoContainer">
             <div className="mtrBusInfoHeader">

@@ -14,6 +14,11 @@
   justify-content: left;
 }
 
+.mtrBusInfoContainer > .MuiLinearProgress-root {
+  height: 10px;
+  width: 100%;
+}
+
 .mtrBusInfoHeader {
   display: flex;
   flex: 1;
@@ -125,10 +130,11 @@
   font-weight: 300;
 }
 
-.mtrBusInfo_busStopConnections{
+.mtrBusInfo_busStopConnections {
   display: flex;
   flex: 1;
   padding-left: 5px;
+  height: 24px;
 }
 
 .mtrBusInfo_BusETA_BusTime {
