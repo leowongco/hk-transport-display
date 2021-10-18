@@ -384,7 +384,9 @@ function MTRBusInfo({ busRoute, lang }) {
                 {MTRBus_Dict.common.BusLReta[lang + "_name"]}
               </DialogTitle>
               <DialogContentText>
-                <LrtInfo sid={lrETAStation} lang={lang} />
+                <div className="mtrBusDialogBox">
+                  <LrtInfo sid={lrETAStation} lang={lang} />
+                </div>
               </DialogContentText>
               <DialogActions>
                 <Button onClick={handleCloseDialog}>
@@ -408,7 +410,9 @@ function MTRBusInfo({ busRoute, lang }) {
                 {MTRBus_Dict.common.BusTMLeta[lang + "_name"]}
               </DialogTitle>
               <DialogContentText>
-                <SaveMTR line="TML" station={tmlETAStation} lang={lang} />
+                <div className="mtrBusDialogBox">
+                  <SaveMTR line="TML" station={tmlETAStation} lang={lang} />
+                </div>
               </DialogContentText>
               <DialogActions>
                 <Button onClick={handleCloseDialog}>

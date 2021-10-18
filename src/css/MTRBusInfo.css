@@ -127,7 +127,7 @@
 .mtrBusInfo_busStopConnectionsEtaPanel {
   padding: 3px;
   margin-bottom: 5px;
-  background:moccasin;
+  background: moccasin;
 }
 
 .mtrBusInfo_busStop > span {
@@ -153,4 +153,8 @@
   font-weight: 300;
   font-style: italic;
   padding-left: 5px;
+}
+
+.mtrBusDialogBox {
+  width: 350px !important;
 }

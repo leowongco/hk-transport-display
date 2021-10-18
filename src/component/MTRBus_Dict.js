@@ -885,7 +885,7 @@ const stops = {
     lon: "113.973992",
     connections: {
       TML: "TUM",
-      LR: "290",
+      LR: "295",
     },
   },
   "506-U090": {
