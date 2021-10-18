@@ -10,6 +10,10 @@ import {
   Chip,
   Avatar,
   Dialog,
+  Button,
+  DialogTitle,
+  DialogContentText,
+  DialogActions,
 } from "@mui/material";
 
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
@@ -22,6 +26,10 @@ import BusLR from "../img/bus_LR.png";
 import BusTML from "../img/bus_TML.png";
 
 import MTRBus_Dict from "./MTRBus_Dict";
+import LRT_Dict from "./LRT_Dict";
+import DictM from "./MTR_Dict.js";
+import LrtInfo from "./LRTSaveInfo";
+import SaveMTR from "./MTRSaveInfo";
 
 import "../css/MTRBusInfo.css";
 
@@ -35,6 +43,9 @@ function MTRBusInfo({ busRoute, lang }) {
 
   const [lrETADialogOpen, setlrETADialogOpen] = useState(false);
   const [tmlETADialogOpen, settmlETADialogOpen] = useState(false);
+
+  const [lrETAStation, setLrETAStaion] = useState("1");
+  const [tmlETAStation, setTmlETAStaion] = useState("TUM");
 
   //check language
   if (lang === "tc") {
@@ -87,6 +98,16 @@ function MTRBusInfo({ busRoute, lang }) {
     settmlETADialogOpen(false);
   };
 
+  const handleLRDialog = (LRStation) => {
+    setLrETAStaion(LRStation);
+    setlrETADialogOpen(true);
+  };
+
+  const handleTMLDialog = (TMLStation) => {
+    setTmlETAStaion(TMLStation);
+    settmlETADialogOpen(true);
+  };
+
   //Props
   function MTRBusConnectionsPanel(props) {
     return (
@@ -102,6 +123,11 @@ function MTRBusInfo({ busRoute, lang }) {
                   label={MTRBus_Dict.common.BusLReta[lang + "_name"]}
                   color="warning"
                   size="small"
+                  onClick={() =>
+                    handleLRDialog(
+                      MTRBus_Dict.stops[props.busStop].connections?.LR
+                    )
+                  }
                   sx={{
                     background: "navy",
                     fontWeight: "600",
@@ -114,6 +140,11 @@ function MTRBusInfo({ busRoute, lang }) {
                   label={MTRBus_Dict.common.BusTMLeta[lang + "_name"]}
                   color="warning"
                   size="small"
+                  onClick={() =>
+                    handleTMLDialog(
+                      MTRBus_Dict.stops[props.busStop].connections?.TML
+                    )
+                  }
                   sx={{
                     background: "#9a3b26",
                     fontWeight: "600",
@@ -156,14 +187,7 @@ function MTRBusInfo({ busRoute, lang }) {
           </AccordionSummary>
           <AccordionDetails>
             <div className="mtrBusInfo_ETABoxContainer">
-              {/* <MTRBusConnectionsPanel busStop={props.busStop} /> */}
-              {mtrBusData?.routeStatusRemarkTitle !== null ? (
-                <div className="mtrBusInfo_ETABoxRow">
-                  <small style={{ color: "black", paddingLeft: "5px" }}>
-                    {mtrBusData?.routeStatusRemarkTitle}
-                  </small>
-                </div>
-              ) : null}
+              <MTRBusConnectionsPanel busStop={props.busStop} />
               {mtrBusData?.busStop
                 .filter((items) => {
                   return items.busStopId.includes(props.busStop);
@@ -350,7 +374,48 @@ function MTRBusInfo({ busRoute, lang }) {
               maxWidth="sm"
               open={lrETADialogOpen}
               onClose={handleCloseDialog}
-            ></Dialog>
+            >
+              <DialogTitle>
+                <b>
+                  {"[" +
+                    LRT_Dict.lrtStations[lrETAStation][lang + "_name"] +
+                    "] "}
+                </b>
+                {MTRBus_Dict.common.BusLReta[lang + "_name"]}
+              </DialogTitle>
+              <DialogContentText>
+                <LrtInfo sid={lrETAStation} lang={lang} />
+              </DialogContentText>
+              <DialogActions>
+                <Button onClick={handleCloseDialog}>
+                  {MTRBus_Dict.common.close[lang + "_name"]}
+                </Button>
+              </DialogActions>
+            </Dialog>
+            {/* // Tuen Ma Line Dialog */}
+            <Dialog
+              fullWidth="true"
+              maxWidth="sm"
+              open={tmlETADialogOpen}
+              onClose={handleCloseDialog}
+            >
+              <DialogTitle>
+                <b>
+                  {"[" +
+                    DictM.MtrStations[tmlETAStation][lang + "_name"] +
+                    "] "}
+                </b>
+                {MTRBus_Dict.common.BusTMLeta[lang + "_name"]}
+              </DialogTitle>
+              <DialogContentText>
+                <SaveMTR line="TML" station={tmlETAStation} lang={lang} />
+              </DialogContentText>
+              <DialogActions>
+                <Button onClick={handleCloseDialog}>
+                  {MTRBus_Dict.common.close[lang + "_name"]}
+                </Button>
+              </DialogActions>
+            </Dialog>
           </div>
         )}
       </div>

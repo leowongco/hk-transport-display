@@ -31,6 +31,10 @@ const common = {
     en_name: "Tuen Ma Line ETA",
     tc_name: "屯馬線班次",
   },
+  close:{
+    en_name: "Close",
+    tc_name: "關閉",
+  }
 };
 
 const route = {
