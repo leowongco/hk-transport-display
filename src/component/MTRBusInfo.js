@@ -27,9 +27,9 @@ import BusTML from "../img/bus_TML.png";
 
 import MTRBus_Dict from "./MTRBus_Dict";
 import LRT_Dict from "./LRT_Dict";
-import DictM from "./MTR_Dict.js";
-import LrtInfo from "./LRTSaveInfo";
-import SaveMTR from "./MTRSaveInfo";
+import DictM from "./MTR_Dict";
+import LrtInfo from "./LrtInfo";
+import MTRETA from "./MTRInfo";
 
 import "../css/MTRBusInfo.css";
 
@@ -411,7 +411,7 @@ function MTRBusInfo({ busRoute, lang }) {
               </DialogTitle>
               <DialogContentText>
                 <div className="mtrBusDialogBox">
-                  <SaveMTR line="TML" station={tmlETAStation} lang={lang} />
+                  <MTRETA line="TML" station={tmlETAStation} lang={lang} />
                 </div>
               </DialogContentText>
               <DialogActions>
