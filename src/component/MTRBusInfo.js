@@ -383,8 +383,8 @@ function MTRBusInfo({ busRoute, lang }) {
                 </b>
                 {MTRBus_Dict.common.BusLReta[lang + "_name"]}
               </DialogTitle>
-              <DialogContentText>
-                <div className="mtrBusDialogBox">
+              <DialogContentText className="mtrBusDialogBox">
+                <div>
                   <LrtInfo sid={lrETAStation} lang={lang} />
                 </div>
               </DialogContentText>
@@ -397,7 +397,7 @@ function MTRBusInfo({ busRoute, lang }) {
             {/* // Tuen Ma Line Dialog */}
             <Dialog
               fullWidth="true"
-              maxWidth="sm"
+              maxWidth="xl"
               open={tmlETADialogOpen}
               onClose={handleCloseDialog}
             >
@@ -409,10 +409,10 @@ function MTRBusInfo({ busRoute, lang }) {
                 </b>
                 {MTRBus_Dict.common.BusTMLeta[lang + "_name"]}
               </DialogTitle>
-              <DialogContentText>
-                <div className="mtrBusDialogBox">
+              <DialogContentText className="mtrBusDialogBox">
+                <div>
                   <MTRETA line="TML" station={tmlETAStation} lang={lang} />
-                </div>
+              </div>
               </DialogContentText>
               <DialogActions>
                 <Button onClick={handleCloseDialog}>
