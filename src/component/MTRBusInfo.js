@@ -43,9 +43,12 @@ function MTRBusInfo({ busRoute, lang }) {
 
   const [lrETADialogOpen, setlrETADialogOpen] = useState(false);
   const [tmlETADialogOpen, settmlETADialogOpen] = useState(false);
+  const [busLocationDialogOpen, setBusLocationDialogOpen] = useState(false);
 
   const [lrETAStation, setLrETAStaion] = useState("1");
   const [tmlETAStation, setTmlETAStaion] = useState("TUM");
+  const [busLocationLat, setBusLocationLat] = useState(0);
+  const [busLocationLon, setBusLocationLon] = useState(0);
 
   //check language
   if (lang === "tc") {
@@ -96,6 +99,7 @@ function MTRBusInfo({ busRoute, lang }) {
   const handleCloseDialog = (e) => {
     setlrETADialogOpen(false);
     settmlETADialogOpen(false);
+    setBusLocationDialogOpen(false);
   };
 
   const handleLRDialog = (LRStation) => {
@@ -106,6 +110,13 @@ function MTRBusInfo({ busRoute, lang }) {
   const handleTMLDialog = (TMLStation) => {
     setTmlETAStaion(TMLStation);
     settmlETADialogOpen(true);
+  };
+
+  const handleBusLocationDialog = (lat, lon) => {
+    console.log(lat, lon);
+    setBusLocationLat(lat);
+    setBusLocationLon(lon);
+    setBusLocationDialogOpen(true);
   };
 
   //Props
@@ -199,12 +210,32 @@ function MTRBusInfo({ busRoute, lang }) {
                         <div className="mtrBusInfo_BusETA_BusID">
                           {i + 1 + ". "}
                           {mbus.busId !== null ? (
-                            <Chip
-                              color="info"
-                              icon={<DirectionsBusIcon />}
-                              label={"#" + mbus.busId}
-                              size="small"
-                            />
+                            mbus.busLocation.latitude !== null ? (
+                              <Chip
+                                color="warning"
+                                icon={<DirectionsBusIcon />}
+                                label={"#" + mbus.busId}
+                                size="small"
+                                // onClick={() =>
+                                //   handleBusLocationDialog(
+                                //     mbus.busLocation.latitude,
+                                //     mbus.busLocation.longitude
+                                //   )
+                                // }
+                              >
+                                {/* {console.log(
+                                  mbus.busLocation.latitude,
+                                  mbus.busLocation.longitude
+                                )} */}
+                              </Chip>
+                            ) : (
+                              <Chip
+                                color="info"
+                                icon={<DirectionsBusIcon />}
+                                label={"#" + mbus.busId}
+                                size="small"
+                              />
+                            )
                           ) : (
                             <Chip
                               color="info"
@@ -412,7 +443,26 @@ function MTRBusInfo({ busRoute, lang }) {
               <DialogContentText className="mtrBusDialogBox">
                 <div>
                   <MTRETA line="TML" station={tmlETAStation} lang={lang} />
-              </div>
+                </div>
+              </DialogContentText>
+              <DialogActions>
+                <Button onClick={handleCloseDialog}>
+                  {MTRBus_Dict.common.close[lang + "_name"]}
+                </Button>
+              </DialogActions>
+            </Dialog>
+            {/* Bus Location Dialog */}
+            <Dialog
+              fullWidth="true"
+              maxWidth="xl"
+              open={busLocationDialogOpen}
+              onClose={handleCloseDialog}
+            >
+              <DialogTitle>Bus Location</DialogTitle>
+              <DialogContentText className="mtrBusDialogBox">
+                <div>
+                  Lat:{busLocationLat}, Lon:{busLocationLon}
+                </div>
               </DialogContentText>
               <DialogActions>
                 <Button onClick={handleCloseDialog}>
