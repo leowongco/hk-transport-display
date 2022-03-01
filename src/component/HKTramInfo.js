@@ -8,7 +8,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import "../css/HKTramInfo.css";
 
 function HKTramInfo({ stop, lang }) {
-  const coreApi = "https://cors.bridged.cc/";
+  const coreApi = "https://cors.lwp.workers.dev/?";
   const tramEATApi = `https://hktramways.com/nextTram/geteat.php?stop_code=${stop}`;
   const [tramEAT, setTramEAT] = useState();
   const [isLoading, setIsLoading] = useState(false);
