@@ -14,10 +14,15 @@ import {
   DialogTitle,
   DialogContentText,
   DialogActions,
+  DialogContent,
 } from "@mui/material";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import markerIconPng from "leaflet/dist/images/marker-icon.png";
+import { Icon } from "leaflet";
 
 import BusAlertIcon from "@mui/icons-material/BusAlert";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
@@ -49,6 +54,7 @@ function MTRBusInfo({ busRoute, lang }) {
   const [tmlETAStation, setTmlETAStaion] = useState("TUM");
   const [busLocationLat, setBusLocationLat] = useState(0);
   const [busLocationLon, setBusLocationLon] = useState(0);
+  const [busLocationId, setBusLocationId] = useState(0);
 
   //check language
   if (lang === "tc") {
@@ -112,10 +118,11 @@ function MTRBusInfo({ busRoute, lang }) {
     settmlETADialogOpen(true);
   };
 
-  const handleBusLocationDialog = (lat, lon) => {
+  const handleBusLocationDialog = (lat, lon, busId) => {
     console.log(lat, lon);
     setBusLocationLat(lat);
     setBusLocationLon(lon);
+    setBusLocationId(busId);
     setBusLocationDialogOpen(true);
   };
 
@@ -210,18 +217,20 @@ function MTRBusInfo({ busRoute, lang }) {
                         <div className="mtrBusInfo_BusETA_BusID">
                           {i + 1 + ". "}
                           {mbus.busId !== null ? (
-                            mbus.busLocation.latitude !== null && mbus.busLocation.latitude !== 0 ? (
+                            mbus.busLocation.latitude !== null &&
+                            mbus.busLocation.latitude !== 0 ? (
                               <Chip
                                 color="warning"
                                 icon={<DirectionsBusIcon />}
                                 label={"#" + mbus.busId}
                                 size="small"
-                                // onClick={() =>
-                                //   handleBusLocationDialog(
-                                //     mbus.busLocation.latitude,
-                                //     mbus.busLocation.longitude
-                                //   )
-                                // }
+                                onClick={() =>
+                                  handleBusLocationDialog(
+                                    mbus.busLocation.latitude,
+                                    mbus.busLocation.longitude,
+                                    mbus.busId
+                                  )
+                                }
                               >
                                 {/* {console.log(
                                   mbus.busLocation.latitude,
@@ -416,7 +425,7 @@ function MTRBusInfo({ busRoute, lang }) {
               </DialogTitle>
               <DialogContentText className="mtrBusDialogBox">
                 <div>
-                  <LrtInfo sid={lrETAStation} lang={lang} />
+                  <LrtInfo sid={lrETAStation} lang={lang} mode="fav" />
                 </div>
               </DialogContentText>
               <DialogActions>
@@ -442,7 +451,12 @@ function MTRBusInfo({ busRoute, lang }) {
               </DialogTitle>
               <DialogContentText className="mtrBusDialogBox">
                 <div>
-                  <MTRETA line="TML" station={tmlETAStation} lang={lang} />
+                  <MTRETA
+                    line="TML"
+                    station={tmlETAStation}
+                    lang={lang}
+                    mode="fav"
+                  />
                 </div>
               </DialogContentText>
               <DialogActions>
@@ -459,11 +473,34 @@ function MTRBusInfo({ busRoute, lang }) {
               onClose={handleCloseDialog}
             >
               <DialogTitle>Bus Location</DialogTitle>
-              <DialogContentText className="mtrBusDialogBox">
-                <div>
-                  Lat:{busLocationLat}, Lon:{busLocationLon}
-                </div>
-              </DialogContentText>
+              <DialogContent>
+                <MapContainer
+                  style={{ height: "60vh", width: "100%" }}
+                  center={[busLocationLat, busLocationLon]}
+                  zoom={24}
+                >
+                  <TileLayer
+                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+                  />
+                  <Marker
+                    position={[busLocationLat, busLocationLon]}
+                    icon={
+                      new Icon({
+                        iconUrl: markerIconPng,
+                        iconSize: [25, 41],
+                        iconAnchor: [12, 41],
+                      })
+                    }
+                  >
+                    <Popup>Bus #{busLocationId}</Popup>
+                  </Marker>
+                </MapContainer>
+                <DialogContentText className="mtrBusDialogBox">
+                  <div>Bus #{busLocationId} Current Position.</div>
+                </DialogContentText>
+              </DialogContent>
+
               <DialogActions>
                 <Button onClick={handleCloseDialog}>
                   {MTRBus_Dict.common.close[lang + "_name"]}

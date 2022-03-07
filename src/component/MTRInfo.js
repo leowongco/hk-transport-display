@@ -7,7 +7,7 @@ import Save from "@material-ui/icons/StarBorder";
 import Saved from "@material-ui/icons/Star";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
-function MTRInfo({ line, station, lang }) {
+function MTRInfo({ line, station, lang, mode }) {
   const [mtrEta, setMtrEta] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [mtrIsDelay, setMtrIsDelay] = useState("");
@@ -81,7 +81,7 @@ function MTRInfo({ line, station, lang }) {
         <Card className="infobox">
           {isLoading === true ? (
             <LinearProgress color="secondary" />
-          ) : (
+          ) : mode === "fav" ? null : (
             <div className="favouriteBox">
               <Button
                 variant="contained"
@@ -115,7 +115,7 @@ function MTRInfo({ line, station, lang }) {
         <Card className="infobox">
           {isLoading === true ? (
             <LinearProgress color="secondary" />
-          ) : (
+          ) : mode === "fav" ? null : (
             <div className="favouriteBox">
               <Button
                 variant="contained"
@@ -149,7 +149,7 @@ function MTRInfo({ line, station, lang }) {
         <Card className="infobox">
           {isLoading === true ? (
             <LinearProgress color="secondary" />
-          ) : (
+          ) : mode === "fav" ? null : (
             <div className="favouriteBox">
               <Button
                 variant="contained"
