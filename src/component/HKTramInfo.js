@@ -3,7 +3,9 @@ import axios from "axios";
 import convert from "xml-js";
 
 import Dict from "./HKTram_Dict";
-import LinearProgress from "@material-ui/core/LinearProgress";
+
+import TramIcon from "@mui/icons-material/Tram";
+import { LinearProgress, Chip } from "@mui/material";
 
 import "../css/HKTramInfo.css";
 
@@ -80,7 +82,16 @@ function HKTramInfo({ stop, lang }) {
           <div className="hkTramInfo_Container">
             <div className="hkTramInfo_Row">
               <div className="hkTramInfo_TramID">
-                {"No." + tram._attributes.tram_id}
+                <Chip
+                  color="info"
+                  icon={<TramIcon />}
+                  label={"#" + tram._attributes.tram_id}
+                  size="small"
+                  sx={{
+                    background: "#007549",
+                    fontWeight: "600",
+                  }}
+                />
               </div>
               <div className="hkTramInfo_Dest">
                 {tram._attributes["tram_dest_" + lang]}

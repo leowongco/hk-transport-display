@@ -210,7 +210,7 @@ function MTRBusInfo({ busRoute, lang }) {
                         <div className="mtrBusInfo_BusETA_BusID">
                           {i + 1 + ". "}
                           {mbus.busId !== null ? (
-                            mbus.busLocation.latitude !== null ? (
+                            mbus.busLocation.latitude !== null && mbus.busLocation.latitude !== 0 ? (
                               <Chip
                                 color="warning"
                                 icon={<DirectionsBusIcon />}
