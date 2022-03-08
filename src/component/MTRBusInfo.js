@@ -23,6 +23,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
+import BusPin from "../img/bus-pin.png";
 
 import BusAlertIcon from "@mui/icons-material/BusAlert";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
@@ -486,21 +487,31 @@ function MTRBusInfo({ busRoute, lang }) {
                     ]}
                     icon={
                       new Icon({
-                        iconUrl: markerIconPng,
-                        iconSize: [25, 41],
-                        iconAnchor: [12, 41],
+                        iconUrl: BusPin,
+                        iconSize: [45, 45],
+                        iconAnchor: [22.5, 45],
                       })
                     }
                   >
                     <Popup>
-                      <p>Bus #{currentBusData?.busId}</p>
-                      <p> Route: {currentBusData?.lineRef.split("_")[0]}</p>
+                      <p>
+                        {" "}
+                        <Chip
+                          color="warning"
+                          icon={<DirectionsBusIcon />}
+                          label={"#" + currentBusData?.busId}
+                        ></Chip>
+                      </p>
+                      <p>
+                        {MTRBus_Dict.common.busRoute[lang + "_name"]}:{" "}
+                        {currentBusData?.lineRef.split("_")[0]}
+                      </p>
                       <p> {currentBusData?.busRemark}</p>
                     </Popup>
                   </Marker>
                 </MapContainer>
                 <DialogContentText className="mtrBusDialogBox">
-                  <div>Bus #{currentBusData?.busId} Current Position.</div>
+                  <div>#{currentBusData?.busId} {MTRBus_Dict.common.busLoc[lang + "_name"]}</div>
                 </DialogContentText>
               </DialogContent>
 
