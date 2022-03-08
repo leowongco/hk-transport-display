@@ -34,6 +34,10 @@ const common = {
   close:{
     en_name: "Close",
     tc_name: "關閉",
+  },
+  busLoc: {
+    en_name: "Bus Current Location",
+    tc_name: "巴士實時位置"
   }
 };
 

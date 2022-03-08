@@ -62,6 +62,12 @@ function App() {
               <WeatherBanner />
               <SaveStations />
             </Route>
+            <Route path="*">
+              <Header />
+              <MTRStatus type="banner" />
+              <WeatherBanner />
+              <SaveStations />
+            </Route>
           </Switch>
         </div>
       </Router>
