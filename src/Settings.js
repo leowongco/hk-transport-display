@@ -387,6 +387,11 @@ function Settings() {
           </a>
         </div>
         <div className="settingRow">
+          <a href="https://hktramways.com" target="_blank" rel="noreferrer">
+            香港電車 HK Tramways
+          </a>
+        </div>
+        <div className="settingRow">
           <a href="http://www.hko.gov.hk" target="_blank" rel="noreferrer">
             香港天文台 Hong Kong Observatory
           </a>
@@ -464,6 +469,15 @@ function Settings() {
               style={{ color: "grey" }}
             >
               react-blink-text
+            </a>
+          </div>
+          <div className="settingRowTicker">
+            <a
+              href="https://leafletjs.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Leaflet
             </a>
           </div>
         </Marquee>
