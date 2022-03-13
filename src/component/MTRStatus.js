@@ -54,6 +54,9 @@ function MTRStatus({ type }) {
       .get(`${coreApi}${mtrStatusApi}`, {
         headers: {
           "X-Requested-With": "XMLHttpRequest",
+          "Content-Type": "text-xml",
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.62",
         },
       })
       .then((res) => {
@@ -81,6 +84,8 @@ function MTRStatus({ type }) {
           headers: {
             "X-Requested-With": "XMLHttpRequest",
             "Content-Type": "text-xml",
+            "User-Agent":
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.62",
           },
         })
         .then((res) => {

@@ -24,6 +24,8 @@ function HKTramInfo({ stop, lang }) {
         headers: {
           "X-Requested-With": "XMLHttpRequest",
           "Content-Type": "text-xml",
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.62",
         },
       })
       .then((res) => {
@@ -103,7 +105,7 @@ function HKTramInfo({ stop, lang }) {
                 <div className="hkTramInfo_ETA">
                   {tram._attributes.arrive_in_second / 60 <= 1
                     ? "1" + Dict.common.min[lang + "_name"]
-                    : Math.floor(tram._attributes.arrive_in_second / 60) +
+                    : Math.ceil(tram._attributes.arrive_in_second / 60) +
                       Dict.common.min[lang + "_name"]}
                 </div>
               ) : (
