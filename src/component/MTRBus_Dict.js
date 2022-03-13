@@ -637,12 +637,15 @@ const route = {
     },
   },
   K74: {
-    en_name: "Tin Shui to Au Tau (Circular)",
-    tc_name: "天瑞至凹頭 (循環綫)",
+    en_name: "Tin Shui Wai Town Centre to Au Tau(Circular)",
+    tc_name: "天水圍市中心至凹頭(循環綫)",
     bound: {
       UP: {
         dest: "CIR",
         stops: [
+          "K74-U001",
+          "K74-U004",
+          "K74-U007",
           "K74-U010",
           "K74-U020",
           "K74-U030",
@@ -652,6 +655,7 @@ const route = {
           "K74-U070",
           "K74-U080",
           "K74-U090",
+          "K74-U100",
           "K74-D010",
           "K74-D020",
           "K74-D030",
@@ -662,6 +666,9 @@ const route = {
           "K74-D080",
           "K74-D090",
           "K74-U011",
+          "K74-D100",
+          "K74-D110",
+          "K74-U002",
         ],
       },
     },
@@ -3700,6 +3707,24 @@ const stops = {
     lon: "113.999661",
   },
   //Route K74
+  "K74-U001": {
+    tc_name: "天水圍市中心",
+    en_name: "Tin Shui Wai Town Centre",
+    lat: "22.458553",
+    lon: "114.001415",
+  },
+  "K74-U004": {
+    tc_name: "天頌苑頌棋閣",
+    en_name: "Chung Ki House Tin Chung Court",
+    lat: "22.461849",
+    lon: "114.000382",
+  },
+  "K74-U007": {
+    tc_name: "天頌苑",
+    en_name: "Tin Chung Court",
+    lat: "22.460735",
+    lon: "113.997158",
+  },
   "K74-U010": {
     tc_name: "天瑞",
     en_name: "Tin Shui",
@@ -3770,9 +3795,15 @@ const stops = {
       LR: "600",
     },
   },
+  "K74-U100": {
+    tc_name: "博愛醫院",
+    en_name: "Pok Oi Hospital",
+    lat: "22.444787",
+    lon: "114.040379",
+  },
   "K74-D010": {
-    tc_name: "東成里(近博愛醫院)",
-    en_name: "Tung Shing Lei (near Pok Oi Hospital)",
+    tc_name: "東成里",
+    en_name: "Tung Shing Lei",
     lat: "22.44436944",
     lon: "114.0436667",
   },
@@ -3838,7 +3869,27 @@ const stops = {
     connections: {
       LR: "460",
     },
+    
   },
+  "K74-D100": {
+    tc_name: "天華邨",
+    en_name: "Tin Wah Estate",
+    lat: "22.460285",
+    lon: "113.997021",
+  },
+  "K74-D110": {
+    tc_name: "天悅邨",
+    en_name: "Tin Yuet Estate",
+    lat: "22.462123",
+    lon: "113.99909",
+  },
+  "K74-U002": {
+    tc_name: "天水圍市中心",
+    en_name: "Tin Shui Wai Town Centre",
+    lat: "22.458553",
+    lon: "114.001415",
+  },
+  
   //Route K75A
   "K75A-U010": {
     tc_name: "天水圍站 (輕鐵天水圍站)",

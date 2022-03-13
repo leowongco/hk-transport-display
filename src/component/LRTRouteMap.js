@@ -4,7 +4,7 @@ import Dict from "./LRT_Dict";
 function LRTRouteMap() {
   var colorCode = Dict.lrtRoutes[line].colorCode;
   return (
-    <div className="lrtRouteMap">
+    <div className="lrtRouteMap"> 
       <div className="optionBar">{/* options */}</div>
       <div className="lrtRouteContainer">
         <div className="lrtRouteRow">

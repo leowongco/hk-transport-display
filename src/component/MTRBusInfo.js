@@ -21,7 +21,6 @@ import "leaflet/dist/leaflet.css";
 
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
 import BusPin from "../img/bus-pin.png";
 
@@ -86,14 +85,13 @@ function MTRBusInfo({ busRoute, lang }) {
         })
         .then((res) => {
           setMtrBusData(res.data);
-          if (currentBusData !== null) {
-            console.log(
-              "Hit",
-              res.data.busStop
-                .filter((row) => row[0] === currentBusData.busId)
-                .map((row) => row.slice(1))
-            );
-          }
+          // if (currentBusData !== null) {
+          //   console.log(currentBusData.busId);
+          //   var tempArr = res.data.busStop.filter(
+          //     ({ busId }) => busId === currentBusData.busId
+          //   );
+          //   console.log(tempArr);
+          // }
         })
         .catch((err) => console.log(err));
     }, 10000);
@@ -126,6 +124,7 @@ function MTRBusInfo({ busRoute, lang }) {
 
   const handleBusLocationDialog = (busData) => {
     setCurrentBusData(busData);
+    console.log("Clicked>>> ", currentBusData);
     setBusLocationDialogOpen(true);
   };
 
@@ -511,7 +510,10 @@ function MTRBusInfo({ busRoute, lang }) {
                   </Marker>
                 </MapContainer>
                 <DialogContentText className="mtrBusDialogBox">
-                  <div>#{currentBusData?.busId} {MTRBus_Dict.common.busLoc[lang + "_name"]}</div>
+                  <div>
+                    #{currentBusData?.busId}{" "}
+                    {MTRBus_Dict.common.busLoc[lang + "_name"]}
+                  </div>
                 </DialogContentText>
               </DialogContent>
 
