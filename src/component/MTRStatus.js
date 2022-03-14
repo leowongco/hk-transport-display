@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import convert from "xml-js";
 
-import { Button, ButtonGroup } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { Alert, AlertTitle } from "@material-ui/lab";
 import TextLoop from "react-text-loop";
@@ -26,11 +26,10 @@ function MTRStatus({ type }) {
   const coreApi = "https://cors.lwp.workers.dev/?";
   const mtrStatusApi = `https://www.mtr.com.hk/alert/ryg_line_status.xml?t=${Date.now()}`;
   const lang = window.localStorage.getItem("savedLanguage");
-  const mtrBadLines = [];
+  //const mtrBadLines = [];
 
   const removeJsonTextAttribute = function (value, parentElement) {
     try {
-      const parentOfParent = parentElement._parent;
       const pOpKeys = Object.keys(parentElement._parent);
       const keyNo = pOpKeys.length;
       const keyName = pOpKeys[keyNo - 1];

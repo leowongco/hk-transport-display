@@ -13,7 +13,6 @@ import {
   DialogTitle,
 } from "@material-ui/core";
 import Marquee from "react-fast-marquee";
-import { Link } from "react-router-dom";
 
 import DictM from "./component/MTR_Dict.js";
 import DictL from "./component/LRT_Dict.js";
@@ -63,6 +62,14 @@ function Settings() {
     confirmBtn: {
       tc_name: "確定",
       en_name: "Confirm",
+    },
+    installApp: {
+      tc_name: "如何安裝到裝置上",
+      en_name: "How to install to device",
+    },
+    tutorialBtn: {
+      tc_name: "教學",
+      en_name: "Tutorial",
     },
   };
 
@@ -377,7 +384,7 @@ function Settings() {
           {langDict.dataSource[lang + "_name"]}
         </div>
         <div className="settingRow">
-          <a href="https://data.gov.hk" target="_blank" rel="noreferrer">
+          <a href="https://data.gov.hk/" target="_blank" rel="noreferrer">
             資料一線通 DATA.GOV.HK
           </a>
         </div>
@@ -387,13 +394,18 @@ function Settings() {
           </a>
         </div>
         <div className="settingRow">
-          <a href="https://hktramways.com" target="_blank" rel="noreferrer">
+          <a href="https://hktramways.com/" target="_blank" rel="noreferrer">
             香港電車 HK Tramways
           </a>
         </div>
         <div className="settingRow">
-          <a href="http://www.hko.gov.hk" target="_blank" rel="noreferrer">
+          <a href="http://www.hko.gov.hk/" target="_blank" rel="noreferrer">
             香港天文台 Hong Kong Observatory
+          </a>
+        </div>
+        <div className="settingRow">
+          <a href="https://www.metwarn.com/" target="_blank" rel="noreferrer">
+            天氣預警 MET WARN <small>(天氣圖案 Weather Icons)</small>
           </a>
         </div>
       </div>
@@ -472,11 +484,7 @@ function Settings() {
             </a>
           </div>
           <div className="settingRowTicker">
-            <a
-              href="https://leafletjs.com"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="https://leafletjs.com" target="_blank" rel="noreferrer">
               Leaflet
             </a>
           </div>

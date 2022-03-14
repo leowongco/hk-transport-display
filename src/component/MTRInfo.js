@@ -90,7 +90,7 @@ function MTRInfo({ line, station, lang, mode }) {
       <div className="mtrInfo">
         <Card className="infobox">
           {isLoading === true ? (
-            <LinearProgress color="secondary" />
+            <LinearProgress color="primary" />
           ) : mode === "fav" ? null : (
             <div className="favouriteBox">
               <Button
@@ -124,7 +124,7 @@ function MTRInfo({ line, station, lang, mode }) {
       <div className="mtrInfo">
         <Card className="infobox">
           {isLoading === true ? (
-            <LinearProgress color="secondary" />
+            <LinearProgress color="primary" />
           ) : mode === "fav" ? null : (
             <div className="favouriteBox">
               <Button
@@ -158,7 +158,13 @@ function MTRInfo({ line, station, lang, mode }) {
       <div className="mtrInfo">
         <Card className="infobox">
           {isLoading === true ? (
-            <LinearProgress color="secondary" />
+            <LinearProgress
+              color="primary"
+              sx={{
+                background: "darkblue",
+                opacity: "50%",
+              }}
+            />
           ) : mode === "fav" ? null : (
             <div className="favouriteBox">
               <Button

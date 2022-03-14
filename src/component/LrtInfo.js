@@ -131,7 +131,12 @@ function LrtInfo({ sid, lang, mode }) {
       <div className="lrtinfo">
         <Card className="infobox">
           {isLoading === true ? (
-            <LinearProgress color="secondary" />
+            <LinearProgress
+              color="primary"
+              sx={{
+                backgroundColor: "darkblue",
+              }}
+            />
           ) : mode === "fav" ? null : (
             <div className="favouriteBox">
               <Button
@@ -172,7 +177,12 @@ function LrtInfo({ sid, lang, mode }) {
       <div className="lrtinfo">
         <Card className="infobox">
           {isLoading === true ? (
-            <LinearProgress color="secondary" />
+            <LinearProgress
+              color="primary"
+              sx={{
+                backgroundColor: "darkblue",
+              }}
+            />
           ) : mode === "fav" ? null : (
             <div className="favouriteBox">
               <Button

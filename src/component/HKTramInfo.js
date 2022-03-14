@@ -118,9 +118,10 @@ function HKTramInfo({ stop, lang }) {
         ))
       ) : (
         <LinearProgress
-          color="secondary"
+          color="primary"
           sx={{
             background: "#007549",
+            opacity: "50%",
           }}
         />
       )}

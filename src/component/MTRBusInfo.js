@@ -40,7 +40,7 @@ import "../css/MTRBusInfo.css";
 
 function MTRBusInfo({ busRoute, lang }) {
   const apiURL = "https://rt.data.gov.hk/v1/transport/mtr/bus/getSchedule";
-  var apiLang = "";
+  var apiLang = "zh";
 
   const [isLoading, setIsLoading] = useState(false);
   const [mtrBusData, setMtrBusData] = useState();
@@ -54,15 +54,18 @@ function MTRBusInfo({ busRoute, lang }) {
   const [tmlETAStation, setTmlETAStaion] = useState("TUM");
   const [currentBusData, setCurrentBusData] = useState();
 
-  //check language
-  if (lang === "tc") {
-    apiLang = "zh";
-  } else {
-    apiLang = lang;
+  function checkLanguage(lang) {
+    //check language
+    if (lang === "tc") {
+      apiLang = "zh";
+    } else {
+      apiLang = lang;
+    }
   }
 
   useEffect(() => {
     setIsLoading(true);
+    checkLanguage(apiLang);
     setMtrBusData();
     axios
       .post(apiURL, {
@@ -78,6 +81,7 @@ function MTRBusInfo({ busRoute, lang }) {
 
   useEffect(() => {
     const inteval = setInterval(() => {
+      checkLanguage(apiLang);
       axios
         .post(apiURL, {
           language: apiLang,
@@ -307,7 +311,10 @@ function MTRBusInfo({ busRoute, lang }) {
                 {MTRBus_Dict.route[busRoute][lang + "_name"]}
               </div>
             </div>
-            <LinearProgress color="secondary" />
+            <LinearProgress
+              color="secondary"
+              sx={{ backgroundColor: "navy" }}
+            />
           </div>
         ) : (
           <div className="mtrBusInfoContainer">

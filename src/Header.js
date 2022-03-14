@@ -17,6 +17,7 @@ import React from "react";
 import TrainIcon from "@material-ui/icons/Train";
 import "./css/Header.css";
 import { Link } from "react-router-dom";
+import Logo from "./img/icon.png";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import HomeIcon from "@material-ui/icons/Home";
@@ -119,8 +120,9 @@ function Header() {
           >
             <MenuIcon />
           </IconButton>
+          <img src={Logo} alt="HK Railway Info Logo" height="40px" />
           <Typography className="header__title">
-            <Link to="/">香港鐵路資訊 HK Railway Info</Link>
+            <Link to="/"> 香港鐵路資訊 HK Railway Info</Link>
           </Typography>
 
           {/* <Chip
@@ -238,9 +240,9 @@ function Header() {
             <Button onClick={() => handleUpdateApp()}>
               <CachedIcon />
             </Button>
-            <Button onClick={() => demoButton()} disabled>
+            {/* <Button onClick={() => demoButton()} disabled>
               <DeveloperModeIcon />
-            </Button>
+            </Button> */}
           </ListItem>
         </List>
       </Drawer>
