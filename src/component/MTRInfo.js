@@ -38,12 +38,7 @@ function MTRInfo({ line, station, lang, mode }) {
     const inteval = setInterval(() => {
       let mtrAPI = `https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=${line}&sta=${station}`;
       axios
-        .get(mtrAPI, {
-          headers: {
-            "User-Agent":
-              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.62",
-          },
-        })
+        .get(mtrAPI)
         .then((res) => {
           setMtrEta(res.data.data[line + "-" + station]);
           setMtrIsDelay(res.data.isdelay);
@@ -60,12 +55,7 @@ function MTRInfo({ line, station, lang, mode }) {
     setMtrEta([]);
     let mtrAPI = `https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=${line}&sta=${station}`;
     axios
-      .get(mtrAPI, {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.62",
-        },
-      })
+      .get(mtrAPI)
       .then((res) => {
         setMtrIsDelay(res.data.isdelay);
         setMtrStatus(res.data.status);
