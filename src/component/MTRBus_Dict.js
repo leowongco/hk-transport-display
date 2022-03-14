@@ -23,22 +23,713 @@ const common = {
     en_name: "MTR Bus ETA",
     tc_name: "港鐵巴士到站時間",
   },
-  BusLReta:{
+  BusLReta: {
     en_name: "Light Rail ETA",
     tc_name: "輕鐵班次",
   },
-  BusTMLeta:{
+  BusTMLeta: {
     en_name: "Tuen Ma Line ETA",
     tc_name: "屯馬線班次",
   },
-  close:{
+  close: {
     en_name: "Close",
     tc_name: "關閉",
   },
   busLoc: {
     en_name: "Bus Current Location",
-    tc_name: "巴士實時位置"
-  }
+    tc_name: "巴士實時位置",
+  },
+  fleetNum: {
+    en_name: "Fleet No.",
+    tc_name: "車隊編號",
+  },
+  plateNum: {
+    en_name: "Plate No.",
+    tc_name: "車牌",
+  },
+  model: {
+    en_name: "Model",
+    tc_name: "車型",
+  },
+};
+
+const buses = {
+  140: {
+    plateNo: "RJ7286",
+    type: "Enviro 400",
+  },
+  141: {
+    plateNo: "RJ6613",
+    type: "Enviro 400",
+  },
+  142: {
+    plateNo: "RN3226",
+    type: "Enviro 400",
+  },
+  143: {
+    plateNo: "RN4128",
+    type: "Enviro 400",
+  },
+  144: {
+    plateNo: "RP2529",
+    type: "Enviro 400",
+  },
+  145: {
+    plateNo: "RP3664",
+    type: "Enviro 400",
+  },
+  146: {
+    plateNo: "RP2851",
+    type: "Enviro 400",
+  },
+  147: {
+    plateNo: "RP3460",
+    type: "Enviro 400",
+  },
+  148: {
+    plateNo: "RP8749",
+    type: "Enviro 400",
+  },
+  149: {
+    plateNo: "VN1174",
+    type: "Enviro 400",
+  },
+  150: {
+    plateNo: "VN2082",
+    type: "Enviro 400",
+  },
+  319: {
+    plateNo: "TX4303",
+    type: "Volvo B9TL",
+  },
+  320: {
+    plateNo: "TX6473",
+    type: "Volvo B9TL",
+  },
+  321: {
+    plateNo: "TZ4100",
+    type: "Volvo B9TL",
+  },
+  322: {
+    plateNo: "TY7838",
+    type: "Volvo B9TL",
+  },
+  323: {
+    plateNo: "TZ1572",
+    type: "Volvo B9TL",
+  },
+  324: {
+    plateNo: "TZ1884",
+    type: "Volvo B9TL",
+  },
+  325: {
+    plateNo: "TZ1574",
+    type: "Volvo B9TL",
+  },
+  326: {
+    plateNo: "TY8100",
+    type: "Volvo B9TL",
+  },
+  327: {
+    plateNo: "TZ4437",
+    type: "Volvo B9TL",
+  },
+  328: {
+    plateNo: "TZ2574",
+    type: "Volvo B9TL",
+  },
+  329: {
+    plateNo: "UA6958",
+    type: "Volvo B9TL",
+  },
+  330: {
+    plateNo: "UB4596",
+    type: "Volvo B9TL",
+  },
+  331: {
+    plateNo: "UB5808",
+    type: "Volvo B9TL",
+  },
+  332: {
+    plateNo: "UD5933",
+    type: "Volvo B9TL",
+  },
+  333: {
+    plateNo: "UD5100",
+    type: "Volvo B9TL",
+  },
+  334: {
+    plateNo: "UF8496",
+    type: "Volvo B9TL",
+  },
+  335: {
+    plateNo: "UE8084",
+    type: "Volvo B9TL",
+  },
+  336: {
+    plateNo: "UF7737",
+    type: "Volvo B9TL",
+  },
+  337: {
+    plateNo: "UF7298",
+    type: "Volvo B9TL",
+  },
+  338: {
+    plateNo: "UE8310",
+    type: "Volvo B9TL",
+  },
+  339: {
+    plateNo: "UE6714",
+    type: "Volvo B9TL",
+  },
+  340: {
+    plateNo: "UG5068",
+    type: "Volvo B9TL",
+  },
+  341: {
+    plateNo: "UG5621",
+    type: "Volvo B9TL",
+  },
+  342: {
+    plateNo: "UG5808",
+    type: "Volvo B9TL",
+  },
+  343: {
+    plateNo: "UJ2647",
+    type: "Volvo B9TL",
+  },
+  344: {
+    plateNo: "UH8913",
+    type: "Volvo B9TL",
+  },
+  345: {
+    plateNo: "UH9727",
+    type: "Volvo B9TL",
+  },
+  346: {
+    plateNo: "UJ4441",
+    type: "Volvo B9TL",
+  },
+  347: {
+    plateNo: "UH9756",
+    type: "Volvo B9TL",
+  },
+  348: {
+    plateNo: "UH9026",
+    type: "Volvo B9TL",
+  },
+  349: {
+    plateNo: "UJ3318",
+    type: "Volvo B9TL",
+  },
+  350: {
+    plateNo: "UJ7924",
+    type: "Volvo B9TL",
+  },
+  351: {
+    plateNo: "UJ8437",
+    type: "Volvo B9TL",
+  },
+  352: {
+    plateNo: "UJ6811",
+    type: "Volvo B9TL",
+  },
+  353: {
+    plateNo: "UL2016",
+    type: "Volvo B9TL",
+  },
+  354: {
+    plateNo: "UL1305",
+    type: "Volvo B9TL",
+  },
+  355: {
+    plateNo: "UL671",
+    type: "Volvo B9TL",
+  },
+  356: {
+    plateNo: "UL9577",
+    type: "Volvo B9TL",
+  },
+  357: {
+    plateNo: "UL9969",
+    type: "Volvo B9TL",
+  },
+  358: {
+    plateNo: "UL8770",
+    type: "Volvo B9TL",
+  },
+  359: {
+    plateNo: "UL9538",
+    type: "Volvo B9TL",
+  },
+  360: {
+    plateNo: "UM4285",
+    type: "Volvo B9TL",
+  },
+  361: {
+    plateNo: "UM2517",
+    type: "Volvo B9TL",
+  },
+  362: {
+    plateNo: "UM3660",
+    type: "Volvo B9TL",
+  },
+  363: {
+    plateNo: "UM6307",
+    type: "Volvo B9TL",
+  },
+  364: {
+    plateNo: "UM6003",
+    type: "Volvo B9TL",
+  },
+  365: {
+    plateNo: "UV2460",
+    type: "Volvo B9TL",
+  },
+  366: {
+    plateNo: "UP5226",
+    type: "Volvo B9TL",
+  },
+  367: {
+    plateNo: "UP5767",
+    type: "Volvo B9TL",
+  },
+  368: {
+    plateNo: "UP4987",
+    type: "Volvo B9TL",
+  },
+  369: {
+    plateNo: "UR6073",
+    type: "Volvo B9TL",
+  },
+  370: {
+    plateNo: "UR6078",
+    type: "Volvo B9TL",
+  },
+  371: {
+    plateNo: "UT7522",
+    type: "Volvo B9TL",
+  },
+  372: {
+    plateNo: "UT7816",
+    type: "Volvo B9TL",
+  },
+  373: {
+    plateNo: "UT7113",
+    type: "Volvo B9TL",
+  },
+  374: {
+    plateNo: "UU8713",
+    type: "Volvo B9TL",
+  },
+  375: {
+    plateNo: "UU9137",
+    type: "Volvo B9TL",
+  },
+  376: {
+    plateNo: "UY5282",
+    type: "Volvo B9TL",
+  },
+  377: {
+    plateNo: "UY4870",
+    type: "Volvo B9TL",
+  },
+  378: {
+    plateNo: "UY9286",
+    type: "Volvo B9TL",
+  },
+  379: {
+    plateNo: "UZ216",
+    type: "Volvo B9TL",
+  },
+  380: {
+    plateNo: "VB6400",
+    type: "Volvo B9TL",
+  },
+  381: {
+    plateNo: "VB4731",
+    type: "Volvo B9TL",
+  },
+  382: {
+    plateNo: "VB6101",
+    type: "Volvo B9TL",
+  },
+  383: {
+    plateNo: "VC9776",
+    type: "Volvo B9TL",
+  },
+  384: {
+    plateNo: "VD5529",
+    type: "Volvo B9TL",
+  },
+  385: {
+    plateNo: "VD6493",
+    type: "Volvo B9TL",
+  },
+  386: {
+    plateNo: "VE2956",
+    type: "Volvo B9TL",
+  },
+  504: {
+    plateNo: "SE5526",
+    type: "Enviro500 MMC",
+  },
+  505: {
+    plateNo: "SE6425",
+    type: "Enviro500 MMC",
+  },
+  506: {
+    plateNo: "SE5999",
+    type: "Enviro500 MMC",
+  },
+  507: {
+    plateNo: "SE6500",
+    type: "Enviro500 MMC",
+  },
+  508: {
+    plateNo: "SE5177",
+    type: "Enviro500 MMC",
+  },
+  509: {
+    plateNo: "SE5163",
+    type: "Enviro500 MMC",
+  },
+  510: {
+    plateNo: "SS7944",
+    type: "Enviro500 MMC",
+  },
+  511: {
+    plateNo: "SS8057",
+    type: "Enviro500 MMC",
+  },
+  512: {
+    plateNo: "SS5951",
+    type: "Enviro500 MMC",
+  },
+  513: {
+    plateNo: "ST5900",
+    type: "Enviro500 MMC",
+  },
+  514: {
+    plateNo: "ST5996",
+    type: "Enviro500 MMC",
+  },
+  515: {
+    plateNo: "SX1035",
+    type: "Enviro500 MMC",
+  },
+  516: {
+    plateNo: "SX529",
+    type: "Enviro500 MMC",
+  },
+  517: {
+    plateNo: "SX2027",
+    type: "Enviro500 MMC",
+  },
+  518: {
+    plateNo: "TF8478",
+    type: "Enviro500 MMC",
+  },
+  519: {
+    plateNo: "TH4482",
+    type: "Enviro500 MMC",
+  },
+  520: {
+    plateNo: "TJ5864",
+    type: "Enviro500 MMC",
+  },
+  521: {
+    plateNo: "TK5086",
+    type: "Enviro500 MMC",
+  },
+  522: {
+    plateNo: "TP4605",
+    type: "Enviro500 MMC",
+  },
+  523: {
+    plateNo: "TP5257",
+    type: "Enviro500 MMC",
+  },
+  524: {
+    plateNo: "TP6265",
+    type: "Enviro500 MMC",
+  },
+  525: {
+    plateNo: "TS2088",
+    type: "Enviro500 MMC",
+  },
+  526: {
+    plateNo: "TS3997",
+    type: "Enviro500 MMC",
+  },
+  527: {
+    plateNo: "TS3416",
+    type: "Enviro500 MMC",
+  },
+  528: {
+    plateNo: "TS8442",
+    type: "Enviro500 MMC",
+  },
+  529: {
+    plateNo: "TT8108",
+    type: "Enviro500 MMC",
+  },
+  530: {
+    plateNo: "TT7597",
+    type: "Enviro500 MMC",
+  },
+  531: {
+    plateNo: "TV6778",
+    type: "Enviro500 MMC",
+  },
+  532: {
+    plateNo: "TV7525",
+    type: "Enviro500 MMC",
+  },
+  533: {
+    plateNo: "TV6629",
+    type: "Enviro500 MMC",
+  },
+  534: {
+    plateNo: "TV9422",
+    type: "Enviro500 MMC",
+  },
+  535: {
+    plateNo: "TV9465",
+    type: "Enviro500 MMC",
+  },
+  536: {
+    plateNo: "TW455",
+    type: "Enviro500 MMC",
+  },
+  537: {
+    plateNo: "TV9066",
+    type: "Enviro500 MMC",
+  },
+  538: {
+    plateNo: "VD6480",
+    type: "Enviro500 MMC",
+  },
+  539: {
+    plateNo: "VD5694",
+    type: "Enviro500 MMC",
+  },
+  540: {
+    plateNo: "VD5396",
+    type: "Enviro500 MMC",
+  },
+  541: {
+    plateNo: "VE3584",
+    type: "Enviro500 MMC",
+  },
+  542: {
+    plateNo: "VE4425",
+    type: "Enviro500 MMC",
+  },
+  543: {
+    plateNo: "VE2830",
+    type: "Enviro500 MMC",
+  },
+  544: {
+    plateNo: "VL5981",
+    type: "Enviro500 MMC",
+  },
+  545: {
+    plateNo: "VN2873",
+    type: "Enviro500 MMC",
+  },
+  546: {
+    plateNo: "XF3414",
+    type: "Enviro500 MMC",
+  },
+  547: {
+    plateNo: "XF2507",
+    type: "Enviro500 MMC",
+  },
+  548: {
+    plateNo: "XF4490",
+    type: "Enviro500 MMC",
+  },
+  549: {
+    plateNo: "XF2977",
+    type: "Enviro500 MMC",
+  },
+  801: {
+    plateNo: "NE5930",
+    type: "Enviro500 12m",
+  },
+  802: {
+    plateNo: "NF6585",
+    type: "Enviro500 12m",
+  },
+  803: {
+    plateNo: "NF9815",
+    type: "Enviro500 12m",
+  },
+  804: {
+    plateNo: "NF9153",
+    type: "Enviro500 12m",
+  },
+  805: {
+    plateNo: "NG8400",
+    type: "Enviro500 12m",
+  },
+  806: {
+    plateNo: "NG7406",
+    type: "Enviro500 12m",
+  },
+  807: {
+    plateNo: "NH776",
+    type: "Enviro500 12m",
+  },
+  808: {
+    plateNo: "NH2643",
+    type: "Enviro500 12m",
+  },
+  809: {
+    plateNo: "NH2745",
+    type: "Enviro500 12m",
+  },
+  810: {
+    plateNo: "NU3439",
+    type: "Enviro500 12m",
+  },
+  811: {
+    plateNo: "NU9816",
+    type: "Enviro500 12m",
+  },
+  812: {
+    plateNo: "NU8940",
+    type: "Enviro500 12m",
+  },
+  813: {
+    plateNo: "NU9852",
+    type: "Enviro500 12m",
+  },
+  814: {
+    plateNo: "NU8805",
+    type: "Enviro500 12m",
+  },
+  815: {
+    plateNo: "NW1524",
+    type: "Enviro500 12m",
+  },
+  816: {
+    plateNo: "NW2333",
+    type: "Enviro500 12m",
+  },
+  817: {
+    plateNo: "NW3480",
+    type: "Enviro500 12m",
+  },
+  818: {
+    plateNo: "NW6906",
+    type: "Enviro500 12m",
+  },
+  819: {
+    plateNo: "NW6826",
+    type: "Enviro500 12m",
+  },
+  820: {
+    plateNo: "NW8224",
+    type: "Enviro500 12m",
+  },
+  821: {
+    plateNo: "NX3790",
+    type: "Enviro500 12m",
+  },
+  822: {
+    plateNo: "NX4438",
+    type: "Enviro500 12m",
+  },
+  823: {
+    plateNo: "NX3837",
+    type: "Enviro500 12m",
+  },
+  824: {
+    plateNo: "NX8813",
+    type: "Enviro500 12m",
+  },
+  825: {
+    plateNo: "RR8145",
+    type: "Enviro500 11.3m",
+  },
+  826: {
+    plateNo: "RR7897",
+    type: "Enviro500 11.3m",
+  },
+  827: {
+    plateNo: "RT1670",
+    type: "Enviro500 11.3m",
+  },
+  828: {
+    plateNo: "RT2217",
+    type: "Enviro500 11.3m",
+  },
+  829: {
+    plateNo: "RT1907",
+    type: "Enviro500 11.3m",
+  },
+  830: {
+    plateNo: "RU8323",
+    type: "Enviro500 11.3m",
+  },
+  831: {
+    plateNo: "RU6727",
+    type: "Enviro500 11.3m",
+  },
+  832: {
+    plateNo: "RU6900",
+    type: "Enviro500 11.3m",
+  },
+  833: {
+    plateNo: "RU8176",
+    type: "Enviro500 11.3m",
+  },
+  901: {
+    plateNo: "NM4716",
+    type: "Enviro200 Dart",
+  },
+  902: {
+    plateNo: "NM4760",
+    type: "Enviro200 Dart",
+  },
+  903: {
+    plateNo: "NP7825",
+    type: "Enviro200 Dart",
+  },
+  904: {
+    plateNo: "NP8088",
+    type: "Enviro200 Dart",
+  },
+  905: {
+    plateNo: "NR5800",
+    type: "Enviro200 Dart",
+  },
+  906: {
+    plateNo: "NR1096",
+    type: "Enviro200 Dart",
+  },
+  907: {
+    plateNo: "NR1633",
+    type: "Enviro200 Dart",
+  },
+  908: {
+    plateNo: "NS577",
+    type: "Enviro200 Dart",
+  },
+  909: {
+    plateNo: "NT2693",
+    type: "Enviro200 Dart",
+  },
+  910: {
+    plateNo: "NS1189",
+    type: "Enviro200 Dart",
+  },
+  911: {
+    plateNo: "NS7357",
+    type: "Enviro200 Dart",
+  },
 };
 
 const route = {
@@ -3869,7 +4560,6 @@ const stops = {
     connections: {
       LR: "460",
     },
-    
   },
   "K74-D100": {
     tc_name: "天華邨",
@@ -3889,7 +4579,7 @@ const stops = {
     lat: "22.458553",
     lon: "114.001415",
   },
-  
+
   //Route K75A
   "K75A-U010": {
     tc_name: "天水圍站 (輕鐵天水圍站)",
@@ -4234,4 +4924,4 @@ const stops = {
   },
 };
 
-export default { common, route, stops, dest };
+export default { common, buses, route, stops, dest };

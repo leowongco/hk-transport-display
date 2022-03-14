@@ -17,6 +17,7 @@ import {
   DialogContent,
 } from "@mui/material";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import TextLoop from "react-text-loop";
 import "leaflet/dist/leaflet.css";
 
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
@@ -228,7 +229,33 @@ function MTRBusInfo({ busRoute, lang }) {
                               <Chip
                                 color="warning"
                                 icon={<DirectionsBusIcon />}
-                                label={"#" + mbus.busId}
+                                label={
+                                  <TextLoop interval={(5000, 2500, 2500)}>
+                                    <div>
+                                      <b>
+                                        {MTRBus_Dict.common.fleetNum[
+                                          lang + "_name"
+                                        ] +
+                                          " " +
+                                          mbus.busId}
+                                      </b>
+                                    </div>
+                                    <div>
+                                      {MTRBus_Dict.common.plateNum[
+                                        lang + "_name"
+                                      ] +
+                                        " " +
+                                        MTRBus_Dict?.buses[mbus.busId].plateNo}
+                                    </div>
+                                    <div>
+                                      {MTRBus_Dict.common.model[
+                                        lang + "_name"
+                                      ] +
+                                        " " +
+                                        MTRBus_Dict?.buses[mbus.busId].type}
+                                    </div>
+                                  </TextLoop>
+                                }
                                 size="small"
                                 onClick={() => handleBusLocationDialog(mbus)}
                               ></Chip>
@@ -236,7 +263,33 @@ function MTRBusInfo({ busRoute, lang }) {
                               <Chip
                                 color="info"
                                 icon={<DirectionsBusIcon />}
-                                label={"#" + mbus.busId}
+                                label={
+                                  <TextLoop interval={(5000, 2500, 2500)}>
+                                    <div>
+                                      <b>
+                                        {MTRBus_Dict.common.fleetNum[
+                                          lang + "_name"
+                                        ] +
+                                          " " +
+                                          mbus.busId}
+                                      </b>
+                                    </div>
+                                    <div>
+                                      {MTRBus_Dict.common.plateNum[
+                                        lang + "_name"
+                                      ] +
+                                        " " +
+                                        MTRBus_Dict?.buses[mbus.busId].plateNo}
+                                    </div>
+                                    <div>
+                                      {MTRBus_Dict.common.model[
+                                        lang + "_name"
+                                      ] +
+                                        " " +
+                                        MTRBus_Dict?.buses[mbus.busId].type}
+                                    </div>
+                                  </TextLoop>
+                                }
                                 size="small"
                               />
                             )
@@ -501,12 +554,27 @@ function MTRBusInfo({ busRoute, lang }) {
                   >
                     <Popup>
                       <p>
-                        {" "}
                         <Chip
                           color="warning"
                           icon={<DirectionsBusIcon />}
-                          label={"#" + currentBusData?.busId}
-                        ></Chip>
+                          label={
+                            <TextLoop interval={(5000, 5000)}>
+                              <div>
+                                <b>
+                                  {MTRBus_Dict.common.fleetNum[lang + "_name"] +
+                                    " " +
+                                    currentBusData?.busId}
+                                </b>
+                              </div>
+                              <div>
+                                {MTRBus_Dict.common.plateNum[lang + "_name"] +
+                                  " " +
+                                  MTRBus_Dict.buses[currentBusData?.busId]
+                                    ?.plateNo}
+                              </div>
+                            </TextLoop>
+                          }
+                        />
                       </p>
                       <p>
                         {MTRBus_Dict.common.busRoute[lang + "_name"]}:{" "}
