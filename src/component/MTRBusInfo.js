@@ -41,7 +41,7 @@ import "../css/MTRBusInfo.css";
 
 function MTRBusInfo({ busRoute, lang }) {
   const apiURL = "https://rt.data.gov.hk/v1/transport/mtr/bus/getSchedule";
-  var apiLang = "zh";
+  var apiLang = "";
 
   const [isLoading, setIsLoading] = useState(false);
   const [mtrBusData, setMtrBusData] = useState();
@@ -55,18 +55,15 @@ function MTRBusInfo({ busRoute, lang }) {
   const [tmlETAStation, setTmlETAStaion] = useState("TUM");
   const [currentBusData, setCurrentBusData] = useState();
 
-  function checkLanguage(lang) {
-    //check language
-    if (lang === "tc") {
-      apiLang = "zh";
-    } else {
-      apiLang = lang;
-    }
+  //check language
+  if (lang === "tc") {
+    apiLang = "zh";
+  } else {
+    apiLang = lang;
   }
 
   useEffect(() => {
     setIsLoading(true);
-    checkLanguage(apiLang);
     setMtrBusData();
     axios
       .post(apiURL, {
@@ -82,7 +79,6 @@ function MTRBusInfo({ busRoute, lang }) {
 
   useEffect(() => {
     const inteval = setInterval(() => {
-      checkLanguage(apiLang);
       axios
         .post(apiURL, {
           language: apiLang,
@@ -248,11 +244,11 @@ function MTRBusInfo({ busRoute, lang }) {
                                         MTRBus_Dict?.buses[mbus.busId].plateNo}
                                     </div>
                                     <div>
-                                      {MTRBus_Dict.common.model[
+                                      {/* {MTRBus_Dict.common.model[
                                         lang + "_name"
                                       ] +
-                                        " " +
-                                        MTRBus_Dict?.buses[mbus.busId].type}
+                                        " " + */}
+                                      {MTRBus_Dict?.buses[mbus.busId].type}
                                     </div>
                                   </TextLoop>
                                 }
@@ -282,11 +278,11 @@ function MTRBusInfo({ busRoute, lang }) {
                                         MTRBus_Dict?.buses[mbus.busId].plateNo}
                                     </div>
                                     <div>
-                                      {MTRBus_Dict.common.model[
+                                      {/* {MTRBus_Dict.common.model[
                                         lang + "_name"
                                       ] +
-                                        " " +
-                                        MTRBus_Dict?.buses[mbus.busId].type}
+                                        " " + */}
+                                      {MTRBus_Dict?.buses[mbus.busId].type}
                                     </div>
                                   </TextLoop>
                                 }
@@ -306,7 +302,7 @@ function MTRBusInfo({ busRoute, lang }) {
                           {mbus.arrivalTimeText === ""
                             ? mbus.departureTimeText
                             : mbus.arrivalTimeText}
-                          <span>
+                          <span className="mtrBusInfo_BusETA_BusSch">
                             {mbus.isScheduled === "1"
                               ? MTRBus_Dict.common.scheduleDep[lang + "_name"]
                               : null}
@@ -552,19 +548,17 @@ function MTRBusInfo({ busRoute, lang }) {
                       })
                     }
                   >
-                    <Popup>
+                    <Popup className="mapPopup">
                       <p>
                         <Chip
                           color="warning"
                           icon={<DirectionsBusIcon />}
                           label={
-                            <TextLoop interval={(5000, 5000)}>
+                            <TextLoop interval={3000}>
                               <div>
-                                <b>
-                                  {MTRBus_Dict.common.fleetNum[lang + "_name"] +
-                                    " " +
-                                    currentBusData?.busId}
-                                </b>
+                                {MTRBus_Dict.common.fleetNum[lang + "_name"] +
+                                  " " +
+                                  currentBusData?.busId}
                               </div>
                               <div>
                                 {MTRBus_Dict.common.plateNum[lang + "_name"] +
@@ -572,14 +566,18 @@ function MTRBusInfo({ busRoute, lang }) {
                                   MTRBus_Dict.buses[currentBusData?.busId]
                                     ?.plateNo}
                               </div>
+                              <div>
+                                {MTRBus_Dict.common.busRouteShort[
+                                  lang + "_name"
+                                ] +
+                                  " " +
+                                  currentBusData?.lineRef.split("_")[0]}
+                              </div>
                             </TextLoop>
                           }
                         />
                       </p>
-                      <p>
-                        {MTRBus_Dict.common.busRoute[lang + "_name"]}:{" "}
-                        {currentBusData?.lineRef.split("_")[0]}
-                      </p>
+
                       <p> {currentBusData?.busRemark}</p>
                     </Popup>
                   </Marker>

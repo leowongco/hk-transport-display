@@ -149,12 +149,12 @@
   text-align: right;
   font-size: small;
 }
-
-.mtrBusInfo_BusETA_BusTime > span {
+.mtrBusInfo_BusETA_BusSch {
   font-size: xx-small;
   font-weight: 300;
   font-style: italic;
   padding-left: 5px;
+  overflow: hidden;
 }
 
 .mtrBusDialogBox {
@@ -166,4 +166,8 @@
 
 .mtrBusDialogBox > div {
   margin: auto;
+}
+
+.mapPopup {
+  width: 30vw;
 }

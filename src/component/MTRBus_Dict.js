@@ -19,6 +19,10 @@ const common = {
     en_name: "MTR Bus Route",
     tc_name: "港鐵巴士路線",
   },
+  busRouteShort: {
+    en_name: "Route",
+    tc_name: "路線",
+  },
   title: {
     en_name: "MTR Bus ETA",
     tc_name: "港鐵巴士到站時間",
@@ -40,12 +44,12 @@ const common = {
     tc_name: "巴士實時位置",
   },
   fleetNum: {
-    en_name: "Fleet No.",
-    tc_name: "車隊編號",
+    en_name: "Fleet#",
+    tc_name: "車隊#",
   },
   plateNum: {
-    en_name: "Plate No.",
-    tc_name: "車牌",
+    en_name: "Plate#",
+    tc_name: "車牌#",
   },
   model: {
     en_name: "Model",
