@@ -20,6 +20,7 @@ import RailwayAlertOutlinedIcon from "@mui/icons-material/RailwayAlertOutlined";
 import "../css/MTRStatus.css";
 import Dict from "./MTR_Dict.js";
 import StatusDict from "./MTRStatus_Dict.js";
+import MTR_Dict from "./MTR_Dict.js";
 
 function MTRStatus({ type }) {
   const [lineStatus, setLineStatus] = useState();
@@ -151,6 +152,10 @@ function MTRStatus({ type }) {
     var nonServiceHours =
       lineStatus?.filter((item) => item.status === "grey").length === 10;
 
+    var showBadServicesLines = lineStatus
+      ?.filter((item) => item.status === "red")
+      .map((line) => line.line_code);
+
     var badServices = lineStatus?.some((item) => {
       return (
         item.status === "yellow" ||
@@ -162,6 +167,10 @@ function MTRStatus({ type }) {
     var typhoonServices = lineStatus?.some((item) => {
       return item.status === "typhoon";
     });
+
+    var showtyphoonServicesLines = lineStatus
+      ?.filter((item) => item.status === "typhoon")
+      .map((line) => line.line_code);
 
     return (
       <div className="mtrStatus">
@@ -184,9 +193,23 @@ function MTRStatus({ type }) {
                     <b>{lang === "tc" ? "熱帶氣旋" : "Tropical Cyclone"}</b>
                   </AlertTitle>
                   <Marquee gradientWidth="0">
-                    {lang === "tc"
-                      ? "有港鐵路線受熱帶氣旋影響，請及早計劃行程。"
-                      : "MTR Lines are affacted by Tropical Cyclone, please plan accordingly."}
+                    <span>
+                      {lang === "tc"
+                        ? " 受影響路線:" +
+                          showBadServicesLines?.map((line) => {
+                            return (
+                              " " + MTR_Dict.MtrLines[line][lang + "_name"]
+                            );
+                          }) +
+                          ", 請及早計劃行程。"
+                        : " Affected Lines:" +
+                          showBadServicesLines?.map((line) => {
+                            return (
+                              " " + MTR_Dict.MtrLines[line][lang + "_name"]
+                            );
+                          }) +
+                          ", please plan accordingly. "}
+                    </span>
                   </Marquee>
                 </Alert>
               ) : null}
@@ -213,8 +236,20 @@ function MTRStatus({ type }) {
                   <Marquee gradientWidth="0">
                     <span>
                       {lang === "tc"
-                        ? "有港鐵路線服務延誤/受阻，請考慮重新計劃行程。"
-                        : "One or more MTR Lines has been delayed, please plan accordingly."}
+                        ? " 受影響路線:" +
+                          showBadServicesLines?.map((line) => {
+                            return (
+                              " " + MTR_Dict.MtrLines[line][lang + "_name"]
+                            );
+                          }) +
+                          ", 請考慮重新計劃行程。"
+                        : " Affected Lines:" +
+                          showBadServicesLines?.map((line) => {
+                            return (
+                              " " + MTR_Dict.MtrLines[line][lang + "_name"]
+                            );
+                          }) +
+                          ", please plan accordingly. "}
                     </span>
                   </Marquee>
                 </Alert>
@@ -254,17 +289,19 @@ function MTRStatus({ type }) {
                     </Link>
                   }
                 >
-                  {lang === "tc" ? (
-                    <TextLoop interval={5000}>
-                      <span>非港鐵列車服務時間。</span>
-                      <span>Not MTR Train Service Hours.</span>
-                    </TextLoop>
-                  ) : (
-                    <TextLoop interval={5000}>
-                      <span>Not MTR Train Service Hours.</span>
-                      <span>非港鐵列車服務時間。</span>
-                    </TextLoop>
-                  )}
+                  <AlertTitle>
+                    {lang === "tc" ? (
+                      <TextLoop interval={5000}>
+                        <span>非港鐵列車服務時間。</span>
+                        <span>Not MTR Train Service Hours.</span>
+                      </TextLoop>
+                    ) : (
+                      <TextLoop interval={5000}>
+                        <span>Not MTR Train Service Hours.</span>
+                        <span>非港鐵列車服務時間。</span>
+                      </TextLoop>
+                    )}
+                  </AlertTitle>
                 </Alert>
               )}
             </div>

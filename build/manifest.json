@@ -1,6 +1,7 @@
 {
   "short_name": "HK Railway Info",
   "name": "Railway Information in Hong Kong",
+  "description": "Listing the Arrival Times on MTR Lines (Urban, Light Rail, MTR Feeder Bus), Hong Kong Tramways.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +11,11 @@
     {
       "src": "logo64.png",
       "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "logo180.png",
+      "sizes": "180x180",
       "type": "image/png"
     },
     {
