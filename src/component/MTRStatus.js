@@ -15,6 +15,7 @@ import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 import { RiTyphoonFill } from "react-icons/ri";
 import { Text, Typo } from "reactypo";
 import { Link } from "react-router-dom";
+import RailwayAlertOutlinedIcon from "@mui/icons-material/RailwayAlertOutlined";
 
 import "../css/MTRStatus.css";
 import Dict from "./MTR_Dict.js";
@@ -147,6 +148,9 @@ function MTRStatus({ type }) {
       return item.status === "green" || item.status === "grey";
     });
 
+    var nonServiceHours =
+      lineStatus?.filter((item) => item.status === "grey").length === 10;
+
     var badServices = lineStatus?.some((item) => {
       return (
         item.status === "yellow" ||
@@ -166,7 +170,8 @@ function MTRStatus({ type }) {
             <div className="mtrStatus_BannerRow">
               {typhoonServices ? (
                 <Alert
-                  severity="info"
+                  icon={<RailwayAlertOutlinedIcon />}
+                  severity="warning"
                   action={
                     <Link to="/mtr-status">
                       <Button color="inherit" size="small">
@@ -187,7 +192,8 @@ function MTRStatus({ type }) {
               ) : null}
               {badServices ? (
                 <Alert
-                  severity="warning"
+                  severity="error"
+                  icon={<RailwayAlertOutlinedIcon />}
                   action={
                     <Link to="/mtr-status">
                       <Button color="inherit" size="small">
@@ -213,7 +219,7 @@ function MTRStatus({ type }) {
                   </Marquee>
                 </Alert>
               ) : null}
-              {goodServices ? (
+              {goodServices && !nonServiceHours ? (
                 <Alert
                   severity="success"
                   action={
@@ -236,7 +242,31 @@ function MTRStatus({ type }) {
                     </TextLoop>
                   )}
                 </Alert>
-              ) : null}
+              ) : (
+                <Alert
+                  icon={<RailwayAlertOutlinedIcon />}
+                  color="grey"
+                  action={
+                    <Link to="/mtr-status">
+                      <Button color="inherit" size="small">
+                        <DoubleArrowIcon />
+                      </Button>
+                    </Link>
+                  }
+                >
+                  {lang === "tc" ? (
+                    <TextLoop interval={5000}>
+                      <span>非港鐵列車服務時間。</span>
+                      <span>Not MTR Train Service Hours.</span>
+                    </TextLoop>
+                  ) : (
+                    <TextLoop interval={5000}>
+                      <span>Not MTR Train Service Hours.</span>
+                      <span>非港鐵列車服務時間。</span>
+                    </TextLoop>
+                  )}
+                </Alert>
+              )}
             </div>
           </div>
         ) : (
