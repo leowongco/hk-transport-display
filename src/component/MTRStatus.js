@@ -28,7 +28,6 @@ function MTRStatus({ type }) {
   const coreApi = "https://cors.lwp.workers.dev/?";
   const mtrStatusApi = `https://www.mtr.com.hk/alert/ryg_line_status.xml?t=${Date.now()}`;
   const lang = window.localStorage.getItem("savedLanguage");
-  //const mtrBadLines = [];
 
   const removeJsonTextAttribute = function (value, parentElement) {
     try {
@@ -153,7 +152,12 @@ function MTRStatus({ type }) {
       lineStatus?.filter((item) => item.status === "grey").length === 10;
 
     var showBadServicesLines = lineStatus
-      ?.filter((item) => item.status === "red")
+      ?.filter(
+        (item) =>
+          item.status === "red" ||
+          item.status === "pink" ||
+          item.status === "yellow"
+      )
       .map((line) => line.line_code);
 
     var badServices = lineStatus?.some((item) => {
@@ -179,7 +183,7 @@ function MTRStatus({ type }) {
             <div className="mtrStatus_BannerRow">
               {typhoonServices ? (
                 <Alert
-                  icon={<RailwayAlertOutlinedIcon />}
+                  icon={<RailwayAlertOutlinedIcon fontSize="inherit" />}
                   severity="warning"
                   action={
                     <Link to="/mtr-status">
@@ -190,25 +194,30 @@ function MTRStatus({ type }) {
                   }
                 >
                   <AlertTitle>
+                    <RiTyphoonFill fontSize="inherit" />{" "}
                     <b>{lang === "tc" ? "熱帶氣旋" : "Tropical Cyclone"}</b>
                   </AlertTitle>
-                  <Marquee gradientWidth="0">
+                  <Marquee
+                    gradientWidth="0"
+                    style={{ margin: "0px auto", width: "70vw" }}
+                    speed={50}
+                  >
                     <span>
                       {lang === "tc"
-                        ? " 受影響路線:" +
-                          showBadServicesLines?.map((line) => {
+                        ? "\xa0\xa0受影響路線:" +
+                          showtyphoonServicesLines?.map((line) => {
                             return (
                               " " + MTR_Dict.MtrLines[line][lang + "_name"]
                             );
                           }) +
                           ", 請及早計劃行程。"
-                        : " Affected Lines:" +
-                          showBadServicesLines?.map((line) => {
+                        : "\xa0\xa0Affected Lines:" +
+                          showtyphoonServicesLines?.map((line) => {
                             return (
                               " " + MTR_Dict.MtrLines[line][lang + "_name"]
                             );
                           }) +
-                          ", please plan accordingly. "}
+                          ", please plan your journey accordingly. "}
                     </span>
                   </Marquee>
                 </Alert>
@@ -216,7 +225,7 @@ function MTRStatus({ type }) {
               {badServices ? (
                 <Alert
                   severity="error"
-                  icon={<RailwayAlertOutlinedIcon />}
+                  icon={<RailwayAlertOutlinedIcon fontSize="inherit" />}
                   action={
                     <Link to="/mtr-status">
                       <Button color="inherit" size="small">
@@ -233,77 +242,83 @@ function MTRStatus({ type }) {
                     </b>
                   </AlertTitle>
 
-                  <Marquee gradientWidth="0">
+                  <Marquee
+                    gradientWidth="0"
+                    style={{ margin: "0px auto", width: "70vw" }}
+                    speed={50}
+                  >
                     <span>
                       {lang === "tc"
-                        ? " 受影響路線:" +
+                        ? "\xa0\xa0受影響路線:" +
                           showBadServicesLines?.map((line) => {
                             return (
                               " " + MTR_Dict.MtrLines[line][lang + "_name"]
                             );
                           }) +
                           ", 請考慮重新計劃行程。"
-                        : " Affected Lines:" +
+                        : "\xa0\xa0Affected Lines:" +
                           showBadServicesLines?.map((line) => {
                             return (
                               " " + MTR_Dict.MtrLines[line][lang + "_name"]
                             );
                           }) +
-                          ", please plan accordingly. "}
+                          ", please plan your journey accordingly. "}
                     </span>
                   </Marquee>
                 </Alert>
               ) : null}
-              {goodServices && !nonServiceHours ? (
-                <Alert
-                  severity="success"
-                  action={
-                    <Link to="/mtr-status">
-                      <Button color="inherit" size="small">
-                        <DoubleArrowIcon />
-                      </Button>
-                    </Link>
-                  }
-                >
-                  {lang === "tc" ? (
-                    <TextLoop interval={5000}>
-                      <span>所有港鐵列車服務正常。</span>
-                      <span>All MTR Train Services are Normal.</span>
-                    </TextLoop>
-                  ) : (
-                    <TextLoop interval={5000}>
-                      <span>All MTR Train Services are Normal.</span>
-                      <span>所有港鐵列車服務正常。</span>
-                    </TextLoop>
-                  )}
-                </Alert>
-              ) : (
-                <Alert
-                  icon={<RailwayAlertOutlinedIcon />}
-                  color="grey"
-                  action={
-                    <Link to="/mtr-status">
-                      <Button color="inherit" size="small">
-                        <DoubleArrowIcon />
-                      </Button>
-                    </Link>
-                  }
-                >
-                  <AlertTitle>
+              {goodServices ? (
+                !nonServiceHours ? (
+                  <Alert
+                    severity="success"
+                    action={
+                      <Link to="/mtr-status">
+                        <Button color="inherit" size="small">
+                          <DoubleArrowIcon />
+                        </Button>
+                      </Link>
+                    }
+                  >
                     {lang === "tc" ? (
                       <TextLoop interval={5000}>
-                        <span>非港鐵列車服務時間。</span>
-                        <span>Not MTR Train Service Hours.</span>
+                        <span>所有港鐵列車服務正常。</span>
+                        <span>All MTR Train Services are Normal.</span>
                       </TextLoop>
                     ) : (
                       <TextLoop interval={5000}>
-                        <span>Not MTR Train Service Hours.</span>
-                        <span>非港鐵列車服務時間。</span>
+                        <span>All MTR Train Services are Normal.</span>
+                        <span>所有港鐵列車服務正常。</span>
                       </TextLoop>
                     )}
-                  </AlertTitle>
-                </Alert>
-              )}
+                  </Alert>
+                ) : (
+                  <Alert
+                    icon={<RailwayAlertOutlinedIcon />}
+                    color="grey"
+                    action={
+                      <Link to="/mtr-status">
+                        <Button color="inherit" size="small">
+                          <DoubleArrowIcon fontSize="inherit" />
+                        </Button>
+                      </Link>
+                    }
+                  >
+                    <AlertTitle>
+                      {lang === "tc" ? (
+                        <TextLoop interval={5000}>
+                          <span>非港鐵列車服務時間。</span>
+                          <span>Not MTR Train Service Hours.</span>
+                        </TextLoop>
+                      ) : (
+                        <TextLoop interval={5000}>
+                          <span>Not MTR Train Service Hours.</span>
+                          <span>非港鐵列車服務時間。</span>
+                        </TextLoop>
+                      )}
+                    </AlertTitle>
+                  </Alert>
+                )
+              ) : null}
             </div>
           </div>
         ) : (
@@ -344,7 +359,9 @@ function MTRStatus({ type }) {
                   <br />
                   <small>{StatusDict.StatusLight[mLine.status].en_name}</small>
                 </div>
-                {Object.keys(mLine.url_en).length === 0 ? null : (
+                {Object.keys(mLine.url_en).length === 0 ? (
+                  <div className="mtrStatus_DetailBtn"></div>
+                ) : (
                   <div className="mtrStatus_DetailBtn">
                     <Button
                       href={mLine["url_" + lang]}
