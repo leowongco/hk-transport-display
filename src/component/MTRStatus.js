@@ -10,6 +10,7 @@ import Marquee from "react-fast-marquee";
 import CheckCircleTwoToneIcon from "@material-ui/icons/CheckCircleTwoTone";
 import ErrorTwoToneIcon from "@material-ui/icons/ErrorTwoTone";
 import RemoveCircleTwoToneIcon from "@material-ui/icons/RemoveCircleTwoTone";
+import RailwayAlertIcon from '@mui/icons-material/RailwayAlert';
 import AccessTimeTwoToneIcon from "@material-ui/icons/AccessTimeTwoTone";
 import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 import { RiTyphoonFill } from "react-icons/ri";
@@ -113,9 +114,9 @@ function MTRStatus({ type }) {
         return <CheckCircleTwoToneIcon style={{ color: "green" }} />;
       case "pink":
       case "yellow":
-        return <ErrorTwoToneIcon style={{ color: "#dbd51f" }} />;
+        return <RailwayAlertIcon style={{ color: "#dbd51f" }} />;
       case "red":
-        return <RemoveCircleTwoToneIcon style={{ color: "red" }} />;
+        return <RailwayAlertIcon style={{ color: "red" }} />;
       case "typhoon":
         return <RiTyphoonFill style={{ color: "#1a15bd" }} />;
       default:

@@ -71,6 +71,18 @@ function Settings() {
       tc_name: "教學",
       en_name: "Tutorial",
     },
+    mtrstatus: {
+      tc_name: "到站時間內頁顯示港鐵車務狀態",
+      en_name: "Showing MTR Sataus on MTR ETA Page",
+    },
+    onBtn: {
+      tc_name: "開",
+      en_name: "On",
+    },
+    offBtn: {
+      tc_name: "關",
+      en_name: "Off",
+    },
   };
 
   const storage = window.localStorage;
@@ -82,6 +94,7 @@ function Settings() {
   const [lang, setLang] = useState("");
   const [open, setOpen] = useState(false);
   const [delLine, setDelLine] = useState("");
+  const [mtrstatus, setMtrStatus] = useState(false);
   const newArray = [];
 
   useEffect(() => {
@@ -91,6 +104,7 @@ function Settings() {
     setTmlSaveStnArray(JSON.parse(storage.getItem("TML_SaveStn")));
     setLrtSaveStnArray(JSON.parse(storage.getItem("LrtSaveStn")));
     setLang(storage.getItem("savedLanguage"));
+    setMtrStatus(storage.getItem("statusInMtrETA"));
   }, [storage]);
 
   const handleDelete = (station, line) => {
@@ -162,6 +176,11 @@ function Settings() {
     setLang(langChoice);
   };
 
+  const handleMtrStatusChange = (choice) => {
+    storage.setItem("statusInMtrETA", choice);
+    setMtrStatus(choice);
+  };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -184,6 +203,24 @@ function Settings() {
               disabled={lang === "en"}
             >
               English
+            </Button>
+          </ButtonGroup>
+        </div>
+        <div className="settingRow">
+          {langDict.mtrstatus[lang + "_name"]}
+          <div style={{ flex: "1 0 0" }} />
+          <ButtonGroup size="small" color="primary" variant="contained">
+            <Button
+              onClick={() => handleMtrStatusChange(true)}
+              disabled={mtrstatus}
+            >
+              {langDict.onBtn[lang + "_name"]}
+            </Button>
+            <Button
+              onClick={() => handleMtrStatusChange(false)}
+              disabled={!mtrstatus}
+            >
+              {langDict.offBtn[lang + "_name"]}
             </Button>
           </ButtonGroup>
         </div>

@@ -59,6 +59,9 @@ function SaveStations() {
   if (storage.getItem("savedLanguage") === null) {
     storage.setItem("savedLanguage", "tc");
   }
+  if (storage.getItem("statusInMtrETA") === null) {
+    storage.setItem("statusInMtrETA", true);
+  }
 
   if (
     tklSaveStnArray?.length === 0 &&

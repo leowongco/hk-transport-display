@@ -41,7 +41,10 @@ import "../css/MTRBusInfo.css";
 
 function MTRBusInfo({ busRoute, lang }) {
   const apiURL = "https://rt.data.gov.hk/v1/transport/mtr/bus/getSchedule";
-  var apiLang = "";
+  const apiLang = {
+    en: "en",
+    tc: "zh",
+  };
 
   const [isLoading, setIsLoading] = useState(false);
   const [mtrBusData, setMtrBusData] = useState();
@@ -55,19 +58,12 @@ function MTRBusInfo({ busRoute, lang }) {
   const [tmlETAStation, setTmlETAStaion] = useState("TUM");
   const [currentBusData, setCurrentBusData] = useState();
 
-  //check language
-  if (lang === "tc") {
-    apiLang = "zh";
-  } else {
-    apiLang = lang;
-  }
-
   useEffect(() => {
     setIsLoading(true);
     setMtrBusData();
     axios
       .post(apiURL, {
-        language: apiLang,
+        language: apiLang[lang],
         routeName: busRoute,
       })
       .then((res) => {
@@ -193,10 +189,28 @@ function MTRBusInfo({ busRoute, lang }) {
             id={props.busStop + "-header"}
             className="mtrBusInfo_busStop"
           >
+            {mtrBusData?.busStop
+              .filter((items) => {
+                return items.busStopId.includes(props.busStop);
+              })
+              .map((busLogo) =>
+                busLogo.busIcon ? (
+                  <DirectionsBusIcon fontSize="small" color="secondary" />
+                ) : (
+                  <DirectionsBusIcon
+                    fontSize="small"
+                    sx={{
+                      color: "seashell",
+                    }}
+                  />
+                )
+              )}
             <Typography>
               <b>{props.index + 1 + ". "}</b>
+
               <small>{MTRBus_Dict.stops[props.busStop][lang + "_name"]}</small>
             </Typography>
+
             <div className="mtrBusInfo_busStopConnections">
               {MTRBus_Dict.stops[props.busStop].connections?.LR ? (
                 <img src={BusLR} />

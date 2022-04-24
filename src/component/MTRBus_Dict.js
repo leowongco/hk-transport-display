@@ -3108,8 +3108,8 @@ const stops = {
     lon: "113.971935",
   },
   "K58-U080": {
-    tc_name: "釋慧文中學",
-    en_name: "Shi Hui Wen Secondary School",
+    tc_name: "保良局莊啟程第二小學",
+    en_name: "PLK Vicwood K T Chong No.2 Primary School",
     lat: "22.404952",
     lon: "113.968844",
     connections: {
@@ -3348,8 +3348,8 @@ const stops = {
     },
   },
   "K58-D180": {
-    tc_name: "紫田村",
-    en_name: "Tsz Tin Tsuen",
+    tc_name: "欣田邨",
+    en_name: "Yan Tin Estate",
     lat: "22.414291",
     lon: "113.977143",
   },

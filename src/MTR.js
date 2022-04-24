@@ -16,6 +16,7 @@ import TML_Logo from "./img/TML_Logo.png";
 import GTranslateOutlinedIcon from "@material-ui/icons/GTranslateOutlined";
 import RouteIcon from "@material-ui/icons/LinearScale";
 import { Link, useParams } from "react-router-dom";
+import MTRStatus from "./component/MTRStatus.js";
 
 function MTR() {
   const [station, setStation] = useState([]);
@@ -76,6 +77,11 @@ function MTR() {
   return (
     <div className="mtr">
       <div className="container">
+        {/* {line && station ? (
+          <div className="mtrStausBar">
+            <MTRStatus type="banner" />
+          </div>
+        ) : null} */}
         <div className={"mtr__header" + line}>
           <div className="mtr__Logo">{setLogo(line)}</div>
           <div className="mtr__title">
