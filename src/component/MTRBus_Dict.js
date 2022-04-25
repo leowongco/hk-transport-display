@@ -1069,6 +1069,8 @@ const route = {
         stops: [
           "K58-U010",
           "K58-U020",
+          "K58-U023",
+          "K58-U026",
           "K58-U030",
           "K58-U040",
           "K58-U050",
@@ -1112,6 +1114,8 @@ const route = {
           "K58-D170",
           "K58-D180",
           "K58-D190",
+          "K58-D193",
+          "K58-D196",
           "K58-D200",
           "K58-D210",
         ],
@@ -3070,9 +3074,21 @@ const stops = {
     lat: "22.412004",
     lon: "113.98378",
   },
+  "K58-U023": {
+    tc_name: "嶺南大學",
+    en_name: "Lingnan University",
+    lat: "",
+    lon: "",
+  },
+  "K58-U026": {
+    tc_name: "彩暉花園",
+    en_name: "Brilliant Garden",
+    lat: "",
+    lon: "",
+  },
   "K58-U030": {
-    tc_name: "港鐵兆康站 (北), (輕鐵兆康站)",
-    en_name: "MTR Siu Hong Station (North), (LR Siu Hong Stop)",
+    tc_name: "港鐵兆康站(南), (輕鐵兆康站)",
+    en_name: "MTR Siu Hong Station (South), (LR Siu Hong Stop)",
     lat: "22.4134",
     lon: "113.97902",
     connections: {
@@ -3354,14 +3370,26 @@ const stops = {
     lon: "113.977143",
   },
   "K58-D190": {
-    tc_name: "港鐵兆康站 (北), (輕鐵兆康站)",
-    en_name: "MTR Siu Hong Station (North), (LR Siu Hong Stop)",
+    tc_name: "港鐵兆康站 (南), (輕鐵兆康站)",
+    en_name: "MTR Siu Hong Station (South), (LR Siu Hong Stop)",
     lat: "22.41357",
     lon: "113.9791",
     connections: {
       TML: "SIH",
       LR: "100",
     },
+  },
+  "K58-D193": {
+    tc_name: "彩暉花園",
+    en_name: "Brilliant Garden",
+    lat: "",
+    lon: "",
+  },
+  "K58-D196": {
+    tc_name: "嶺南大學",
+    en_name: "Lingnan University",
+    lat: "",
+    lon: "",
   },
   "K58-D200": {
     tc_name: "倚嶺南庭",
