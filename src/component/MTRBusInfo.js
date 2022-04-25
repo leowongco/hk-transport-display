@@ -77,7 +77,7 @@ function MTRBusInfo({ busRoute, lang }) {
     const inteval = setInterval(() => {
       axios
         .post(apiURL, {
-          language: apiLang,
+          language: apiLang[lang],
           routeName: busRoute,
         })
         .then((res) => {
