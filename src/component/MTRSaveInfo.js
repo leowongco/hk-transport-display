@@ -73,15 +73,16 @@ function MTRSaveInfo({ line, station, lang }) {
                   {DictM.MtrStations[station][lang + "_name"]}{" "}
                 </div>
               </div>
+
+              {isLoading === true ? (
+                <LinearProgress color="primary" className="loadingBar" />
+              ) : null}
+              <p align="center">未有到站時間 No ETA Information</p>
               {line === "EAL" && new Date().getTime() / 1000 < 1652562000 ? (
                 <div className="mtr__info">
                   <Alert severity="info">{DictM.Common[lang].ealOpen}</Alert>
                 </div>
               ) : null}
-              {isLoading === true ? (
-                <LinearProgress color="primary" className="loadingBar" />
-              ) : null}
-              <p align="center">未有到站時間 No ETA Information</p>
             </CardContent>
           </Card>
         </Link>
@@ -93,11 +94,6 @@ function MTRSaveInfo({ line, station, lang }) {
         <Link to={"/mtr/" + line + "/" + station}>
           <Card className="infoBox">
             <CardContent>
-              <div className={"mtrstation__header" + line}>
-                <div className="station__name">
-                  {DictM.MtrStations[station][lang + "_name"]}{" "}
-                </div>
-              </div>
               {isLoading === true ? (
                 <LinearProgress color="primary" className="loadingBar" />
               ) : null}

@@ -83,7 +83,7 @@ function MTRInfo({ line, station, lang, mode }) {
     return <p align="center">未有到站時間 No ETA Information</p>;
   }
 
-  if (mtrStatus === 0) {
+  if (mtrStatus === 0 || mtrEta === null) {
     return (
       <div className="mtrInfo">
         <Card className="infobox">
