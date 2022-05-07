@@ -40,9 +40,13 @@ function MTRInfo({ line, station, lang, mode }) {
       axios
         .get(mtrAPI)
         .then((res) => {
-          setMtrEta(res.data.data[line + "-" + station]);
-          setMtrIsDelay(res.data.isdelay);
-          setMtrStatus(res.data.status);
+          if (res.data.status === 0) {
+            setMtrStatus(res.data.status);
+          } else {
+            setMtrIsDelay(res.data.isdelay);
+            setMtrStatus(res.data.status);
+            setMtrEta(res.data.data[line + "-" + station]);
+          }
           setIsLoading(false);
         })
         .catch((error) => console.log(error));
@@ -57,9 +61,13 @@ function MTRInfo({ line, station, lang, mode }) {
     axios
       .get(mtrAPI)
       .then((res) => {
-        setMtrIsDelay(res.data.isdelay);
-        setMtrStatus(res.data.status);
-        setMtrEta(res.data.data[line + "-" + station]);
+        if (res.data.status === 0) {
+          setMtrStatus(res.data.status);
+        } else {
+          setMtrIsDelay(res.data.isdelay);
+          setMtrStatus(res.data.status);
+          setMtrEta(res.data.data[line + "-" + station]);
+        }
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
@@ -75,7 +83,7 @@ function MTRInfo({ line, station, lang, mode }) {
     return <p align="center">未有到站時間 No ETA Information</p>;
   }
 
-  if (mtrStatus === "0") {
+  if (mtrStatus === 0) {
     return (
       <div className="mtrInfo">
         <Card className="infobox">

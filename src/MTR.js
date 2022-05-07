@@ -131,7 +131,7 @@ function MTR() {
               fullWidth
             >
               {Object.entries(Dict.MtrLines)
-                .slice(0, 4)
+                .slice(0, 5)
                 .map(([line, lineData]) => (
                   <MenuItem value={line}>{lineData[lang + "_name"]}</MenuItem>
                 ))}
@@ -160,6 +160,12 @@ function MTR() {
             ""
           )}
         </div>
+
+        {line === "EAL" && new Date().getTime() / 1000 < 1652562000 ? (
+          <div className="mtr__info">
+            <Alert severity="info">{Dict.Common[lang].ealOpen}</Alert>
+          </div>
+        ) : null}
         <div className="mtr__info">
           <Alert severity="info">{Dict.Common[lang].etaAlert}</Alert>
         </div>

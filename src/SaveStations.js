@@ -29,6 +29,7 @@ function SaveStations() {
   };
 
   const storage = window.localStorage;
+  const ealSaveStnArray = JSON.parse(storage.getItem("EAL_SaveStn"));
   const tklSaveStnArray = JSON.parse(storage.getItem("TKL_SaveStn"));
   const tclSaveStnArray = JSON.parse(storage.getItem("TCL_SaveStn"));
   const aelSaveStnArray = JSON.parse(storage.getItem("AEL_SaveStn"));
@@ -38,6 +39,9 @@ function SaveStations() {
   const lang = storage.getItem("savedLanguage");
   var newArray = [];
 
+  if (storage.getItem("EAL_SaveStn") === null) {
+    storage.setItem("EAL_SaveStn", JSON.stringify(newArray));
+  }
   if (storage.getItem("TKL_SaveStn") === null) {
     storage.setItem("TKL_SaveStn", JSON.stringify(newArray));
   }
@@ -64,6 +68,7 @@ function SaveStations() {
   }
 
   if (
+    ealSaveStnArray?.length === 0 &&
     tklSaveStnArray?.length === 0 &&
     tclSaveStnArray?.length === 0 &&
     aelSaveStnArray?.length === 0 &&
@@ -88,6 +93,16 @@ function SaveStations() {
         <div className="saveStnTabs">
           <Tabs>
             <TabList>
+              {ealSaveStnArray?.length > 0 ? (
+                <Tab
+                  style={{
+                    backgroundColor: DictM.MtrLines.EAL.colorCode,
+                    color: "white",
+                  }}
+                >
+                  {DictM.MtrLines.EAL[lang + "_name"]}
+                </Tab>
+              ) : null}
               {tmlSaveStnArray?.length > 0 ? (
                 <Tab
                   style={{
@@ -136,6 +151,13 @@ function SaveStations() {
             </TabList>
 
             {/* Tab Content */}
+            {ealSaveStnArray?.length > 0 ? (
+              <TabPanel>
+                {ealSaveStnArray?.map((stn) => (
+                  <SaveMTR line="EAL" station={stn} lang={lang} />
+                ))}
+              </TabPanel>
+            ) : null}
             {tmlSaveStnArray?.length > 0 ? (
               <TabPanel>
                 {tmlSaveStnArray?.map((stn) => (

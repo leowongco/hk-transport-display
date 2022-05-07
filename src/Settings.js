@@ -86,6 +86,7 @@ function Settings() {
   };
 
   const storage = window.localStorage;
+  const [ealSaveStnArray, setEalSaveStnArray] = useState();
   const [tklSaveStnArray, setTklSaveStnArray] = useState();
   const [tclSaveStnArray, setTclSaveStnArray] = useState();
   const [aelSaveStnArray, setAelSaveStnArray] = useState();
@@ -98,6 +99,7 @@ function Settings() {
   const newArray = [];
 
   useEffect(() => {
+    setEalSaveStnArray(JSON.parse(storage.getItem("EAL_SaveStn")));
     setTklSaveStnArray(JSON.parse(storage.getItem("TKL_SaveStn")));
     setTclSaveStnArray(JSON.parse(storage.getItem("TCL_SaveStn")));
     setAelSaveStnArray(JSON.parse(storage.getItem("AEL_SaveStn")));
@@ -123,6 +125,8 @@ function Settings() {
     }
 
     switch (line) {
+      case "eal":
+        return setEalSaveStnArray(tempArr);
       case "tkl":
         return setTklSaveStnArray(tempArr);
       case "tcl":
@@ -144,6 +148,10 @@ function Settings() {
       setOpen(true);
     } else {
       switch (delLine) {
+        case "eal":
+          storage.setItem("EAL_SaveStn", JSON.stringify(newArray));
+          setTklSaveStnArray(newArray);
+          break;
         case "tkl":
           storage.setItem("TKL_SaveStn", JSON.stringify(newArray));
           setTklSaveStnArray(newArray);
@@ -234,15 +242,15 @@ function Settings() {
         <div className="settingRow">
           <div
             className="saveStnLine"
-            style={{ background: DictM.MtrLines.TKL.colorCode }}
+            style={{ background: DictM.MtrLines.EAL.colorCode }}
           >
-            {DictM.MtrLines.TKL.tc_name + " " + DictM.MtrLines.TKL.en_name}
+            {DictM.MtrLines.EAL.tc_name + " " + DictM.MtrLines.EAL.en_name}
           </div>
         </div>
         <div className="settingRow">
-          {tklSaveStnArray?.length > 0 ? (
+          {ealSaveStnArray?.length > 0 ? (
             <div className="saveStnDetails">
-              {tklSaveStnArray?.map((stn, i) => (
+              {ealSaveStnArray?.map((stn, i) => (
                 <Chip
                   label={DictM.MtrStations[stn][lang + "_name"]}
                   onDelete={() => handleDelete(stn, "tkl")}
@@ -256,10 +264,47 @@ function Settings() {
 
           <div className="saveStnActions">
             {" "}
+            {ealSaveStnArray?.length === 0 ? null : (
+              <Button
+                onClick={() => {
+                  handleDeleteAll("eal");
+                }}
+                variant="outlined"
+              >
+                {langDict.delAll[lang + "_name"]}
+              </Button>
+            )}
+          </div>
+        </div>
+
+        <div className="settingRow">
+          <div
+            className="saveStnLine"
+            style={{ background: DictM.MtrLines.TKL.colorCode }}
+          >
+            {DictM.MtrLines.TKL.tc_name + " " + DictM.MtrLines.TKL.en_name}
+          </div>
+        </div>
+        <div className="settingRow">
+          {tklSaveStnArray?.length > 0 ? (
+            <div className="saveStnDetails">
+              {tklSaveStnArray?.map((stn, i) => (
+                <Chip
+                  label={DictM.MtrStations[stn][lang + "_name"]}
+                  onDelete={() => handleDelete(stn, "tcl")}
+                  color="primary"
+                />
+              ))}
+            </div>
+          ) : (
+            langDict.emptySaveStn[lang + "_name"]
+          )}
+          <div className="saveStnActions">
+            {" "}
             {tklSaveStnArray?.length === 0 ? null : (
               <Button
                 onClick={() => {
-                  handleDeleteAll("tkl");
+                  handleDeleteAll("tcl");
                 }}
                 variant="outlined"
               >

@@ -8,6 +8,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import Blink from "react-blink-text";
 import { Link } from "react-router-dom";
+import Alert from "@material-ui/lab/Alert";
 
 function MTRSaveInfo({ line, station, lang }) {
   const [mtrEta, setMtrEta] = useState([]);
@@ -28,9 +29,13 @@ function MTRSaveInfo({ line, station, lang }) {
       axios
         .get(mtrAPI)
         .then((res) => {
-          setMtrEta(res.data.data[line + "-" + station]);
-          setMtrIsDelay(res.data.isdelay);
-          setMtrStatus(res.data.status);
+          if (res.data.status === 0) {
+            setMtrStatus(res.data.status);
+          } else {
+            setMtrIsDelay(res.data.isdelay);
+            setMtrStatus(res.data.status);
+            setMtrEta(res.data.data[line + "-" + station]);
+          }
           setIsLoading(false);
         })
         .catch((error) => console.log(error));
@@ -45,15 +50,19 @@ function MTRSaveInfo({ line, station, lang }) {
     axios
       .get(mtrAPI)
       .then((res) => {
-        setMtrIsDelay(res.data.isdelay);
-        setMtrStatus(res.data.status);
-        setMtrEta(res.data.data[line + "-" + station]);
+        if (res.data.status === 0) {
+          setMtrStatus(res.data.status);
+        } else {
+          setMtrIsDelay(res.data.isdelay);
+          setMtrStatus(res.data.status);
+          setMtrEta(res.data.data[line + "-" + station]);
+        }
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
   }, [line, station]);
 
-  if (mtrStatus === "0") {
+  if (mtrStatus === 0) {
     return (
       <div className="mtrSaveInfo">
         <Link to={"/mtr/" + line + "/" + station}>
@@ -64,6 +73,11 @@ function MTRSaveInfo({ line, station, lang }) {
                   {DictM.MtrStations[station][lang + "_name"]}{" "}
                 </div>
               </div>
+              {line === "EAL" && new Date().getTime() / 1000 < 1652562000 ? (
+                <div className="mtr__info">
+                  <Alert severity="info">{DictM.Common[lang].ealOpen}</Alert>
+                </div>
+              ) : null}
               {isLoading === true ? (
                 <LinearProgress color="primary" className="loadingBar" />
               ) : null}

@@ -3077,20 +3077,20 @@ const stops = {
   "K58-U023": {
     tc_name: "嶺南大學",
     en_name: "Lingnan University",
-    lat: "",
-    lon: "",
+    lat: "22.41059",
+    lon: "113.982387",
   },
   "K58-U026": {
     tc_name: "彩暉花園",
     en_name: "Brilliant Garden",
-    lat: "",
-    lon: "",
+    lat: "22.408575",
+    lon: "113.980046",
   },
   "K58-U030": {
     tc_name: "港鐵兆康站(南), (輕鐵兆康站)",
     en_name: "MTR Siu Hong Station (South), (LR Siu Hong Stop)",
-    lat: "22.4134",
-    lon: "113.97902",
+    lat: "22.410247",
+    lon: "113.978583",
     connections: {
       TML: "SIH",
       LR: "100",
@@ -3372,8 +3372,8 @@ const stops = {
   "K58-D190": {
     tc_name: "港鐵兆康站 (南), (輕鐵兆康站)",
     en_name: "MTR Siu Hong Station (South), (LR Siu Hong Stop)",
-    lat: "22.41357",
-    lon: "113.9791",
+    lat: "22.410378",
+    lon: "113.978607",
     connections: {
       TML: "SIH",
       LR: "100",
@@ -3382,14 +3382,14 @@ const stops = {
   "K58-D193": {
     tc_name: "彩暉花園",
     en_name: "Brilliant Garden",
-    lat: "",
-    lon: "",
+    lat: "22.408779",
+    lon: "113.980397",
   },
   "K58-D196": {
     tc_name: "嶺南大學",
     en_name: "Lingnan University",
-    lat: "",
-    lon: "",
+    lat: "22.410694",
+    lon: "113.982212",
   },
   "K58-D200": {
     tc_name: "倚嶺南庭",
