@@ -286,10 +286,13 @@ function MTRInfo({ line, station, lang, mode }) {
 
           {mtrEta?.sys_time ? (
             <div className="etaBox__mtrfooter">
+              {console.log(mtrEta.sys_time)}
               {Dict.Common[lang].lastUpdate +
                 ": " +
                 new Date(
-                  Date.parse(mtrEta?.sys_time.replace(/-/g, "/"))
+                  mtrEta.sys_time !== "-"
+                    ? Date.parse(mtrEta?.sys_time.replace(/-/g, "/"))
+                    : Date.now()
                 ).toLocaleString("en-GB", {
                   year: "numeric",
                   month: "numeric",
