@@ -20,7 +20,7 @@ const Common = {
     saveT: "Saved",
     routeMap: "Route",
     boundFor: "to",
-    ealOpen: "East Rail Line ETA information estimated available date: 15 May 2022.",
+    ealRAC: "(via Racecourse)",
   },
   tc: {
     UP: "上行",
@@ -42,7 +42,16 @@ const Common = {
     saveT: "已儲存",
     routeMap: "路線圖",
     boundFor: "往",
-    ealOpen: "東鐵線到站時間預計在2022年5月15日提供。",
+    ealRAC: "(經馬場)",
+  },
+};
+
+const Error = {
+  tc: {
+    "NT-205": "本站暫停服務。",
+  },
+  en: {
+    "NT-205": "This Station is Suspended.",
   },
 };
 
@@ -593,4 +602,4 @@ const MtrStations = {
   },
 };
 
-export default { Common, MtrLines, MtrStations };
+export default { Common, MtrLines, MtrStations, Error };

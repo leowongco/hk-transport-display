@@ -160,12 +160,6 @@ function MTR() {
             ""
           )}
         </div>
-
-        {line === "EAL" && new Date().getTime() / 1000 < 1652562000 ? (
-          <div className="mtr__info">
-            <Alert severity="info">{Dict.Common[lang].ealOpen}</Alert>
-          </div>
-        ) : null}
         <div className="mtr__info">
           <Alert severity="info">{Dict.Common[lang].etaAlert}</Alert>
         </div>

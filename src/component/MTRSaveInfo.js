@@ -15,6 +15,7 @@ function MTRSaveInfo({ line, station, lang }) {
   const [isLoading, setIsLoading] = useState(false);
   const [mtrIsDelay, setMtrIsDelay] = useState("");
   const [mtrStatus, setMtrStatus] = useState("");
+  const [mtrError, setMtrError] = useState([]);
   const limitETA = 3;
 
   const storage = window.localStorage;
@@ -31,6 +32,7 @@ function MTRSaveInfo({ line, station, lang }) {
         .then((res) => {
           if (res.data.status === 0) {
             setMtrStatus(res.data.status);
+            setMtrError(res.data.error);
           } else {
             setMtrIsDelay(res.data.isdelay);
             setMtrStatus(res.data.status);
@@ -52,6 +54,7 @@ function MTRSaveInfo({ line, station, lang }) {
       .then((res) => {
         if (res.data.status === 0) {
           setMtrStatus(res.data.status);
+          setMtrError(res.data.error);
         } else {
           setMtrIsDelay(res.data.isdelay);
           setMtrStatus(res.data.status);
@@ -77,12 +80,15 @@ function MTRSaveInfo({ line, station, lang }) {
               {isLoading === true ? (
                 <LinearProgress color="primary" className="loadingBar" />
               ) : null}
-              <p align="center">未有到站時間 No ETA Information</p>
-              {line === "EAL" && new Date().getTime() / 1000 < 1652562000 ? (
+
+              {mtrError !== null ? (
                 <div className="mtr__info">
-                  <Alert severity="info">{DictM.Common[lang].ealOpen}</Alert>
+                  <Alert severity="error">
+                    {DictM.Error[lang][mtrError.errorCode]}
+                  </Alert>
                 </div>
               ) : null}
+              <p align="center">未有到站時間 No ETA Information</p>
             </CardContent>
           </Card>
         </Link>
@@ -141,6 +147,9 @@ function MTRSaveInfo({ line, station, lang }) {
                       <div className="saveStnBox_To">
                         {DictM.Common[lang].to +
                           DictM.MtrStations[train.dest][lang + "_name"]}
+                        {train.route === "RAC" ? (
+                          <small>{DictM.Common[lang].ealRAC}</small>
+                        ) : null}
                       </div>
                       <div className={"mtr__plat" + line}>{train.plat}</div>
                       <div className="trainArrowBox">
@@ -185,6 +194,9 @@ function MTRSaveInfo({ line, station, lang }) {
                       <div className="saveStnBox_To">
                         {DictM.Common[lang].to +
                           DictM.MtrStations[train.dest][lang + "_name"]}
+                        {train.route === "RAC" ? (
+                          <small>{DictM.Common[lang].ealRAC}</small>
+                        ) : null}
                       </div>
                       <div className={"mtr__plat" + line}>{train.plat}</div>
                       <div className="trainArrowBox">

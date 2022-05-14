@@ -6,6 +6,7 @@ import "../css/MTRInfo.css";
 import Save from "@material-ui/icons/StarBorder";
 import Saved from "@material-ui/icons/Star";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import Alert from "@material-ui/lab/Alert";
 
 function MTRInfo({ line, station, lang, mode }) {
   const [mtrEta, setMtrEta] = useState([]);
@@ -13,6 +14,7 @@ function MTRInfo({ line, station, lang, mode }) {
   const [mtrIsDelay, setMtrIsDelay] = useState("");
   const [mtrStatus, setMtrStatus] = useState("");
   const [stnSaved, setStnSaved] = useState(false);
+  const [mtrError, setMtrError] = useState([]);
 
   const storage = window.localStorage;
   const saveStationsArray = JSON.parse(storage.getItem(line + "_SaveStn"));
@@ -42,6 +44,7 @@ function MTRInfo({ line, station, lang, mode }) {
         .then((res) => {
           if (res.data.status === 0) {
             setMtrStatus(res.data.status);
+            setMtrError(res.data.error);
           } else {
             setMtrIsDelay(res.data.isdelay);
             setMtrStatus(res.data.status);
@@ -63,6 +66,7 @@ function MTRInfo({ line, station, lang, mode }) {
       .then((res) => {
         if (res.data.status === 0) {
           setMtrStatus(res.data.status);
+          setMtrError(res.data.error);
         } else {
           setMtrIsDelay(res.data.isdelay);
           setMtrStatus(res.data.status);
@@ -105,6 +109,11 @@ function MTRInfo({ line, station, lang, mode }) {
             </div>
           )}
           <CardContent>
+            {mtrError !== null ? (
+              <Alert severity="error">
+                {Dict.Error[lang][mtrError.errorCode]}
+              </Alert>
+            ) : null}
             <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
             <p align="center">Cannnot Retrieve ETA information</p>
             <p align="center">Please try again later.</p>
@@ -188,15 +197,23 @@ function MTRInfo({ line, station, lang, mode }) {
                   {Dict.MtrStations[station][lang + "_name"]}{" "}
                 </div>
                 <div className="header__line">
-                  {" (" +
-                    Dict.Common[lang].boundFor +
-                    " " +
-                    Dict.MtrStations[
-                      Dict.MtrLines[line].stations[
-                        Dict.MtrLines[line].stations.length - 1
-                      ]
-                    ][lang + "_name"] +
-                    ")"}
+                  {line === "EAL"
+                    ? " (" +
+                      Dict.Common[lang].boundFor +
+                      " " +
+                      Dict.MtrStations.LOW[lang + "_name"] +
+                      "/" +
+                      Dict.MtrStations.LMC[lang + "_name"] +
+                      ")"
+                    : " (" +
+                      Dict.Common[lang].boundFor +
+                      " " +
+                      Dict.MtrStations[
+                        Dict.MtrLines[line].stations[
+                          Dict.MtrLines[line].stations.length - 1
+                        ]
+                      ][lang + "_name"] +
+                      ")"}
                 </div>
               </div>
 
@@ -211,6 +228,9 @@ function MTRInfo({ line, station, lang, mode }) {
                         " / " +
                         Dict.MtrStations[train.dest][lang + "_name"]
                       : Dict.MtrStations[train.dest][lang + "_name"]}
+                    {train.route === "RAC" ? (
+                      <small>{Dict.Common[lang].ealRAC}</small>
+                    ) : null}
                   </div>
                   <div style={{ flex: "1 0 0" }} />
                   <div className={"mtr__plat" + line}>{train.plat}</div>
@@ -248,6 +268,9 @@ function MTRInfo({ line, station, lang, mode }) {
                 >
                   <div className="mtr__dest">
                     {Dict.MtrStations[train.dest][lang + "_name"]}
+                    {train.route === "RAC" ? (
+                      <small>{Dict.Common[lang].ealRAC}</small>
+                    ) : null}
                   </div>
                   <div style={{ flex: "1 0 0" }} />
                   <div className={"mtr__plat" + line}>{train.plat}</div>
