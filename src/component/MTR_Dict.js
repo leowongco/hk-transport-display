@@ -25,7 +25,7 @@ const Common = {
   tc: {
     UP: "上行",
     DOWN: "下行",
-    arr: "即將到達",
+    arr: "即將抵達",
     dep: "正在離開",
     min: "分鐘",
     etaAlert: "到站時間資訊每10秒自動更新，資料只供參考。",

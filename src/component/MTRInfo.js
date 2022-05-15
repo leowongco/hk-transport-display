@@ -233,8 +233,10 @@ function MTRInfo({ line, station, lang, mode }) {
                   <div style={{ flex: "1 0 0" }} />
                   <div className={"mtr__plat" + line}>{train.plat}</div>
                   <div className="mtr__time">
-                    {train.ttnt < 1
+                    {train.ttnt < "1"
                       ? Dict.Common[lang].dep
+                      : train.ttnt === "1"
+                      ? Dict.Common[lang].arr
                       : train.ttnt + " " + Dict.Common[lang].min}
                   </div>
                 </div>
@@ -273,8 +275,10 @@ function MTRInfo({ line, station, lang, mode }) {
                   <div style={{ flex: "1 0 0" }} />
                   <div className={"mtr__plat" + line}>{train.plat}</div>
                   <div className="mtr__time">
-                    {train.ttnt < 1
+                    {train.ttnt < "1"
                       ? Dict.Common[lang].dep
+                      : train.ttnt === "1"
+                      ? Dict.Common[lang].arr
                       : train.ttnt + " " + Dict.Common[lang].min}
                   </div>
                 </div>
