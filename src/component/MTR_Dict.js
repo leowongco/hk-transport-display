@@ -59,7 +59,8 @@ const MtrLines = {
   AEL: {
     tc_name: "機場快線",
     en_name: "Airport Express",
-    up_dest: ["AIR", "AWE"],
+    //up_dest: ["AIR", "AWE"],
+    up_dest: ["AWE"],
     down_dest: ["HOK"],
     colorCode: "#1c7670",
     stations: ["HOK", "KOW", "TSY", "AIR", "AWE"],
@@ -76,7 +77,8 @@ const MtrLines = {
   TKL: {
     tc_name: "將軍澳線",
     en_name: "Tseung Kwan O Line",
-    up_dest: ["POA", "LHP"],
+    //    up_dest: ["POA", "LHP"],
+    up_dest: ["POA"],
     down_dest: ["NOP"],
     colorCode: "#6b208b",
     stations: ["NOP", "QUB", "YAT", "TIK", "TKO", "LHP", "HAH", "POA"],

@@ -87,8 +87,9 @@ function MTRSaveInfo({ line, station, lang }) {
                     {DictM.Error[lang][mtrError.errorCode]}
                   </Alert>
                 </div>
-              ) : null}
-              <p align="center">未有到站時間 No ETA Information</p>
+              ) : (
+                <p align="center">未有到站時間 No ETA Information</p>
+              )}
             </CardContent>
           </Card>
         </Link>

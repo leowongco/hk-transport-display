@@ -208,11 +208,9 @@ function MTRInfo({ line, station, lang, mode }) {
                     : " (" +
                       Dict.Common[lang].boundFor +
                       " " +
-                      Dict.MtrStations[
-                        Dict.MtrLines[line].stations[
-                          Dict.MtrLines[line].stations.length - 1
-                        ]
-                      ][lang + "_name"] +
+                      Dict.MtrStations[Dict.MtrLines[line].up_dest][
+                        lang + "_name"
+                      ] +
                       ")"}
                 </div>
               </div>
@@ -254,7 +252,7 @@ function MTRInfo({ line, station, lang, mode }) {
                   {" (" +
                     Dict.Common[lang].boundFor +
                     " " +
-                    Dict.MtrStations[Dict.MtrLines[line].stations[0]][
+                    Dict.MtrStations[Dict.MtrLines[line].down_dest][
                       lang + "_name"
                     ] +
                     ")"}
@@ -286,7 +284,6 @@ function MTRInfo({ line, station, lang, mode }) {
 
           {mtrEta?.sys_time ? (
             <div className="etaBox__mtrfooter">
-              {console.log(mtrEta.sys_time)}
               {Dict.Common[lang].lastUpdate +
                 ": " +
                 new Date(
