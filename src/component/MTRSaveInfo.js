@@ -163,11 +163,17 @@ function MTRSaveInfo({ line, station, lang }) {
                     <div className="saveStnBoxRow">
                       <div className="saveStnBoxTime">
                         <small>
-                          {train.ttnt < 1 ? (
+                          {train.ttnt < "1" ? (
+                            <Blink
+                              fontSize="small"
+                              color="red"
+                              text={DictM.Common[lang].dep}
+                            ></Blink>
+                          ) : train.ttnt === "1" ? (
                             <Blink
                               fontSize="small"
                               color="blue"
-                              text={DictM.Common[lang].dep}
+                              text={DictM.Common[lang].arr}
                             ></Blink>
                           ) : (
                             train.ttnt +
@@ -209,11 +215,17 @@ function MTRSaveInfo({ line, station, lang }) {
                     <div className="saveStnBoxRow">
                       <div className="saveStnBoxTime">
                         <small>
-                          {train.ttnt < 1 ? (
+                          {train.ttnt < "1" ? (
+                            <Blink
+                              fontSize="small"
+                              color="red"
+                              text={DictM.Common[lang].dep}
+                            ></Blink>
+                          ) : train.ttnt === "1" ? (
                             <Blink
                               fontSize="small"
                               color="blue"
-                              text={DictM.Common[lang].dep}
+                              text={DictM.Common[lang].arr}
                             ></Blink>
                           ) : (
                             train.ttnt +
