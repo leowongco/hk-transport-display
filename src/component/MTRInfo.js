@@ -227,17 +227,21 @@ function MTRInfo({ line, station, lang, mode }) {
                         Dict.MtrStations[train.dest][lang + "_name"]
                       : Dict.MtrStations[train.dest][lang + "_name"]}
                     {train.route === "RAC" ? (
-                      <small>{Dict.Common[lang].ealRAC}</small>
+                      <small>{" (" + Dict.Common[lang].ealRAC + ")"}</small>
                     ) : null}
                   </div>
                   <div style={{ flex: "1 0 0" }} />
                   <div className={"mtr__plat" + line}>{train.plat}</div>
                   <div className="mtr__time">
-                    {train.ttnt < "1"
-                      ? Dict.Common[lang].dep
-                      : train.ttnt === "1"
-                      ? Dict.Common[lang].arr
-                      : train.ttnt + " " + Dict.Common[lang].min}
+                    {train.ttnt < "1" ? (
+                      <span>{Dict.Common[lang].dep}</span>
+                    ) : train.ttnt === "1" ? (
+                      <span>{Dict.Common[lang].arr}</span>
+                    ) : (
+                      <span>
+                        {train.ttnt} <small>{Dict.Common[lang].min}</small>
+                      </span>
+                    )}
                   </div>
                 </div>
               ))}
@@ -269,17 +273,21 @@ function MTRInfo({ line, station, lang, mode }) {
                   <div className="mtr__dest">
                     {Dict.MtrStations[train.dest][lang + "_name"]}
                     {train.route === "RAC" ? (
-                      <small>{Dict.Common[lang].ealRAC}</small>
+                      <small>{"(" + Dict.Common[lang].ealRAC + ")"}</small>
                     ) : null}
                   </div>
                   <div style={{ flex: "1 0 0" }} />
                   <div className={"mtr__plat" + line}>{train.plat}</div>
                   <div className="mtr__time">
-                    {train.ttnt < "1"
-                      ? Dict.Common[lang].dep
-                      : train.ttnt === "1"
-                      ? Dict.Common[lang].arr
-                      : train.ttnt + " " + Dict.Common[lang].min}
+                    {train.ttnt < "1" ? (
+                      <span>{Dict.Common[lang].dep}</span>
+                    ) : train.ttnt === "1" ? (
+                      <span>{Dict.Common[lang].arr}</span>
+                    ) : (
+                      <span>
+                        {train.ttnt} <small>{Dict.Common[lang].min}</small>
+                      </span>
+                    )}
                   </div>
                 </div>
               ))}

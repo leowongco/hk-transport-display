@@ -20,7 +20,7 @@ const Common = {
     saveT: "Saved",
     routeMap: "Route",
     boundFor: "to",
-    ealRAC: "(via Racecourse)",
+    ealRAC: "via Racecourse",
   },
   tc: {
     UP: "上行",
@@ -42,7 +42,7 @@ const Common = {
     saveT: "已儲存",
     routeMap: "路線圖",
     boundFor: "往",
-    ealRAC: "(經馬場)",
+    ealRAC: "經馬場",
   },
 };
 

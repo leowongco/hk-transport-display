@@ -9,6 +9,7 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import Blink from "react-blink-text";
 import { Link } from "react-router-dom";
 import Alert from "@material-ui/lab/Alert";
+import TextLoop from "react-text-loop";
 
 function MTRSaveInfo({ line, station, lang }) {
   const [mtrEta, setMtrEta] = useState([]);
@@ -148,12 +149,23 @@ function MTRSaveInfo({ line, station, lang }) {
                   <div className="saveStnBox">
                     <div className="saveStnBoxRow">
                       <div className="saveStnBox_To">
-                        {DictM.Common[lang].to +
-                          DictM.MtrStations[train.dest][lang + "_name"]}
                         {train.route === "RAC" ? (
-                          <small>{DictM.Common[lang].ealRAC}</small>
-                        ) : null}
+                          <TextLoop interval={(7000, 3000)}>
+                            <span>
+                              {" "}
+                              {DictM.Common[lang].to +
+                                DictM.MtrStations[train.dest][lang + "_name"]}
+                            </span>
+                            <span>{DictM.Common[lang].ealRAC}</span>
+                          </TextLoop>
+                        ) : (
+                          <span>
+                            {DictM.Common[lang].to +
+                              DictM.MtrStations[train.dest][lang + "_name"]}
+                          </span>
+                        )}
                       </div>
+
                       <div className={"mtr__plat" + line}>{train.plat}</div>
                       <div className="trainArrowBox">
                         {arr.length - 1 === i ? null : <ArrowForwardIcon />}
@@ -167,7 +179,7 @@ function MTRSaveInfo({ line, station, lang }) {
                             <Blink
                               fontSize="small"
                               color="red"
-                              text={DictM.Common[lang].dep}
+                              text={<strong>{DictM.Common[lang].dep}</strong>}
                             ></Blink>
                           ) : train.ttnt === "1" ? (
                             <Blink
@@ -201,11 +213,21 @@ function MTRSaveInfo({ line, station, lang }) {
                   <div className="saveStnBox">
                     <div className="saveStnBoxRow">
                       <div className="saveStnBox_To">
-                        {DictM.Common[lang].to +
-                          DictM.MtrStations[train.dest][lang + "_name"]}
                         {train.route === "RAC" ? (
-                          <small>{DictM.Common[lang].ealRAC}</small>
-                        ) : null}
+                          <TextLoop interval={(7000, 3000)}>
+                            <span>
+                              {" "}
+                              {DictM.Common[lang].to +
+                                DictM.MtrStations[train.dest][lang + "_name"]}
+                            </span>
+                            <span>{DictM.Common[lang].ealRAC}</span>
+                          </TextLoop>
+                        ) : (
+                          <span>
+                            {DictM.Common[lang].to +
+                              DictM.MtrStations[train.dest][lang + "_name"]}
+                          </span>
+                        )}
                       </div>
                       <div className={"mtr__plat" + line}>{train.plat}</div>
                       <div className="trainArrowBox">
@@ -219,7 +241,7 @@ function MTRSaveInfo({ line, station, lang }) {
                             <Blink
                               fontSize="small"
                               color="red"
-                              text={DictM.Common[lang].dep}
+                              text={<strong>{DictM.Common[lang].dep}</strong>}
                             ></Blink>
                           ) : train.ttnt === "1" ? (
                             <Blink
