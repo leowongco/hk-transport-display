@@ -10,7 +10,7 @@ import Marquee from "react-fast-marquee";
 import CheckCircleTwoToneIcon from "@material-ui/icons/CheckCircleTwoTone";
 import ErrorTwoToneIcon from "@material-ui/icons/ErrorTwoTone";
 import RemoveCircleTwoToneIcon from "@material-ui/icons/RemoveCircleTwoTone";
-import RailwayAlertIcon from '@mui/icons-material/RailwayAlert';
+import RailwayAlertIcon from "@mui/icons-material/RailwayAlert";
 import AccessTimeTwoToneIcon from "@material-ui/icons/AccessTimeTwoTone";
 import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 import { RiTyphoonFill } from "react-icons/ri";
@@ -23,7 +23,7 @@ import Dict from "./MTR_Dict.js";
 import StatusDict from "./MTRStatus_Dict.js";
 import MTR_Dict from "./MTR_Dict.js";
 
-function MTRStatus({ type }) {
+function MTRStatus({ type, line }) {
   const [lineStatus, setLineStatus] = useState();
   const [loading, setLoading] = useState(false);
   const coreApi = "https://cors.lwp.workers.dev/?";
@@ -327,6 +327,27 @@ function MTRStatus({ type }) {
         )}
       </div>
     );
+  } else if (type === "bannerIdv") {
+    switch (lineStatus?.filter((item) => item.line_code === line)[0].status) {
+      case "grey":
+        return (
+          <div className="mtrStatus">
+            <div className="mtrStatus_BannerContainer">
+              <div className="mtrStatus_BannerRow">
+                <Alert icon={<RailwayAlertOutlinedIcon />} color="grey">
+                  <AlertTitle>
+                    {lang === "tc" ? (
+                      <span>非港鐵列車服務時間。</span>
+                    ) : (
+                      <span>Not MTR Train Service Hours.</span>
+                    )}
+                  </AlertTitle>
+                </Alert>
+              </div>
+            </div>
+          </div>
+        );
+    }
   } else {
     return (
       <div className="mtrStatus">

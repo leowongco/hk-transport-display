@@ -87,6 +87,66 @@ function MTRInfo({ line, station, lang, mode }) {
     return <p align="center">未有到站時間 No ETA Information</p>;
   }
 
+  function ShowDestationText(line, station, dir) {
+    switch (line) {
+      case "EAL":
+        switch (dir) {
+          case "up":
+            return (
+              Dict.MtrStations.LOW[lang + "_name"] +
+              "/" +
+              Dict.MtrStations.LMC[lang + "_name"]
+            );
+          case "down":
+            return Dict.MtrStations.ADM[lang + "_name"];
+        }
+      case "TCL":
+        switch (dir) {
+          case "up":
+            return Dict.MtrStations.TUC[lang + "_name"];
+          case "down":
+            return Dict.MtrStations.HOK[lang + "_name"];
+        }
+      case "TML":
+        switch (dir) {
+          case "up":
+            return Dict.MtrStations.TUM[lang + "_name"];
+          case "down":
+            return Dict.MtrStations.WKS[lang + "_name"];
+        }
+      case "AEL":
+        switch (dir) {
+          case "up":
+            if (station === "AIR" || station === "AWE") {
+              return Dict.MtrStations.AWE[lang + "_name"];
+            } else {
+              return (
+                Dict.MtrStations.AIR[lang + "_name"] +
+                "/" +
+                Dict.MtrStations.AWE[lang + "_name"]
+              );
+            }
+          case "down":
+            return Dict.MtrStations.HOK[lang + "_name"];
+        }
+      case "TKL":
+        switch (dir) {
+          case "up":
+            if (station === "HAH" || station === "POA") {
+              return Dict.MtrStations.POA[lang + "_name"];
+            } else {
+              return (
+                Dict.MtrStations.POA[lang + "_name"] +
+                "/" +
+                Dict.MtrStations.LHP[lang + "_name"]
+              );
+            }
+          case "down":
+            return Dict.MtrStations.NOP[lang + "_name"];
+        }
+    }
+  }
+
   if (mtrStatus === 0 || mtrEta === null) {
     return (
       <div className="mtrInfo">
@@ -197,21 +257,11 @@ function MTRInfo({ line, station, lang, mode }) {
                   {Dict.MtrStations[station][lang + "_name"]}{" "}
                 </div>
                 <div className="header__line">
-                  {line === "EAL"
-                    ? " (" +
-                      Dict.Common[lang].boundFor +
-                      " " +
-                      Dict.MtrStations.LOW[lang + "_name"] +
-                      "/" +
-                      Dict.MtrStations.LMC[lang + "_name"] +
-                      ")"
-                    : " (" +
-                      Dict.Common[lang].boundFor +
-                      " " +
-                      Dict.MtrStations[Dict.MtrLines[line].up_dest][
-                        lang + "_name"
-                      ] +
-                      ")"}
+                  {" (" +
+                    Dict.Common[lang].boundFor +
+                    " " +
+                    ShowDestationText(line, station, "up") +
+                    ")"}
                 </div>
               </div>
 
@@ -258,9 +308,7 @@ function MTRInfo({ line, station, lang, mode }) {
                   {" (" +
                     Dict.Common[lang].boundFor +
                     " " +
-                    Dict.MtrStations[Dict.MtrLines[line].down_dest][
-                      lang + "_name"
-                    ] +
+                    ShowDestationText(line, station, "down") +
                     ")"}
                 </div>
               </div>

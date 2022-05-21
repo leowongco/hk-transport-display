@@ -1,6 +1,7 @@
 .hk_weather {
   position: sticky;
   z-index: 80;
+  font-family: "Noto Sans HK", sans-serif;
 }
 
 .weatherBanner_Container {
@@ -53,11 +54,12 @@
 .weatherBanner_Temperature,
 .weatherBanner_Humidity {
   padding-right: 5px;
-  font-weight: 300;
+  font-weight: 400;
   color: white;
 }
 
 .currentTime {
   color: white;
   margin-right: 10px;
+  font-weight: 700;
 }

@@ -77,11 +77,6 @@ function MTR() {
   return (
     <div className="mtr">
       <div className="container">
-        {/* {line && station ? (
-          <div className="mtrStausBar">
-            <MTRStatus type="banner" />
-          </div>
-        ) : null} */}
         <div className={"mtr__header" + line}>
           <div className="mtr__Logo">{setLogo(line)}</div>
           <div className="mtr__title">
@@ -91,6 +86,11 @@ function MTR() {
             {" " + Dict.Common[lang].eta}
           </div>
         </div>
+        {/* {line !== null && station !== null ? (
+          <div className="mtrStausBar">
+            <MTRStatus type="bannerIdv" line={line} fullWidth="true" />
+          </div>
+        ) : null} */}
         <div className="mtr__functionBar">
           <Button
             variant="contained"
@@ -144,6 +144,7 @@ function MTR() {
               onChange={handleStation}
               label="Station"
               fullWidth
+              disabled={line === ""}
             >
               {Dict.MtrLines[line]?.stations.map((sid) => (
                 <MenuItem value={sid}>

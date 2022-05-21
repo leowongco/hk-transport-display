@@ -59,17 +59,12 @@ const MtrLines = {
   AEL: {
     tc_name: "機場快線",
     en_name: "Airport Express",
-    //up_dest: ["AIR", "AWE"],
-    up_dest: ["AWE"],
-    down_dest: ["HOK"],
     colorCode: "#1c7670",
     stations: ["HOK", "KOW", "TSY", "AIR", "AWE"],
   },
   TCL: {
     tc_name: "東涌線",
     en_name: "Tung Chung Line",
-    up_dest: ["TUC"],
-    down_dest: ["HOK"],
     colorCode: "#fe7f1d",
     stations: ["HOK", "KOW", "OLY", "NAC", "LAK", "TSY", "SUN", "TUC"],
   },
@@ -77,17 +72,12 @@ const MtrLines = {
   TKL: {
     tc_name: "將軍澳線",
     en_name: "Tseung Kwan O Line",
-    //    up_dest: ["POA", "LHP"],
-    up_dest: ["POA"],
-    down_dest: ["NOP"],
     colorCode: "#6b208b",
     stations: ["NOP", "QUB", "YAT", "TIK", "TKO", "LHP", "HAH", "POA"],
   },
   TML: {
     tc_name: "屯馬線",
     en_name: "Tuen Ma Line",
-    up_dest: ["TUM"],
-    down_dest: ["WKS"],
     colorCode: "#9a3b26",
     stations: [
       "WKS",
@@ -123,8 +113,6 @@ const MtrLines = {
     tc_name: "東鐵線",
     en_name: "East Rail Line",
     colorCode: "#5eb6e4",
-    up_dest: ["LMC", "LOW"],
-    down_dest: ["ADM"],
     stations: [
       "LMC",
       "LOW",
@@ -563,13 +551,6 @@ const MtrStations = {
   SHT: {
     tc_name: "沙田",
     en_name: "Sha Tin",
-    lag: "",
-    lon: "",
-    active: "1",
-  },
-  TAW: {
-    tc_name: "大圍",
-    en_name: "Tai Wai",
     lag: "",
     lon: "",
     active: "1",
