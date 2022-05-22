@@ -8,8 +8,8 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import Blink from "react-blink-text";
 import { Link } from "react-router-dom";
-import Alert from "@material-ui/lab/Alert";
 import TextLoop from "react-text-loop";
+import Alert from "@mui/material/Alert";
 
 function MTRSaveInfo({ line, station, lang }) {
   const [mtrEta, setMtrEta] = useState([]);
@@ -89,7 +89,11 @@ function MTRSaveInfo({ line, station, lang }) {
                   </Alert>
                 </div>
               ) : (
-                <p align="center">未有到站時間 No ETA Information</p>
+                <div className="mtr__info">
+                  <Alert variant="outlined" severity="warning">
+                    未有到站時間 No ETA Information
+                  </Alert>
+                </div>
               )}
             </CardContent>
           </Card>
@@ -105,7 +109,11 @@ function MTRSaveInfo({ line, station, lang }) {
               {isLoading === true ? (
                 <LinearProgress color="primary" className="loadingBar" />
               ) : null}
-              <p align="center">未有到站時間 No ETA Information</p>
+              <div className="mtr__info">
+                <Alert variant="outlined" severity="warning">
+                  未有到站時間 No ETA Information
+                </Alert>
+              </div>
             </CardContent>
           </Card>
         </Link>
@@ -142,7 +150,11 @@ function MTRSaveInfo({ line, station, lang }) {
                 <LinearProgress color="primary" className="loadingBar" />
               ) : null}
               {mtrEta.UP?.length === 0 && mtrEta.DOWN?.length === 0 ? (
-                <p align="center">未有到站時間 No ETA Information</p>
+                <div className="mtr__info">
+                  <Alert variant="outlined" severity="warning">
+                    未有到站時間 No ETA Information
+                  </Alert>
+                </div>
               ) : null}
               <div className="saveStnETA">
                 {mtrEta.UP?.slice(0, limitETA).map((train, i, arr) => (

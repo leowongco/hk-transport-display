@@ -69,6 +69,7 @@
   margin-left: 15px;
   margin-right: 5px;
   font-weight: 500 !important;
+  font-size: large;
   color: white !important;
   text-align: center;
   white-space: nowrap;
@@ -96,6 +97,7 @@
   margin-right: 20px;
   width: 23px;
   height: 23px;
+  line-height: 23px;
   background-color: #1c7670;
   color: white;
   text-align: center;
@@ -107,6 +109,7 @@
   margin-right: 20px;
   width: 23px;
   height: 23px;
+  line-height: 23px;
   background-color: #fe7f1d;
   color: white;
   text-align: center;
@@ -118,6 +121,7 @@
   margin-right: 20px;
   width: 23px;
   height: 23px;
+  line-height: 23px;
   background-color: #6b208b;
   color: white;
   text-align: center;
@@ -129,6 +133,7 @@
   margin-right: 20px;
   width: 23px;
   height: 23px;
+  line-height: 23px;
   background-color: #9a3b26;
   color: white;
   text-align: center;
@@ -140,6 +145,7 @@
   margin-right: 20px;
   width: 23px;
   height: 23px;
+  line-height: 23px;
   background-color: #5eb6e4;
   color: white;
   text-align: center;

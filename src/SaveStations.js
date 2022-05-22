@@ -5,7 +5,8 @@ import {
   AccordionDetails,
   AccordionSummary,
   Typography,
-} from "@material-ui/core";
+  Stack,
+} from "@mui/material";
 import "./css/SaveStations.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -153,38 +154,73 @@ function SaveStations() {
             {/* Tab Content */}
             {ealSaveStnArray?.length > 0 ? (
               <TabPanel>
-                {ealSaveStnArray?.map((stn) => (
-                  <SaveMTR line="EAL" station={stn} lang={lang} />
-                ))}
+                <Stack
+                  direction="column"
+                  justifyContent="space-evenly"
+                  alignItems="stretch"
+                  spacing={1}
+                >
+                  {ealSaveStnArray?.map((stn) => (
+                    <SaveMTR line="EAL" station={stn} lang={lang} />
+                  ))}
+                </Stack>
               </TabPanel>
             ) : null}
             {tmlSaveStnArray?.length > 0 ? (
               <TabPanel>
-                {tmlSaveStnArray?.map((stn) => (
-                  <SaveMTR line="TML" station={stn} lang={lang} />
-                ))}
+                <Stack
+                  direction="column"
+                  justifyContent="space-evenly"
+                  alignItems="stretch"
+                  spacing={1}
+                >
+                  {tmlSaveStnArray?.map((stn) => (
+                    <SaveMTR line="TML" station={stn} lang={lang} />
+                  ))}
+                </Stack>
               </TabPanel>
             ) : null}
             {tklSaveStnArray?.length > 0 ? (
               <TabPanel>
-                {tklSaveStnArray?.map((stn) => (
-                  <SaveMTR line="TKL" station={stn} lang={lang} />
-                ))}
+                <Stack
+                  direction="column"
+                  justifyContent="space-evenly"
+                  alignItems="stretch"
+                  spacing={1}
+                >
+                  {tklSaveStnArray?.map((stn) => (
+                    <SaveMTR line="TKL" station={stn} lang={lang} />
+                  ))}
+                </Stack>
               </TabPanel>
             ) : null}
 
             {tclSaveStnArray?.length > 0 ? (
               <TabPanel>
-                {tclSaveStnArray?.map((stn) => (
-                  <SaveMTR line="TCL" station={stn} lang={lang} />
-                ))}
+                <Stack
+                  direction="column"
+                  justifyContent="space-evenly"
+                  alignItems="stretch"
+                  spacing={1}
+                >
+                  {tclSaveStnArray?.map((stn) => (
+                    <SaveMTR line="TCL" station={stn} lang={lang} />
+                  ))}
+                </Stack>
               </TabPanel>
             ) : null}
             {aelSaveStnArray?.length > 0 ? (
               <TabPanel>
-                {aelSaveStnArray?.map((stn) => (
-                  <SaveMTR line="AEL" station={stn} lang={lang} />
-                ))}
+                <Stack
+                  direction="column"
+                  justifyContent="space-evenly"
+                  alignItems="stretch"
+                  spacing={1}
+                >
+                  {aelSaveStnArray?.map((stn) => (
+                    <SaveMTR line="AEL" station={stn} lang={lang} />
+                  ))}
+                </Stack>
               </TabPanel>
             ) : null}
             {lrtSaveStnArray?.length > 0 ? (

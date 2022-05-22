@@ -13,7 +13,7 @@ const Common = {
     stn: "Station",
     lastUpdate: "Last Update",
     eta: "ETA",
-    to: "To ",
+    to: "to ",
     plat: "Platform",
     defaultLine: "Urban Lines",
     saveF: "Save",

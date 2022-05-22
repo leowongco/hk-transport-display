@@ -36,7 +36,8 @@
 }
 
 .header__time {
-  font-size: small;
+  font-size: medium;
+  font-weight: 400;
   color: white;
   margin-right: 5px;
 }

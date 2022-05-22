@@ -84,7 +84,11 @@ function MTRInfo({ line, station, lang, mode }) {
   }, [line, station]);
 
   function NonServiceHours(props) {
-    return <p align="center">未有到站時間 No ETA Information</p>;
+    return (
+      <Alert variant="outlined" severity="warning">
+        未有到站時間 No ETA Information
+      </Alert>
+    );
   }
 
   function ShowDestationText(line, station, dir) {
@@ -144,6 +148,24 @@ function MTRInfo({ line, station, lang, mode }) {
           case "down":
             return Dict.MtrStations.NOP[lang + "_name"];
         }
+    }
+  }
+
+  function FillEmptyRows(row) {
+    if (row.row < 8) {
+      // let rowNeedToFill = 4 - row.row;
+      // for (let i = 0; i < rowNeedToFill; i++)
+      //   return (
+      //     <div
+      //       className="etaBox"
+      //       style={{ backgroundColor: i % 2 === 0 ? "white" : "#aae2fd" }}
+      //     >
+      //       {rowNeedToFill}
+      //     </div>
+      //   );
+      return null;
+    } else {
+      return null;
     }
   }
 
@@ -248,9 +270,11 @@ function MTRInfo({ line, station, lang, mode }) {
             </div>
           )}
           {mtrEta.UP?.length === 0 && mtrEta.DOWN?.length === 0 ? (
-            <NonServiceHours />
+            <CardContent>
+              <NonServiceHours />
+            </CardContent>
           ) : null}
-          {mtrEta?.UP != null && mtrEta?.UP.length > 0 ? (
+          {mtrEta?.UP !== null && mtrEta.UP?.length > 0 ? (
             <CardContent>
               <div className={"mtrstation__header" + line}>
                 <div className="station__name">
@@ -295,10 +319,11 @@ function MTRInfo({ line, station, lang, mode }) {
                   </div>
                 </div>
               ))}
+              <FillEmptyRows row={mtrEta.UP.length} />
             </CardContent>
           ) : null}
 
-          {mtrEta.DOWN != null && mtrEta.DOWN.length > 0 ? (
+          {mtrEta.DOWN !== null && mtrEta.DOWN?.length > 0 ? (
             <CardContent>
               <div className={"mtrstation__header" + line}>
                 <div className="station__name">
@@ -339,6 +364,7 @@ function MTRInfo({ line, station, lang, mode }) {
                   </div>
                 </div>
               ))}
+              <FillEmptyRows row={mtrEta.DOWN.length} />
             </CardContent>
           ) : null}
 
