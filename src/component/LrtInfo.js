@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, CardContent, Chip, Button, LinearProgress } from "@mui/material";
+import { Card, CardContent, Chip, LinearProgress } from "@mui/material";
+import { Button } from "@material-ui/core";
 import TextLoop from "react-text-loop";
 import Dict from "./LRT_Dict.js";
 import "../css/LRTInfo.css";
