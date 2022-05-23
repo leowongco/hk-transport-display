@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, CardContent, Chip, Button } from "@material-ui/core";
+import { Card, CardContent, Chip, Button, LinearProgress } from "@mui/material";
 import TextLoop from "react-text-loop";
 import Dict from "./LRT_Dict.js";
 import "../css/LRTInfo.css";
 import LRTTrain from "../img/lrt_train.png";
 import Save from "@material-ui/icons/StarBorder";
 import Saved from "@material-ui/icons/Star";
-import LinearProgress from "@material-ui/core/LinearProgress";
 
 function LrtInfo({ sid, lang, mode }) {
   const [lrtETA, setLRTEta] = useState();

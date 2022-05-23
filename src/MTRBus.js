@@ -5,7 +5,7 @@ import {
   InputLabel,
   MenuItem,
   Select,
-} from "@material-ui/core";
+} from "@mui/material";
 
 import MTRBus_Dict from "./component/MTRBus_Dict";
 import MTRBusInfo from "./component/MTRBusInfo";

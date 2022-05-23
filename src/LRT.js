@@ -4,12 +4,12 @@ import {
   InputLabel,
   MenuItem,
   Select,
-} from "@material-ui/core";
+  Alert,
+} from "@mui/material";
 import React, { useState } from "react";
 import Dict from "./component/LRT_Dict.js";
 import LrtInfo from "./component/LrtInfo.js";
 import "./css/LRT.css";
-import Alert from "@material-ui/lab/Alert";
 import LRTLogo from "./img/LR_old.png";
 import GTranslateOutlinedIcon from "@material-ui/icons/GTranslateOutlined";
 import RouteIcon from "@material-ui/icons/LinearScale";

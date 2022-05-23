@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, CardContent, Button } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import {
+  Alert,
+  LinearProgress,
+  Container,
+  Card,
+  CardContent,
+} from "@mui/material";
 import Dict from "./MTR_Dict.js";
 import "../css/MTRInfo.css";
 import Save from "@material-ui/icons/StarBorder";
 import Saved from "@material-ui/icons/Star";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import Alert from "@material-ui/lab/Alert";
 
 function MTRInfo({ line, station, lang, mode }) {
   const [mtrEta, setMtrEta] = useState([]);
@@ -195,15 +200,18 @@ function MTRInfo({ line, station, lang, mode }) {
               <Alert severity="error">
                 {Dict.Error[lang][mtrError.errorCode]}
               </Alert>
-            ) : null}
-            <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
-            <p align="center">Cannnot Retrieve ETA information</p>
-            <p align="center">Please try again later.</p>
-            <p align="center">
-              <font size="1">
-                <i>API Capture Failed</i>
-              </font>
-            </p>
+            ) : (
+              <Container>
+                <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
+                <p align="center">Cannnot Retrieve ETA information</p>
+                <p align="center">Please try again later.</p>
+                <p align="center">
+                  <font size="1">
+                    <i>API Capture Failed</i>
+                  </font>
+                </p>
+              </Container>
+            )}
           </CardContent>
         </Card>
       </div>

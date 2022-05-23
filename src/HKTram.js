@@ -4,12 +4,12 @@ import {
   InputLabel,
   MenuItem,
   Select,
-} from "@material-ui/core";
+  Alert,
+} from "@mui/material";
 import React, { useState } from "react";
 import Dict from "./component/HKTram_Dict.js";
 import HKTramInfo from "./component/HKTramInfo";
 import "./css/LRT.css";
-import Alert from "@material-ui/lab/Alert";
 import HKTLogo from "./img/HKTramLogo.svg";
 import GTranslateOutlinedIcon from "@material-ui/icons/GTranslateOutlined";
 import RouteIcon from "@material-ui/icons/LinearScale";

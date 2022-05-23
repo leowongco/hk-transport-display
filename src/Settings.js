@@ -11,7 +11,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from "@material-ui/core";
+} from "@mui/material";
 import Marquee from "react-fast-marquee";
 
 import DictM from "./component/MTR_Dict.js";

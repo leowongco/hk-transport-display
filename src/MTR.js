@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import MTRETA from "./component/MTRInfo.js";
-import Alert from "@material-ui/lab/Alert";
 import Dict from "./component/MTR_Dict.js";
 import {
   Button,
@@ -8,7 +7,8 @@ import {
   InputLabel,
   MenuItem,
   Select,
-} from "@material-ui/core";
+  Alert, 
+} from "@mui/material";
 import "./css/MTR.css";
 import AEL_Logo from "./img/AEL_Logo.png";
 import URL_Logo from "./img/URL_Logo.png";

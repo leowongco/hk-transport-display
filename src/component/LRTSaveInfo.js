@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, CardContent } from "@material-ui/core";
+import { Card, CardContent, LinearProgress } from "@mui/material";
 import TextLoop from "react-text-loop";
-import LinearProgress from "@material-ui/core/LinearProgress";
 import "../css/LRTSaveInfo.css";
 
 import LRTTrain from "../img/lrt_train.png";

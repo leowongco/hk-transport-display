@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, CardContent, Divider } from "@material-ui/core";
+import { Card, CardContent, Divider, LinearProgress, Alert } from "@mui/material";
 import DictM from "./MTR_Dict.js";
 import "../css/MTRInfo.css";
 import "../css/SaveStnInfo.css";
-import LinearProgress from "@material-ui/core/LinearProgress";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import Blink from "react-blink-text";
 import { Link } from "react-router-dom";
 import TextLoop from "react-text-loop";
-import Alert from "@mui/material/Alert";
 
 function MTRSaveInfo({ line, station, lang }) {
   const [mtrEta, setMtrEta] = useState([]);
