@@ -1,5 +1,5 @@
 import React from "react";
-import Dict from "./LRT_Dict";
+import Dict from "../dict/LRT_Dict";
 
 function LRTRouteMap() {
   var colorCode = Dict.lrtRoutes[line].colorCode;

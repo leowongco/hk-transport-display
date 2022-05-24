@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, CardContent, Chip, LinearProgress } from "@mui/material";
-import { Button } from "@material-ui/core";
+import { Card, CardContent, Chip, LinearProgress, Button } from "@mui/material";
 import TextLoop from "react-text-loop";
-import Dict from "./LRT_Dict.js";
+import Dict from "../dict/LRT_Dict.js";
 import "../css/LRTInfo.css";
 import LRTTrain from "../img/lrt_train.png";
 import Save from "@material-ui/icons/StarBorder";
@@ -116,33 +115,42 @@ function LrtInfo({ sid, lang, mode }) {
     }
   }
 
+  function AddToFav(props) {
+    if (isLoading) {
+      return (
+        <LinearProgress
+          color="primary"
+          sx={{
+            background: "darkblue",
+            opacity: "50%",
+          }}
+        />
+      );
+    } else if (mode === "fav") {
+      return null;
+    } else {
+      return (
+        <div className="favouriteBox">
+          <Button
+            variant="contained"
+            size="small"
+            endIcon={lrtStnSaved ? <Saved /> : <Save />}
+            onClick={() => handleLocalStorage(sid)}
+          >
+            {lrtStnSaved === true
+              ? Dict.lrtCommon[lang].saveTrue
+              : Dict.lrtCommon[lang].saveFalse}
+          </Button>
+        </div>
+      );
+    }
+  }
+
   if (lrtETA?.status === 0) {
     return (
       <div className="lrtinfo">
         <Card className="infobox">
-          {isLoading === true ? (
-            <LinearProgress
-              color="primary"
-              sx={{
-                backgroundColor: "darkblue",
-              }}
-            />
-          ) : mode === "fav" ? null : (
-            <div className="favouriteBox">
-              <Button
-                variant="contained"
-                color={lrtStnSaved === true ? "" : "primary"}
-                size="small"
-                endIcon={lrtStnSaved === true ? <Saved /> : <Save />}
-                onClick={() => handleLocalStorage(sid)}
-              >
-                {lrtStnSaved === true
-                  ? Dict.lrtCommon[lang].saveTrue
-                  : Dict.lrtCommon[lang].saveFalse}
-              </Button>
-            </div>
-          )}
-
+          <AddToFav />
           <CardContent>
             <p>未能讀取到站時間，請稍後再嘗試。</p>
             <p>Cannnot Retrieve ETA information, Please try again later.</p>
@@ -166,29 +174,7 @@ function LrtInfo({ sid, lang, mode }) {
     return (
       <div className="lrtinfo">
         <Card className="infobox">
-          {isLoading === true ? (
-            <LinearProgress
-              color="primary"
-              sx={{
-                backgroundColor: "darkblue",
-              }}
-            />
-          ) : mode === "fav" ? null : (
-            <div className="favouriteBox">
-              <Button
-                variant="contained"
-                color={lrtStnSaved === true ? "" : "primary"}
-                size="small"
-                endIcon={lrtStnSaved === true ? <Saved /> : <Save />}
-                onClick={() => handleLocalStorage(sid)}
-              >
-                {lrtStnSaved === true
-                  ? Dict.lrtCommon[lang].saveTrue
-                  : Dict.lrtCommon[lang].saveFalse}
-              </Button>
-            </div>
-          )}
-
+          <AddToFav />
           {lrtETA?.platform_list.map((plat) => (
             <CardContent>
               <div className="station__header">

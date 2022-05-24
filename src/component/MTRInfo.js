@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Button } from "@material-ui/core";
 import {
   Alert,
   LinearProgress,
   Container,
   Card,
   CardContent,
+  Button,
 } from "@mui/material";
-import Dict from "./MTR_Dict.js";
+import Dict from "../dict/MTR_Dict.js";
 import "../css/MTRInfo.css";
 import Save from "@material-ui/icons/StarBorder";
 import Saved from "@material-ui/icons/Star";
@@ -174,27 +174,42 @@ function MTRInfo({ line, station, lang, mode }) {
     }
   }
 
+  function AddToFav(props) {
+    if (isLoading) {
+      return (
+        <LinearProgress
+          color="primary"
+          sx={{
+            background: "darkblue",
+            opacity: "50%",
+          }}
+        />
+      );
+    } else if (mode === "fav") {
+      return null;
+    } else {
+      return (
+        <div className="favouriteBox">
+          <Button
+            variant="contained"
+            size="small"
+            endIcon={stnSaved ? <Saved /> : <Save />}
+            onClick={() => handleLocalStorage(station)}
+          >
+            {stnSaved === true
+              ? Dict.Common[lang].saveT
+              : Dict.Common[lang].saveF}
+          </Button>
+        </div>
+      );
+    }
+  }
+
   if (mtrStatus === 0 || mtrEta === null) {
     return (
       <div className="mtrInfo">
         <Card className="infobox">
-          {isLoading === true ? (
-            <LinearProgress color="primary" />
-          ) : mode === "fav" ? null : (
-            <div className="favouriteBox">
-              <Button
-                variant="contained"
-                color={stnSaved === true ? "" : "primary"}
-                size="small"
-                endIcon={stnSaved === true ? <Saved /> : <Save />}
-                onClick={() => handleLocalStorage(station)}
-              >
-                {stnSaved === true
-                  ? Dict.Common[lang].saveT
-                  : Dict.Common[lang].saveF}
-              </Button>
-            </div>
-          )}
+          <AddToFav />
           <CardContent>
             {mtrError !== null ? (
               <Alert severity="error">
@@ -220,23 +235,7 @@ function MTRInfo({ line, station, lang, mode }) {
     return (
       <div className="mtrInfo">
         <Card className="infobox">
-          {isLoading === true ? (
-            <LinearProgress color="primary" />
-          ) : mode === "fav" ? null : (
-            <div className="favouriteBox">
-              <Button
-                variant="contained"
-                color={stnSaved === true ? "" : "primary"}
-                size="small"
-                endIcon={stnSaved === true ? <Saved /> : <Save />}
-                onClick={() => handleLocalStorage(station)}
-              >
-                {stnSaved === true
-                  ? Dict.Common[lang].saveT
-                  : Dict.Common[lang].saveF}
-              </Button>
-            </div>
-          )}
+          <AddToFav />
           <CardContent>
             <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
             <p align="center">Cannnot Retrieve ETA information</p>
@@ -254,29 +253,7 @@ function MTRInfo({ line, station, lang, mode }) {
     return (
       <div className="mtrInfo">
         <Card className="infobox">
-          {isLoading === true ? (
-            <LinearProgress
-              color="primary"
-              sx={{
-                background: "darkblue",
-                opacity: "50%",
-              }}
-            />
-          ) : mode === "fav" ? null : (
-            <div className="favouriteBox">
-              <Button
-                variant="contained"
-                color={stnSaved === true ? "" : "primary"}
-                size="small"
-                endIcon={stnSaved === true ? <Saved /> : <Save />}
-                onClick={() => handleLocalStorage(station)}
-              >
-                {stnSaved === true
-                  ? Dict.Common[lang].saveT
-                  : Dict.Common[lang].saveF}
-              </Button>
-            </div>
-          )}
+          <AddToFav />
           {mtrEta.UP?.length === 0 && mtrEta.DOWN?.length === 0 ? (
             <CardContent>
               <NonServiceHours />

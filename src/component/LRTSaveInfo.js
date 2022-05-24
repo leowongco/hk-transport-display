@@ -6,7 +6,7 @@ import "../css/LRTSaveInfo.css";
 
 import LRTTrain from "../img/lrt_train.png";
 
-import DictL from "./LRT_Dict";
+import DictL from "../dict/LRT_Dict";
 
 function LRTSaveInfo({ sid, lang }) {
   const [lrtETA, setLRTEta] = useState();

@@ -19,6 +19,12 @@
   background-color: #005da0;
 }
 
+.favouriteBox {
+  width: 100%;
+  padding-left: 15px;
+  padding-top: 10px;
+}
+
 .mtrstation__headerTCL {
   background-color: #fe7f1d;
   width: 100%;

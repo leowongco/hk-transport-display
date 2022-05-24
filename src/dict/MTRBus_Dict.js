@@ -1,4 +1,8 @@
 const common = {
+  mtrBus: {
+    en_name: "MTR Feeder Bus",
+    tc_name: "港鐵巴士",
+  },
   scheduleDep: {
     en_name: "Scheduled",
     tc_name: "預定班次",

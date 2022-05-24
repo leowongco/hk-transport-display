@@ -7,7 +7,7 @@ import {
   Select,
 } from "@mui/material";
 
-import MTRBus_Dict from "./component/MTRBus_Dict";
+import MTRBus_Dict from "./dict/MTRBus_Dict";
 import MTRBusInfo from "./component/MTRBusInfo";
 import "./css/MTRBus.css";
 

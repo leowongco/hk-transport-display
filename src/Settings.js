@@ -14,8 +14,9 @@ import {
 } from "@mui/material";
 import Marquee from "react-fast-marquee";
 
-import DictM from "./component/MTR_Dict.js";
-import DictL from "./component/LRT_Dict.js";
+import DictM from "./dict/MTR_Dict.js";
+import DictL from "./dict/LRT_Dict.js";
+import DictB from "./dict/MTRBus_Dict.js";
 
 function Settings() {
   const langDict = {
@@ -92,6 +93,7 @@ function Settings() {
   const [aelSaveStnArray, setAelSaveStnArray] = useState();
   const [tmlSaveStnArray, setTmlSaveStnArray] = useState();
   const [lrtSaveStnArray, setLrtSaveStnArray] = useState();
+  const [mtrBusSaveStnArray, setMtrBusSaveStnArray] = useState();
   const [lang, setLang] = useState("");
   const [open, setOpen] = useState(false);
   const [delLine, setDelLine] = useState("");
@@ -105,6 +107,7 @@ function Settings() {
     setAelSaveStnArray(JSON.parse(storage.getItem("AEL_SaveStn")));
     setTmlSaveStnArray(JSON.parse(storage.getItem("TML_SaveStn")));
     setLrtSaveStnArray(JSON.parse(storage.getItem("LrtSaveStn")));
+    setMtrBusSaveStnArray(JSON.parse(storage.getItem("MTRBus_SaveStn")));
     setLang(storage.getItem("savedLanguage"));
     setMtrStatus(storage.getItem("statusInMtrETA"));
   }, [storage]);
@@ -137,6 +140,8 @@ function Settings() {
         return setTmlSaveStnArray(tempArr);
       case "lrt":
         return setLrtSaveStnArray(tempArrL);
+      case "MTRBus":
+        return setMtrBusSaveStnArray(tempArr);
       default:
         return null;
     }
@@ -171,6 +176,10 @@ function Settings() {
         case "lrt":
           storage.setItem("LrtSaveStn", newArray);
           setLrtSaveStnArray(newArray);
+          break;
+        case "MTRBus":
+          storage.setItem("MTRBus_SaveStn", JSON.stringify(newArray));
+          setMtrBusSaveStnArray(newArray);
           break;
         default:
           return null;
@@ -451,6 +460,40 @@ function Settings() {
               <Button
                 onClick={() => {
                   handleDeleteAll("lrt");
+                }}
+                variant="outlined"
+              >
+                {langDict.delAll[lang + "_name"]}
+              </Button>
+            )}
+          </div>
+        </div>
+
+        {/* MTR Bus */}
+        <div className="settingRow">
+          <div className="saveStnLine" style={{ background: "navy" }}>
+            {DictB.common.mtrBus.tc_name + " " + DictB.common.mtrBus.en_name}
+          </div>
+        </div>
+        <div className="settingRow">
+          {mtrBusSaveStnArray?.length > 0 ? (
+            <div className="saveStnDetails">
+              {mtrBusSaveStnArray?.map((stn, i) => (
+                <Chip
+                  label={DictM.MtrStations[stn][lang + "_name"]}
+                  onDelete={() => handleDelete(stn, "MTRBus")}
+                  color="primary"
+                />
+              ))}
+            </div>
+          ) : (
+            langDict.emptySaveStn[lang + "_name"]
+          )}
+          <div className="saveStnActions">
+            {mtrBusSaveStnArray?.length === 0 ? null : (
+              <Button
+                onClick={() => {
+                  handleDeleteAll("MTRBus");
                 }}
                 variant="outlined"
               >

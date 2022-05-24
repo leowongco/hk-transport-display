@@ -7,7 +7,7 @@ import {
   Alert,
 } from "@mui/material";
 import React, { useState } from "react";
-import Dict from "./component/LRT_Dict.js";
+import Dict from "./dict/LRT_Dict.js";
 import LrtInfo from "./component/LrtInfo.js";
 import "./css/LRT.css";
 import LRTLogo from "./img/LR_old.png";

@@ -1,17 +1,18 @@
 import React from "react";
+import { makeStyles, useTheme } from "@material-ui/core";
+
 import {
   AppBar,
   Button,
   Divider,
   Drawer,
-  IconButton,
   List,
-  makeStyles,
+  ListItemButton,
+  IconButton,
   Toolbar,
   Typography,
-  useTheme,
-} from "@material-ui/core";
-import ListItem from "@material-ui/core/ListItem";
+  ListItem,
+} from "@mui/material";
 
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -159,10 +160,12 @@ function Header() {
         <List>
           <ListItem>
             <Link to="/" onClick={handleDrawerClose}>
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              主頁 Home
+              <ListItemButton>
+                <ListItemIcon>
+                  <HomeIcon />
+                </ListItemIcon>
+                主頁 <br /> Home
+              </ListItemButton>
             </Link>
           </ListItem>
         </List>
@@ -170,34 +173,45 @@ function Header() {
         <List>
           <ListItem>
             <Link to="/mtr-status" onClick={handleDrawerClose}>
-              <ListItemIcon>
-                <CheckCircleIcon />
-              </ListItemIcon>
-              <span>港鐵狀態 MTR Status</span>
+              <ListItemButton>
+                <ListItemIcon>
+                  <CheckCircleIcon />
+                </ListItemIcon>
+                港鐵狀態
+                <br />
+                MTR Status
+              </ListItemButton>
             </Link>
           </ListItem>
           <ListItem>
             <Link to="/lrt" onClick={handleDrawerClose}>
-              <ListItemIcon>
-                <TramIcon />
-              </ListItemIcon>
-              輕鐵 Light Rail
+              <ListItemButton>
+                <ListItemIcon>
+                  <TramIcon />
+                </ListItemIcon>
+                輕鐵 <br /> Light Rail
+              </ListItemButton>
             </Link>
           </ListItem>
           <ListItem>
             <Link to={"/mtr/l/s"} onClick={handleDrawerClose}>
-              <ListItemIcon>
-                <TrainIcon />
-              </ListItemIcon>
-              市區線 Urban Lines
+              <ListItemButton>
+                <ListItemIcon>
+                  <TrainIcon />
+                </ListItemIcon>
+                市區線 <br />
+                Urban Lines
+              </ListItemButton>
             </Link>
           </ListItem>
           <ListItem>
             <Link to={"/mtrbus"} onClick={handleDrawerClose}>
-              <ListItemIcon>
-                <DirectionsBusIcon />
-              </ListItemIcon>
-              港鐵巴士 MTR Bus
+              <ListItemButton>
+                <ListItemIcon>
+                  <DirectionsBusIcon />
+                </ListItemIcon>
+                港鐵巴士 <br /> MTR Bus
+              </ListItemButton>
             </Link>
           </ListItem>
         </List>
@@ -205,10 +219,12 @@ function Header() {
         <List>
           <ListItem>
             <Link to={"/hktram"} onClick={handleDrawerClose}>
-              <ListItemIcon>
-                <TramIcon />
-              </ListItemIcon>
-              電車 HK Tramways
+              <ListItemButton>
+                <ListItemIcon>
+                  <TramIcon />
+                </ListItemIcon>
+                香港電車 <br /> HK Tramways
+              </ListItemButton>
             </Link>
           </ListItem>
         </List>
@@ -216,10 +232,12 @@ function Header() {
         <List>
           <ListItem>
             <Link to={"/settings"} onClick={handleDrawerClose}>
-              <ListItemIcon>
-                <SettingsIcon />
-              </ListItemIcon>
-              設定 Settings
+              <ListItemButton>
+                <ListItemIcon>
+                  <SettingsIcon />
+                </ListItemIcon>
+                設定 <br /> Settings
+              </ListItemButton>
             </Link>
           </ListItem>
         </List>

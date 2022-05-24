@@ -7,7 +7,7 @@ import {
   Alert,
 } from "@mui/material";
 import React, { useState } from "react";
-import Dict from "./component/HKTram_Dict.js";
+import Dict from "./dict/HKTram_Dict.js";
 import HKTramInfo from "./component/HKTramInfo";
 import "./css/LRT.css";
 import HKTLogo from "./img/HKTramLogo.svg";

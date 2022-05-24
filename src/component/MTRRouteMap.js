@@ -1,5 +1,5 @@
 import React from "react";
-import Dict from "./MTR_Dict";
+import Dict from "../dict/MTR_Dict";
 import Timeline from "@material-ui/lab/Timeline";
 import TimelineItem from "@material-ui/lab/TimelineItem";
 import TimelineSeparator from "@material-ui/lab/TimelineSeparator";

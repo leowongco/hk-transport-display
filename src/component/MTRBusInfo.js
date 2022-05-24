@@ -31,9 +31,9 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import BusLR from "../img/bus_LR.png";
 import BusTML from "../img/bus_TML.png";
 
-import MTRBus_Dict from "./MTRBus_Dict";
-import LRT_Dict from "./LRT_Dict";
-import DictM from "./MTR_Dict";
+import MTRBus_Dict from "../dict/MTRBus_Dict";
+import LRT_Dict from "../dict/LRT_Dict";
+import DictM from "../dict/MTR_Dict";
 import LrtInfo from "./LrtInfo";
 import MTRETA from "./MTRInfo";
 

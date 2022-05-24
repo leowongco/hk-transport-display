@@ -12,8 +12,9 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "react-tabs/style/react-tabs.css";
 
-import DictM from "./component/MTR_Dict.js";
-import DictL from "./component/LRT_Dict.js";
+import DictM from "./dict/MTR_Dict.js";
+import DictL from "./dict/LRT_Dict.js";
+import DictB from "./dict/MTRBus_Dict.js";
 
 import LrtInfo from "./component/LRTSaveInfo";
 
@@ -37,6 +38,7 @@ function SaveStations() {
   const tmlSaveStnArray = JSON.parse(storage.getItem("TML_SaveStn"));
   const lrtSaveStnArray = JSON.parse(storage.getItem("LrtSaveStn"));
   const hkTramStnArray = JSON.parse(storage.getItem("HKTramSaveStn"));
+  const mtrBusSaveStnArray = JSON.parse(storage.getItem("MTRBus_SaveStn"));
   const lang = storage.getItem("savedLanguage");
   var newArray = [];
 
@@ -61,6 +63,9 @@ function SaveStations() {
   if (storage.getItem("HKTramSaveStn") === null) {
     storage.setItem("HKTramSaveStn", JSON.stringify(newArray));
   }
+  if (storage.getItem("MTRBus_SaveStn") === null) {
+    storage.setItem("MTRBus_SaveStn", JSON.stringify(newArray));
+  }
   if (storage.getItem("savedLanguage") === null) {
     storage.setItem("savedLanguage", "tc");
   }
@@ -75,6 +80,7 @@ function SaveStations() {
     aelSaveStnArray?.length === 0 &&
     tmlSaveStnArray?.length === 0 &&
     lrtSaveStnArray?.length === 0 &&
+    mtrBusSaveStnArray?.length === 0 &&
     hkTramStnArray?.length === 0
   ) {
     return (
@@ -147,6 +153,11 @@ function SaveStations() {
               {lrtSaveStnArray?.length > 0 ? (
                 <Tab style={{ backgroundColor: "#02077b", color: "white" }}>
                   {DictM.MtrLines.LR[lang + "_name"]}
+                </Tab>
+              ) : null}
+              {mtrBusSaveStnArray?.length > 0 ? (
+                <Tab style={{ backgroundColor: "navy", color: "white" }}>
+                  {DictB.common.mtrBus[lang + "_name"]}
                 </Tab>
               ) : null}
             </TabList>

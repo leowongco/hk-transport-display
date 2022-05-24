@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Card, CardContent, Divider, LinearProgress, Alert } from "@mui/material";
-import DictM from "./MTR_Dict.js";
+import DictM from "../dict/MTR_Dict.js";
 import "../css/MTRInfo.css";
 import "../css/SaveStnInfo.css";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";

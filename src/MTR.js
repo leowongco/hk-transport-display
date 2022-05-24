@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import MTRETA from "./component/MTRInfo.js";
-import Dict from "./component/MTR_Dict.js";
+import Dict from "./dict/MTR_Dict.js";
 import {
   Button,
   FormControl,
   InputLabel,
   MenuItem,
   Select,
-  Alert, 
+  Alert,
 } from "@mui/material";
 import "./css/MTR.css";
 import AEL_Logo from "./img/AEL_Logo.png";
@@ -37,7 +37,7 @@ function MTR() {
     }
   }, [link_Line, link_Station]);
 
-  if (swapLang === true) {
+  if (swapLang) {
     setTimeout(() => {
       if (lang === "en") {
         setLang("tc");

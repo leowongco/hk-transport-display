@@ -19,9 +19,9 @@ import { Text, Typo } from "reactypo";
 import { Link } from "react-router-dom";
 
 import "../css/MTRStatus.css";
-import Dict from "./MTR_Dict.js";
-import StatusDict from "./MTRStatus_Dict.js";
-import MTR_Dict from "./MTR_Dict.js";
+import Dict from "../dict/MTR_Dict.js";
+import StatusDict from "../dict/MTRStatus_Dict.js";
+import MTR_Dict from "../dict/MTR_Dict.js";
 
 function MTRStatus({ type, line }) {
   const [lineStatus, setLineStatus] = useState();

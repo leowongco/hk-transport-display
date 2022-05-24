@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import convert from "xml-js";
 
-import Dict from "./HKTram_Dict";
+import Dict from "../dict/HKTram_Dict";
 
 import TramIcon from "@mui/icons-material/Tram";
 import { LinearProgress, Chip } from "@mui/material";
