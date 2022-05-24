@@ -12,7 +12,7 @@ import HKTramInfo from "./component/HKTramInfo";
 import "./css/LRT.css";
 import HKTLogo from "./img/HKTramLogo.svg";
 import GTranslateOutlinedIcon from "@material-ui/icons/GTranslateOutlined";
-import RouteIcon from "@material-ui/icons/LinearScale";
+// import RouteIcon from "@material-ui/icons/LinearScale";
 
 import "./css/HKTram.css";
 
@@ -23,8 +23,8 @@ function LRT() {
   const [lang, setLang] = useState(
     window.localStorage.getItem("savedLanguage")
   );
-  const storage = window.localStorage;
-  const hkTramStnArray = JSON.parse(storage.getItem("HKTramSaveStn"));
+  // const storage = window.localStorage;
+  // const hkTramStnArray = JSON.parse(storage.getItem("HKTramSaveStn"));
 
   if (swapLang === true) {
     setTimeout(() => {

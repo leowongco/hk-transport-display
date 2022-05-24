@@ -14,7 +14,6 @@ const Settings = React.lazy(() => import("./Settings.js"));
 const MTRMap = React.lazy(() => import("./component/MTRRouteMap"));
 const MTRStatus = React.lazy(() => import("./component/MTRStatus"));
 const HKTram = React.lazy(() => import("./HKTram"));
-const MTRBusInfo = React.lazy(() => import("./component/MTRBusInfo"));
 const MTRBus = React.lazy(() => import("./MTRBus"));
 
 function App() {

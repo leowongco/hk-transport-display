@@ -22,7 +22,6 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import HomeIcon from "@material-ui/icons/Home";
 import TramIcon from "@material-ui/icons/Tram";
-import DeveloperModeIcon from "@material-ui/icons/DeveloperMode";
 import SettingsIcon from "@material-ui/icons/Settings";
 import CachedIcon from "@material-ui/icons/Cached";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
@@ -108,7 +107,6 @@ function Header() {
     setOpen(false);
   };
 
-  const demoButton = () => {};
 
   return (
     <div className="header">

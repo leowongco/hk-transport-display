@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import convert from "xml-js";
 
-import { Alert, AlertTitle, CircularProgress, Button } from "@mui/material";
+import { Alert, AlertTitle } from "@mui/material";
+import { CircularProgress, Button } from "@material-ui/core";
 import TextLoop from "react-text-loop";
 import Marquee from "react-fast-marquee";
 
 import CheckCircleTwoToneIcon from "@material-ui/icons/CheckCircleTwoTone";
-import ErrorTwoToneIcon from "@material-ui/icons/ErrorTwoTone";
-import RemoveCircleTwoToneIcon from "@material-ui/icons/RemoveCircleTwoTone";
+// import ErrorTwoToneIcon from "@material-ui/icons/ErrorTwoTone";
+// import RemoveCircleTwoToneIcon from "@material-ui/icons/RemoveCircleTwoTone";
 import RailwayAlertIcon from "@mui/icons-material/RailwayAlert";
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import AccessTimeTwoToneIcon from "@material-ui/icons/AccessTimeTwoTone";
-import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 import { RiTyphoonFill } from "react-icons/ri";
 import RailwayAlertOutlinedIcon from "@mui/icons-material/RailwayAlertOutlined";
 
@@ -188,8 +189,8 @@ function MTRStatus({ type, line }) {
                   severity="warning"
                   action={
                     <Link to="/mtr-status">
-                      <Button color="inherit" size="small">
-                        <DoubleArrowIcon />
+                      <Button color="default">
+                        <KeyboardDoubleArrowRightIcon />
                       </Button>
                     </Link>
                   }
@@ -229,8 +230,8 @@ function MTRStatus({ type, line }) {
                   icon={<RailwayAlertOutlinedIcon fontSize="inherit" />}
                   action={
                     <Link to="/mtr-status">
-                      <Button color="inherit" size="small">
-                        <DoubleArrowIcon />
+                      <Button color="default">
+                        <KeyboardDoubleArrowRightIcon />
                       </Button>
                     </Link>
                   }
@@ -274,8 +275,8 @@ function MTRStatus({ type, line }) {
                     severity="success"
                     action={
                       <Link to="/mtr-status">
-                        <Button color="inherit" size="small">
-                          <DoubleArrowIcon />
+                        <Button color="default">
+                          <KeyboardDoubleArrowRightIcon />
                         </Button>
                       </Link>
                     }
@@ -295,11 +296,12 @@ function MTRStatus({ type, line }) {
                 ) : (
                   <Alert
                     icon={<RailwayAlertOutlinedIcon />}
-                    color="grey"
+                    variant="filled"
+                    sx={{ background: "white", color: "black" }}
                     action={
                       <Link to="/mtr-status">
-                        <Button color="inherit" size="small">
-                          <DoubleArrowIcon fontSize="inherit" />
+                        <Button color="default">
+                          <KeyboardDoubleArrowRightIcon />
                         </Button>
                       </Link>
                     }
@@ -385,12 +387,7 @@ function MTRStatus({ type, line }) {
                   <div className="mtrStatus_DetailBtn"></div>
                 ) : (
                   <div className="mtrStatus_DetailBtn">
-                    <Button
-                      href={mLine["url_" + lang]}
-                      color="primary"
-                      size="small"
-                      variant="outlined"
-                    >
+                    <Button color="default" href={mLine["url_" + lang]}>
                       {lang === "en" ? "Details" : "詳情"}
                     </Button>
                   </div>

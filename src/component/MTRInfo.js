@@ -153,6 +153,8 @@ function MTRInfo({ line, station, lang, mode }) {
           case "down":
             return Dict.MtrStations.NOP[lang + "_name"];
         }
+      default:
+        return null;
     }
   }
 
