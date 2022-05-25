@@ -15,7 +15,7 @@ function MTRSaveInfo({ line, station, lang }) {
   const [mtrIsDelay, setMtrIsDelay] = useState("");
   const [mtrStatus, setMtrStatus] = useState("");
   const [mtrError, setMtrError] = useState([]);
-  const limitETA = 3;
+  const limitETA = 4;
 
   const storage = window.localStorage;
   if (storage.getItem(line + "_SaveStn") === null) {

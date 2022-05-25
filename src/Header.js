@@ -31,7 +31,7 @@ import "./css/Header.css";
 import { Link } from "react-router-dom";
 import appInfo from "../package.json";
 
-const drawerWidth = 250;
+const drawerWidth = 275;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -107,7 +107,6 @@ function Header() {
     setOpen(false);
   };
 
-
   return (
     <div className="header">
       <AppBar position="static" className="header__appBar">
@@ -122,16 +121,10 @@ function Header() {
             <MenuIcon />
           </IconButton>
           <img src={Logo} alt="HK Railway Info Logo" height="40px" />
-          <Typography className="header__title">
-            <Link to="/"> 香港鐵路資訊 HK Railway Info</Link>
-          </Typography>
 
-          {/* <Chip
-            size="small"
-            color="secondary"
-            label="Beta!"
-            className="header__chip"
-          />*/}
+          <Typography className="header__title">
+            <Link to="/">香港鐵路資訊 HK Railway Info</Link>
+          </Typography>
         </Toolbar>
       </AppBar>
 
@@ -162,7 +155,9 @@ function Header() {
                 <ListItemIcon>
                   <HomeIcon />
                 </ListItemIcon>
-                主頁 <br /> Home
+                <Typography variant="button" noWrap>
+                  主頁 Home
+                </Typography>
               </ListItemButton>
             </Link>
           </ListItem>
@@ -175,9 +170,9 @@ function Header() {
                 <ListItemIcon>
                   <CheckCircleIcon />
                 </ListItemIcon>
-                港鐵狀態
-                <br />
-                MTR Status
+                <Typography variant="button" noWrap>
+                  港鐵狀態 MTR Status
+                </Typography>
               </ListItemButton>
             </Link>
           </ListItem>
@@ -187,7 +182,9 @@ function Header() {
                 <ListItemIcon>
                   <TramIcon />
                 </ListItemIcon>
-                輕鐵 <br /> Light Rail
+                <Typography variant="button" noWrap>
+                  輕鐵 Light Rail
+                </Typography>
               </ListItemButton>
             </Link>
           </ListItem>
@@ -197,8 +194,9 @@ function Header() {
                 <ListItemIcon>
                   <TrainIcon />
                 </ListItemIcon>
-                市區線 <br />
-                Urban Lines
+                <Typography variant="button" noWrap>
+                  市區線 Urban Lines
+                </Typography>
               </ListItemButton>
             </Link>
           </ListItem>
@@ -208,7 +206,9 @@ function Header() {
                 <ListItemIcon>
                   <DirectionsBusIcon />
                 </ListItemIcon>
-                港鐵巴士 <br /> MTR Bus
+                <Typography variant="button" noWrap>
+                  港鐵巴士 MTR Bus
+                </Typography>
               </ListItemButton>
             </Link>
           </ListItem>
@@ -221,7 +221,9 @@ function Header() {
                 <ListItemIcon>
                   <TramIcon />
                 </ListItemIcon>
-                香港電車 <br /> HK Tramways
+                <Typography variant="button" noWrap>
+                  香港電車 HK Tramways
+                </Typography>
               </ListItemButton>
             </Link>
           </ListItem>
@@ -234,7 +236,9 @@ function Header() {
                 <ListItemIcon>
                   <SettingsIcon />
                 </ListItemIcon>
-                設定 <br /> Settings
+                <Typography variant="button" noWrap>
+                  設定 Settings
+                </Typography>
               </ListItemButton>
             </Link>
           </ListItem>
@@ -242,21 +246,33 @@ function Header() {
         <Divider />
         <List className="bottomController">
           <ListItem>
-            <small>Version: {appInfo.version}</small>
+            <Typography variant="button" noWrap>
+              Version: {appInfo.version}
+            </Typography>
           </ListItem>
           <ListItem>
-            <a
-              href="http://dubdub.pro/"
-              target="_blank"
-              rel="noreferrer"
-              onClick={handleDrawerClose}
+            <Typography variant="button" noWrap>
+              <a
+                href="http://dubdub.pro/"
+                target="_blank"
+                rel="noreferrer"
+                onClick={handleDrawerClose}
+              >
+                DubDub Production
+              </a>
+            </Typography>
+          </ListItem>
+          <ListItem>
+            <Button
+              variant="contained"
+              startIcon={<CachedIcon />}
+              size="small"
+              color="secondary"
+              onClick={() => handleUpdateApp()}
             >
-              DubDub Production
-            </a>
-          </ListItem>
-          <ListItem>
-            <Button onClick={() => handleUpdateApp()}>
-              <CachedIcon />
+              <Typography variant="button" noWrap>
+                重新整理 Refresh
+              </Typography>
             </Button>
             {/* <Button onClick={() => demoButton()} disabled>
               <DeveloperModeIcon />

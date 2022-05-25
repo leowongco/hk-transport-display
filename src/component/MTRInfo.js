@@ -287,8 +287,8 @@ function MTRInfo({ line, station, lang, mode }) {
                         " / " +
                         Dict.MtrStations[train.dest][lang + "_name"]
                       : Dict.MtrStations[train.dest][lang + "_name"]}
-                    {train.route === "RAC" ? (
-                      <small>{" (" + Dict.Common[lang].ealRAC + ")"}</small>
+                   {train.route === "RAC" ? (
+                      " " + Dict.Common[lang].ealRAC 
                     ) : null}
                   </div>
                   <div style={{ flex: "1 0 0" }} />
@@ -333,7 +333,7 @@ function MTRInfo({ line, station, lang, mode }) {
                   <div className="mtr__dest">
                     {Dict.MtrStations[train.dest][lang + "_name"]}
                     {train.route === "RAC" ? (
-                      <small>{"(" + Dict.Common[lang].ealRAC + ")"}</small>
+                      " " + Dict.Common[lang].ealRAC 
                     ) : null}
                   </div>
                   <div style={{ flex: "1 0 0" }} />
