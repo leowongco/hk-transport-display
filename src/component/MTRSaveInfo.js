@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, CardContent, Divider, LinearProgress, Alert } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Divider,
+  LinearProgress,
+  Alert,
+} from "@mui/material";
 import DictM from "../dict/MTR_Dict.js";
 import "../css/MTRInfo.css";
 import "../css/SaveStnInfo.css";
@@ -104,6 +110,12 @@ function MTRSaveInfo({ line, station, lang }) {
         <Link to={"/mtr/" + line + "/" + station}>
           <Card className="infoBox">
             <CardContent>
+              <div className={"mtrstation__header" + line}>
+                <div className="station__name">
+                  {DictM.MtrStations[station][lang + "_name"]}{" "}
+                </div>
+              </div>
+
               {isLoading === true ? (
                 <LinearProgress color="primary" className="loadingBar" />
               ) : null}
