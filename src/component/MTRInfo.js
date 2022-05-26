@@ -7,6 +7,7 @@ import {
   Card,
   CardContent,
   Button,
+  Divider,
 } from "@mui/material";
 import Dict from "../dict/MTR_Dict.js";
 import "../css/MTRInfo.css";
@@ -213,6 +214,11 @@ function MTRInfo({ line, station, lang, mode }) {
         <Card className="infobox">
           <AddToFav />
           <CardContent>
+            {Dict.MtrStations[station][lang + "_rmk"] ? (
+              <Alert severity="info">
+                {Dict.MtrStations[station][lang + "_rmk"]}
+              </Alert>
+            ) : null}
             {mtrError !== null ? (
               <Alert severity="error">
                 {Dict.Error[lang][mtrError.errorCode]}
@@ -239,6 +245,11 @@ function MTRInfo({ line, station, lang, mode }) {
         <Card className="infobox">
           <AddToFav />
           <CardContent>
+            {Dict.MtrStations[station][lang + "_rmk"] ? (
+              <Alert severity="info">
+                {Dict.MtrStations[station][lang + "_rmk"]}
+              </Alert>
+            ) : null}
             <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
             <p align="center">Cannnot Retrieve ETA information</p>
             <p align="center">Please try again later.</p>
@@ -258,11 +269,21 @@ function MTRInfo({ line, station, lang, mode }) {
           <AddToFav />
           {mtrEta.UP?.length === 0 && mtrEta.DOWN?.length === 0 ? (
             <CardContent>
+              {Dict.MtrStations[station][lang + "_rmk"] ? (
+                <Alert severity="info">
+                  {Dict.MtrStations[station][lang + "_rmk"]}
+                </Alert>
+              ) : null}
               <NonServiceHours />
             </CardContent>
           ) : null}
           {mtrEta?.UP !== null && mtrEta.UP?.length > 0 ? (
             <CardContent>
+              {Dict.MtrStations[station][lang + "_rmk"] ? (
+                <Alert severity="info">
+                  {Dict.MtrStations[station][lang + "_rmk"]}
+                </Alert>
+              ) : null}
               <div className={"mtrstation__header" + line}>
                 <div className="station__name">
                   {Dict.MtrStations[station][lang + "_name"]}{" "}
@@ -287,9 +308,9 @@ function MTRInfo({ line, station, lang, mode }) {
                         " / " +
                         Dict.MtrStations[train.dest][lang + "_name"]
                       : Dict.MtrStations[train.dest][lang + "_name"]}
-                   {train.route === "RAC" ? (
-                      " " + Dict.Common[lang].ealRAC 
-                    ) : null}
+                    {train.route === "RAC"
+                      ? " " + Dict.Common[lang].ealRAC
+                      : null}
                   </div>
                   <div style={{ flex: "1 0 0" }} />
                   <div className={"mtr__plat" + line}>{train.plat}</div>
@@ -312,6 +333,11 @@ function MTRInfo({ line, station, lang, mode }) {
 
           {mtrEta.DOWN !== null && mtrEta.DOWN?.length > 0 ? (
             <CardContent>
+              {Dict.MtrStations[station][lang + "_rmk"] ? (
+                <Alert severity="info">
+                  {Dict.MtrStations[station][lang + "_rmk"]}
+                </Alert>
+              ) : null}
               <div className={"mtrstation__header" + line}>
                 <div className="station__name">
                   {Dict.MtrStations[station][lang + "_name"]}
@@ -332,9 +358,9 @@ function MTRInfo({ line, station, lang, mode }) {
                 >
                   <div className="mtr__dest">
                     {Dict.MtrStations[train.dest][lang + "_name"]}
-                    {train.route === "RAC" ? (
-                      " " + Dict.Common[lang].ealRAC 
-                    ) : null}
+                    {train.route === "RAC"
+                      ? " " + Dict.Common[lang].ealRAC
+                      : null}
                   </div>
                   <div style={{ flex: "1 0 0" }} />
                   <div className={"mtr__plat" + line}>{train.plat}</div>

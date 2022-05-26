@@ -203,6 +203,7 @@ function MTRStatus({ type, line }) {
                     gradientWidth="0"
                     style={{ margin: "0px auto", width: "70vw" }}
                     speed={50}
+                    delay={3}
                   >
                     <span>
                       {lang === "tc"
@@ -248,6 +249,7 @@ function MTRStatus({ type, line }) {
                     gradientWidth="0"
                     style={{ margin: "0px auto", width: "70vw" }}
                     speed={50}
+                    delay={3}
                   >
                     <span>
                       {lang === "tc"
