@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Marquee from "react-fast-marquee";
+import { Typography } from "@mui/material";
+
+import ReportIcon from "@mui/icons-material/Report";
 
 import "../css/HK_weather.css";
 
@@ -146,23 +149,30 @@ function HK_weather() {
             <ShowWarnings />
           </div>
           {typeof temperature !== "undefined" && temperature !== "" ? (
-            <div className="weatherBanner_Temperature">
+            <Typography variant="body1" className="weatherBanner_Temperature">
               {temperature.value + String.fromCharCode(176) + temperature.unit}
-            </div>
+            </Typography>
           ) : null}
           {typeof humidity !== "undefined" && humidity !== "" ? (
-            <div className="weatherBanner_Humidity">{humidity + "\u0025"}</div>
+            <Typography variant="body1" className="weatherBanner_Humidity">
+              {humidity + "\u0025"}
+            </Typography>
           ) : null}
           <div style={{ flex: "1 0 0" }} />
-          <div className="currentTime">{liveTime}</div>
+          <Typography variant="body1" className="currentTime">
+            {liveTime}
+          </Typography>
         </div>
         {typeof specialWxTips !== "undefined" && specialWxTips !== "" ? (
           <div className="weatherBanner_RowTip">
-            <Marquee gradientWidth={0} speed={50}>
+            <Marquee gradientWidth={0} speed={50} delay={3}>
               {specialWxTips?.map((tip, i) => (
-                <span className="weatherBanner_SpecialWxTips">
-                  {" ⚠️ " + tip}
-                </span>
+                <Typography
+                  variant="body2"
+                  className="weatherBanner_SpecialWxTips"
+                >
+                  {"⚠️ " + (i + 1) + ". " + tip}
+                </Typography>
               ))}
             </Marquee>
           </div>

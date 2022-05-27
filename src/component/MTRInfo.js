@@ -7,6 +7,7 @@ import {
   Card,
   CardContent,
   Button,
+  Stack,
   Divider,
 } from "@mui/material";
 import Dict from "../dict/MTR_Dict.js";
@@ -214,27 +215,29 @@ function MTRInfo({ line, station, lang, mode }) {
         <Card className="infobox">
           <AddToFav />
           <CardContent>
-            {Dict.MtrStations[station][lang + "_rmk"] ? (
-              <Alert severity="info">
-                {Dict.MtrStations[station][lang + "_rmk"]}
-              </Alert>
-            ) : null}
-            {mtrError !== null ? (
-              <Alert severity="error">
-                {Dict.Error[lang][mtrError.errorCode]}
-              </Alert>
-            ) : (
-              <Container>
-                <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
-                <p align="center">Cannnot Retrieve ETA information</p>
-                <p align="center">Please try again later.</p>
-                <p align="center">
-                  <font size="1">
-                    <i>API Capture Failed</i>
-                  </font>
-                </p>
-              </Container>
-            )}
+            <Stack spacing={2}>
+              {Dict.MtrStations[station][lang + "_rmk"] ? (
+                <Alert severity="info">
+                  {Dict.MtrStations[station][lang + "_rmk"]}
+                </Alert>
+              ) : null}
+              {mtrError !== null ? (
+                <Alert severity="error">
+                  {Dict.Error[lang][mtrError.errorCode]}
+                </Alert>
+              ) : (
+                <Container>
+                  <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
+                  <p align="center">Cannnot Retrieve ETA information</p>
+                  <p align="center">Please try again later.</p>
+                  <p align="center">
+                    <font size="1">
+                      <i>API Capture Failed</i>
+                    </font>
+                  </p>
+                </Container>
+              )}
+            </Stack>
           </CardContent>
         </Card>
       </div>
@@ -245,19 +248,21 @@ function MTRInfo({ line, station, lang, mode }) {
         <Card className="infobox">
           <AddToFav />
           <CardContent>
-            {Dict.MtrStations[station][lang + "_rmk"] ? (
-              <Alert severity="info">
-                {Dict.MtrStations[station][lang + "_rmk"]}
-              </Alert>
-            ) : null}
-            <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
-            <p align="center">Cannnot Retrieve ETA information</p>
-            <p align="center">Please try again later.</p>
-            <p align="center">
-              <font size="1">
-                <i>API Capture Success, no Data Returned.</i>
-              </font>
-            </p>
+            <Stack spacing={2}>
+              {Dict.MtrStations[station][lang + "_rmk"] ? (
+                <Alert severity="info">
+                  {Dict.MtrStations[station][lang + "_rmk"]}
+                </Alert>
+              ) : null}
+              <p align="center">未能讀取到站時間，請稍後再嘗試。</p>
+              <p align="center">Cannnot Retrieve ETA information</p>
+              <p align="center">Please try again later.</p>
+              <p align="center">
+                <font size="1">
+                  <i>API Capture Success, no Data Returned.</i>
+                </font>
+              </p>
+            </Stack>
           </CardContent>
         </Card>
       </div>
@@ -266,139 +271,136 @@ function MTRInfo({ line, station, lang, mode }) {
     return (
       <div className="mtrInfo">
         <Card className="infobox">
-          <AddToFav />
-          {mtrEta.UP?.length === 0 && mtrEta.DOWN?.length === 0 ? (
-            <CardContent>
-              {Dict.MtrStations[station][lang + "_rmk"] ? (
-                <Alert severity="info">
-                  {Dict.MtrStations[station][lang + "_rmk"]}
-                </Alert>
-              ) : null}
-              <NonServiceHours />
-            </CardContent>
-          ) : null}
-          {mtrEta?.UP !== null && mtrEta.UP?.length > 0 ? (
-            <CardContent>
-              {Dict.MtrStations[station][lang + "_rmk"] ? (
-                <Alert severity="info">
-                  {Dict.MtrStations[station][lang + "_rmk"]}
-                </Alert>
-              ) : null}
-              <div className={"mtrstation__header" + line}>
-                <div className="station__name">
-                  {Dict.MtrStations[station][lang + "_name"]}{" "}
+          <Stack spacing={1}>
+            <AddToFav />
+            {Dict.MtrStations[station][lang + "_rmk"] ? (
+              <Alert severity="info">
+                {Dict.MtrStations[station][lang + "_rmk"]}
+              </Alert>
+            ) : null}
+            {mtrEta.UP?.length === 0 && mtrEta.DOWN?.length === 0 ? (
+              <CardContent>
+                <NonServiceHours />
+              </CardContent>
+            ) : null}
+
+            {mtrEta?.UP !== null && mtrEta.UP?.length > 0 ? (
+              <CardContent>
+                <div className={"mtrstation__header" + line}>
+                  <div className="station__name">
+                    {Dict.MtrStations[station][lang + "_name"]}{" "}
+                  </div>
+                  <div className="header__line">
+                    {" (" +
+                      Dict.Common[lang].boundFor +
+                      " " +
+                      ShowDestationText(line, station, "up") +
+                      ")"}
+                  </div>
                 </div>
-                <div className="header__line">
-                  {" (" +
-                    Dict.Common[lang].boundFor +
-                    " " +
-                    ShowDestationText(line, station, "up") +
-                    ")"}
+
+                {mtrEta.UP?.map((train, i) => (
+                  <div
+                    className="etaBox"
+                    style={{
+                      backgroundColor: i % 2 === 0 ? "white" : "#aae2fd",
+                    }}
+                  >
+                    <div className="mtr__dest">
+                      {train.dest === "AWE" && station !== "AIR"
+                        ? Dict.MtrStations.AIR[lang + "_name"] +
+                          " / " +
+                          Dict.MtrStations[train.dest][lang + "_name"]
+                        : Dict.MtrStations[train.dest][lang + "_name"]}
+                      {train.route === "RAC"
+                        ? " " + Dict.Common[lang].ealRAC
+                        : null}
+                    </div>
+                    <div style={{ flex: "1 0 0" }} />
+                    <div className={"mtr__plat" + line}>{train.plat}</div>
+                    <div className="mtr__time">
+                      {train.ttnt < "1" ? (
+                        <span>{Dict.Common[lang].dep}</span>
+                      ) : train.ttnt === "1" ? (
+                        <span>{Dict.Common[lang].arr}</span>
+                      ) : (
+                        <span>
+                          {train.ttnt} <small>{Dict.Common[lang].min}</small>
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+                <FillEmptyRows row={mtrEta.UP.length} />
+              </CardContent>
+            ) : null}
+
+            {mtrEta.DOWN !== null && mtrEta.DOWN?.length > 0 ? (
+              <CardContent>
+                <div className={"mtrstation__header" + line}>
+                  <div className="station__name">
+                    {Dict.MtrStations[station][lang + "_name"]}
+                  </div>
+                  <div className="header__line">
+                    {" (" +
+                      Dict.Common[lang].boundFor +
+                      " " +
+                      ShowDestationText(line, station, "down") +
+                      ")"}
+                  </div>
                 </div>
+
+                {mtrEta.DOWN?.map((train, i) => (
+                  <div
+                    className="etaBox"
+                    style={{
+                      backgroundColor: i % 2 === 0 ? "white" : "#aae2fd",
+                    }}
+                  >
+                    <div className="mtr__dest">
+                      {Dict.MtrStations[train.dest][lang + "_name"]}
+                      {train.route === "RAC"
+                        ? " " + Dict.Common[lang].ealRAC
+                        : null}
+                    </div>
+                    <div style={{ flex: "1 0 0" }} />
+                    <div className={"mtr__plat" + line}>{train.plat}</div>
+                    <div className="mtr__time">
+                      {train.ttnt < "1" ? (
+                        <span>{Dict.Common[lang].dep}</span>
+                      ) : train.ttnt === "1" ? (
+                        <span>{Dict.Common[lang].arr}</span>
+                      ) : (
+                        <span>
+                          {train.ttnt} <small>{Dict.Common[lang].min}</small>
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+                <FillEmptyRows row={mtrEta.DOWN.length} />
+              </CardContent>
+            ) : null}
+
+            {mtrEta?.sys_time ? (
+              <div className="etaBox__mtrfooter">
+                {Dict.Common[lang].lastUpdate +
+                  ": " +
+                  new Date(
+                    mtrEta.sys_time !== "-"
+                      ? Date.parse(mtrEta?.sys_time.replace(/-/g, "/"))
+                      : Date.now()
+                  ).toLocaleString("en-GB", {
+                    year: "numeric",
+                    month: "numeric",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit",
+                  })}
               </div>
-
-              {mtrEta.UP?.map((train, i) => (
-                <div
-                  className="etaBox"
-                  style={{ backgroundColor: i % 2 === 0 ? "white" : "#aae2fd" }}
-                >
-                  <div className="mtr__dest">
-                    {train.dest === "AWE" && station !== "AIR"
-                      ? Dict.MtrStations.AIR[lang + "_name"] +
-                        " / " +
-                        Dict.MtrStations[train.dest][lang + "_name"]
-                      : Dict.MtrStations[train.dest][lang + "_name"]}
-                    {train.route === "RAC"
-                      ? " " + Dict.Common[lang].ealRAC
-                      : null}
-                  </div>
-                  <div style={{ flex: "1 0 0" }} />
-                  <div className={"mtr__plat" + line}>{train.plat}</div>
-                  <div className="mtr__time">
-                    {train.ttnt < "1" ? (
-                      <span>{Dict.Common[lang].dep}</span>
-                    ) : train.ttnt === "1" ? (
-                      <span>{Dict.Common[lang].arr}</span>
-                    ) : (
-                      <span>
-                        {train.ttnt} <small>{Dict.Common[lang].min}</small>
-                      </span>
-                    )}
-                  </div>
-                </div>
-              ))}
-              <FillEmptyRows row={mtrEta.UP.length} />
-            </CardContent>
-          ) : null}
-
-          {mtrEta.DOWN !== null && mtrEta.DOWN?.length > 0 ? (
-            <CardContent>
-              {Dict.MtrStations[station][lang + "_rmk"] ? (
-                <Alert severity="info">
-                  {Dict.MtrStations[station][lang + "_rmk"]}
-                </Alert>
-              ) : null}
-              <div className={"mtrstation__header" + line}>
-                <div className="station__name">
-                  {Dict.MtrStations[station][lang + "_name"]}
-                </div>
-                <div className="header__line">
-                  {" (" +
-                    Dict.Common[lang].boundFor +
-                    " " +
-                    ShowDestationText(line, station, "down") +
-                    ")"}
-                </div>
-              </div>
-
-              {mtrEta.DOWN?.map((train, i) => (
-                <div
-                  className="etaBox"
-                  style={{ backgroundColor: i % 2 === 0 ? "white" : "#aae2fd" }}
-                >
-                  <div className="mtr__dest">
-                    {Dict.MtrStations[train.dest][lang + "_name"]}
-                    {train.route === "RAC"
-                      ? " " + Dict.Common[lang].ealRAC
-                      : null}
-                  </div>
-                  <div style={{ flex: "1 0 0" }} />
-                  <div className={"mtr__plat" + line}>{train.plat}</div>
-                  <div className="mtr__time">
-                    {train.ttnt < "1" ? (
-                      <span>{Dict.Common[lang].dep}</span>
-                    ) : train.ttnt === "1" ? (
-                      <span>{Dict.Common[lang].arr}</span>
-                    ) : (
-                      <span>
-                        {train.ttnt} <small>{Dict.Common[lang].min}</small>
-                      </span>
-                    )}
-                  </div>
-                </div>
-              ))}
-              <FillEmptyRows row={mtrEta.DOWN.length} />
-            </CardContent>
-          ) : null}
-
-          {mtrEta?.sys_time ? (
-            <div className="etaBox__mtrfooter">
-              {Dict.Common[lang].lastUpdate +
-                ": " +
-                new Date(
-                  mtrEta.sys_time !== "-"
-                    ? Date.parse(mtrEta?.sys_time.replace(/-/g, "/"))
-                    : Date.now()
-                ).toLocaleString("en-GB", {
-                  year: "numeric",
-                  month: "numeric",
-                  day: "numeric",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                  second: "2-digit",
-                })}
-            </div>
-          ) : null}
+            ) : null}
+          </Stack>
         </Card>
       </div>
     );
