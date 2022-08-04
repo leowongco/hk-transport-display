@@ -1064,6 +1064,31 @@ const route = {
       },
     },
   },
+  K54: {
+    en_name: "Wo Tin Estate to Tuen Mun Town Centre (Circular)",
+    tc_name: "和田邨至屯門市中心(循環線)",
+    bound: {
+      UP: {
+        dest: "CIR",
+        stops: [
+          "K54-U010",
+          "K54-U020",
+          "K54-U030",
+          "K54-U040",
+          "K54-U050",
+          "K54-U060",
+          "K54-U070",
+          "K54-D010",
+          "K54-D020",
+          "K54-D030",
+          "K54-D040",
+          "K54-D050",
+          "K54-D060",
+          "K54-D070",
+        ],
+      },
+    },
+  },
   K58: {
     en_name: "Fu Tai to Castle Peak Bay",
     tc_name: "富泰至青山灣",
@@ -3065,6 +3090,103 @@ const stops = {
       LR: "295",
     },
   },
+  //Route K54
+  "K54-U010": {
+    tc_name: "和田邨",
+    en_name: "Wo Tin Estate",
+    lat: "22.4129536",
+    lon: "113.9686386",
+  },
+  "K54-U020": {
+    tc_name: "菁田邨",
+    en_name: "Ching Tin Estate",
+    lat: "22.4122937",
+    lon: "113.9705794",
+  },
+  "K54-U030": {
+    tc_name: "紫田村",
+    en_name: "Tsz Tin Tsuen",
+    lat: "22.4143948",
+    lon: "113.9738808",
+  },
+  "K54-U040": {
+    tc_name: "欣田邨",
+    en_name: "Yan Tin Estate",
+    lat: "22.41435",
+    lon: "113.97701",
+  },
+  "K54-U050": {
+    tc_name: "港鐵兆康站 (北) (輕鐵兆康站)",
+    en_name: "MTR Siu Hong Station (North) (LR Siu Hong Stop)",
+    lat: "22.4134",
+    lon: "113.97902",
+    connections: {
+      TML: "SIH",
+      LR: "100",
+    },
+  },
+  "K54-U060": {
+    tc_name: "紅橋",
+    en_name: "Hung Kiu",
+    lat: "22.4019965",
+    lon: "113.977489",
+  },
+  "K54-U070": {
+    tc_name: "屯門市中心",
+    en_name: "Tuen Mun Town Centre",
+    lat: "22.391389",
+    lon: "113.975465",
+    connections: {
+      LR: "280",
+    },
+  },
+  "K54-D010": {
+    tc_name: "屯門市廣場",
+    en_name: "Tuen Mun Town Plaza",
+    lat: "22.3927298",
+    lon: "113.9769618",
+  },
+  "K54-D020": {
+    tc_name: "新墟街市",
+    en_name: "San Hui Market",
+    lat: "22.3989419",
+    lon: "113.9766028",
+  },
+  "K54-D030": {
+    tc_name: "港鐵兆康站 (北) (輕鐵兆康站)",
+    en_name: "MTR Siu Hong Station (North) (LR Siu Hong Stop)",
+    lat: "22.41357",
+    lon: "113.9791",
+    connections: {
+      TML: "SIH",
+      LR: "100",
+    },
+  },
+  "K54-D040": {
+    tc_name: "兆康苑",
+    en_name: "Siu Hong Court",
+    lat: "22.414907",
+    lon: "113.977412",
+  },
+  "K54-D050": {
+    tc_name: "欣寶路公共運輸交匯處",
+    en_name: "Yan Po Road Public Transport Interchange",
+    lat: "22.4130992",
+    lon: "113.9723357",
+  },
+  "K54-D060": {
+    tc_name: "菁田邨",
+    en_name: "Ching Tin Estate",
+    lat: "22.4119741",
+    lon: "113.9703303",
+  },
+  "K54-D070": {
+    tc_name: "和田邨",
+    en_name: "Wo Tin Estate",
+    lat: "22.4129536",
+    lon: "113.9686386",
+  },
+
   //Route K58
   "K58-U010": {
     tc_name: "富泰",
