@@ -490,9 +490,6 @@ const MtrStations = {
     en_name: "Lok Ma Chau",
     lag: "",
     lon: "",
-    tc_rmk: "為配合政府防疫措施，東鐵綫羅湖及落馬洲站暫時關閉。",
-    en_rmk:
-      "Following the Government’s anti-pandemic measures, Lo Wu and Lok Ma Chau stations on the East Rail Line are closed.",
     active: "1",
   },
   LOW: {
@@ -500,9 +497,9 @@ const MtrStations = {
     en_name: "Lo Wu",
     lag: "",
     lon: "",
-    tc_rmk: "為配合政府防疫措施，東鐵綫羅湖及落馬洲站暫時關閉。",
+    tc_rmk: "為配合政府防疫措施，東鐵綫羅湖站暫時關閉",
     en_rmk:
-      "Following the Government’s anti-pandemic measures, Lo Wu and Lok Ma Chau stations on the East Rail Line are closed.",
+      "Following the Government’s anti-pandemic measures, Lo Wu stations on the East Rail Line are closed.",
     active: "1",
   },
   SHS: {

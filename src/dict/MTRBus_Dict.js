@@ -694,6 +694,18 @@ const buses = {
     plateNo: "RU8176",
     type: "Enviro500 11.3m",
   },
+  860: {
+    plateNo: "YD8329",
+    type: "Enviro500 MMC 12m",
+  },
+  861: {
+    plateNo: "YD8109",
+    type: "Enviro500 MMC 12m",
+  },
+  862: {
+    plateNo: "YD6939",
+    type: "Enviro500 MMC 12m",
+  },
   901: {
     plateNo: "NM4716",
     type: "Enviro200 Dart",

@@ -284,19 +284,19 @@ function MTRBusInfo({ busRoute, lang }) {
                                           mbus.busId}
                                       </b>
                                     </div>
-                                    <div>
+                                    {/* <div>
                                       {MTRBus_Dict.common.plateNum[
                                         lang + "_name"
                                       ] +
                                         " " +
-                                        MTRBus_Dict?.buses[mbus.busId].plateNo}
-                                    </div>
+                                        MTRBus_Dict.buses[mbus.busId]?.plateNo}
+                                    </div> */}
                                     <div>
                                       {/* {MTRBus_Dict.common.model[
                                         lang + "_name"
                                       ] +
                                         " " + */}
-                                      {MTRBus_Dict?.buses[mbus.busId].type}
+                                      {MTRBus_Dict.buses[mbus.busId]?.type}
                                     </div>
                                   </TextLoop>
                                 }
