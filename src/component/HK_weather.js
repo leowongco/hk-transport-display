@@ -125,7 +125,7 @@ function HK_weather() {
 
     return warningArr?.map((warn) => (
       <img
-        src={require(`../img/weather-icon/warnings/${warn}.webp`).default}
+        src={require(`../img/weather-icon/warnings/${warn}.png`)}
         alt="warning icon"
       />
     ));

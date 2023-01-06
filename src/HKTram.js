@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import Dict from "./dict/HKTram_Dict.js";
 import HKTramInfo from "./component/HKTramInfo";
 import "./css/LRT.css";
-import HKTLogo from "./img/HKTramLogo.svg";
+import HKTLogo from "./img/hktLogo.png";
 import GTranslateOutlinedIcon from "@material-ui/icons/GTranslateOutlined";
 // import RouteIcon from "@material-ui/icons/LinearScale";
 

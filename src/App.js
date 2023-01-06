@@ -2,8 +2,8 @@ import "./css/App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React, { Suspense } from "react";
 import { PageLoading } from "./PageLoading";
-import { firebaseApp } from "./component/firebase.js";
-
+import { app } from "./component/firebase.js";
+import { getAnalytics } from "firebase/analytics";
 import WeatherBanner from "./component/HK_weather";
 
 const LRT = React.lazy(() => import("./LRT"));
@@ -17,7 +17,7 @@ const HKTram = React.lazy(() => import("./HKTram"));
 const MTRBus = React.lazy(() => import("./MTRBus"));
 
 function App() {
-  firebaseApp.analytics();
+  getAnalytics(app);
   return (
     <Suspense fallback={<PageLoading />}>
       <Router>
