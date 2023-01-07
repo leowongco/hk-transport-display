@@ -4,7 +4,6 @@ import React, { Suspense } from "react";
 import { PageLoading } from "./PageLoading";
 import { app } from "./component/firebase.js";
 import { getAnalytics } from "firebase/analytics";
-import WeatherBanner from "./component/HK_weather";
 
 const LRT = React.lazy(() => import("./LRT"));
 const MTR = React.lazy(() => import("./MTR"));
@@ -15,6 +14,7 @@ const MTRMap = React.lazy(() => import("./component/MTRRouteMap"));
 const MTRStatus = React.lazy(() => import("./component/MTRStatus"));
 const HKTram = React.lazy(() => import("./HKTram"));
 const MTRBus = React.lazy(() => import("./MTRBus"));
+const WeatherBanner = React.lazy(() => import("./component/HK_weather"));
 
 function App() {
   getAnalytics(app);
@@ -24,7 +24,7 @@ function App() {
         <div className="App">
           <meta
             name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+            content="width=device-width, maximum-scale=1.0, user-scalable=0"
           />
           <Switch>
             <Route path="/lrt">
