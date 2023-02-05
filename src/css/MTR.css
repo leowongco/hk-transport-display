@@ -74,6 +74,20 @@
   background-color: #a40084;
 }
 
+.mtr__headerSIL {
+  margin-top: 5px;
+  height: 80px;
+  width: 350px;
+  max-width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  flex: 1;
+  background-color: #b5bd00;
+}
+
 .mtr__headerTKL {
   margin-top: 5px;
   height: 80px;

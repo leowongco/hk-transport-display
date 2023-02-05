@@ -132,6 +132,12 @@ const MtrLines = {
       "ADM",
     ],
   },
+  SIL: {
+    tc_name: "南港島綫",
+    en_name: "South Island Line",
+    colorCode: "#b5bd00",
+    stations: ["ADM", "OCP", "WCH", "LET", "SOH"],
+  },
   ISL: {
     tc_name: "港島線",
     en_name: "Island Line",
@@ -151,12 +157,6 @@ const MtrLines = {
     tc_name: "迪士尼線",
     en_name: "Disneyland Resort Line",
     colorCode: "#f550a6",
-  },
-
-  SIL: {
-    tc_name: "南港島綫",
-    en_name: "South Island Line",
-    colorCode: "#b5bd00",
   },
   XRL: {
     tc_name: "高速鐵路",
@@ -497,9 +497,8 @@ const MtrStations = {
     en_name: "Lo Wu",
     lag: "",
     lon: "",
-    tc_rmk: "為配合政府防疫措施，東鐵綫羅湖站暫時關閉",
-    en_rmk:
-      "Following the Government’s anti-pandemic measures, Lo Wu stations on the East Rail Line are closed.",
+    tc_rmk: "",
+    en_rmk: "",
     active: "1",
   },
   SHS: {
@@ -582,6 +581,34 @@ const MtrStations = {
   ADM: {
     tc_name: "金鐘",
     en_name: "Admiralty",
+    lag: "",
+    lon: "",
+    active: "1",
+  },
+  OCP: {
+    tc_name: "海洋公園",
+    en_name: "Ocean Park",
+    lag: "",
+    lon: "",
+    active: "1",
+  },
+  WCH: {
+    tc_name: "黃竹坑",
+    en_name: "Wong Chuk Hang",
+    lag: "",
+    lon: "",
+    active: "1",
+  },
+  LET: {
+    tc_name: "利東",
+    en_name: "Lei Tung",
+    lag: "",
+    lon: "",
+    active: "1",
+  },
+  SOH: {
+    tc_name: "海怡半島",
+    en_name: "South Horizons",
     lag: "",
     lon: "",
     active: "1",

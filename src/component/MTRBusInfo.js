@@ -275,30 +275,30 @@ function MTRBusInfo({ busRoute, lang }) {
                                 icon={<DirectionsBusIcon />}
                                 label={
                                   <TextLoop interval={(5000, 2500, 2500)}>
-                                    <div>
-                                      <b>
-                                        {MTRBus_Dict.common.fleetNum[
-                                          lang + "_name"
-                                        ] +
-                                          " " +
-                                          mbus.busId}
-                                      </b>
-                                    </div>
-                                    {/* <div>
-                                      {MTRBus_Dict.common.plateNum[
+                                  <div>
+                                    <b>
+                                      {MTRBus_Dict.common.fleetNum[
                                         lang + "_name"
                                       ] +
                                         " " +
-                                        MTRBus_Dict.buses[mbus.busId]?.plateNo}
-                                    </div> */}
-                                    <div>
-                                      {/* {MTRBus_Dict.common.model[
-                                        lang + "_name"
-                                      ] +
-                                        " " + */}
-                                      {MTRBus_Dict.buses[mbus.busId]?.type}
-                                    </div>
-                                  </TextLoop>
+                                        mbus.busId}
+                                    </b>
+                                  </div>
+                                  <div>
+                                    {MTRBus_Dict.common.plateNum[
+                                      lang + "_name"
+                                    ] +
+                                      " " +
+                                      MTRBus_Dict?.buses[mbus.busId].plateNo}
+                                  </div>
+                                  <div>
+                                    {/* {MTRBus_Dict.common.model[
+                                      lang + "_name"
+                                    ] +
+                                      " " + */}
+                                    {MTRBus_Dict?.buses[mbus.busId].type}
+                                  </div>
+                                </TextLoop>
                                 }
                                 size="small"
                               />

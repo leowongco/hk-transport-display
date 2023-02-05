@@ -131,7 +131,7 @@ function MTR() {
               fullWidth
             >
               {Object.entries(Dict.MtrLines)
-                .slice(0, 5)
+                .slice(0, 6)
                 .map(([line, lineData]) => (
                   <MenuItem value={line}>{lineData[lang + "_name"]}</MenuItem>
                 ))}
