@@ -1,5 +1,10 @@
 import "./css/App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
 import React, { Suspense } from "react";
 import { PageLoading } from "./PageLoading";
 import { app } from "./component/firebase.js";
@@ -41,68 +46,57 @@ function App() {
   getAnalytics(app);
   return (
     <Suspense fallback={<PageLoading />}>
-      <Router>
-        <div className="App">
-          <meta
-            name="viewport"
-            content="width=device-width, maximum-scale=1.0, user-scalable=0"
-          />
-          {version!== null &&version < appInfo.version ? (
-            <Dialog maxWidth="md" open>
-              <DialogTitle id="confirmation-dialog-title">更新 Update</DialogTitle>
-              <DialogContent dividers>
-                <DialogContentText>
-                  偵測到新版本，更新中。
-                  New Version Detected, Updating.
-                </DialogContentText>
-              </DialogContent>
-            </Dialog>
-          ) : null}
+      <div className="App">
+        <meta
+          name="viewport"
+          content="width=device-width, maximum-scale=1.0, user-scalable=0"
+        />
+        {version !== null && version < appInfo.version ? (
+          <Dialog maxWidth="md" open>
+            <DialogTitle id="confirmation-dialog-title">
+              更新 Update
+            </DialogTitle>
+            <DialogContent dividers>
+              <DialogContentText>
+                偵測到新版本，更新中。 New Version Detected, Updating.
+              </DialogContentText>
+            </DialogContent>
+          </Dialog>
+        ) : null}
 
-          <Switch>
-            <Route path="/lrt">
-              <Header />
-              <LRT />
-            </Route>
-            <Route path="/mtr/:link_Line/:link_Station">
-              <Header />
-              <MTR />
-            </Route>
-            <Route path="/mtrbus">
-              <Header />
-              <MTRBus />
-            </Route>
-            <Route path="/mRoute/:line">
-              <Header />
-              <MTRMap />
-            </Route>
-            <Route path="/settings">
-              <Header />
-              <Settings />
-            </Route>
-            <Route path="/mtr-status">
-              <Header />
-              <MTRStatus />
-            </Route>
-            <Route path="/hktram">
-              <Header />
-              <HKTram />
-            </Route>
-            <Route path="/">
-              <Header />
-              <MTRStatus type="banner" />
-              <WeatherBanner />
-              <SaveStations />
-            </Route>
-            <Route path="*">
-              <Header />
-              <MTRStatus type="banner" />
-              <WeatherBanner />
-              <SaveStations />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/lrt" element={[<Header />, <LRT />]} />
+            <Route
+              path="/mtr/:link_Line/:link_Station"
+              element={[<Header />, <MTR />]}
+            />
+            <Route path="/mtrbus" element={[<Header />, <MTRBus />]} />
+            <Route path="/mRoute/:line" element={[<Header />, <MTRMap />]} />
+            <Route path="/settings" element={[<Header />, <Settings />]} />
+            <Route path="/mtr-status" element={[<Header />, <MTRStatus />]} />
+            <Route path="/hktram" element={[<Header />, <HKTram />]} />
+            <Route
+              path="/"
+              element={[
+                <Header />,
+                <MTRStatus type="banner" />,
+                <WeatherBanner />,
+                <SaveStations />,
+              ]}
+            />
+            <Route
+              path="*"
+              element={[
+                <Header />,
+                <MTRStatus type="banner" />,
+                <WeatherBanner />,
+                <SaveStations />,
+              ]}
+            />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </Suspense>
   );
 }
