@@ -53,6 +53,8 @@ function MTRBusInfo({ busRoute, lang }) {
   const [lrETADialogOpen, setlrETADialogOpen] = useState(false);
   const [tmlETADialogOpen, settmlETADialogOpen] = useState(false);
   const [busLocationDialogOpen, setBusLocationDialogOpen] = useState(false);
+  const [busLocation, setBusLocation] = useState();
+  const [updateInterval, setUpdateInterval] = useState();
 
   const [lrETAStation, setLrETAStaion] = useState("1");
   const [tmlETAStation, setTmlETAStaion] = useState("TUM");
@@ -119,10 +121,33 @@ function MTRBusInfo({ busRoute, lang }) {
     settmlETADialogOpen(true);
   };
 
-  const handleBusLocationDialog = (busData) => {
-    setCurrentBusData(busData);
-    console.log("Clicked>>> ", currentBusData);
-    setBusLocationDialogOpen(true);
+  // const handleBusLocationDialog = (busData) => {
+  //   setCurrentBusData(busData);
+  //   console.log("Clicked>>> ", currentBusData);
+  //   setBusLocationDialogOpen(true);
+  // };
+
+  const handleBusLocationDialog = (mbus, busData) => {
+    const currentBus = busData.find((bus) => bus.busId === mbus.id);
+
+    if (currentBus) {
+      setBusLocation({
+        lat: currentBus.latitude,
+        lng: currentBus.longitude,
+      });
+      setBusLocationDialogOpen(true);
+
+      const intervalId = setInterval(() => {
+        const updatedBus = busData.find((bus) => bus.busId === mbus.id);
+        if (updatedBus) {
+          setBusLocation({
+            lat: updatedBus.latitude,
+            lng: updatedBus.longitude,
+          });
+        }
+      }, 5000);
+      setUpdateInterval(intervalId);
+    }
   };
 
   //Props
@@ -275,30 +300,30 @@ function MTRBusInfo({ busRoute, lang }) {
                                 icon={<DirectionsBusIcon />}
                                 label={
                                   <TextLoop interval={(5000, 2500, 2500)}>
-                                  <div>
-                                    <b>
-                                      {MTRBus_Dict.common.fleetNum[
+                                    <div>
+                                      <b>
+                                        {MTRBus_Dict.common.fleetNum[
+                                          lang + "_name"
+                                        ] +
+                                          " " +
+                                          mbus.busId}
+                                      </b>
+                                    </div>
+                                    <div>
+                                      {MTRBus_Dict.common.plateNum[
                                         lang + "_name"
                                       ] +
                                         " " +
-                                        mbus.busId}
-                                    </b>
-                                  </div>
-                                  <div>
-                                    {MTRBus_Dict.common.plateNum[
-                                      lang + "_name"
-                                    ] +
-                                      " " +
-                                      MTRBus_Dict?.buses[mbus.busId].plateNo}
-                                  </div>
-                                  <div>
-                                    {/* {MTRBus_Dict.common.model[
+                                        MTRBus_Dict?.buses[mbus.busId].plateNo}
+                                    </div>
+                                    <div>
+                                      {/* {MTRBus_Dict.common.model[
                                       lang + "_name"
                                     ] +
                                       " " + */}
-                                    {MTRBus_Dict?.buses[mbus.busId].type}
-                                  </div>
-                                </TextLoop>
+                                      {MTRBus_Dict?.buses[mbus.busId].type}
+                                    </div>
+                                  </TextLoop>
                                 }
                                 size="small"
                               />

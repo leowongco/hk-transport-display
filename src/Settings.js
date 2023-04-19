@@ -93,6 +93,7 @@ function Settings() {
   const [aelSaveStnArray, setAelSaveStnArray] = useState();
   const [tmlSaveStnArray, setTmlSaveStnArray] = useState();
   const [silSaveStnArray, setSilSaveStnArray] = useState();
+  const [twlSaveStnArray, setTwlSaveStnArray] = useState();
   const [lrtSaveStnArray, setLrtSaveStnArray] = useState();
   const [mtrBusSaveStnArray, setMtrBusSaveStnArray] = useState();
   const [lang, setLang] = useState("");
@@ -108,6 +109,7 @@ function Settings() {
     setAelSaveStnArray(JSON.parse(storage.getItem("AEL_SaveStn")));
     setSilSaveStnArray(JSON.parse(storage.getItem("SIL_SaveStn")));
     setTmlSaveStnArray(JSON.parse(storage.getItem("TML_SaveStn")));
+    setTwlSaveStnArray(JSON.parse(storage.getItem("TWL_SaveStn")));
     setLrtSaveStnArray(JSON.parse(storage.getItem("LrtSaveStn")));
     setMtrBusSaveStnArray(JSON.parse(storage.getItem("MTRBus_SaveStn")));
     setLang(storage.getItem("savedLanguage"));
@@ -142,6 +144,8 @@ function Settings() {
         return setTmlSaveStnArray(tempArr);
       case "sil":
         return setSilSaveStnArray(tempArr);
+      case "twl":
+        return setTwlSaveStnArray(tempArr);
       case "lrt":
         return setLrtSaveStnArray(tempArrL);
       case "MTRBus":
@@ -180,6 +184,10 @@ function Settings() {
         case "sil":
           storage.setItem("SIL_SaveStn", JSON.stringify(newArray));
           setSilSaveStnArray(newArray);
+          break;
+        case "twl":
+          storage.setItem("TWL_SaveStn", JSON.stringify(newArray));
+          setTwlSaveStnArray(newArray);
           break;
         case "lrt":
           storage.setItem("LrtSaveStn", newArray);
@@ -468,6 +476,43 @@ function Settings() {
               <Button
                 onClick={() => {
                   handleDeleteAll("tml");
+                }}
+                variant="outlined"
+              >
+                {langDict.delAll[lang + "_name"]}
+              </Button>
+            )}
+          </div>
+        </div>
+
+        <div className="settingRow">
+          <div
+            className="saveStnLine"
+            style={{ background: DictM.MtrLines.TWL.colorCode }}
+          >
+            {DictM.MtrLines.TWL.tc_name + " " + DictM.MtrLines.TWL.en_name}
+          </div>
+        </div>
+        <div className="settingRow">
+          {twlSaveStnArray?.length > 0 ? (
+            <div className="saveStnDetails">
+              {twlSaveStnArray?.map((stn, i) => (
+                <Chip
+                  label={DictM.MtrStations[stn][lang + "_name"]}
+                  onDelete={() => handleDelete(stn, "twl")}
+                  color="primary"
+                />
+              ))}
+            </div>
+          ) : (
+            langDict.emptySaveStn[lang + "_name"]
+          )}
+          <div className="saveStnActions">
+            {" "}
+            {twlSaveStnArray?.length === 0 ? null : (
+              <Button
+                onClick={() => {
+                  handleDeleteAll("twl");
                 }}
                 variant="outlined"
               >

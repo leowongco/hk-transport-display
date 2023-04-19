@@ -65,21 +65,18 @@ function App() {
         ) : null}
 
         <BrowserRouter>
+          <Header />
           <Routes>
-            <Route path="/lrt" element={[<Header />, <LRT />]} />
-            <Route
-              path="/mtr/:link_Line/:link_Station"
-              element={[<Header />, <MTR />]}
-            />
-            <Route path="/mtrbus" element={[<Header />, <MTRBus />]} />
-            <Route path="/mRoute/:line" element={[<Header />, <MTRMap />]} />
-            <Route path="/settings" element={[<Header />, <Settings />]} />
-            <Route path="/mtr-status" element={[<Header />, <MTRStatus />]} />
-            <Route path="/hktram" element={[<Header />, <HKTram />]} />
+            <Route path="/lrt" element={[<LRT />]} />
+            <Route path="/mtr/:link_Line/:link_Station" element={[<MTR />]} />
+            <Route path="/mtrbus" element={[<MTRBus />]} />
+            <Route path="/mRoute/:line" element={[<MTRMap />]} />
+            <Route path="/settings" element={[<Settings />]} />
+            <Route path="/mtr-status" element={[<MTRStatus />]} />
+            <Route path="/hktram" element={[<HKTram />]} />
             <Route
               path="/"
               element={[
-                <Header />,
                 <MTRStatus type="banner" />,
                 <WeatherBanner />,
                 <SaveStations />,
@@ -88,7 +85,6 @@ function App() {
             <Route
               path="*"
               element={[
-                <Header />,
                 <MTRStatus type="banner" />,
                 <WeatherBanner />,
                 <SaveStations />,
