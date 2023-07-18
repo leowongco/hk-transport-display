@@ -94,6 +94,7 @@ function Settings() {
   const [tmlSaveStnArray, setTmlSaveStnArray] = useState();
   const [silSaveStnArray, setSilSaveStnArray] = useState();
   const [twlSaveStnArray, setTwlSaveStnArray] = useState();
+  const [islSaveStnArray, setIslSaveStnArray] = useState();
   const [lrtSaveStnArray, setLrtSaveStnArray] = useState();
   const [mtrBusSaveStnArray, setMtrBusSaveStnArray] = useState();
   const [lang, setLang] = useState("");
@@ -110,6 +111,7 @@ function Settings() {
     setSilSaveStnArray(JSON.parse(storage.getItem("SIL_SaveStn")));
     setTmlSaveStnArray(JSON.parse(storage.getItem("TML_SaveStn")));
     setTwlSaveStnArray(JSON.parse(storage.getItem("TWL_SaveStn")));
+    setIslSaveStnArray(JSON.parse(storage.getItem("ISL_SaveStn")));
     setLrtSaveStnArray(JSON.parse(storage.getItem("LrtSaveStn")));
     setMtrBusSaveStnArray(JSON.parse(storage.getItem("MTRBus_SaveStn")));
     setLang(storage.getItem("savedLanguage"));
@@ -146,6 +148,8 @@ function Settings() {
         return setSilSaveStnArray(tempArr);
       case "twl":
         return setTwlSaveStnArray(tempArr);
+      case "isl":
+        return setIslSaveStnArray(tempArr);
       case "lrt":
         return setLrtSaveStnArray(tempArrL);
       case "MTRBus":
@@ -188,6 +192,10 @@ function Settings() {
         case "twl":
           storage.setItem("TWL_SaveStn", JSON.stringify(newArray));
           setTwlSaveStnArray(newArray);
+          break;
+        case "isl":
+          storage.setItem("ISL_SaveStn", JSON.stringify(newArray));
+          setIslSaveStnArray(newArray);
           break;
         case "lrt":
           storage.setItem("LrtSaveStn", newArray);
@@ -513,6 +521,43 @@ function Settings() {
               <Button
                 onClick={() => {
                   handleDeleteAll("twl");
+                }}
+                variant="outlined"
+              >
+                {langDict.delAll[lang + "_name"]}
+              </Button>
+            )}
+          </div>
+        </div>
+
+        <div className="settingRow">
+          <div
+            className="saveStnLine"
+            style={{ background: DictM.MtrLines.ISL.colorCode }}
+          >
+            {DictM.MtrLines.ISL.tc_name + " " + DictM.MtrLines.ISL.en_name}
+          </div>
+        </div>
+        <div className="settingRow">
+          {islSaveStnArray?.length > 0 ? (
+            <div className="saveStnDetails">
+              {islSaveStnArray?.map((stn, i) => (
+                <Chip
+                  label={DictM.MtrStations[stn][lang + "_name"]}
+                  onDelete={() => handleDelete(stn, "isl")}
+                  color="primary"
+                />
+              ))}
+            </div>
+          ) : (
+            langDict.emptySaveStn[lang + "_name"]
+          )}
+          <div className="saveStnActions">
+            {" "}
+            {islSaveStnArray?.length === 0 ? null : (
+              <Button
+                onClick={() => {
+                  handleDeleteAll("isl");
                 }}
                 variant="outlined"
               >

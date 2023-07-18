@@ -120,13 +120,7 @@ function MTRBusInfo({ busRoute, lang }) {
     setTmlETAStaion(TMLStation);
     settmlETADialogOpen(true);
   };
-
-  // const handleBusLocationDialog = (busData) => {
-  //   setCurrentBusData(busData);
-  //   console.log("Clicked>>> ", currentBusData);
-  //   setBusLocationDialogOpen(true);
-  // };
-
+  // undefinded is not an object (evaluating 'busData.find')
   const handleBusLocationDialog = (mbus, busData) => {
     const currentBus = busData.find((bus) => bus.busId === mbus.id);
 

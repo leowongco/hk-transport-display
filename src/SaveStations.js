@@ -39,6 +39,7 @@ function SaveStations() {
   const lrtSaveStnArray = JSON.parse(storage.getItem("LrtSaveStn"));
   const silSaveStnArray = JSON.parse(storage.getItem("SIL_SaveStn"));
   const twlSaveStnArray = JSON.parse(storage.getItem("TWL_SaveStn"));
+  const islSaveStnArray = JSON.parse(storage.getItem("ISL_SaveStn"));
   const hkTramStnArray = JSON.parse(storage.getItem("HKTramSaveStn"));
   const mtrBusSaveStnArray = JSON.parse(storage.getItem("MTRBus_SaveStn"));
   const lang = storage.getItem("savedLanguage");
@@ -65,6 +66,9 @@ function SaveStations() {
   if (storage.getItem("TWL_SaveStn") === null) {
     storage.setItem("TWL_SaveStn", JSON.stringify(newArray));
   }
+  if (storage.getItem("ISL_SaveStn") === null) {
+    storage.setItem("ISL_SaveStn", JSON.stringify(newArray));
+  }
   if (storage.getItem("LrtSaveStn") === null) {
     storage.setItem("LrtSaveStn", JSON.stringify(newArray));
   }
@@ -90,6 +94,7 @@ function SaveStations() {
     silSaveStnArray?.length === 0 &&
     twlSaveStnArray?.length === 0 &&
     lrtSaveStnArray?.length === 0 &&
+    islSaveStnArray?.length === 0 &&
     mtrBusSaveStnArray?.length === 0 &&
     hkTramStnArray?.length === 0
   ) {
@@ -178,6 +183,16 @@ function SaveStations() {
                   }}
                 >
                   {DictM.MtrLines.TWL[lang + "_name"]}
+                </Tab>
+              ) : null}
+              {islSaveStnArray?.length > 0 ? (
+                <Tab
+                  style={{
+                    backgroundColor: DictM.MtrLines.ISL.colorCode,
+                    color: "white",
+                  }}
+                >
+                  {DictM.MtrLines.ISL[lang + "_name"]}
                 </Tab>
               ) : null}
               {lrtSaveStnArray?.length > 0 ? (
@@ -288,6 +303,20 @@ function SaveStations() {
                 >
                   {twlSaveStnArray?.map((stn) => (
                     <SaveMTR line="TWL" station={stn} lang={lang} />
+                  ))}
+                </Stack>
+              </TabPanel>
+            ) : null}
+             {islSaveStnArray?.length > 0 ? (
+              <TabPanel>
+                <Stack
+                  direction="column"
+                  justifyContent="space-evenly"
+                  alignItems="stretch"
+                  spacing={1}
+                >
+                  {islSaveStnArray?.map((stn) => (
+                    <SaveMTR line="ISL" station={stn} lang={lang} />
                   ))}
                 </Stack>
               </TabPanel>
