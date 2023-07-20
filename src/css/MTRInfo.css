@@ -205,6 +205,18 @@
   font-weight: 500 !important;
 }
 
+.mtr__platISL {
+  margin-right: 20px;
+  width: 23px;
+  height: 23px;
+  line-height: 23px;
+  background-color: #0860a8;
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+  font-weight: 500 !important;
+}
+
 .mtr__time {
   font-weight: 500 !important;
   width: 75px;

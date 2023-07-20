@@ -169,6 +169,13 @@ function MTRInfo({ line, station, lang, mode }) {
           case "down":
             return Dict.MtrStations.CEN[lang + "_name"];
         }
+        case "ISL":
+        switch (dir) {
+          case "up":
+            return Dict.MtrStations.CHW[lang + "_name"];
+          case "down":
+            return Dict.MtrStations.KET[lang + "_name"];
+        }
       default:
         return null;
     }
