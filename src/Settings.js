@@ -95,6 +95,7 @@ function Settings() {
   const [silSaveStnArray, setSilSaveStnArray] = useState();
   const [twlSaveStnArray, setTwlSaveStnArray] = useState();
   const [islSaveStnArray, setIslSaveStnArray] = useState();
+  const [ktlSaveStnArray, setKtlSaveStnArray] = useState();
   const [lrtSaveStnArray, setLrtSaveStnArray] = useState();
   const [mtrBusSaveStnArray, setMtrBusSaveStnArray] = useState();
   const [lang, setLang] = useState("");
@@ -112,6 +113,7 @@ function Settings() {
     setTmlSaveStnArray(JSON.parse(storage.getItem("TML_SaveStn")));
     setTwlSaveStnArray(JSON.parse(storage.getItem("TWL_SaveStn")));
     setIslSaveStnArray(JSON.parse(storage.getItem("ISL_SaveStn")));
+    setKtlSaveStnArray(JSON.parse(storage.getItem("KTL_SaveStn")));
     setLrtSaveStnArray(JSON.parse(storage.getItem("LrtSaveStn")));
     setMtrBusSaveStnArray(JSON.parse(storage.getItem("MTRBus_SaveStn")));
     setLang(storage.getItem("savedLanguage"));
@@ -150,6 +152,8 @@ function Settings() {
         return setTwlSaveStnArray(tempArr);
       case "isl":
         return setIslSaveStnArray(tempArr);
+      case "ktl":
+        return setKtlSaveStnArray(tempArr);
       case "lrt":
         return setLrtSaveStnArray(tempArrL);
       case "MTRBus":
@@ -196,6 +200,10 @@ function Settings() {
         case "isl":
           storage.setItem("ISL_SaveStn", JSON.stringify(newArray));
           setIslSaveStnArray(newArray);
+          break;
+        case "ktl":
+          storage.setItem("KTL_SaveStn", JSON.stringify(newArray));
+          setKtlSaveStnArray(newArray);
           break;
         case "lrt":
           storage.setItem("LrtSaveStn", newArray);
@@ -555,6 +563,43 @@ function Settings() {
           <div className="saveStnActions">
             {" "}
             {islSaveStnArray?.length === 0 ? null : (
+              <Button
+                onClick={() => {
+                  handleDeleteAll("isl");
+                }}
+                variant="outlined"
+              >
+                {langDict.delAll[lang + "_name"]}
+              </Button>
+            )}
+          </div>
+        </div>
+
+        <div className="settingRow">
+          <div
+            className="saveStnLine"
+            style={{ background: DictM.MtrLines.KTL.colorCode }}
+          >
+            {DictM.MtrLines.KTL.tc_name + " " + DictM.MtrLines.KTL.en_name}
+          </div>
+        </div>
+        <div className="settingRow">
+          {ktlSaveStnArray?.length > 0 ? (
+            <div className="saveStnDetails">
+              {ktlSaveStnArray?.map((stn, i) => (
+                <Chip
+                  label={DictM.MtrStations[stn][lang + "_name"]}
+                  onDelete={() => handleDelete(stn, "ktl")}
+                  color="primary"
+                />
+              ))}
+            </div>
+          ) : (
+            langDict.emptySaveStn[lang + "_name"]
+          )}
+          <div className="saveStnActions">
+            {" "}
+            {ktlSaveStnArray?.length === 0 ? null : (
               <Button
                 onClick={() => {
                   handleDeleteAll("isl");

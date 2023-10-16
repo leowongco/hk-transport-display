@@ -162,19 +162,26 @@ function MTRInfo({ line, station, lang, mode }) {
           case "down":
             return Dict.MtrStations.ADM[lang + "_name"];
         }
-        case "TWL":
+      case "TWL":
         switch (dir) {
           case "up":
             return Dict.MtrStations.TSW[lang + "_name"];
           case "down":
             return Dict.MtrStations.CEN[lang + "_name"];
         }
-        case "ISL":
+      case "ISL":
         switch (dir) {
           case "up":
             return Dict.MtrStations.CHW[lang + "_name"];
           case "down":
             return Dict.MtrStations.KET[lang + "_name"];
+        }
+      case "KTL":
+        switch (dir) {
+          case "up":
+            return Dict.MtrStations.TIK[lang + "_name"];
+          case "down":
+            return Dict.MtrStations.WHA[lang + "_name"];
         }
       default:
         return null;

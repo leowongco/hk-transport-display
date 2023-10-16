@@ -40,6 +40,7 @@ function SaveStations() {
   const silSaveStnArray = JSON.parse(storage.getItem("SIL_SaveStn"));
   const twlSaveStnArray = JSON.parse(storage.getItem("TWL_SaveStn"));
   const islSaveStnArray = JSON.parse(storage.getItem("ISL_SaveStn"));
+  const ktlSaveStnArray = JSON.parse(storage.getItem("KTL_SaveStn"));
   const hkTramStnArray = JSON.parse(storage.getItem("HKTramSaveStn"));
   const mtrBusSaveStnArray = JSON.parse(storage.getItem("MTRBus_SaveStn"));
   const lang = storage.getItem("savedLanguage");
@@ -69,6 +70,9 @@ function SaveStations() {
   if (storage.getItem("ISL_SaveStn") === null) {
     storage.setItem("ISL_SaveStn", JSON.stringify(newArray));
   }
+  if (storage.getItem("KTL_SaveStn") === null) {
+    storage.setItem("KTL_SaveStn", JSON.stringify(newArray));
+  }
   if (storage.getItem("LrtSaveStn") === null) {
     storage.setItem("LrtSaveStn", JSON.stringify(newArray));
   }
@@ -95,6 +99,7 @@ function SaveStations() {
     twlSaveStnArray?.length === 0 &&
     lrtSaveStnArray?.length === 0 &&
     islSaveStnArray?.length === 0 &&
+    ktlSaveStnArray?.length === 0 &&
     mtrBusSaveStnArray?.length === 0 &&
     hkTramStnArray?.length === 0
   ) {
@@ -193,6 +198,16 @@ function SaveStations() {
                   }}
                 >
                   {DictM.MtrLines.ISL[lang + "_name"]}
+                </Tab>
+              ) : null}
+              {ktlSaveStnArray?.length > 0 ? (
+                <Tab
+                  style={{
+                    backgroundColor: DictM.MtrLines.KTL.colorCode,
+                    color: "white",
+                  }}
+                >
+                  {DictM.MtrLines.KTL[lang + "_name"]}
                 </Tab>
               ) : null}
               {lrtSaveStnArray?.length > 0 ? (
@@ -307,7 +322,7 @@ function SaveStations() {
                 </Stack>
               </TabPanel>
             ) : null}
-             {islSaveStnArray?.length > 0 ? (
+            {islSaveStnArray?.length > 0 ? (
               <TabPanel>
                 <Stack
                   direction="column"
@@ -317,6 +332,20 @@ function SaveStations() {
                 >
                   {islSaveStnArray?.map((stn) => (
                     <SaveMTR line="ISL" station={stn} lang={lang} />
+                  ))}
+                </Stack>
+              </TabPanel>
+            ) : null}
+            {ktlSaveStnArray?.length > 0 ? (
+              <TabPanel>
+                <Stack
+                  direction="column"
+                  justifyContent="space-evenly"
+                  alignItems="stretch"
+                  spacing={1}
+                >
+                  {ktlSaveStnArray?.map((stn) => (
+                    <SaveMTR line="KTL" station={stn} lang={lang} />
                   ))}
                 </Stack>
               </TabPanel>
