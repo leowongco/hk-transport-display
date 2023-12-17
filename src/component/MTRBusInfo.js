@@ -382,258 +382,297 @@ function MTRBusInfo({ busRoute, lang }) {
         </div>
       </div>
     );
-  } else {
+  }
+  if (mtrBusData?.busStop === null) {
     return (
       <div className="mtrbusinfo">
-        {isLoading ? (
-          <div className="mtrBusInfoContainer">
-            <div className="mtrBusInfoHeader">
-              <div className="mtrBusInfo_busNumber">{busRoute}</div>
-              <div className="mtrBusInfo_busRoute">
-                {MTRBus_Dict.route[busRoute][lang + "_name"]}
-              </div>
+        <div className="mtrBusInfoContainer">
+          <div className="mtrBusInfoHeader">
+            <div className="mtrBusInfo_busNumber">{busRoute}</div>
+            <div className="mtrBusInfo_busRoute">
+              {MTRBus_Dict.route[busRoute][lang + "_name"]}
             </div>
-            <LinearProgress
-              color="secondary"
-              sx={{ backgroundColor: "navy" }}
-            />
           </div>
-        ) : (
-          <div className="mtrBusInfoContainer">
-            <div className="mtrBusInfoHeader">
-              <div className="mtrBusInfo_busNumber">{busRoute}</div>
-              <div className="mtrBusInfo_busRoute">
-                {MTRBus_Dict.route[busRoute][lang + "_name"]}
-              </div>
+          <div className="mtrBusInfoRow">
+            <div className="mtrBusInfo_routeStatusRemarkTitle">
+              <BusAlertIcon />
+              {mtrBusData.routeStatusRemarkTitle}
             </div>
-            {mtrBusData?.routeStatusRemarkTitle !== null ? (
-              <div className="mtrBusInfoRow">
-                <div className="mtrBusInfo_routeStatusRemarkTitle">
-                  <BusAlertIcon size="small" />
-                  {mtrBusData?.routeStatusRemarkTitle}
-                </div>
-              </div>
-            ) : null}
-            <Tabs>
-              <TabList>
-                {MTRBus_Dict.route[busRoute].bound.UP ? (
-                  <Tab>
-                    <small>
-                      {MTRBus_Dict.route[busRoute].bound.UP.dest !== "CIR"
-                        ? MTRBus_Dict.common.boundFor[lang + "_name"] +
-                          MTRBus_Dict.dest[
-                            MTRBus_Dict.route[busRoute].bound.UP.dest
-                          ][lang + "_name"]
-                        : MTRBus_Dict.dest[
-                            MTRBus_Dict.route[busRoute].bound.UP.dest
-                          ][lang + "_name"]}
-                    </small>
-                  </Tab>
-                ) : null}
-                {MTRBus_Dict.route[busRoute].bound.DOWN ? (
-                  <Tab>
-                    <small>
-                      {MTRBus_Dict.route[busRoute].bound.DOWN.dest !== "CIR"
-                        ? MTRBus_Dict.common.boundFor[lang + "_name"] +
-                          MTRBus_Dict.dest[
-                            MTRBus_Dict.route[busRoute].bound.DOWN.dest
-                          ][lang + "_name"]
-                        : MTRBus_Dict.dest[
-                            MTRBus_Dict.route[busRoute].bound.DOWN.dest
-                          ][lang + "_name"]}
-                    </small>
-                  </Tab>
-                ) : null}
-              </TabList>
-              <TabPanel>
-                {
-                  /* Showing Outbound or Circular Bus Data */
-                  MTRBus_Dict.route[busRoute].bound.UP?.stops.map(
-                    (bStop, i) => (
-                      <MTRBusETABox busStop={bStop} index={i} />
-                    )
-                  )
-                }
-              </TabPanel>
-              <TabPanel>
-                {
-                  /* Showing Inbound Bus Data */
-                  MTRBus_Dict.route[busRoute].bound.DOWN?.stops.map(
-                    (bStop, i) => (
-                      <MTRBusETABox busStop={bStop} index={i} />
-                    )
-                  )
-                }
-              </TabPanel>
-            </Tabs>
-            <div className="mtrBusInfoRow">
-              <div className="mtrBusInfo_routeStatusTime">
-                {MTRBus_Dict.common.lastUpdate[lang + "_name"] +
-                  ": " +
-                  new Date(
-                    Date.parse(mtrBusData?.routeStatusTime.replace(/-/g, "/"))
-                  ).toLocaleString("en-GB", {
-                    year: "numeric",
-                    month: "numeric",
-                    day: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })}
-              </div>
-            </div>
-            <div className="mtrBusInfoRow">
-              <div className="mtrBusInfo_footerRemarks">
-                <Marquee gradientWidth={0} speed={50}>
-                  {mtrBusData?.footerRemarks}
-                </Marquee>
-              </div>
-            </div>
-            {/* // Light Rail Dialog */}
-            <Dialog
-              fullWidth="true"
-              maxWidth="sm"
-              open={lrETADialogOpen}
-              onClose={handleCloseDialog}
-            >
-              <DialogTitle>
-                <b>
-                  {"[" +
-                    LRT_Dict.lrtStations[lrETAStation][lang + "_name"] +
-                    "] "}
-                </b>
-                {MTRBus_Dict.common.BusLReta[lang + "_name"]}
-              </DialogTitle>
-              <DialogContentText className="mtrBusDialogBox">
-                <div>
-                  <LrtInfo sid={lrETAStation} lang={lang} mode="fav" />
-                </div>
-              </DialogContentText>
-              <DialogActions>
-                <Button onClick={handleCloseDialog}>
-                  {MTRBus_Dict.common.close[lang + "_name"]}
-                </Button>
-              </DialogActions>
-            </Dialog>
-            {/* // Tuen Ma Line Dialog */}
-            <Dialog
-              fullWidth="true"
-              maxWidth="xl"
-              open={tmlETADialogOpen}
-              onClose={handleCloseDialog}
-            >
-              <DialogTitle>
-                <b>
-                  {"[" +
-                    DictM.MtrStations[tmlETAStation][lang + "_name"] +
-                    "] "}
-                </b>
-                {MTRBus_Dict.common.BusTMLeta[lang + "_name"]}
-              </DialogTitle>
-              <DialogContentText className="mtrBusDialogBox">
-                <div>
-                  <MTRETA
-                    line="TML"
-                    station={tmlETAStation}
-                    lang={lang}
-                    mode="fav"
-                  />
-                </div>
-              </DialogContentText>
-              <DialogActions>
-                <Button onClick={handleCloseDialog}>
-                  {MTRBus_Dict.common.close[lang + "_name"]}
-                </Button>
-              </DialogActions>
-            </Dialog>
-            {/* Bus Location Dialog */}
-            <Dialog
-              fullWidth="true"
-              maxWidth="xl"
-              open={busLocationDialogOpen}
-              onClose={handleCloseDialog}
-            >
-              <DialogTitle>
-                {MTRBus_Dict.common.busLoc[lang + "_name"]}
-              </DialogTitle>
-              <DialogContent>
-                <MapContainer
-                  style={{ height: "60vh", width: "100%" }}
-                  center={[
-                    currentBusData?.busLocation.latitude,
-                    currentBusData?.busLocation.longitude,
-                  ]}
-                  zoom={24}
-                >
-                  <TileLayer
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-                  />
-                  <Marker
-                    position={[
-                      currentBusData?.busLocation.latitude,
-                      currentBusData?.busLocation.longitude,
-                    ]}
-                    icon={
-                      new Icon({
-                        iconUrl: BusPin,
-                        iconSize: [45, 45],
-                        iconAnchor: [22.5, 45],
-                      })
-                    }
-                  >
-                    <Popup className="mapPopup">
-                      <p>
-                        <Chip
-                          color="warning"
-                          icon={<DirectionsBusIcon />}
-                          label={
-                            <TextLoop interval={3000}>
-                              <div>
-                                {MTRBus_Dict.common.fleetNum[lang + "_name"] +
-                                  " " +
-                                  currentBusData?.busId}
-                              </div>
-                              <div>
-                                {MTRBus_Dict.common.plateNum[lang + "_name"] +
-                                  " " +
-                                  MTRBus_Dict.buses[currentBusData?.busId]
-                                    ?.plateNo}
-                              </div>
-                              <div>
-                                {MTRBus_Dict.common.busRouteShort[
-                                  lang + "_name"
-                                ] +
-                                  " " +
-                                  currentBusData?.lineRef.split("_")[0]}
-                              </div>
-                            </TextLoop>
-                          }
-                        />
-                      </p>
-
-                      <p> {currentBusData?.busRemark}</p>
-                    </Popup>
-                  </Marker>
-                </MapContainer>
-                <DialogContentText className="mtrBusDialogBox">
-                  <div>
-                    #{currentBusData?.busId}{" "}
-                    {MTRBus_Dict.common.busLoc[lang + "_name"]}
-                  </div>
-                </DialogContentText>
-              </DialogContent>
-
-              <DialogActions>
-                <Button onClick={handleCloseDialog}>
-                  {MTRBus_Dict.common.close[lang + "_name"]}
-                </Button>
-              </DialogActions>
-            </Dialog>
           </div>
-        )}
+          <div className="mtrBusInfoRow">
+            <div className="mtrBusInfo_routeStatusRemarkContent">
+              {mtrBusData.routeStatusRemarkContent}
+            </div>
+          </div>
+          <div className="mtrBusInfoRow">
+            <div className="mtrBusInfo_routeStatusTime">
+              {MTRBus_Dict.common.lastUpdate[lang + "_name"] +
+                ": " +
+                new Date(
+                  Date.parse(mtrBusData?.routeStatusTime.replace(/-/g, "/"))
+                ).toLocaleString("en-GB", {
+                  year: "numeric",
+                  month: "numeric",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+            </div>
+          </div>
+          <div className="mtrBusInfoRow">
+            <div className="mtrBusInfo_footerRemarks">
+              <Marquee gradientWidth={0} speed={50}>
+                {mtrBusData?.footerRemarks}
+              </Marquee>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
+  return (
+    <div className="mtrbusinfo">
+      {isLoading ? (
+        <div className="mtrBusInfoContainer">
+          <div className="mtrBusInfoHeader">
+            <div className="mtrBusInfo_busNumber">{busRoute}</div>
+            <div className="mtrBusInfo_busRoute">
+              {MTRBus_Dict.route[busRoute][lang + "_name"]}
+            </div>
+          </div>
+          <LinearProgress color="secondary" sx={{ backgroundColor: "navy" }} />
+        </div>
+      ) : (
+        <div className="mtrBusInfoContainer">
+          <div className="mtrBusInfoHeader">
+            <div className="mtrBusInfo_busNumber">{busRoute}</div>
+            <div className="mtrBusInfo_busRoute">
+              {MTRBus_Dict.route[busRoute][lang + "_name"]}
+            </div>
+          </div>
+          {mtrBusData?.routeStatusRemarkTitle !== null ? (
+            <div className="mtrBusInfoRow">
+              <div className="mtrBusInfo_routeStatusRemarkTitle">
+                <BusAlertIcon size="small" />
+                {mtrBusData?.routeStatusRemarkTitle}
+              </div>
+            </div>
+          ) : null}
+          <Tabs>
+            <TabList>
+              {MTRBus_Dict.route[busRoute].bound.UP ? (
+                <Tab>
+                  <small>
+                    {MTRBus_Dict.route[busRoute].bound.UP.dest !== "CIR"
+                      ? MTRBus_Dict.common.boundFor[lang + "_name"] +
+                        MTRBus_Dict.dest[
+                          MTRBus_Dict.route[busRoute].bound.UP.dest
+                        ][lang + "_name"]
+                      : MTRBus_Dict.dest[
+                          MTRBus_Dict.route[busRoute].bound.UP.dest
+                        ][lang + "_name"]}
+                  </small>
+                </Tab>
+              ) : null}
+              {MTRBus_Dict.route[busRoute].bound.DOWN ? (
+                <Tab>
+                  <small>
+                    {MTRBus_Dict.route[busRoute].bound.DOWN.dest !== "CIR"
+                      ? MTRBus_Dict.common.boundFor[lang + "_name"] +
+                        MTRBus_Dict.dest[
+                          MTRBus_Dict.route[busRoute].bound.DOWN.dest
+                        ][lang + "_name"]
+                      : MTRBus_Dict.dest[
+                          MTRBus_Dict.route[busRoute].bound.DOWN.dest
+                        ][lang + "_name"]}
+                  </small>
+                </Tab>
+              ) : null}
+            </TabList>
+            <TabPanel>
+              {
+                /* Showing Outbound or Circular Bus Data */
+                MTRBus_Dict.route[busRoute].bound.UP?.stops.map((bStop, i) => (
+                  <MTRBusETABox busStop={bStop} index={i} />
+                ))
+              }
+            </TabPanel>
+            <TabPanel>
+              {
+                /* Showing Inbound Bus Data */
+                MTRBus_Dict.route[busRoute].bound.DOWN?.stops.map(
+                  (bStop, i) => (
+                    <MTRBusETABox busStop={bStop} index={i} />
+                  )
+                )
+              }
+            </TabPanel>
+          </Tabs>
+          <div className="mtrBusInfoRow">
+            <div className="mtrBusInfo_routeStatusTime">
+              {MTRBus_Dict.common.lastUpdate[lang + "_name"] +
+                ": " +
+                new Date(
+                  Date.parse(mtrBusData?.routeStatusTime.replace(/-/g, "/"))
+                ).toLocaleString("en-GB", {
+                  year: "numeric",
+                  month: "numeric",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+            </div>
+          </div>
+          <div className="mtrBusInfoRow">
+            <div className="mtrBusInfo_footerRemarks">
+              <Marquee gradientWidth={0} speed={50}>
+                {mtrBusData?.footerRemarks}
+              </Marquee>
+            </div>
+          </div>
+          {/* // Light Rail Dialog */}
+          <Dialog
+            fullWidth="true"
+            maxWidth="sm"
+            open={lrETADialogOpen}
+            onClose={handleCloseDialog}
+          >
+            <DialogTitle>
+              <b>
+                {"[" +
+                  LRT_Dict.lrtStations[lrETAStation][lang + "_name"] +
+                  "] "}
+              </b>
+              {MTRBus_Dict.common.BusLReta[lang + "_name"]}
+            </DialogTitle>
+            <DialogContentText className="mtrBusDialogBox">
+              <div>
+                <LrtInfo sid={lrETAStation} lang={lang} mode="fav" />
+              </div>
+            </DialogContentText>
+            <DialogActions>
+              <Button onClick={handleCloseDialog}>
+                {MTRBus_Dict.common.close[lang + "_name"]}
+              </Button>
+            </DialogActions>
+          </Dialog>
+          {/* // Tuen Ma Line Dialog */}
+          <Dialog
+            fullWidth="true"
+            maxWidth="xl"
+            open={tmlETADialogOpen}
+            onClose={handleCloseDialog}
+          >
+            <DialogTitle>
+              <b>
+                {"[" + DictM.MtrStations[tmlETAStation][lang + "_name"] + "] "}
+              </b>
+              {MTRBus_Dict.common.BusTMLeta[lang + "_name"]}
+            </DialogTitle>
+            <DialogContentText className="mtrBusDialogBox">
+              <div>
+                <MTRETA
+                  line="TML"
+                  station={tmlETAStation}
+                  lang={lang}
+                  mode="fav"
+                />
+              </div>
+            </DialogContentText>
+            <DialogActions>
+              <Button onClick={handleCloseDialog}>
+                {MTRBus_Dict.common.close[lang + "_name"]}
+              </Button>
+            </DialogActions>
+          </Dialog>
+          {/* Bus Location Dialog */}
+          <Dialog
+            fullWidth="true"
+            maxWidth="xl"
+            open={busLocationDialogOpen}
+            onClose={handleCloseDialog}
+          >
+            <DialogTitle>
+              {MTRBus_Dict.common.busLoc[lang + "_name"]}
+            </DialogTitle>
+            <DialogContent>
+              <MapContainer
+                style={{ height: "60vh", width: "100%" }}
+                center={[
+                  currentBusData?.busLocation.latitude,
+                  currentBusData?.busLocation.longitude,
+                ]}
+                zoom={24}
+              >
+                <TileLayer
+                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                  url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+                />
+                <Marker
+                  position={[
+                    currentBusData?.busLocation.latitude,
+                    currentBusData?.busLocation.longitude,
+                  ]}
+                  icon={
+                    new Icon({
+                      iconUrl: BusPin,
+                      iconSize: [45, 45],
+                      iconAnchor: [22.5, 45],
+                    })
+                  }
+                >
+                  <Popup className="mapPopup">
+                    <p>
+                      <Chip
+                        color="warning"
+                        icon={<DirectionsBusIcon />}
+                        label={
+                          <TextLoop interval={3000}>
+                            <div>
+                              {MTRBus_Dict.common.fleetNum[lang + "_name"] +
+                                " " +
+                                currentBusData?.busId}
+                            </div>
+                            <div>
+                              {MTRBus_Dict.common.plateNum[lang + "_name"] +
+                                " " +
+                                MTRBus_Dict.buses[currentBusData?.busId]
+                                  ?.plateNo}
+                            </div>
+                            <div>
+                              {MTRBus_Dict.common.busRouteShort[
+                                lang + "_name"
+                              ] +
+                                " " +
+                                currentBusData?.lineRef.split("_")[0]}
+                            </div>
+                          </TextLoop>
+                        }
+                      />
+                    </p>
+
+                    <p> {currentBusData?.busRemark}</p>
+                  </Popup>
+                </Marker>
+              </MapContainer>
+              <DialogContentText className="mtrBusDialogBox">
+                <div>
+                  #{currentBusData?.busId}{" "}
+                  {MTRBus_Dict.common.busLoc[lang + "_name"]}
+                </div>
+              </DialogContentText>
+            </DialogContent>
+
+            <DialogActions>
+              <Button onClick={handleCloseDialog}>
+                {MTRBus_Dict.common.close[lang + "_name"]}
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default MTRBusInfo;
