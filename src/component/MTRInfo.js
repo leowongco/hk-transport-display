@@ -47,7 +47,13 @@ function MTRInfo({ line, station, lang, mode }) {
     const inteval = setInterval(() => {
       let mtrAPI = `https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=${line}&sta=${station}`;
       axios
-        .get(mtrAPI)
+        .get(mtrAPI, {
+          headers: {
+            "Cache-Control": "no-cache",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
+        })
         .then((res) => {
           if (res.data.status === 0) {
             setMtrStatus(res.data.status);
@@ -69,7 +75,13 @@ function MTRInfo({ line, station, lang, mode }) {
     setMtrEta([]);
     let mtrAPI = `https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=${line}&sta=${station}`;
     axios
-      .get(mtrAPI)
+      .get(mtrAPI, {
+        headers: {
+          "Cache-Control": "no-cache",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      })
       .then((res) => {
         if (res.data.status === 0) {
           setMtrStatus(res.data.status);

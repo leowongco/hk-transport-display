@@ -64,10 +64,20 @@ function MTRBusInfo({ busRoute, lang }) {
     setIsLoading(true);
     setMtrBusData();
     axios
-      .post(apiURL, {
-        language: apiLang[lang],
-        routeName: busRoute,
-      })
+      .post(
+        apiURL,
+        {
+          language: apiLang[lang],
+          routeName: busRoute,
+        },
+        {
+          headers: {
+            "Cache-Control": "no-cache",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
+        }
+      )
       .then((res) => {
         setMtrBusData(res.data);
         setIsLoading(false);
@@ -78,12 +88,25 @@ function MTRBusInfo({ busRoute, lang }) {
   useEffect(() => {
     const inteval = setInterval(() => {
       axios
-        .post(apiURL, {
-          language: apiLang[lang],
-          routeName: busRoute,
-        })
+        .post(
+          apiURL,
+          {
+            language: apiLang[lang],
+            routeName: busRoute,
+          },
+          {
+            headers: {
+              "Cache-Control": "no-cache",
+              Pragma: "no-cache",
+              Expires: "0",
+            },
+          }
+        )
         .then((res) => {
-          setMtrBusData(res.data);
+          if (res.data.busStop !== null) {
+            setMtrBusData(res.data);
+          }
+
           // if (currentBusData !== null) {
           //   console.log(currentBusData.busId);
           //   var tempArr = res.data.busStop.filter(

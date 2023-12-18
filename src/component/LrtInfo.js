@@ -31,7 +31,13 @@ function LrtInfo({ sid, lang, mode }) {
   useEffect(() => {
     const inteval = setInterval(() => {
       axios
-        .get(lrtAPI)
+        .get(lrtAPI, {
+          headers: {
+            "Cache-Control": "no-cache",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
+        })
         .then((res) => {
           setLRTEta(res.data);
           setIsLoading(false);
@@ -45,7 +51,13 @@ function LrtInfo({ sid, lang, mode }) {
     setIsLoading(true);
     setLRTEta();
     axios
-      .get(lrtAPI)
+      .get(lrtAPI, {
+        headers: {
+          "Cache-Control": "no-cache",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      })
       .then((res) => {
         setLRTEta(res.data);
         setIsLoading(false);
