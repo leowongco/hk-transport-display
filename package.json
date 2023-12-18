@@ -1,6 +1,6 @@
 {
   "name": "hk-transport-display",
-  "version": "1.23.2",
+  "version": "1.23.3",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
