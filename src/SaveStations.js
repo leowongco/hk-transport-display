@@ -41,6 +41,7 @@ function SaveStations() {
   const twlSaveStnArray = JSON.parse(storage.getItem("TWL_SaveStn"));
   const islSaveStnArray = JSON.parse(storage.getItem("ISL_SaveStn"));
   const ktlSaveStnArray = JSON.parse(storage.getItem("KTL_SaveStn"));
+  const drlSaveStnArray = JSON.parse(storage.getItem("DRL_SaveStn"));
   const hkTramStnArray = JSON.parse(storage.getItem("HKTramSaveStn"));
   const mtrBusSaveStnArray = JSON.parse(storage.getItem("MTRBus_SaveStn"));
   const lang = storage.getItem("savedLanguage");
@@ -73,6 +74,9 @@ function SaveStations() {
   if (storage.getItem("KTL_SaveStn") === null) {
     storage.setItem("KTL_SaveStn", JSON.stringify(newArray));
   }
+  if (storage.getItem("DRL_SaveStn") === null) {
+    storage.setItem("DRL_SaveStn", JSON.stringify(newArray));
+  }
   if (storage.getItem("LrtSaveStn") === null) {
     storage.setItem("LrtSaveStn", JSON.stringify(newArray));
   }
@@ -100,6 +104,7 @@ function SaveStations() {
     lrtSaveStnArray?.length === 0 &&
     islSaveStnArray?.length === 0 &&
     ktlSaveStnArray?.length === 0 &&
+    drlSaveStnArray?.length === 0 &&
     mtrBusSaveStnArray?.length === 0 &&
     hkTramStnArray?.length === 0
   ) {
@@ -208,6 +213,16 @@ function SaveStations() {
                   }}
                 >
                   {DictM.MtrLines.KTL[lang + "_name"]}
+                </Tab>
+              ) : null}
+              {drlSaveStnArray?.length > 0 ? (
+                <Tab
+                  style={{
+                    backgroundColor: DictM.MtrLines.DRL.colorCode,
+                    color: "white",
+                  }}
+                >
+                  {DictM.MtrLines.DRL[lang + "_name"]}
                 </Tab>
               ) : null}
               {lrtSaveStnArray?.length > 0 ? (
@@ -346,6 +361,20 @@ function SaveStations() {
                 >
                   {ktlSaveStnArray?.map((stn) => (
                     <SaveMTR line="KTL" station={stn} lang={lang} />
+                  ))}
+                </Stack>
+              </TabPanel>
+            ) : null}
+            {drlSaveStnArray?.length > 0 ? (
+              <TabPanel>
+                <Stack
+                  direction="column"
+                  justifyContent="space-evenly"
+                  alignItems="stretch"
+                  spacing={1}
+                >
+                  {drlSaveStnArray?.map((stn) => (
+                    <SaveMTR line="DRL" station={stn} lang={lang} />
                   ))}
                 </Stack>
               </TabPanel>

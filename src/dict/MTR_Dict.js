@@ -214,6 +214,7 @@ const MtrLines = {
     tc_name: "迪士尼線",
     en_name: "Disneyland Resort Line",
     colorCode: "#f550a6",
+    stations: ["SUN", "DIS"]
   },
   XRL: {
     tc_name: "高速鐵路",
@@ -912,6 +913,12 @@ const MtrStations = {
   LAT: {
     tc_name: "藍田",
     en_name: "Lam Tin",
+    lon: "",
+    active: "1",
+  },
+  DIS: {
+    tc_name: "迪士尼",
+    en_name: "Disneyland Resort",
     lon: "",
     active: "1",
   },
